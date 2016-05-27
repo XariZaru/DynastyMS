@@ -1,0 +1,66 @@
+Exception caught by: Win
+java.lang.NoClassDefFoundError: client/MapleClient$1
+	at client.MapleClient.sendPing(MapleClient.java:967)
+	at net.MapleServerHandler.sessionIdle(MapleServerHandler.java:153)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$TailFilter.sessionIdle(DefaultIoFilterChain.java:665)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextSessionIdle(DefaultIoFilterChain.java:398)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1000(DefaultIoFilterChain.java:47)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.sessionIdle(DefaultIoFilterChain.java:755)
+	at org.apache.mina.core.filterchain.IoFilterAdapter.sessionIdle(IoFilterAdapter.java:95)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextSessionIdle(DefaultIoFilterChain.java:398)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1000(DefaultIoFilterChain.java:47)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.sessionIdle(DefaultIoFilterChain.java:755)
+	at org.apache.mina.core.filterchain.IoFilterAdapter.sessionIdle(IoFilterAdapter.java:95)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextSessionIdle(DefaultIoFilterChain.java:398)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.fireSessionIdle(DefaultIoFilterChain.java:391)
+	at org.apache.mina.core.session.AbstractIoSession.notifyIdleSession0(AbstractIoSession.java:1303)
+	at org.apache.mina.core.session.AbstractIoSession.notifyIdleSession(AbstractIoSession.java:1286)
+	at org.apache.mina.core.session.AbstractIoSession.notifyIdleness(AbstractIoSession.java:1274)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.notifyIdleSessions(AbstractPollingIoProcessor.java:760)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.access$900(AbstractPollingIoProcessor.java:67)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.run(AbstractPollingIoProcessor.java:1135)
+	at org.apache.mina.util.NamePreservingRunnable.run(NamePreservingRunnable.java:64)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------
+java.util.ConcurrentModificationException
+	at java.util.LinkedHashMap$LinkedHashIterator.nextEntry(Unknown Source)
+	at java.util.LinkedHashMap$ValueIterator.next(Unknown Source)
+	at net.server.Server.saveAll(Server.java:129)
+	at net.server.Server$1.run(Server.java:174)
+	at server.TimerManager$LoggingSaveRunnable.run(TimerManager.java:143)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------
+java.lang.NullPointerException
+	at scripting.event.EventInstanceManager$1.run(EventInstanceManager.java:237)
+	at server.TimerManager$LoggingSaveRunnable.run(TimerManager.java:143)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------
+java.lang.NullPointerException
+	at scripting.AbstractPlayerInteraction$1.run(AbstractPlayerInteraction.java:774)
+	at server.TimerManager$LoggingSaveRunnable.run(TimerManager.java:143)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------

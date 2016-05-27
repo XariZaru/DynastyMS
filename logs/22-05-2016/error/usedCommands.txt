@@ -1,0 +1,548 @@
+Xari used: !spawn 100100 
+Xari used: !spawn 100100 
+Xari used: !spawn 100100 
+Xari used: !spawn 100100 
+Xari used: !spawn 100100 
+Xari used: !killall 
+Xari used: !spawn 100100 10 
+Xari used: !spawn 100100 10 
+Xari used: !spawn 100100 10 
+Xari used: !spawn 100100 
+Xari used: !spawn 100100 
+Xari used: !spawn 100100 
+Xari used: !spawn 100100 
+Xari used: !spawn 100100 
+Xari used: !spawn 100100 
+Xari used: !spawn 100100 
+Xari used: !spawn 100100 
+Xari used: !spawn 100100 
+Xari used: !spawn 100100 
+Xari used: !spawn 100100 
+Xari used: !spawn 100100 
+Xari used: !spawn 100100 100 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !spawn 100100 100 
+Xari used: !killall 
+Xari used: !spawn 100100 100 
+Xari used: !killall 
+Xari used: !spawn 100100 
+Xari used: !spawn 100100 
+Xari used: !spawn 100100 
+Xari used: !spawn 100100 100 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !spawn 100100 50 
+Xari used: !killall 
+Xari used: !spawn 100100 1 
+Xari used: !spawn 100100 1 
+Xari used: !spawn 100100 
+Xari used: !spawn 100100 
+Xari used: !spawn 100100 
+Xari used: !spawn 100100 
+Xari used: !spawn 100100 
+Xari used: !spawn 100100 
+Xari used: !spawn 100100 100 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !spawn 100100 100 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !job 1112 
+Xari used: !spawn 100100 
+Xari used: !killall 
+Xari used: !job 1112 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !spawn 100100 
+Xari used: !spawn 100100 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !cleardrops 
+Xari used: !spawn 6130101 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !item 2044309 
+Xari used: !item 2044309 
+Xari used: !item 2044309 
+Xari used: !item 2044309 
+Xari used: !item 2044309 
+Xari used: !search item dark scroll for pole 
+Xari used: !item 2044405 
+Xari used: !item 2044404 
+Xari used: !item 2044404 
+Xari used: !search item scroll for claw for att 
+Xari used: !search item scroll for claw for att 
+Xari used: !item 2044700 
+Xari used: !item 2044701 
+Xari used: !item 2044702 
+Xari used: !item 2044702 
+Xari used: !item 2044702 
+Xari used: !search item dark scroll for spear for 
+Xari used: !item 2044304 
+Fudge used: !job 410 
+Fudge used: !maxall 
+Fudge used: !maxalls 
+Fudge used: !maxskill 
+Fudge used: !maxskill 
+Fudge used: !maxskills 
+Fudge used: !job 412 
+Fudge used: !job 910 
+Fudge used: !heal 
+Fudge used: !level 100 
+Fudge used: !fame winsane 10 
+Fudge used: !fame winsane 69 
+Fudge used: !stats 100 
+Fudge used: !stat 100 
+Fudge used: !addstat 10 
+Fudge used: !kin 
+Fudge used: !heal 
+Fudge used: !item 2000000 
+Fudge used: !cheaters 
+Fudge used: !cheater 
+Fudge used: @search item maple claw 
+Fudge used: !item 1472030 
+Fudge used: !item 2044702 25 
+Fudge used: @search item ilbi 
+Fudge used: !item 2070016 4 
+Fudge used: !item 2070016 10000 
+Fudge used: !item 2070016 10000 
+Fudge used: @search Zakum 
+Fudge used: @search item Zakum 
+Fudge used: !item 1002430 
+Fudge used: !item 1002428 
+Fudge used: @search item Zakum 
+Fudge used: !item 1002357 
+Fudge used: @search item the summonning rock 
+Fudge used: @search item summonning 
+Fudge used: !item 4006001 1000 
+Fudge used: !job 412 
+Fudge used: !level 10 
+Fudge used: !level 100 
+Fudge used: !level 10 
+Fudge used: !level 100 
+Fudge used: !level 10 
+Fudge used: !level 11 
+Fudge used: !level 12 
+Fudge used: !level 13 
+Fudge used: !level 14 
+Fudge used: !level 15 
+Fudge used: !level 100 
+Fudge used: !warp Winsane 
+Fudge used: !warpto Winsane 
+Fudge used: @search item eye 
+Fudge used: !item 4001017 10 
+Fudge used: !killall 
+Fudge used: !killall 
+Fudge used: !killall 
+Fudge used: !level 150 
+Fudge used: !killall 
+Fudge used: !level 160 
+Fudge used: !killall 
+Fudge used: !killall 
+Fudge used: !zakum 
+Fudge used: !zakum 
+Fudge used: !zakum 
+Fudge used: !killall 
+Fudge used: !killall 
+Fudge used: !killall 
+Fudge used: !zakum 
+Fudge used: !zakum 
+Fudge used: !zakum 
+Fudge used: !zakum 
+Fudge used: !killall 
+Fudge used: !killall 
+Fudge used: !killall 
+Fudge used: !killall 
+Win used: @warp 100000000 
+Win used: @drop 4031036 
+Win used: @drop 4031037 
+Win used: @drop 4031038 
+Win used: @drop 4031268 20 
+Win used: @drop 4031269 
+Win used: @drop 4031231 12 
+Win used: @drop 4031222 
+Win used: @drop 4000101 20 
+Win used: @drop 4031039 
+Win used: @drop 4031040 
+Win used: @drop 4031041 
+Win used: @fm 
+Win used: @warp 100000111 
+Win used: @warp 1000 
+Win used: @warp 100000111 
+Win used: @warp 100000110 
+Win used: @warp 10000 
+Win used: @warp 1000000000 
+Win used: @warp 10000000000 
+Win used: @warp 100000000000 
+Win used: @warp 10000000 
+Win used: @warp 1000000 
+Win used: @warp 10000000 
+Win used: @warp 100000000 
+Win used: @warp 100000001 
+Win used: @warp 100000002 
+Win used: @warp 100000003 
+Win used: @warp 100000004 
+Win used: @warp 100000010 
+Win used: @warp 10000009 
+Win used: @warp 10000008 
+Win used: @warp 100000008 
+Win used: @warp 100000009 
+Win used: @warp 100000000 
+Win used: @drop 2030011 15 
+Win used: @drop 2030012 15 
+Win used: @warp 222010000 
+Win used: @drop 4031230 
+Win used: @drop 4031279 300 
+Win used: @drop 4031241 
+Win used: @drop 4031223 
+Win used: @drop 4031315 
+Win used: @item 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 5 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Fudge used: @job 422 
+Fudge used: @search map kargo 
+Fudge used: !pap 
+Fudge used: !killall 
+Fudge used: !killall 
+Fudge used: !killall 
+Fudge used: !killall 
+Fudge used: !killall 
+Fudge used: !killall 
+Fudge used: !killall 
+Fudge used: !killall 
+Fudge used: !killall 
+Fudge used: !killall 
+Fudge used: !killall 
+Fudge used: !killall 
+Fudge used: !killall 
+Fudge used: !killall 
+Fudge used: !killall 
+Fudge used: !killall 
+Fudge used: !killall 
+Fudge used: !killall 
+Fudge used: !killall 
+Fudge used: !killall 
+Fudge used: !killall 
+Fudge used: !killall 
+Fudge used: !killall 
+Fudge used: !killall 
+Fudge used: !killall 
+Fudge used: !killall 
+Fudge used: !heal 
+Fudge used: !heal 
+Fudge used: !killall 
+Fudge used: !killall 
+Fudge used: !killall 
+Fudge used: !killall 
+Fudge used: !killall 
+Fudge used: !killall 
+Fudge used: !killall 
+Fudge used: !killall 
+Fudge used: !killall 
+Fudge used: !killall 
+Fudge used: !mushmom 
+Fudge used: !mushroommom 
+Fudge used: !zakum 
+Fudge used: !zakum 
+Fudge used: !zakum 
+Fudge used: !zakum 
+Fudge used: !zakum 
+Fudge used: !zakum 
+Fudge used: !zakum 
+Fudge used: !killall 
+Fudge used: !killall 
+Fudge used: !killall 
+Fudge used: !zakum 
+Fudge used: !killall 
+Fudge used: !killall 
+Fudge used: !killall 
+Fudge used: !zakum 
+Fudge used: !zakum 
+Fudge used: !zakum 
+Fudge used: !zakum 
+Fudge used: !zakum 
+Fudge used: !zakum 
+Fudge used: !zakum 
+Fudge used: !zakum 
+Fudge used: !zakum 
+Fudge used: !zakum 
+Fudge used: !killall 
+Fudge used: !killall 
+Fudge used: !killall 
+Fudge used: !search item gachapon 
+Fudge used: !item 5220000 50 
+Fudge used: !job 220 
+Fudge used: !item 5220000 50 
+Fudge used: !item 5220000 50 
+Win used: @drop 4032003 50 
+Fudge used: !notice Win is the best gm ever 
+Fudge used: !item 5220000 100 
+Fudge used: !search item Elemental 
+Fudge used: !item 1382052 
+Fudge used: !item 1382052 
+Fudge used: !item 1382051 
+Fudge used: !saveall 
+Fudge used: !heal 
+Fudge used: !setjob Fudge 910 
+Fudge used: !setlevel fudge 100 
+Fudge used: !givenx Fudge 100 
+Fudge used: !giftnx Fudge 100 
+Fudge used: !giftnx Fudge 10000 
+Fudge used: !giftnx Fudge 10000 
+Fudge used: !giftnx Fudge 10000 
+Fudge used: !giftnx Fudge 10000 
+Fudge used: !giftnx Fudge 10000 
+Fudge used: !setfame Fudge 100 
+Fudge used: !fame Fudge 100 
+Fudge used: !fame Fudge 696969 
+Fudge used: !fame Fudge 6969 
+Fudge used: !job 912 
+Fudge used: !job 500 
+Fudge used: !job 1 
+Fudge used: !job 2 
+Fudge used: !job 100 
+Fudge used: !job 10 
+Fudge used: !job 510 
+Fudge used: !job 900 
+Fudge used: !job 901 
+Fudge used: !job 902 
+Fudge used: !job 903 
+Fudge used: !job 904 
+Fudge used: !job 905 
+Fudge used: !job 910 
+Fudge used: !job 911 
+Fudge used: !job 912 
+Fudge used: !job 913 
+Fudge used: !job 920 
+Fudge used: !job 940 
+Fudge used: !job 930 
+Fudge used: !job 1000 
+Fudge used: !job 1420 
+Fudge used: !job 1100 
+Fudge used: !job 1420 
+Fudge used: !job 1120 
+Fudge used: !job 1200 
+Fudge used: !job 1220 
+Fudge used: !job 1201 
+Fudge used: !job 1202 
+Fudge used: !job 1210 
+Fudge used: !job 1200 
+Fudge used: !job 1220 
+Fudge used: !job 1230 
+Fudge used: !job 1240 
+Fudge used: !job 1212 
+Fudge used: !job 1222 
+Fudge used: !job 1202 
+Fudge used: !job 1200 
+Fudge used: !job 1300 
+Fudge used: !job 1310 
+Fudge used: !job 1320 
+Fudge used: !job 1312 
+Fudge used: !job 1220 
+Fudge used: !job 1400 
+Fudge used: !job 1412 
+Fudge used: !job 2000 
+Fudge used: !job 2001 
+Fudge used: !job 2000 
+Fudge used: !job 3000 
+Fudge used: !job 2200 
+Xari used: @sav 
+Win used: @drop 4032003 50 
+Win used: @drop 4032003 50 
+Win used: @drop 4032003 50 
+Win used: @warp 109040000 
+Win used: @warp 100000000 
+Win used: @warp 109040000 
+Win used: @warp 10000000 
+Win used: @warp 100000000 
+Win used: @drop 2040826 2 
+Win used: @drop 4021010 100 
+Win used: @drop 100000 
+Win used: @drop 1000000 
+Win used: @drop 1000001 
+Win used: @drop 1000002 
+Win used: @drop 1000003 
+Win used: @drop 1000004 
+Win used: @drop 1000005 
+Win used: @cleardrops 
+Xari used: !search npc crane 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: /pos 
+Xari used: /pos 

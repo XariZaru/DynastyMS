@@ -1,0 +1,99 @@
+Error for player ; Fudge on map ; 101000000 - account ; Douglas
+All: 29 00 00 36 D5 06 95 29 FE 00 F4 09 00 24 FE FE F3 84 FF F7 FF E4 02 03 2C 00 00 23 FE FE F3 84 FF F7 FF EB 02 03 10 00 0E 84 FF F7 FF E4 02 03 00 00 0F 23 FE FC F3 84 FF F7 FF EB 02 E4 02 03 00 00 0F 22 FE F3 F3 F8 FF F0 FF 00 00 E4 02 07 5A 00 0F 21 FE FA F3 F8 FF A3 00 00 00 E4 02 07 5A 00 0F 21 FE FE F3 00 00 00 00 00 00 E4 02 07 17 00 00 21 FE FE F3 00 00 00 00 EB 02 03 07 00 00 09 FE FC F3 83 FF F6 FF EB 02 03 F0 00 11 99 99 99 99 99 99 88 88 08 09 FE F3 F3 29 FE 00 F4
+Now: 0F 22 FE F3 F3 F8 FF F0 FF 00 00 E4 02 07 5A 00 0F 21 FE FA F3 F8 FF A3 00 00 00 E4 02 07 5A 00 0F 21 FE FE F3 00 00 00 00 00 00 E4 02 07 17 00 00 21 FE FE F3 00 00 00 00 EB 02 03 07 00 00 09 FE FC F3 83 FF F6 FF EB 02 03 F0 00 11 99 99 99 99 99 99 88 88 08 09 FE F3 F3 29 FE 00 F4
+java.lang.NoClassDefFoundError: server/movement/JumpDownMovement
+	at net.server.channel.handlers.AbstractMovementPacketHandler.parseMovement(AbstractMovementPacketHandler.java:125)
+	at net.server.channel.handlers.MovePlayerHandler.handlePacket(MovePlayerHandler.java:34)
+	at net.MapleServerHandler.messageReceived(MapleServerHandler.java:134)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$TailFilter.messageReceived(DefaultIoFilterChain.java:690)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:417)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1200(DefaultIoFilterChain.java:47)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:765)
+	at org.apache.mina.filter.codec.ProtocolCodecFilter$ProtocolDecoderOutputImpl.flush(ProtocolCodecFilter.java:407)
+	at org.apache.mina.filter.codec.ProtocolCodecFilter.messageReceived(ProtocolCodecFilter.java:236)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:417)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1200(DefaultIoFilterChain.java:47)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:765)
+	at org.apache.mina.core.filterchain.IoFilterAdapter.messageReceived(IoFilterAdapter.java:109)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:417)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.fireMessageReceived(DefaultIoFilterChain.java:410)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.read(AbstractPollingIoProcessor.java:710)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.process(AbstractPollingIoProcessor.java:664)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.process(AbstractPollingIoProcessor.java:653)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.access$600(AbstractPollingIoProcessor.java:67)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.run(AbstractPollingIoProcessor.java:1124)
+	at org.apache.mina.util.NamePreservingRunnable.run(NamePreservingRunnable.java:64)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.ClassNotFoundException: server.movement.JumpDownMovement
+	at java.net.URLClassLoader$1.run(Unknown Source)
+	at java.net.URLClassLoader$1.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(Unknown Source)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Unknown Source)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	... 24 more
+
+---------------------------------
+Error for player ; Fudge on map ; 101000000 - account ; Douglas
+All: 29 00 00 36 D5 06 95 09 FE FC F3 06 00 F1 FD FA F3 98 FF BB FF EB 02 03 C0 00 00 E5 FD F2 F3 85 FF EE FF EA 02 03 73 00 00 D8 FD F0 F3 85 FF EE FF E9 02 03 71 00 0E 85 FF EE FF E9 02 03 00 00 0F D8 FD EE F3 85 FF EE FF E9 02 E9 02 03 00 00 0F D6 FD E4 F3 F7 FF F0 FF 00 00 E9 02 07 5A 00 11 88 88 88 88 98 99 99 99 09 D6 FD E4 F3 09 FE FC F3
+Now: 0F D6 FD E4 F3 F7 FF F0 FF 00 00 E9 02 07 5A 00 11 88 88 88 88 98 99 99 99 09 D6 FD E4 F3 09 FE FC F3
+java.lang.NoClassDefFoundError: server/movement/JumpDownMovement
+	at net.server.channel.handlers.AbstractMovementPacketHandler.parseMovement(AbstractMovementPacketHandler.java:125)
+	at net.server.channel.handlers.MovePlayerHandler.handlePacket(MovePlayerHandler.java:34)
+	at net.MapleServerHandler.messageReceived(MapleServerHandler.java:134)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$TailFilter.messageReceived(DefaultIoFilterChain.java:690)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:417)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1200(DefaultIoFilterChain.java:47)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:765)
+	at org.apache.mina.filter.codec.ProtocolCodecFilter$ProtocolDecoderOutputImpl.flush(ProtocolCodecFilter.java:407)
+	at org.apache.mina.filter.codec.ProtocolCodecFilter.messageReceived(ProtocolCodecFilter.java:236)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:417)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1200(DefaultIoFilterChain.java:47)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:765)
+	at org.apache.mina.core.filterchain.IoFilterAdapter.messageReceived(IoFilterAdapter.java:109)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:417)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.fireMessageReceived(DefaultIoFilterChain.java:410)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.read(AbstractPollingIoProcessor.java:710)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.process(AbstractPollingIoProcessor.java:664)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.process(AbstractPollingIoProcessor.java:653)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.access$600(AbstractPollingIoProcessor.java:67)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.run(AbstractPollingIoProcessor.java:1124)
+	at org.apache.mina.util.NamePreservingRunnable.run(NamePreservingRunnable.java:64)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------
+Error for player ; Fudge on map ; 101000000 - account ; Douglas
+All: 29 00 00 36 D5 06 95 D6 FD E4 F3 02 0F D2 FD C2 F4 90 FF 29 00 00 00 E9 02 07 FA 01 00 D2 FD C1 F4 8F FF 29 00 C0 02 03 04 00 11 99 99 99 99 99 88 88 88 08 D2 FD E4 F3 D6 FD C2 F4
+Now: 00 D2 FD C1 F4 8F FF 29 00 C0 02 03 04 00 11 99 99 99 99 99 88 88 88 08 D2 FD E4 F3 D6 FD C2 F4
+java.lang.NoClassDefFoundError: server/movement/JumpDownMovement
+	at net.server.channel.handlers.AbstractMovementPacketHandler.parseMovement(AbstractMovementPacketHandler.java:125)
+	at net.server.channel.handlers.MovePlayerHandler.handlePacket(MovePlayerHandler.java:34)
+	at net.MapleServerHandler.messageReceived(MapleServerHandler.java:134)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$TailFilter.messageReceived(DefaultIoFilterChain.java:690)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:417)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1200(DefaultIoFilterChain.java:47)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:765)
+	at org.apache.mina.filter.codec.ProtocolCodecFilter$ProtocolDecoderOutputImpl.flush(ProtocolCodecFilter.java:407)
+	at org.apache.mina.filter.codec.ProtocolCodecFilter.messageReceived(ProtocolCodecFilter.java:236)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:417)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1200(DefaultIoFilterChain.java:47)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:765)
+	at org.apache.mina.core.filterchain.IoFilterAdapter.messageReceived(IoFilterAdapter.java:109)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:417)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.fireMessageReceived(DefaultIoFilterChain.java:410)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.read(AbstractPollingIoProcessor.java:710)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.process(AbstractPollingIoProcessor.java:664)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.process(AbstractPollingIoProcessor.java:653)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.access$600(AbstractPollingIoProcessor.java:67)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.run(AbstractPollingIoProcessor.java:1124)
+	at org.apache.mina.util.NamePreservingRunnable.run(NamePreservingRunnable.java:64)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------

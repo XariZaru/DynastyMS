@@ -1,0 +1,521 @@
+Xari used: !drop 1002357 
+Xari used: !search item claw 
+Xari used: !drop 1480216 
+Xari used: !search item claw 
+Xari used: !drop 1472030 
+Xari used: !drop 1472030 
+Xari used: !search npc bulletin 
+Win used: @drop 2040024 3 
+Win used: @drop 2040301 3 
+Win used: @drop 2040501 5 
+Win used: @drop 2040704 4 
+Win used: @drop 2040804 5 
+Win used: @drop 2040707 3 
+Win used: @drop 2043301 2 
+Win used: @drop 2043801 5 
+Win used: @drop 2044001 5 
+Win used: @drop 2044401 3 
+Win used: @drop 2044501 2 
+Win used: @drop 2044701 5 
+Win used: @drop 2044803 7 
+Win used: @drop 4004000 5 
+Win used: @drop 4004001 5 
+Win used: @drop 4004002 25 
+Win used: @drop 4004003 25 
+Win used: @drop 4004004 25 
+Win used: @drop 4010000 25 
+Win used: @drop 4010001 25 
+Win used: @drop 4010002 25 
+Win used: @drop 4010003 25 
+Win used: @drop 4010004 25 
+Win used: @drop 4010005 25 
+Win used: @drop 4010006 25 
+Win used: @drop 4010007 25 
+Win used: @drop 4010008 25 
+Win used: @drop 4010008 25 
+Win used: @drop 4010000 25 
+Win used: @drop 4010001 25 
+Win used: @drop 4020000 25 
+Win used: @drop 4020001 25 
+Win used: @drop 4020005 25 
+Win used: @drop 4020008 25 
+Win used: @drop 4020007 25 
+Win used: @drop 4020006 25 
+Win used: @drop 4020005 25 
+Win used: @drop 4020004 25 
+Win used: @drop 4020003 25 
+Win used: @drop 4020002 25 
+Win used: @drop 4020001 25 
+Win used: @drop 4001126 999 
+Xari used: !search mob pig 
+Xari used: !pmob 1210100 8 
+Xari used: !pmob 1210100 8 
+Xari used: !pmob 1210100 8 
+Xari used: !pmob 1210100 8 
+Xari used: !pmob 1210100 8 
+Xari used: !pmob 1210100 8 
+Xari used: !pmob 1210100 8 
+Xari used: !pmob 1210100 8 
+Xari used: !pmob 1210100 8 
+Xari used: !pmob 1210100 8 
+Xari used: !pmob 1210100 8 
+Xari used: !pmob 1210100 8 
+Xari used: !pmob 1210100 8 
+Xari used: !pmob 1210100 8 
+Xari used: !pmob 1210100 8 
+Xari used: !pmob 1210100 8 
+Xari used: !pmob 1210100 8 
+Xari used: !pmob 1210100 8 
+Xari used: !pmob 1210100 8 
+Xari used: !job 0 
+Xari used: !killall 
+Xari used: !search npc scrooge 
+Win used: @level 60 
+Win used: @job 2000 
+Win used: @job 1500 
+Win used: @job 1100 
+Win used: @job 500 
+Win used: @job 400 
+Win used: @job 410 
+Win used: @job 420 
+Win used: @job 411 
+Win used: @job 412 
+Win used: @level 1 
+Win used: @level 2 
+Win used: @level 2 
+Win used: @level 60 
+Win used: @level 60 
+Win used: @level 60 
+Win used: @level 60 
+Win used: @level 60 
+Win used: @level 60 
+Win used: @level 60 
+Win used: @level 60 
+Win used: @level 60 
+Win used: @level 60 
+Win used: @level 60 
+Win used: @level 60 
+Win used: @level 60 
+Win used: @level 60 
+Win used: @level 60 
+Win used: @level 60 
+Win used: @level 60 
+Win used: @level 60 
+Win used: @level 60 
+Win used: @level 60 
+Win used: @level 60 
+Win used: @level 60 
+Win used: @level 60 
+Win used: @level 60 
+Win used: @level 60 
+Win used: @level 60 
+Win used: @level 60 
+Win used: @level 60 
+Win used: @level 60 
+Win used: @level 60 
+Win used: @level 60 
+Win used: @level 60 
+Win used: @level 60 
+Win used: @level 60 
+Win used: @level 60 
+Win used: @level 60 
+Win used: @level 60 
+Win used: @level 60 
+Win used: @level 60 
+Win used: @level 60 
+Win used: @level 60 
+Win used: @level 60 
+Win used: @level 60 
+Win used: @level 60 
+Win used: @level 60 
+Win used: @level 60 
+Win used: @level 60 
+Win used: @level 60 
+Win used: @level 60 
+Win used: @level 60 
+Win used: @level 60 
+Win used: @level 60 
+Win used: @level 60 
+Win used: @level 60 
+Win used: @drop 1472053 
+Win used: @drop 1472035 
+Win used: @drop 2070006 
+Win used: @drop 2070006 
+Win used: @hide 
+Win used: @unhide 
+Win used: @resetstats 
+Win used: @reset 
+Win used: @job 230 
+Win used: @job 2400 
+Win used: @job 240 
+Win used: @job 230 
+Win used: @job 220 
+Win used: @job 550 
+Win used: @job 530 
+Win used: @job 510 
+Win used: @job 610 
+Win used: @job 1100 
+Win used: @job 1200 
+Win used: @job 1300 
+Win used: @job 1400 
+Win used: @job 1410 
+Win used: @level 60 
+Win used: @level 60 
+Win used: @level 60 
+Win used: @level 60 
+Win used: @level 60 
+Win used: @level 60 
+Win used: @level 60 
+Win used: @level 60 
+Win used: @level 60 
+Win used: @level 60 
+Win used: @level 60 
+Win used: @job 1410 
+Win used: @job 1410 
+Win used: @job 1410 
+Win used: @job 1410 
+Win used: @job 1410 
+Win used: @job 1410 
+Win used: @level 60 
+Win used: @level 60 
+Win used: @level 60 
+Win used: @level 60 
+Win used: @level 60 
+Win used: @level 60 
+Win used: @job 1410 
+Win used: @job 1410 
+Win used: @job 1410 
+Win used: @job 1410 
+Win used: @job 1410 
+Win used: @job 1411 
+Win used: @job 0 
+Win used: @job 1411 
+Win used: @level 30 
+Win used: @job 1400 
+Win used: @job 1410 
+Win used: @level 40 
+Win used: @job 1200 
+Win used: @job 1410 
+Win used: @job 1311 
+Win used: @job 1311 
+Win used: @job 1 
+Win used: @job 100 
+Win used: @job 1000 
+Win used: @job 1400 
+Win used: @job 1410 
+Win used: @job 1100 
+Win used: @job 1410 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 5050001 
+Win used: @drop 5050001 10 
+Win used: @drop 5050002 10 
+Win used: @drop 5050003 10 
+Win used: !sp 1 
+Win used: !sp 2 
+Win used: !sp 100 
+Win used: !sp 1 
+Win used: !sp -1 
+Win used: !sp 0 
+Win used: !sp -1 
+Win used: @job 120 
+Win used: @job 1410 
+Win used: !job 411 
+Win used: !job 412 
+Win used: !level 200 
+Win used: @job 1411 
+Win used: !level 60 
+Win used: !level 200 
+Win used: !level 200 
+Win used: !level 200 
+Win used: !level 200 
+Win used: !level 200 
+Win used: !level 200 
+Win used: !level 200 
+Win used: !level 200 
+Win used: !level 200 
+Win used: !level 200 
+Win used: !level 200 
+Win used: !level 200 
+Win used: !level 200 
+Win used: !level 200 
+Win used: !level 200 
+Win used: !level 200 
+Win used: !level 200 
+Win used: !level 200 
+Win used: !level 200 
+Win used: !level 200 
+Win used: !level 200 
+Win used: !level 200 
+Win used: !level 200 
+Win used: !level 200 
+Win used: !level 200 
+Win used: !level 200 
+Win used: !level 200 
+Win used: !level 200 
+Win used: !level 200 
+Win used: !level 200 
+Win used: @job 1500 
+Win used: @job 1511 
+Win used: @drop 1482012 
+Win used: @level 200 
+Win used: @level 200 
+Win used: @level 200 
+Win used: @level 200 
+Win used: @level 200 
+Win used: @level 200 
+Win used: @level 200 
+Win used: @level 200 
+Win used: @level 200 
+Win used: @level 200 
+Win used: @level 200 
+Win used: @level 200 
+Win used: @level 200 
+Win used: @level 200 
+Win used: @level 200 
+Win used: @level 200 
+Win used: @level 200 
+Win used: @level 200 
+Win used: @level 200 
+Win used: @level 200 
+Win used: @level 200 
+Win used: @level 200 
+Win used: @level 200 
+Win used: @level 200 
+Win used: @level 200 
+Win used: @level 200 
+Win used: @level 200 
+Win used: @level 200 
+Win used: @level 200 
+Win used: @level 200 
+Win used: @level 200 
+Win used: @level 200 
+Win used: @level 200 
+Win used: @level 200 
+Win used: @level 200 
+Win used: @level 200 
+Win used: @level 200 
+Win used: @level 200 
+Win used: @level 200 
+Win used: @level 200 
+Win used: !sp 200 
+Xari used: !saveall 
+Xari used: !timerdebug 
+Xari used: !job 910 
+Xari used: !search npc perzen 
+Xari used: !drop 2000013 100 
+Xari used: !drop 2000014 100 
+Xari used: !search mob pig 
+Xari used: / pos 
+Xari used: /pos 
+Xari used: !search mob pig 
+Xari used: !pmob 100101 8 
+Xari used: !pmob 100101 8 
+Xari used: !pmob 100101 8 
+Xari used: !pmob 100101 8 
+Xari used: !pmob 100101 8 
+Xari used: !pmob 100101 8 
+Xari used: !search mob shroom 
+Xari used: !pmob 120100 8 
+Xari used: !pmob 120100 8 
+Xari used: !pmob 120100 8 
+Xari used: !pmob 120100 8 
+Xari used: !pmob 120100 8 
+Xari used: !pmob 120100 8 
+Xari used: !search mob zakum 
+Xari used: !saveall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !search npc amon 
+Xari used: !search npc jukebox 
+Xari used: !search npc juke 
+Xari used: !search npc music 
+Xari used: !search npc box 
+Xari used: !search npc music 
+Xari used: !search npc song 
+Xari used: !job 1100 
+Xari used: !setquest 30 
+Xari used: !setquest 20 
+Xari used: !setquest 15 
+Xari used: !search npc agent e 
+Xari used: !level 29 
+Xari used: !level 30 
+Xari used: !level 29 
+Xari used: !level 30 
+Xari used: !killall 
+Xari used: !setquest 15 
+Xari used: !job 1100 
+Xari used: !killall 
+Xari used: !search iolked 
+Xari used: !search hello hi 
+Xari used: !killall 
+Xari used: !job 910 
+Win used: @job 100 
+Win used: @job 200 
+Win used: @job 300 
+Win used: @job 400 
+Win used: @job 410 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4031866 
+Win used: @drop 4000099 
+Win used: @drop 4000114 50 
+Win used: @drop 4031115 2 
+Win used: @drop 4000023 50 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !reloadmap 
+Xari used: !reloadmap 
+Xari used: !reloadmap 
+Xari used: !killall 
+Xari used: !job 2100 
+Xari used: !job 910 
+Xari used: !job 2112 
+Xari used: !search item pole arm 
+Xari used: !item 144200 
+Xari used: !item 1442000 
+Xari used: !search mob disc 
+Xari used: !search mob compilation 
+Xari used: !search mob compilation 
+Xari used: !pmob 4300009 10 
+Xari used: !pmob 4300009 10 
+Xari used: !pmob 4300009 5 
+Xari used: !pmob 4300009 5 
+Xari used: !pmob 4300009 5 
+Xari used: !pmob 4300009 5 
+Xari used: !pmob 4300009 5 
+Xari used: !pmob 4300009 5 
+Xari used: !pmob 4300009 5 
+Xari used: !pmob 4300009 5 
+Xari used: !pmob 4300009 5 
+Xari used: !pmob 4300009 5 
+Xari used: !heal 
+Xari used: !search item ap reset 
+Xari used: !item 5050000 
+Xari used: !saveall 
+Xari used: !item 5050000 100 
+Xari used: !item 5050000 1000 
+Xari used: !maxstat 
+Xari used: !ap 0 
+Xari used: !item 5050000 500 
+Xari used: !item 5050000 500 
+Xari used: !item 5050000 500 
+Xari used: !item 5050000 500 
+Xari used: !item 5050000 500 
+Xari used: !job 2112 
+Xari used: !search mob headless 
+Xari used: !spawn 9400549 
+Xari used: !killall 
+Xari used: !spawn 9400549 
+Xari used: !killall 
+Xari used: !killall 

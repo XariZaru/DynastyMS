@@ -1,0 +1,83 @@
+Win used: @drop 4032003 50 
+Win used: @drop 4000008 40 
+Win used: @drop 4000004 50 
+Win used: @drop 4000005 50 
+Win used: @drop 4000006 20 
+Win used: @drop 4021009 
+Win used: @drop 4003002 
+Win used: @drop 4001006 
+Win used: @drop 4001005 
+Xari used: !saveall 
+Xari used: /warphere winsane 
+Xari used: /warphere winsane 
+Win used: @drop 4001261 20 
+Win used: @drop 4031212 33 
+Win used: @drop 4031213 50 
+Win used: @drop 4031214 50 
+Win used: @drop 4031215 50 
+Win used: @drop 4031674 30 
+Win used: @drop 4031680 50 
+Win used: @drop 4031675 50 
+Win used: @drop 4031675 10 
+Win used: @drop 4031681 50 
+Xari used: !pnpc 2042000 
+Xari used: !search mob tainted 
+Xari used: !search mob evil 
+Xari used: !search mob horny mushroom 
+Xari used: !spawn 9400621 
+Xari used: !spawn 9400621 
+Xari used: !spawn 9400621 
+Xari used: !spawn 9400621 
+Xari used: !spawn 9400621 
+Xari used: !spawn 9400621 1 
+Xari used: !spawn 9400621 1 
+Xari used: !killall 
+Xari used: !spawn 9400621 1 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !spawn 9400621 1 
+Xari used: !killall 
+Xari used: / 
+Xari used: /pos 
+Xari used: /pos 
+Xari used: !reloadmap 
+Xari used: !search item monster 
+Xari used: !search item card 
+Xari used: !search npc conductor 
+Xari used: !search npc manager karl 
+Xari used: !search npc manager karl 
+Xari used: !search npc rocky 
+Xari used: !search npc rocky 
+Xari used: !pncp 2040015 
+Xari used: !pnpc 2040015 
+Xari used: /pos 
+Xari used: !pnpc 20410015 
+Xari used: !pnpc 2041005 
+Xari used: !pnpc 2040015 
+Xari used: /pos 
+Xari used: !npc 2040015 
+Xari used: !timerdebug 
+Xari used: !search item tainted horny 
+Xari used: !search mob horny mush 
+Xari used: !search mob horny 
+Xari used: !search item charm of 
+Xari used: !search item charm of 
+Xari used: !search item recording charm 
+Xari used: !search item broken mirror 
+Xari used: !search item chaos scroll 
+Xari used: !search horntail 
+Xari used: !search mob horntail 
+Xari used: !spawn 8500002 
+Xari used: !spawn 7220000 
+Xari used: !spawn 8220006 
+Xari used: !spawn 7120109 
+Xari used: !search mob lyka 
+Xari used: !spawn 8220006 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !search item zakum 
+Xari used: !search mob zak 
+Xari used: !search item zakum helm 
+Xari used: !search item zakum helm 
+Xari used: !search item zakum helm 
+Xari used: !search item zaku 

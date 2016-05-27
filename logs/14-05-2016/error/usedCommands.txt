@@ -1,0 +1,741 @@
+Xari used: @ 
+Xari used: !ap 0 
+Xari used: !ap 100 
+Xari used: !ap 40000 
+Xari used: !ap 100 
+Xari used: !sp 21 
+Xari used: !sp 0 
+Xari used: !search npc branch snowman 
+Xari used: !search npc mrs. claus 
+Xari used: !search npc rudi 
+Xari used: !search npc straw hat 
+Xari used: !search npc cassandra 
+Xari used: !search npc torr 
+Xari used: !search npc christmas 
+Xari used: !search npc bicho 
+Xari used: !search npc snowman 
+Xari used: !say hi 
+Xari used: !exprate 50 
+Xari used: !spawn 100100 
+Xari used: @stats 
+Xari used: !checkrates 
+Xari used: !exprate 50 
+Xari used: !spawn 100100 1 
+Xari used: !spawn 100100 
+Xari used: !exprate 50 
+Xari used: !spawn 100100 
+Xari used: !exprate 1 
+Xari used: !exprate 50 
+Xari used: !spawn 100101 
+Xari used: !warphere fudge 
+Xari used: !warphere fudge 
+Xari used: !job 510 
+Xari used: !job 512 
+Xari used: !level 120 
+Xari used: !setstr 0 
+Xari used: !search npc nimakin 
+Xari used: !search item timeless 
+Xari used: !item 1472068 
+Xari used: !item 1472067 
+Xari used: !item 1472065 
+Xari used: !item 1472000 
+Xari used: !search item axe 
+Xari used: !item 1412035 
+Xari used: !job 110 
+Xari used: !search item axe 
+Xari used: !item 1412041 
+Xari used: !job 120 
+Xari used: !job 130 
+Xari used: !search item gms 
+Xari used: !item 1312044 
+Xari used: !job 100 
+Xari used: !search item timeless 
+Xari used: !search item timeless axe 
+Xari used: !search item gms 
+Xari used: !item 1312044 
+Xari used: @save 
+Xari used: !saveall 
+Xari used: !job 110 
+Xari used: !saveall 
+Xari used: !search item gms 
+Xari used: !search item gms axre 
+Xari used: !search item gms axe 
+Xari used: !job 132 
+Xari used: !ap 500 
+Xari used: !search item gms axe 
+Xari used: !search item grey t-shirt 
+Xari used: !search item blue jean shorts 
+Xari used: !item 1072001 
+Xari used: !search item gms axe 
+Xari used: !ap 500 
+Xari used: !ap 5000 
+Xari used: !search npc taeng 
+Xari used: !level 10 
+Xari used: !spawn 100100 50 
+Xari used: !killall 
+Xari used: !spawn 100100 50 
+Xari used: !killall 
+Xari used: !search item leather 
+Xari used: !search mob memory monk 
+Xari used: !pmob 8200001 10 
+Xari used: !pmob 8200001 10 
+Xari used: !pmob 8200001 10 
+Xari used: !pmob 8200001 10 
+Xari used: !pmob 8200001 10 
+Xari used: !pmob 8200001 10 
+Xari used: !pmob 8200001 10 
+Xari used: !pmob 8200001 10 
+Xari used: !pmob 8200001 10 
+Xari used: !pmob 8200001 10 
+Xari used: !pmob 8200001 10 
+Xari used: !pmob 8200001 10 
+Xari used: !pmob 8200001 10 
+Xari used: !pmob 8200001 10 
+Xari used: !pmob 8200001 10 
+Xari used: !pmob 8200001 10 
+Xari used: !pmob 8200001 10 
+Xari used: !pmob 8200001 10 
+Xari used: !pmob 8200001 10 
+Xari used: !pmob 8200001 10 
+Xari used: !pmob 8200001 10 
+Xari used: !pmob 8200001 10 
+Xari used: !pmob 8200001 10 
+Xari used: !pmob 8200001 10 
+Xari used: !pmob 8200001 10 
+Xari used: !pmob 8200001 10 
+Xari used: !pmob 8200001 10 
+Xari used: !pmob 8200001 10 
+Xari used: !pmob 8200001 10 
+Xari used: !pmob 8200001 10 
+Xari used: !pmob 8200001 10 
+Xari used: !pmob 8200001 10 
+Xari used: !pmob 8200001 10 
+Xari used: !pmob 8200001 10 
+Xari used: !pmob 8200001 10 
+Xari used: !pmob 8200001 10 
+Xari used: !pmob 8200001 10 
+Xari used: !pmob 8200001 10 
+Xari used: !pmob 8200001 10 
+Xari used: !pmob 8200001 10 
+Xari used: !pmob 8200001 10 
+Xari used: !pmob 8200001 10 
+Xari used: /pos 
+Xari used: !pos 
+Xari used: !pos 
+Xari used: !pos 
+Xari used: !pos 
+Xari used: !pos 
+Xari used: /pos 
+Xari used: !item 2210016 
+Xari used: !search mob eye of time 
+Xari used: !pmob 8200000 10 
+Xari used: !heal 
+Xari used: !pmob 8200000 10 
+Xari used: !pmob 8200000 10 
+Xari used: !pmob 8200000 10 
+Xari used: !pmob 8200000 10 
+Xari used: !search mob eye of time 
+Xari used: !search mob memory monk trainee 
+Xari used: !pmob 8200002 10 
+Xari used: !pmob 8200002 10 
+Xari used: !pmob 8200002 10 
+Xari used: !pmob 8200002 10 
+Xari used: !pmob 8200002 10 
+Xari used: !pmob 8200002 10 
+Xari used: !pmob 8200002 10 
+Xari used: !pmob 8200002 10 
+Xari used: !pmob 8200002 10 
+Xari used: !pmob 8200002 10 
+Xari used: !pmob 8200002 10 
+Xari used: !pmob 8200002 10 
+Xari used: !pmob 8200002 10 
+Xari used: !pmob 8200002 10 
+Xari used: !pmob 8200002 10 
+Xari used: !pmob 8200002 10 
+Xari used: !pmob 8200002 10 
+Xari used: !pmob 8200002 10 
+Xari used: !pmob 8200002 10 
+Xari used: !pmob 8200002 10 
+Xari used: !pmob 8200002 10 
+Xari used: !pmob 8200002 10 
+Xari used: !pmob 8200002 10 
+Xari used: !pmob 8200002 10 
+Xari used: !pmob 8200002 10 
+Xari used: !pmob 8200002 10 
+Xari used: !pmob 8200002 10 
+Xari used: !pmob 8200002 10 
+Xari used: !pmob 8200002 10 
+Xari used: !pmob 8200003 10 
+Xari used: !pmob 8200003 10 
+Xari used: !pmob 8200003 10 
+Xari used: !pmob 8200003 10 
+Xari used: !pmob 8200003 10 
+Xari used: !pmob 8200003 10 
+Xari used: !pmob 8200003 10 
+Xari used: !pmob 8200003 10 
+Xari used: !pmob 8200003 10 
+Xari used: !pmob 8200003 10 
+Xari used: !pmob 8200003 10 
+Xari used: !pmob 8200003 10 
+Xari used: !pmob 8200003 10 
+Xari used: !pmob 8200003 10 
+Xari used: !pmob 8200003 10 
+Xari used: !pmob 8200003 10 
+Xari used: !pmob 8200003 10 
+Xari used: !pmob 8200003 10 
+Xari used: !pmob 8200003 10 
+Xari used: !pmob 8200003 10 
+Xari used: !pmob 8200003 10 
+Xari used: !pmob 8200003 10 
+Xari used: !pmob 8200003 10 
+Xari used: !pmob 8200003 10 
+Xari used: !pmob 8200003 10 
+Xari used: !pmob 8200003 10 
+Xari used: !pmob 8200003 10 
+Xari used: !pmob 8200003 10 
+Xari used: !pmob 8200003 10 
+Xari used: !pmob 8200003 10 
+Xari used: !pmob 8200003 10 
+Xari used: !pmob 8200003 10 
+Xari used: !heal 
+Xari used: / 
+Xari used: !pmob 8200004 10 
+Xari used: !pmob 8200004 10 
+Xari used: !pmob 8200004 10 
+Xari used: !pmob 8200004 10 
+Xari used: !pmob 8200004 10 
+Xari used: !pmob 8200003 10 
+Xari used: !pmob 8200003 10 
+Xari used: !pmob 8200003 10 
+Xari used: !pmob 8200003 10 
+Xari used: !pmob 8200004 10 
+Xari used: !pmob 8200004 10 
+Xari used: !pmob 8200004 10 
+Xari used: !pmob 8200004 10 
+Xari used: !pmob 8200004 10 
+Xari used: !pmob 8200004 10 
+Xari used: !pmob 8200004 10 
+Xari used: !pmob 8200003 10 
+Xari used: !pmob 8200003 10 
+Xari used: !pmob 8200003 10 
+Xari used: !pmob 8200003 10 
+Xari used: !pmob 8200003 10 
+Xari used: !pmob 8200003 10 
+Xari used: !pmob 8200003 10 
+Xari used: !pmob 8200004 10 
+Xari used: !pmob 8200004 10 
+Xari used: !pmob 8200004 10 
+Xari used: !pmob 8200004 10 
+Xari used: !pmob 8200004 10 
+Xari used: !pmob 8200004 10 
+Xari used: !pmob 8200004 10 
+Xari used: !pmob 8200004 10 
+Xari used: !pmob 8200004 10 
+Xari used: !pmob 8200004 10 
+Xari used: !pmob 8200004 10 
+Xari used: !pmob 8200004 10 
+Xari used: !pmob 8200004 10 
+Xari used: !pmob 8200004 10 
+Xari used: !pmob 8200004 10 
+Xari used: !pmob 8200004 10 
+Xari used: !pmob 8200004 10 
+Xari used: !pmob 8200004 10 
+Xari used: !pmob 8200004 10 
+Xari used: !pmob 8200004 10 
+Xari used: !heal 
+Xari used: !search mob qualm monk 
+Xari used: !pmob 8200005 10 
+Xari used: !pmob 8200005 10 
+Xari used: !pmob 8200005 10 
+Xari used: !pmob 8200005 10 
+Xari used: !pmob 8200005 10 
+Xari used: !pmob 8200005 10 
+Xari used: !pmob 8200005 10 
+Xari used: !pmob 8200005 10 
+Xari used: !pmob 8200005 10 
+Xari used: !pmob 8200005 10 
+Xari used: !pmob 8200005 10 
+Xari used: !pmob 8200005 10 
+Xari used: !pmob 8200005 10 
+Xari used: !pmob 8200005 10 
+Xari used: !pmob 8200005 10 
+Xari used: !pmob 8200005 10 
+Xari used: !pmob 8200005 10 
+Xari used: !pmob 8200005 10 
+Xari used: !pmob 8200005 10 
+Xari used: !pmob 8200005 10 
+Xari used: !pmob 8200005 10 
+Xari used: !pmob 8200005 10 
+Xari used: !pmob 8200005 10 
+Xari used: !pmob 8200005 10 
+Xari used: !pmob 8200005 10 
+Xari used: !pmob 8200005 10 
+Xari used: !pmob 8200005 10 
+Xari used: !pmob 8200005 10 
+Xari used: !pmob 8200005 10 
+Xari used: !pmob 8200005 10 
+Xari used: !pmob 8200005 10 
+Xari used: !pmob 8200005 10 
+Xari used: !pmob 8200005 10 
+Xari used: !pmob 8200005 10 
+Xari used: !pmob 8200005 10 
+Xari used: !pmob 8200005 10 
+Xari used: !pmob 8200005 10 
+Xari used: !pmob 8200005 10 
+Xari used: !pmob 8200005 10 
+Xari used: !pmob 8200005 10 
+Xari used: !pmob 8200005 10 
+Xari used: !pmob 8200005 10 
+Xari used: !pmob 8200005 10 
+Xari used: !pmob 8200005 10 
+Xari used: !pmob 8200006 10 
+Xari used: !pmob 8200006 10 
+Xari used: !pmob 8200006 10 
+Xari used: !pmob 8200006 10 
+Xari used: !pmob 8200006 10 
+Xari used: !pmob 8200006 10 
+Xari used: !pmob 8200006 10 
+Xari used: !pmob 8200006 10 
+Xari used: !pmob 8200006 10 
+Xari used: !pmob 8200006 10 
+Xari used: !pmob 8200006 10 
+Xari used: !pmob 8200006 10 
+Xari used: !pmob 8200006 10 
+Xari used: !pmob 8200006 10 
+Xari used: !pmob 8200006 10 
+Xari used: !pmob 8200006 10 
+Xari used: !pmob 8200006 10 
+Xari used: !pmob 8200006 10 
+Xari used: !pmob 8200006 10 
+Xari used: !pmob 8200006 10 
+Xari used: !pmob 8200006 10 
+Xari used: !pmob 8200006 10 
+Xari used: !pmob 8200006 10 
+Xari used: !pmob 8200006 10 
+Xari used: !pmob 8200006 10 
+Xari used: !pmob 8200006 10 
+Xari used: !heal 
+Xari used: !pmob 8200007 10 
+Xari used: !pmob 8200007 10 
+Xari used: !pmob 8200007 10 
+Xari used: !pmob 8200007 10 
+Xari used: !pmob 8200007 10 
+Xari used: !pmob 8200007 10 
+Xari used: !pmob 8200007 10 
+Xari used: !pmob 8200007 10 
+Xari used: !pmob 8200007 10 
+Xari used: !pmob 8200007 10 
+Xari used: !pmob 8200007 10 
+Xari used: !pmob 8200007 10 
+Xari used: !pmob 8200007 10 
+Xari used: !pmob 8200007 10 
+Xari used: !pmob 8200007 10 
+Xari used: !pmob 8200007 10 
+Xari used: !pmob 8200007 10 
+Xari used: !pmob 8200007 10 
+Xari used: !pmob 8200007 10 
+Xari used: !pmob 8200007 10 
+Xari used: !pmob 8200007 10 
+Xari used: !pmob 8200007 10 
+Xari used: !pmob 8200007 10 
+Xari used: !pmob 8200007 10 
+Xari used: !pmob 8200007 10 
+Xari used: !pmob 8200008 10 
+Xari used: !pmob 8200008 10 
+Xari used: !pmob 8200008 10 
+Xari used: !pmob 8200008 10 
+Xari used: !pmob 8200008 10 
+Xari used: !pmob 8200008 10 
+Xari used: !pmob 8200008 10 
+Xari used: !pmob 8200008 10 
+Xari used: !pmob 8200008 10 
+Xari used: !pmob 8200008 10 
+Xari used: !pmob 8200008 10 
+Xari used: !pmob 8200008 10 
+Xari used: !pmob 8200008 10 
+Xari used: !pmob 8200008 10 
+Xari used: !pmob 8200008 10 
+Xari used: !pmob 8200008 10 
+Xari used: !pmob 8200008 10 
+Xari used: !pmob 8200008 10 
+Xari used: !pmob 8200008 10 
+Xari used: !pmob 8200008 10 
+Xari used: !pmob 8200008 10 
+Xari used: !pmob 8200008 10 
+Xari used: !pmob 8200008 10 
+Xari used: !pmob 8200008 10 
+Xari used: !pmob 8200008 10 
+Xari used: !pmob 8200008 10 
+Xari used: !pmob 8200008 10 
+Xari used: !pmob 8200008 10 
+Xari used: !pmob 8200008 10 
+Xari used: !pmob 8200008 10 
+Xari used: !pmob 8200008 10 
+Xari used: !pmob 8200008 10 
+Xari used: !heal 
+Xari used: !pmob 8200009 10 
+Xari used: !pmob 8200008 10 
+Xari used: !pmob 8200008 10 
+Xari used: !pmob 8200008 10 
+Xari used: !pmob 8200008 10 
+Xari used: !pmob 8200008 10 
+Xari used: !pmob 8200008 10 
+Xari used: !pmob 8200008 10 
+Xari used: !pmob 8200008 10 
+Xari used: !pmob 8200008 10 
+Xari used: !pmob 8200008 10 
+Xari used: !pmob 8200008 10 
+Xari used: !pmob 8200008 10 
+Xari used: !pmob 8200008 10 
+Xari used: !pmob 8200008 10 
+Xari used: !pmob 8200008 10 
+Xari used: !pmob 8200008 10 
+Xari used: !pmob 8200008 10 
+Xari used: !pmob 8200008 10 
+Xari used: !pmob 8200008 10 
+Xari used: !pmob 8200008 10 
+Xari used: !pmob 8200009 10 
+Xari used: !pmob 8200009 10 
+Xari used: !pmob 8200009 10 
+Xari used: !pmob 8200009 10 
+Xari used: !pmob 8200009 10 
+Xari used: !pmob 8200009 10 
+Xari used: !pmob 8200009 10 
+Xari used: !pmob 8200009 10 
+Xari used: !pmob 8200009 10 
+Xari used: !pmob 8200009 10 
+Xari used: !pmob 8200009 10 
+Xari used: !pmob 8200009 10 
+Xari used: !pmob 8200009 10 
+Xari used: !pmob 8200009 10 
+Xari used: !pmob 8200009 10 
+Xari used: !pmob 8200009 10 
+Xari used: !pmob 8200009 10 
+Xari used: !pmob 8200009 10 
+Xari used: !pmob 8200009 10 
+Xari used: !pmob 8200009 10 
+Xari used: !pmob 8200009 10 
+Xari used: !heal 
+Xari used: !pmob 8200009 10 
+Xari used: !pmob 8200009 10 
+Xari used: !pmob 8200009 10 
+Xari used: !pmob 8200009 10 
+Xari used: !pmob 8200009 10 
+Xari used: !pmob 8200009 10 
+Xari used: !pmob 8200009 10 
+Xari used: !pmob 8200009 10 
+Xari used: !pmob 8200009 10 
+Xari used: !pmob 8200009 10 
+Xari used: !pmob 8200009 10 
+Xari used: !pmob 8200009 10 
+Xari used: !pmob 8200009 10 
+Xari used: !pmob 8200009 10 
+Xari used: !pmob 8200009 10 
+Xari used: !pmob 8200010 10 
+Xari used: !pmob 8200010 10 
+Xari used: !pmob 8200010 10 
+Xari used: !pmob 8200010 10 
+Xari used: !pmob 8200010 10 
+Xari used: !pmob 8200010 10 
+Xari used: !pmob 8200010 10 
+Xari used: !pmob 8200010 10 
+Xari used: !pmob 8200010 10 
+Xari used: !pmob 8200010 10 
+Xari used: !pmob 8200010 10 
+Xari used: !pmob 8200010 10 
+Xari used: !pmob 8200010 10 
+Xari used: !pmob 8200010 10 
+Xari used: !pmob 8200010 10 
+Xari used: !pmob 8200010 10 
+Xari used: !pmob 8200010 10 
+Xari used: !pmob 8200010 10 
+Xari used: !pmob 8200010 10 
+Xari used: !pmob 8200010 10 
+Xari used: !pmob 8200010 10 
+Xari used: !pmob 8200010 10 
+Xari used: !pmob 8200010 10 
+Xari used: !pmob 8200010 10 
+Xari used: !pmob 8200010 10 
+Xari used: !pmob 8200010 10 
+Xari used: !pmob 8200010 10 
+Xari used: !pmob 8200010 10 
+Xari used: !pmob 8200010 10 
+Xari used: !pmob 8200010 10 
+Xari used: !pmob 8200010 10 
+Xari used: !heal 
+Xari used: !pmob 8200011 10 
+Xari used: !pmob 8200011 10 
+Xari used: !pmob 8200011 10 
+Xari used: !pmob 8200011 10 
+Xari used: !pmob 8200011 10 
+Xari used: !pmob 8200011 10 
+Xari used: !pmob 8200011 10 
+Xari used: !pmob 8200011 10 
+Xari used: !pmob 8200011 10 
+Xari used: !pmob 8200011 10 
+Xari used: !pmob 8200011 10 
+Xari used: !pmob 8200011 10 
+Xari used: !pmob 8200011 10 
+Xari used: !pmob 8200011 10 
+Xari used: !pmob 8200011 10 
+Xari used: !pmob 8200011 10 
+Xari used: !pmob 8200011 10 
+Xari used: !pmob 8200011 10 
+Xari used: !pmob 8200011 10 
+Xari used: !pmob 8200011 10 
+Xari used: !pmob 8200011 10 
+Xari used: !pmob 8200011 10 
+Xari used: !pmob 8200011 10 
+Xari used: !pmob 8200011 10 
+Xari used: !pmob 8200011 10 
+Xari used: !pmob 8200011 10 
+Xari used: !pmob 8200011 10 
+Xari used: !pmob 8200011 10 
+Xari used: !pmob 8200011 10 
+Xari used: !pmob 8200011 10 
+Xari used: !pmob 8200011 10 
+Xari used: !pmob 8200011 10 
+Xari used: !pmob 8200012 10 
+Xari used: !pmob 8200012 10 
+Xari used: !pmob 8200012 10 
+Xari used: !pmob 8200012 10 
+Xari used: !pmob 8200012 10 
+Xari used: !pmob 8200012 10 
+Xari used: !pmob 8200012 10 
+Xari used: !pmob 8200012 10 
+Xari used: !pmob 8200012 10 
+Xari used: !pmob 8200012 10 
+Xari used: !pmob 8200012 10 
+Xari used: !pmob 8200012 10 
+Xari used: !heal 
+Xari used: !pmob 8200012 10 
+Xari used: !pmob 8200012 10 
+Xari used: !pmob 8200012 10 
+Xari used: !pmob 8200012 10 
+Xari used: !pmob 8200012 10 
+Xari used: !pmob 8200012 10 
+Xari used: !pmob 8200012 10 
+Xari used: !pmob 8200012 10 
+Xari used: !pmob 8200012 10 
+Xari used: !pmob 8200012 10 
+Xari used: !pmob 8200012 10 
+Xari used: !pmob 8200012 10 
+Xari used: !pmob 8200012 10 
+Xari used: !pmob 8200012 10 
+Xari used: !heal 
+Xari used: !pmob 8200012 10 
+Xari used: !pmob 8200012 10 
+Xari used: !pmob 8200012 10 
+Xari used: !pmob 8200012 10 
+Xari used: !pmob 8200012 10 
+Xari used: !pmob 8200012 10 
+Xari used: !pmob 8200012 10 
+Xari used: !pmob 8200012 10 
+Xari used: !pmob 8200012 10 
+Xari used: !pmob 8200012 10 
+Xari used: !pmob 8200012 10 
+Xari used: !pmob 8200012 10 
+Xari used: !pmob 8200012 10 
+Xari used: !pmob 8200012 10 
+Xari used: !pmob 8200012 10 
+Xari used: !pmob 8200012 10 
+Xari used: !pmob 8200012 10 
+Xari used: !pmob 8200012 10 
+Xari used: !pmob 8200012 10 
+Xari used: !pmob 8200012 10 
+Xari used: !pmob 8200012 10 
+Xari used: !pmob 8200012 10 
+Xari used: !pmob 8200012 10 
+Xari used: !pmob 8200012 10 
+Xari used: !heal 
+Fudges used: !warp fudge 
+Fudges used: !goto Fudge 
+Fudges used: !command 
+Fudges used: !job 910 
+Fudges used: !maxall 
+Fudges used: !maxalls 
+Fudges used: !maxskills 
+Fudges used: !maxskill 
+Fudges used: !max 
+Fudges used: !maxall 
+Fudges used: /map 100040000 
+Fudges used: !map 100040000 
+Fudges used: /map 100040000 
+Fudges used: /map 100040000 
+Fudges used: /map ellinia 
+Fudges used: /map 180000000 
+Fudges used: !map 180000000 
+Fudges used: !warphere Fudge 
+Fudges used: !item 4000005 50 
+Fudges used: !item 4000012 50 
+Fudges used: !spawn 9400203 1 
+Fudges used: !buff 
+Fudges used: !gmshop 
+Fudges used: !drop 2022179 10 
+Fudges used: !item 2040802 50 
+Fudges used: !item 1082149 
+Fudges used: !level 100 
+Fudges used: !killall 
+Fudges used: !spawn 130100 50 
+Fudges used: !killall 
+Fudges used: !cleardrops 
+Fudges used: !item 2043702 50 
+Fudges used: !item 1372005 
+Fudges used: !spawn 9400203 
+Fudges used: !spawn 9400203 10 
+Fudges used: !drop 4000015 50 
+Fudges used: !spawn 9400203 10 
+Fudges used: !warphere fudge 
+Fudges used: !setjob Fudge 420 
+Fudges used: !jobset Fudge 420 
+Fudges used: !warphere fudge 
+Fudges used: !killall 
+Fudges used: !spawn 9400203 18 
+Fudges used: !spawn 9400203 18 
+Fudges used: !spawn 9400203 18 
+Fudges used: !killall 
+Fudges used: !clearall 
+Fudges used: !clearsall 
+Fudges used: !clearalls 
+Fudges used: !killall 
+Fudges used: !clear 
+Fudges used: !clears 
+Fudges used: !cleardrop 
+Fudges used: !cleardrops 
+Fudges used: !drop 4000208 10 
+Fudges used: !drop 4000207 50 
+Fudges used: !item 1372005 
+Fudges used: !killall 
+Fudges used: !killall 
+Fudges used: !killall 
+Fudges used: !killall 
+Fudges used: !killall 
+Fudges used: !killall 
+Fudges used: !job 420 
+Fudges used: !job 430 
+Fudges used: !job 421 
+Fudges used: !job 411 
+Fudges used: !warphere fudge 
+Fudges used: !spawn 6230100 
+Fudges used: !spawn 6230100 10 
+Fudges used: !killall 
+Fudges used: !killall 
+Fudges used: !spawn 6230100 10 
+Fudges used: !revive 
+Fudges used: !heal fudge 
+Fudges used: !heal fudge 
+Fudges used: !killall 
+Fudges used: !warphere Fudge 
+Fudges used: !heal fudge 
+Fudges used: !spawn 9400609 10 
+Fudges used: !killall 
+Fudges used: !spawn 9400612 10 
+Fudges used: !killall 
+Fudges used: !spawn 9400612 11 
+Fudges used: !killall 
+Fudges used: !spawn 9400612 1 
+Fudges used: !killall 
+Fudges used: !warphere fudge 
+Fudges used: !warphere fudge 
+Fudges used: !search item Marbas 
+Fudges used: !search item Marbas 
+Fudges used: !search mob marbas 
+Fudges used: !search mob marbas 
+Fudges used: !spawn 9400612 
+Fudges used: !spawn 9400612 2 
+Fudges used: !spawn 9400612 2 
+Fudges used: !spawn 9400612 5 
+Fudges used: !killall 
+Fudges used: !giftnx fudge 1000 
+Fudges used: !giftnx fudge 10000 
+Fudges used: !warphere fudge 
+Fudges used: !giftnx fudge 10000 
+Fudges used: !giftnx fudge 10000 
+Fudges used: !level 60 
+Fudges used: !level 200 
+Fudges used: !level 190 
+Fudges used: !level 180 
+Fudges used: !level 170 
+Fudges used: !level 160 
+Fudges used: !level 150 
+Fudges used: !level 140 
+Fudges used: !level 130 
+Fudges used: !level 120 
+Fudges used: !level 110 
+Fudges used: !level 100 
+Fudges used: !level 90 
+Fudges used: !level 100 
+Fudges used: !level 80 
+Fudges used: !level 70 
+Fudges used: !level 60 
+Fudges used: !level 50 
+Fudges used: !level 30 
+Fudges used: !level 40 
+Fudges used: !level 200 
+Fudges used: !level 20 
+Fudges used: !level 10 
+Fudges used: !level 15 
+Fudges used: !level 25 
+Fudges used: !level 35 
+Fudges used: !level 45 
+Fudges used: !level 55 
+Fudges used: !level 65 
+Fudges used: !level 75 
+Fudges used: !level 85 
+Fudges used: !level 85 
+Fudges used: !level 95 
+Fudges used: !level 105 
+Fudges used: !level 115 
+Fudges used: !level 125 
+Fudges used: !level 135 
+Fudges used: !level 137 
+Fudges used: !level 145 
+Fudges used: !level 155 
+Fudges used: !level 165 
+Fudges used: !level 175 
+Fudges used: !level 185 
+Fudges used: !level 195 
+Fudges used: !level 199 
+Fudges used: !level 198 
+Fudges used: !level 197 
+Fudges used: !level 196 
+Fudges used: !level 195 
+Fudges used: !level 201 
+Fudges used: !level 255 
+Fudges used: !zakum 
+Fudges used: !killall 
+Fudges used: !killall 
+Fudges used: !killall 
+Fudges used: !horntail 
+Fudges used: !killall 
+Fudges used: !horntail 
+Fudges used: !killall 
+Fudges used: !killall 
+Fudges used: !killall 
+Fudges used: !killall 
+Fudges used: !killall 
+Fudges used: !killall 
+Fudges used: !pap 
+Fudges used: !killall 
+Fudges used: !killall 
+Fudges used: !pianus 
+Fudges used: !killall 
+Fudges used: !map zakum 
+Fudges used: !search map zakum 
+Fudges used: !search item eye 
+Fudges used: !drop 4001017 
+Fudges used: !killall 
+Fudges used: !killall 
+Fudges used: !killall 
+Fudges used: !warphere fudge 
+Fudges used: !killall 
+Fudges used: !warphere fudge 
+Fudges used: !warphere Fudge 
+Fudges used: !warphere Fudge 
+Fudges used: !warphere Fudge 
+Fudges used: !killall 
+Xari used: !level 120 
+Xari used: !item 1312044 
+Xari used: !level 121 
+Xari used: !item 1002605 
+Xari used: !search item black aviator 

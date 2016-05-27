@@ -1,0 +1,36 @@
+Xari used: !vote 
+Xari used: !voteperson 
+Xari used: !vp 100 
+Xari used: !heal 
+Xari used: /m 
+Xari used: !search npc cody 
+Xari used: !pnpc 9200000 
+Xari used: !search npc spiegelmann 
+Xari used: !pnpc 2042000 
+Xari used: !search npc shop 
+Xari used: !search npc shop 
+Xari used: !search npc merchant 
+Xari used: !pnpc 1092017 
+Xari used: !search npc santa 
+Xari used: !search npc merchant 
+Xari used: !search item ap reset 
+Xari used: !search item gachapon ticket 
+Xari used: !timerdebug 
+Xari used: !search item elixir 
+Xari used: !search item golden hammer 
+Xari used: !search item gold hammer 
+Xari used: !search item hammer 
+Xari used: !item 5570000 
+Xari used: !search npc anonymous 
+Xari used: !npc 1092017 
+Xari used: !search item miu miu 
+Xari used: !servertime 
+Xari used: !server 
+Xari used: !search item buff 
+Xari used: !search item freeze 
+Xari used: !item 4031267 
+Xari used: !item 5510000 
+Xari used: !killl Xari 
+Xari used: !kill Xari 
+Xari used: !kill Xari 
+Xari used: !heal 

@@ -1,0 +1,58 @@
+Xari used: !saveall 
+Win used: @level 250 
+Win used: !drop 4032390 100 
+Win used: @drop 4000008 100 
+Win used: @drop 4032399 100 
+Win used: @warp 10000 
+Win used: @warp 100000 
+Win used: @warp 1000000 
+Win used: @warp 10000000 
+Win used: @warp 100000000 
+Win used: @item 1082045 
+Win used: @give 1082045 
+Win used: @drop 1082045 
+Win used: @drop 4031155 20 
+Win used: @drop 4000008 100 
+Xari used: !spawn 10010 
+Xari used: !spawn 100100 
+Xari used: !spawn 100100 
+Xari used: !saveall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !spawn 9400409 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !spawn 9400409 
+Xari used: !saveall 
+Xari used: !item 1060073 
+Xari used: !item 1060073 
+Xari used: !item 1060073 
+Xari used: !spawn 100100 
+Xari used: !spawn 6130101 
+Xari used: !killall 
+Xari used: !spawn 6130101 
+Xari used: !killall 
+Xari used: !spawn 6130101 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !spawn 6130101 
+Xari used: !killall 
+Xari used: !spawn 6130101 
+Xari used: !killall 
+Xari used: !spawn 6130101 
+Xari used: !killall 
+Xari used: !spawn 6130101 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !spawn 6130101 
+Xari used: !killall 
+Xari used: !cleardrops 
+Xari used: !cleardrops 
+Xari used: !search item ilbi 
+Xari used: !search mob blue mushmom 
+Xari used: !killall 
+Xari used: !spawn 100100 
+Xari used: !timerdebug 
+Xari used: !killall 
+Xari used: !spawn 100100 
+Xari used: !spawn 100100 

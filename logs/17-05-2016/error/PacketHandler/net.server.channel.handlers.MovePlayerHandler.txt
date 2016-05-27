@@ -1,0 +1,189 @@
+Error for player ; Xari on map ; 200000141 - account ; Xari
+All: 29 00 01 C8 8D D3 B1 D8 00 8F 00 04 00 D8 00 8F 00 00 00 00 00 06 00 04 D2 00 00 EC 00 8E 00 7D 00 00 00 06 00 02 D2 00 01 7D 00 D5 FD 06 00 00 00 F8 00 64 00 7D 00 89 FE 00 00 06 5A 00 11 00 00 00 40 44 44 44 44 04 D8 00 64 00 F8 00 8F 00
+Now: 00 F8 00 64 00 7D 00 89 FE 00 00 06 5A 00 11 00 00 00 40 44 44 44 44 04 D8 00 64 00 F8 00 8F 00
+java.lang.NoClassDefFoundError: server/movement/RelativeLifeMovement
+	at net.server.channel.handlers.AbstractMovementPacketHandler.parseMovement(AbstractMovementPacketHandler.java:77)
+	at net.server.channel.handlers.MovePlayerHandler.handlePacket(MovePlayerHandler.java:34)
+	at net.MapleServerHandler.messageReceived(MapleServerHandler.java:134)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$TailFilter.messageReceived(DefaultIoFilterChain.java:690)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:417)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1200(DefaultIoFilterChain.java:47)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:765)
+	at org.apache.mina.filter.codec.ProtocolCodecFilter$ProtocolDecoderOutputImpl.flush(ProtocolCodecFilter.java:407)
+	at org.apache.mina.filter.codec.ProtocolCodecFilter.messageReceived(ProtocolCodecFilter.java:236)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:417)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1200(DefaultIoFilterChain.java:47)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:765)
+	at org.apache.mina.core.filterchain.IoFilterAdapter.messageReceived(IoFilterAdapter.java:109)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:417)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.fireMessageReceived(DefaultIoFilterChain.java:410)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.read(AbstractPollingIoProcessor.java:710)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.process(AbstractPollingIoProcessor.java:664)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.process(AbstractPollingIoProcessor.java:653)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.access$600(AbstractPollingIoProcessor.java:67)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.run(AbstractPollingIoProcessor.java:1124)
+	at org.apache.mina.util.NamePreservingRunnable.run(NamePreservingRunnable.java:64)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.ClassNotFoundException: server.movement.RelativeLifeMovement
+	at java.net.URLClassLoader$1.run(Unknown Source)
+	at java.net.URLClassLoader$1.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(Unknown Source)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Unknown Source)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	... 24 more
+
+---------------------------------
+Error for player ; Xari on map ; 200000141 - account ; Xari
+All: 29 00 01 C8 8D D3 B1 40 00 8F 00 0A 00 38 00 8E 00 83 FF 00 00 04 00 03 3C 00 01 83 FF D5 FD 07 00 00 00 22 00 4A 00 83 FF 3D FF 00 00 07 B4 00 06 83 FF 3D FF 07 00 00 02 DA FD A2 FE 07 00 00 00 D0 FF 2C 00 DA FD CE FF 00 00 07 96 00 00 9E FF 30 00 DA FD 82 00 00 00 07 5A 00 06 DA FD 82 00 07 00 00 02 DA FD 24 FF 07 00 00 00 8E FF 2A 00 DA FD 60 FF 00 00 07 1E 00 11 88 88 88 88 88 88 88 88 08 8E FF 2A 00 40 00 8F 00
+Now: 00 22 00 4A 00 83 FF 3D FF 00 00 07 B4 00 06 83 FF 3D FF 07 00 00 02 DA FD A2 FE 07 00 00 00 D0 FF 2C 00 DA FD CE FF 00 00 07 96 00 00 9E FF 30 00 DA FD 82 00 00 00 07 5A 00 06 DA FD 82 00 07 00 00 02 DA FD 24 FF 07 00 00 00 8E FF 2A 00 DA FD 60 FF 00 00 07 1E 00 11 88 88 88 88 88 88 88 88 08 8E FF 2A 00 40 00 8F 00
+java.lang.NoClassDefFoundError: server/movement/RelativeLifeMovement
+	at net.server.channel.handlers.AbstractMovementPacketHandler.parseMovement(AbstractMovementPacketHandler.java:77)
+	at net.server.channel.handlers.MovePlayerHandler.handlePacket(MovePlayerHandler.java:34)
+	at net.MapleServerHandler.messageReceived(MapleServerHandler.java:134)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$TailFilter.messageReceived(DefaultIoFilterChain.java:690)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:417)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1200(DefaultIoFilterChain.java:47)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:765)
+	at org.apache.mina.filter.codec.ProtocolCodecFilter$ProtocolDecoderOutputImpl.flush(ProtocolCodecFilter.java:407)
+	at org.apache.mina.filter.codec.ProtocolCodecFilter.messageReceived(ProtocolCodecFilter.java:236)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:417)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1200(DefaultIoFilterChain.java:47)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:765)
+	at org.apache.mina.core.filterchain.IoFilterAdapter.messageReceived(IoFilterAdapter.java:109)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:417)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.fireMessageReceived(DefaultIoFilterChain.java:410)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.read(AbstractPollingIoProcessor.java:710)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.process(AbstractPollingIoProcessor.java:664)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.process(AbstractPollingIoProcessor.java:653)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.access$600(AbstractPollingIoProcessor.java:67)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.run(AbstractPollingIoProcessor.java:1124)
+	at org.apache.mina.util.NamePreservingRunnable.run(NamePreservingRunnable.java:64)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------
+Error for player ; Xari on map ; 200000141 - account ; Xari
+All: 29 00 01 C8 8D D3 B1 8E FF 2A 00 1C 06 DA FD 60 FF 07 00 00 02 DA FD A2 FE 07 00 00 00 7E FF 20 00 DA FD DE FE 00 00 07 1E 00 06 DA FD DE FE 07 00 00 02 DA FD A2 FE 07 00 00 00 6D FF 16 00 DA FD DE FE 00 00 07 1E 00 06 DA FD DE FE 07 00 00 02 DA FD A2 FE 07 00 00 00 4C FF 05 00 DA FD 1A FF 00 00 07 3C 00 06 DA FD 1A FF 07 00 00 02 DA FD A2 FE 07 00 00 00 3C FF FC FF DA FD DE FE 00 00 07 1E 00 06 DA FD DE FE 07 00 00 02 DA FD A2 FE 07 00 00 00 2B FF F3 FF DA FD DE FE 00 00 07 1E 00 06 DA FD DE FE 07 00 00 02 DA FD A2 FE 07 00 00 00 1B FF E9 FF DA FD DE FE 00 00 07 1E 00 06 DA FD DE FE 07 00 00 02 DA FD A2 FE 07 00 00 00 0A FF DF FF DA FD DE FE 00 00 07 1E 00 06 DA FD DE FE 07 00 00 02 DA FD A2 FE 07 00 00 00 EA FE CE FF DB FD 1A FF 00 00 07 3C 00 00 B9 FE C1 FF ED FD CE FF 00 00 06 5A 00 06 ED FD CE FF 06 00 00 02 12 00 A2 FE 06 00 00 00 BA FE A5 FF 12 00 92 FF 00 00 06 78 00 11 88 88 88 88 08 44 44 44 04 B9 FE A5 FF 8E FF 2A 00
+Now: 02 DA FD A2 FE 07 00 00 00 7E FF 20 00 DA FD DE FE 00 00 07 1E 00 06 DA FD DE FE 07 00 00 02 DA FD A2 FE 07 00 00 00 6D FF 16 00 DA FD DE FE 00 00 07 1E 00 06 DA FD DE FE 07 00 00 02 DA FD A2 FE 07 00 00 00 4C FF 05 00 DA FD 1A FF 00 00 07 3C 00 06 DA FD 1A FF 07 00 00 02 DA FD A2 FE 07 00 00 00 3C FF FC FF DA FD DE FE 00 00 07 1E 00 06 DA FD DE FE 07 00 00 02 DA FD A2 FE 07 00 00 00 2B FF F3 FF DA FD DE FE 00 00 07 1E 00 06 DA FD DE FE 07 00 00 02 DA FD A2 FE 07 00 00 00 1B FF E9 FF DA FD DE FE 00 00 07 1E 00 06 DA FD DE FE 07 00 00 02 DA FD A2 FE 07 00 00 00 0A FF DF FF DA FD DE FE 00 00 07 1E 00 06 DA FD DE FE 07 00 00 02 DA FD A2 FE 07 00 00 00 EA FE CE FF DB FD 1A FF 00 00 07 3C 00 00 B9 FE C1 FF ED FD CE FF 00 00 06 5A 00 06 ED FD CE FF 06 00 00 02 12 00 A2 FE 06 00 00 00 BA FE A5 FF 12 00 92 FF 00 00 06 78 00 11 88 88 88 88 08 44 44 44 04 B9 FE A5 FF 8E FF 2A 00
+java.lang.NoClassDefFoundError: server/movement/RelativeLifeMovement
+	at net.server.channel.handlers.AbstractMovementPacketHandler.parseMovement(AbstractMovementPacketHandler.java:77)
+	at net.server.channel.handlers.MovePlayerHandler.handlePacket(MovePlayerHandler.java:34)
+	at net.MapleServerHandler.messageReceived(MapleServerHandler.java:134)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$TailFilter.messageReceived(DefaultIoFilterChain.java:690)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:417)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1200(DefaultIoFilterChain.java:47)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:765)
+	at org.apache.mina.filter.codec.ProtocolCodecFilter$ProtocolDecoderOutputImpl.flush(ProtocolCodecFilter.java:407)
+	at org.apache.mina.filter.codec.ProtocolCodecFilter.messageReceived(ProtocolCodecFilter.java:236)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:417)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1200(DefaultIoFilterChain.java:47)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:765)
+	at org.apache.mina.core.filterchain.IoFilterAdapter.messageReceived(IoFilterAdapter.java:109)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:417)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.fireMessageReceived(DefaultIoFilterChain.java:410)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.read(AbstractPollingIoProcessor.java:710)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.process(AbstractPollingIoProcessor.java:664)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.process(AbstractPollingIoProcessor.java:653)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.access$600(AbstractPollingIoProcessor.java:67)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.run(AbstractPollingIoProcessor.java:1124)
+	at org.apache.mina.util.NamePreservingRunnable.run(NamePreservingRunnable.java:64)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------
+Error for player ; Xari on map ; 200000141 - account ; Xari
+All: 29 00 01 C8 8D D3 B1 BA FE A5 FF 06 00 BB FE A3 FF 12 00 CE FF 00 00 06 1E 00 00 BD FE A7 FF 12 00 82 00 00 00 06 5A 00 06 12 00 82 00 06 00 00 02 26 02 24 FF 06 00 00 00 EE FE 9B FF 26 02 D8 FF 00 00 06 5A 00 00 93 FF E9 FF 26 02 30 02 00 00 06 2C 01 11 44 44 44 44 44 04 00 00 00 BA FE 9B FF 93 FF E9 FF
+Now: 02 26 02 24 FF 06 00 00 00 EE FE 9B FF 26 02 D8 FF 00 00 06 5A 00 00 93 FF E9 FF 26 02 30 02 00 00 06 2C 01 11 44 44 44 44 44 04 00 00 00 BA FE 9B FF 93 FF E9 FF
+java.lang.NoClassDefFoundError: server/movement/RelativeLifeMovement
+	at net.server.channel.handlers.AbstractMovementPacketHandler.parseMovement(AbstractMovementPacketHandler.java:77)
+	at net.server.channel.handlers.MovePlayerHandler.handlePacket(MovePlayerHandler.java:34)
+	at net.MapleServerHandler.messageReceived(MapleServerHandler.java:134)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$TailFilter.messageReceived(DefaultIoFilterChain.java:690)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:417)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1200(DefaultIoFilterChain.java:47)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:765)
+	at org.apache.mina.filter.codec.ProtocolCodecFilter$ProtocolDecoderOutputImpl.flush(ProtocolCodecFilter.java:407)
+	at org.apache.mina.filter.codec.ProtocolCodecFilter.messageReceived(ProtocolCodecFilter.java:236)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:417)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1200(DefaultIoFilterChain.java:47)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:765)
+	at org.apache.mina.core.filterchain.IoFilterAdapter.messageReceived(IoFilterAdapter.java:109)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:417)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.fireMessageReceived(DefaultIoFilterChain.java:410)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.read(AbstractPollingIoProcessor.java:710)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.process(AbstractPollingIoProcessor.java:664)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.process(AbstractPollingIoProcessor.java:653)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.access$600(AbstractPollingIoProcessor.java:67)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.run(AbstractPollingIoProcessor.java:1124)
+	at org.apache.mina.util.NamePreservingRunnable.run(NamePreservingRunnable.java:64)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------
+Error for player ; Xari on map ; 200000141 - account ; Xari
+All: 29 00 01 C8 8D D3 B1 3A 00 8F 00 08 00 3A 00 8E 00 00 00 00 00 04 00 04 00 00 01 00 00 D5 FD 06 00 00 00 3A 00 7E 00 00 00 11 FE 00 00 06 1E 00 00 38 00 41 00 F8 FF F1 FF 00 00 07 F0 00 06 F8 FF F1 FF 07 00 00 02 DA FD A2 FE 07 00 00 00 E6 FF 23 00 DA FD CE FF 00 00 07 96 00 00 B4 FF 27 00 DA FD 82 00 00 00 07 5A 00 11 80 88 88 88 88 88 88 88 08 B4 FF 23 00 3A 00 8F 00
+Now: 00 3A 00 7E 00 00 00 11 FE 00 00 06 1E 00 00 38 00 41 00 F8 FF F1 FF 00 00 07 F0 00 06 F8 FF F1 FF 07 00 00 02 DA FD A2 FE 07 00 00 00 E6 FF 23 00 DA FD CE FF 00 00 07 96 00 00 B4 FF 27 00 DA FD 82 00 00 00 07 5A 00 11 80 88 88 88 88 88 88 88 08 B4 FF 23 00 3A 00 8F 00
+java.lang.NoClassDefFoundError: server/movement/RelativeLifeMovement
+	at net.server.channel.handlers.AbstractMovementPacketHandler.parseMovement(AbstractMovementPacketHandler.java:77)
+	at net.server.channel.handlers.MovePlayerHandler.handlePacket(MovePlayerHandler.java:34)
+	at net.MapleServerHandler.messageReceived(MapleServerHandler.java:134)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$TailFilter.messageReceived(DefaultIoFilterChain.java:690)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:417)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1200(DefaultIoFilterChain.java:47)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:765)
+	at org.apache.mina.filter.codec.ProtocolCodecFilter$ProtocolDecoderOutputImpl.flush(ProtocolCodecFilter.java:407)
+	at org.apache.mina.filter.codec.ProtocolCodecFilter.messageReceived(ProtocolCodecFilter.java:236)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:417)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1200(DefaultIoFilterChain.java:47)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:765)
+	at org.apache.mina.core.filterchain.IoFilterAdapter.messageReceived(IoFilterAdapter.java:109)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:417)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.fireMessageReceived(DefaultIoFilterChain.java:410)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.read(AbstractPollingIoProcessor.java:710)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.process(AbstractPollingIoProcessor.java:664)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.process(AbstractPollingIoProcessor.java:653)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.access$600(AbstractPollingIoProcessor.java:67)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.run(AbstractPollingIoProcessor.java:1124)
+	at org.apache.mina.util.NamePreservingRunnable.run(NamePreservingRunnable.java:64)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------
+Error for player ; Xari on map ; 200000141 - account ; Xari
+All: 29 00 01 C8 8D D3 B1 B4 FF 27 00 06 00 83 FF 3A 00 DA FD 36 01 00 00 07 5A 00 06 DA FD 36 01 07 00 00 02 DA FD D8 FF 07 00 00 00 DE FE 88 00 DA FD 30 02 00 00 07 2C 01 00 D8 FE 8F 00 ED FE 00 00 00 00 07 0A 00 00 BD FE 8F 00 35 FF 00 00 01 00 03 6E 00 11 88 88 88 88 88 88 88 88 08 BD FE 27 00 B4 FF 8F 00
+Now: 02 DA FD D8 FF 07 00 00 00 DE FE 88 00 DA FD 30 02 00 00 07 2C 01 00 D8 FE 8F 00 ED FE 00 00 00 00 07 0A 00 00 BD FE 8F 00 35 FF 00 00 01 00 03 6E 00 11 88 88 88 88 88 88 88 88 08 BD FE 27 00 B4 FF 8F 00
+java.lang.NoClassDefFoundError: server/movement/RelativeLifeMovement
+	at net.server.channel.handlers.AbstractMovementPacketHandler.parseMovement(AbstractMovementPacketHandler.java:77)
+	at net.server.channel.handlers.MovePlayerHandler.handlePacket(MovePlayerHandler.java:34)
+	at net.MapleServerHandler.messageReceived(MapleServerHandler.java:134)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$TailFilter.messageReceived(DefaultIoFilterChain.java:690)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:417)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1200(DefaultIoFilterChain.java:47)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:765)
+	at org.apache.mina.filter.codec.ProtocolCodecFilter$ProtocolDecoderOutputImpl.flush(ProtocolCodecFilter.java:407)
+	at org.apache.mina.filter.codec.ProtocolCodecFilter.messageReceived(ProtocolCodecFilter.java:236)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:417)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1200(DefaultIoFilterChain.java:47)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:765)
+	at org.apache.mina.core.filterchain.IoFilterAdapter.messageReceived(IoFilterAdapter.java:109)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:417)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.fireMessageReceived(DefaultIoFilterChain.java:410)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.read(AbstractPollingIoProcessor.java:710)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.process(AbstractPollingIoProcessor.java:664)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.process(AbstractPollingIoProcessor.java:653)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.access$600(AbstractPollingIoProcessor.java:67)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.run(AbstractPollingIoProcessor.java:1124)
+	at org.apache.mina.util.NamePreservingRunnable.run(NamePreservingRunnable.java:64)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------

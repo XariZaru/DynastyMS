@@ -1,0 +1,1469 @@
+Error saving Xari Level: 132 Job: 910
+java.sql.BatchUpdateException: Data truncated for column 'locationtype' at row 1
+	at com.mysql.jdbc.PreparedStatement.executeBatchSerially(PreparedStatement.java:2018)
+	at com.mysql.jdbc.PreparedStatement.executeBatch(PreparedStatement.java:1454)
+	at client.MapleCharacter.saveToDB(MapleCharacter.java:4373)
+	at client.MapleClient.disconnect(MapleClient.java:770)
+	at net.MapleServerHandler.sessionClosed(MapleServerHandler.java:112)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$TailFilter.sessionClosed(DefaultIoFilterChain.java:642)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextSessionClosed(DefaultIoFilterChain.java:382)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$900(DefaultIoFilterChain.java:47)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.sessionClosed(DefaultIoFilterChain.java:750)
+	at org.apache.mina.filter.codec.ProtocolCodecFilter.sessionClosed(ProtocolCodecFilter.java:369)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextSessionClosed(DefaultIoFilterChain.java:382)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$900(DefaultIoFilterChain.java:47)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.sessionClosed(DefaultIoFilterChain.java:750)
+	at org.apache.mina.core.filterchain.IoFilterAdapter.sessionClosed(IoFilterAdapter.java:88)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextSessionClosed(DefaultIoFilterChain.java:382)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.fireSessionClosed(DefaultIoFilterChain.java:375)
+	at org.apache.mina.core.service.IoServiceListenerSupport.fireSessionDestroyed(IoServiceListenerSupport.java:244)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.removeNow(AbstractPollingIoProcessor.java:600)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.removeSessions(AbstractPollingIoProcessor.java:560)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.access$800(AbstractPollingIoProcessor.java:67)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.run(AbstractPollingIoProcessor.java:1132)
+	at org.apache.mina.util.NamePreservingRunnable.run(NamePreservingRunnable.java:64)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------
+Error saving Xari Level: 134 Job: 910
+java.sql.BatchUpdateException: Data truncated for column 'locationtype' at row 1
+	at com.mysql.jdbc.PreparedStatement.executeBatchSerially(PreparedStatement.java:2018)
+	at com.mysql.jdbc.PreparedStatement.executeBatch(PreparedStatement.java:1454)
+	at client.MapleCharacter.saveToDB(MapleCharacter.java:4373)
+	at net.server.Server.saveAll(Server.java:130)
+	at net.server.Server$1.run(Server.java:174)
+	at server.TimerManager$LoggingSaveRunnable.run(TimerManager.java:143)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------
+Error saving Xari Level: 135 Job: 312
+java.sql.BatchUpdateException: Data truncated for column 'locationtype' at row 1
+	at com.mysql.jdbc.PreparedStatement.executeBatchSerially(PreparedStatement.java:2018)
+	at com.mysql.jdbc.PreparedStatement.executeBatch(PreparedStatement.java:1454)
+	at client.MapleCharacter.saveToDB(MapleCharacter.java:4373)
+	at net.server.Server.saveAll(Server.java:130)
+	at net.server.Server$1.run(Server.java:174)
+	at server.TimerManager$LoggingSaveRunnable.run(TimerManager.java:143)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------
+Error saving Xari Level: 135 Job: 312
+java.sql.BatchUpdateException: Data truncated for column 'locationtype' at row 1
+	at com.mysql.jdbc.PreparedStatement.executeBatchSerially(PreparedStatement.java:2018)
+	at com.mysql.jdbc.PreparedStatement.executeBatch(PreparedStatement.java:1454)
+	at client.MapleCharacter.saveToDB(MapleCharacter.java:4373)
+	at net.server.Server.saveAll(Server.java:130)
+	at net.server.Server$1.run(Server.java:174)
+	at server.TimerManager$LoggingSaveRunnable.run(TimerManager.java:143)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------
+Error saving Xari Level: 135 Job: 312
+java.sql.BatchUpdateException: Data truncated for column 'locationtype' at row 1
+	at com.mysql.jdbc.PreparedStatement.executeBatchSerially(PreparedStatement.java:2018)
+	at com.mysql.jdbc.PreparedStatement.executeBatch(PreparedStatement.java:1454)
+	at client.MapleCharacter.saveToDB(MapleCharacter.java:4373)
+	at net.server.Server.saveAll(Server.java:130)
+	at net.server.Server$1.run(Server.java:174)
+	at server.TimerManager$LoggingSaveRunnable.run(TimerManager.java:143)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------
+Error saving Xari Level: 135 Job: 312
+java.sql.BatchUpdateException: Data truncated for column 'locationtype' at row 1
+	at com.mysql.jdbc.PreparedStatement.executeBatchSerially(PreparedStatement.java:2018)
+	at com.mysql.jdbc.PreparedStatement.executeBatch(PreparedStatement.java:1454)
+	at client.MapleCharacter.saveToDB(MapleCharacter.java:4373)
+	at net.server.Server.saveAll(Server.java:130)
+	at net.server.Server$1.run(Server.java:174)
+	at server.TimerManager$LoggingSaveRunnable.run(TimerManager.java:143)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------
+Error saving Xari Level: 135 Job: 312
+java.sql.BatchUpdateException: Data truncated for column 'locationtype' at row 1
+	at com.mysql.jdbc.PreparedStatement.executeBatchSerially(PreparedStatement.java:2018)
+	at com.mysql.jdbc.PreparedStatement.executeBatch(PreparedStatement.java:1454)
+	at client.MapleCharacter.saveToDB(MapleCharacter.java:4373)
+	at net.server.Server.saveAll(Server.java:130)
+	at net.server.Server$1.run(Server.java:174)
+	at server.TimerManager$LoggingSaveRunnable.run(TimerManager.java:143)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------
+Error saving Xari Level: 135 Job: 312
+java.sql.BatchUpdateException: Data truncated for column 'locationtype' at row 1
+	at com.mysql.jdbc.PreparedStatement.executeBatchSerially(PreparedStatement.java:2018)
+	at com.mysql.jdbc.PreparedStatement.executeBatch(PreparedStatement.java:1454)
+	at client.MapleCharacter.saveToDB(MapleCharacter.java:4373)
+	at net.server.Server.saveAll(Server.java:130)
+	at net.server.Server$1.run(Server.java:174)
+	at server.TimerManager$LoggingSaveRunnable.run(TimerManager.java:143)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------
+Error saving Xari Level: 135 Job: 312
+java.sql.BatchUpdateException: Data truncated for column 'locationtype' at row 1
+	at com.mysql.jdbc.PreparedStatement.executeBatchSerially(PreparedStatement.java:2018)
+	at com.mysql.jdbc.PreparedStatement.executeBatch(PreparedStatement.java:1454)
+	at client.MapleCharacter.saveToDB(MapleCharacter.java:4373)
+	at net.server.Server.saveAll(Server.java:130)
+	at net.server.Server$1.run(Server.java:174)
+	at server.TimerManager$LoggingSaveRunnable.run(TimerManager.java:143)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------
+Error saving Xari Level: 135 Job: 312
+java.sql.BatchUpdateException: Data truncated for column 'locationtype' at row 1
+	at com.mysql.jdbc.PreparedStatement.executeBatchSerially(PreparedStatement.java:2018)
+	at com.mysql.jdbc.PreparedStatement.executeBatch(PreparedStatement.java:1454)
+	at client.MapleCharacter.saveToDB(MapleCharacter.java:4373)
+	at net.server.Server.saveAll(Server.java:130)
+	at net.server.Server$1.run(Server.java:174)
+	at server.TimerManager$LoggingSaveRunnable.run(TimerManager.java:143)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------
+Error saving Xari Level: 135 Job: 312
+java.sql.BatchUpdateException: Data truncated for column 'locationtype' at row 1
+	at com.mysql.jdbc.PreparedStatement.executeBatchSerially(PreparedStatement.java:2018)
+	at com.mysql.jdbc.PreparedStatement.executeBatch(PreparedStatement.java:1454)
+	at client.MapleCharacter.saveToDB(MapleCharacter.java:4373)
+	at net.server.Server.saveAll(Server.java:130)
+	at net.server.Server$1.run(Server.java:174)
+	at server.TimerManager$LoggingSaveRunnable.run(TimerManager.java:143)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------
+Error saving Xari Level: 135 Job: 312
+java.sql.BatchUpdateException: Data truncated for column 'locationtype' at row 1
+	at com.mysql.jdbc.PreparedStatement.executeBatchSerially(PreparedStatement.java:2018)
+	at com.mysql.jdbc.PreparedStatement.executeBatch(PreparedStatement.java:1454)
+	at client.MapleCharacter.saveToDB(MapleCharacter.java:4373)
+	at net.server.Server.saveAll(Server.java:130)
+	at net.server.Server$1.run(Server.java:174)
+	at server.TimerManager$LoggingSaveRunnable.run(TimerManager.java:143)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------
+Error saving Xari Level: 135 Job: 312
+java.sql.BatchUpdateException: Data truncated for column 'locationtype' at row 1
+	at com.mysql.jdbc.PreparedStatement.executeBatchSerially(PreparedStatement.java:2018)
+	at com.mysql.jdbc.PreparedStatement.executeBatch(PreparedStatement.java:1454)
+	at client.MapleCharacter.saveToDB(MapleCharacter.java:4373)
+	at net.server.Server.saveAll(Server.java:130)
+	at net.server.Server$1.run(Server.java:174)
+	at server.TimerManager$LoggingSaveRunnable.run(TimerManager.java:143)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------
+Error saving Xari Level: 135 Job: 312
+java.sql.BatchUpdateException: Data truncated for column 'locationtype' at row 1
+	at com.mysql.jdbc.PreparedStatement.executeBatchSerially(PreparedStatement.java:2018)
+	at com.mysql.jdbc.PreparedStatement.executeBatch(PreparedStatement.java:1454)
+	at client.MapleCharacter.saveToDB(MapleCharacter.java:4373)
+	at net.server.Server.saveAll(Server.java:130)
+	at net.server.Server$1.run(Server.java:174)
+	at server.TimerManager$LoggingSaveRunnable.run(TimerManager.java:143)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------
+Error saving Xari Level: 135 Job: 312
+java.sql.BatchUpdateException: Data truncated for column 'locationtype' at row 1
+	at com.mysql.jdbc.PreparedStatement.executeBatchSerially(PreparedStatement.java:2018)
+	at com.mysql.jdbc.PreparedStatement.executeBatch(PreparedStatement.java:1454)
+	at client.MapleCharacter.saveToDB(MapleCharacter.java:4373)
+	at net.server.Server.saveAll(Server.java:130)
+	at net.server.Server$1.run(Server.java:174)
+	at server.TimerManager$LoggingSaveRunnable.run(TimerManager.java:143)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------
+Error saving Xari Level: 135 Job: 312
+java.sql.BatchUpdateException: Data truncated for column 'locationtype' at row 1
+	at com.mysql.jdbc.PreparedStatement.executeBatchSerially(PreparedStatement.java:2018)
+	at com.mysql.jdbc.PreparedStatement.executeBatch(PreparedStatement.java:1454)
+	at client.MapleCharacter.saveToDB(MapleCharacter.java:4373)
+	at net.server.Server.saveAll(Server.java:130)
+	at net.server.Server$1.run(Server.java:174)
+	at server.TimerManager$LoggingSaveRunnable.run(TimerManager.java:143)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------
+Error saving Xari Level: 135 Job: 312
+java.sql.BatchUpdateException: Data truncated for column 'locationtype' at row 1
+	at com.mysql.jdbc.PreparedStatement.executeBatchSerially(PreparedStatement.java:2018)
+	at com.mysql.jdbc.PreparedStatement.executeBatch(PreparedStatement.java:1454)
+	at client.MapleCharacter.saveToDB(MapleCharacter.java:4373)
+	at net.server.Server.saveAll(Server.java:130)
+	at net.server.Server$1.run(Server.java:174)
+	at server.TimerManager$LoggingSaveRunnable.run(TimerManager.java:143)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------
+Error saving Xari Level: 135 Job: 312
+java.sql.BatchUpdateException: Data truncated for column 'locationtype' at row 1
+	at com.mysql.jdbc.PreparedStatement.executeBatchSerially(PreparedStatement.java:2018)
+	at com.mysql.jdbc.PreparedStatement.executeBatch(PreparedStatement.java:1454)
+	at client.MapleCharacter.saveToDB(MapleCharacter.java:4373)
+	at net.server.Server.saveAll(Server.java:130)
+	at net.server.Server$1.run(Server.java:174)
+	at server.TimerManager$LoggingSaveRunnable.run(TimerManager.java:143)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------
+Error saving Xari Level: 135 Job: 312
+java.sql.BatchUpdateException: Data truncated for column 'locationtype' at row 1
+	at com.mysql.jdbc.PreparedStatement.executeBatchSerially(PreparedStatement.java:2018)
+	at com.mysql.jdbc.PreparedStatement.executeBatch(PreparedStatement.java:1454)
+	at client.MapleCharacter.saveToDB(MapleCharacter.java:4373)
+	at net.server.Server.saveAll(Server.java:130)
+	at net.server.Server$1.run(Server.java:174)
+	at server.TimerManager$LoggingSaveRunnable.run(TimerManager.java:143)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------
+Error saving Xari Level: 135 Job: 312
+java.sql.BatchUpdateException: Data truncated for column 'locationtype' at row 1
+	at com.mysql.jdbc.PreparedStatement.executeBatchSerially(PreparedStatement.java:2018)
+	at com.mysql.jdbc.PreparedStatement.executeBatch(PreparedStatement.java:1454)
+	at client.MapleCharacter.saveToDB(MapleCharacter.java:4373)
+	at net.server.Server.saveAll(Server.java:130)
+	at net.server.Server$1.run(Server.java:174)
+	at server.TimerManager$LoggingSaveRunnable.run(TimerManager.java:143)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------
+Error saving Xari Level: 135 Job: 312
+java.sql.BatchUpdateException: Data truncated for column 'locationtype' at row 1
+	at com.mysql.jdbc.PreparedStatement.executeBatchSerially(PreparedStatement.java:2018)
+	at com.mysql.jdbc.PreparedStatement.executeBatch(PreparedStatement.java:1454)
+	at client.MapleCharacter.saveToDB(MapleCharacter.java:4373)
+	at net.server.Server.saveAll(Server.java:130)
+	at net.server.Server$1.run(Server.java:174)
+	at server.TimerManager$LoggingSaveRunnable.run(TimerManager.java:143)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------
+Error saving Xari Level: 135 Job: 312
+java.sql.BatchUpdateException: Data truncated for column 'locationtype' at row 1
+	at com.mysql.jdbc.PreparedStatement.executeBatchSerially(PreparedStatement.java:2018)
+	at com.mysql.jdbc.PreparedStatement.executeBatch(PreparedStatement.java:1454)
+	at client.MapleCharacter.saveToDB(MapleCharacter.java:4373)
+	at net.server.Server.saveAll(Server.java:130)
+	at net.server.Server$1.run(Server.java:174)
+	at server.TimerManager$LoggingSaveRunnable.run(TimerManager.java:143)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------
+Error saving Xari Level: 135 Job: 312
+java.sql.BatchUpdateException: Data truncated for column 'locationtype' at row 1
+	at com.mysql.jdbc.PreparedStatement.executeBatchSerially(PreparedStatement.java:2018)
+	at com.mysql.jdbc.PreparedStatement.executeBatch(PreparedStatement.java:1454)
+	at client.MapleCharacter.saveToDB(MapleCharacter.java:4373)
+	at net.server.Server.saveAll(Server.java:130)
+	at net.server.Server$1.run(Server.java:174)
+	at server.TimerManager$LoggingSaveRunnable.run(TimerManager.java:143)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------
+Error saving Xari Level: 135 Job: 312
+java.sql.BatchUpdateException: Data truncated for column 'locationtype' at row 1
+	at com.mysql.jdbc.PreparedStatement.executeBatchSerially(PreparedStatement.java:2018)
+	at com.mysql.jdbc.PreparedStatement.executeBatch(PreparedStatement.java:1454)
+	at client.MapleCharacter.saveToDB(MapleCharacter.java:4373)
+	at net.server.Server.saveAll(Server.java:130)
+	at net.server.Server$1.run(Server.java:174)
+	at server.TimerManager$LoggingSaveRunnable.run(TimerManager.java:143)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------
+Error saving Xari Level: 135 Job: 312
+java.sql.BatchUpdateException: Data truncated for column 'locationtype' at row 1
+	at com.mysql.jdbc.PreparedStatement.executeBatchSerially(PreparedStatement.java:2018)
+	at com.mysql.jdbc.PreparedStatement.executeBatch(PreparedStatement.java:1454)
+	at client.MapleCharacter.saveToDB(MapleCharacter.java:4373)
+	at net.server.Server.saveAll(Server.java:130)
+	at net.server.Server$1.run(Server.java:174)
+	at server.TimerManager$LoggingSaveRunnable.run(TimerManager.java:143)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------
+Error saving Xari Level: 135 Job: 312
+java.sql.BatchUpdateException: Data truncated for column 'locationtype' at row 1
+	at com.mysql.jdbc.PreparedStatement.executeBatchSerially(PreparedStatement.java:2018)
+	at com.mysql.jdbc.PreparedStatement.executeBatch(PreparedStatement.java:1454)
+	at client.MapleCharacter.saveToDB(MapleCharacter.java:4373)
+	at net.server.Server.saveAll(Server.java:130)
+	at net.server.Server$1.run(Server.java:174)
+	at server.TimerManager$LoggingSaveRunnable.run(TimerManager.java:143)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------
+Error saving Xari Level: 135 Job: 312
+java.sql.BatchUpdateException: Data truncated for column 'locationtype' at row 1
+	at com.mysql.jdbc.PreparedStatement.executeBatchSerially(PreparedStatement.java:2018)
+	at com.mysql.jdbc.PreparedStatement.executeBatch(PreparedStatement.java:1454)
+	at client.MapleCharacter.saveToDB(MapleCharacter.java:4373)
+	at net.server.Server.saveAll(Server.java:130)
+	at net.server.Server$1.run(Server.java:174)
+	at server.TimerManager$LoggingSaveRunnable.run(TimerManager.java:143)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------
+Error saving Xari Level: 135 Job: 312
+java.sql.BatchUpdateException: Data truncated for column 'locationtype' at row 1
+	at com.mysql.jdbc.PreparedStatement.executeBatchSerially(PreparedStatement.java:2018)
+	at com.mysql.jdbc.PreparedStatement.executeBatch(PreparedStatement.java:1454)
+	at client.MapleCharacter.saveToDB(MapleCharacter.java:4373)
+	at net.server.Server.saveAll(Server.java:130)
+	at net.server.Server$1.run(Server.java:174)
+	at server.TimerManager$LoggingSaveRunnable.run(TimerManager.java:143)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------
+Error saving Xari Level: 135 Job: 312
+java.sql.BatchUpdateException: Data truncated for column 'locationtype' at row 1
+	at com.mysql.jdbc.PreparedStatement.executeBatchSerially(PreparedStatement.java:2018)
+	at com.mysql.jdbc.PreparedStatement.executeBatch(PreparedStatement.java:1454)
+	at client.MapleCharacter.saveToDB(MapleCharacter.java:4373)
+	at net.server.Server.saveAll(Server.java:130)
+	at net.server.Server$1.run(Server.java:174)
+	at server.TimerManager$LoggingSaveRunnable.run(TimerManager.java:143)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------
+Error saving Xari Level: 135 Job: 312
+java.sql.BatchUpdateException: Data truncated for column 'locationtype' at row 1
+	at com.mysql.jdbc.PreparedStatement.executeBatchSerially(PreparedStatement.java:2018)
+	at com.mysql.jdbc.PreparedStatement.executeBatch(PreparedStatement.java:1454)
+	at client.MapleCharacter.saveToDB(MapleCharacter.java:4373)
+	at net.server.Server.saveAll(Server.java:130)
+	at net.server.Server$1.run(Server.java:174)
+	at server.TimerManager$LoggingSaveRunnable.run(TimerManager.java:143)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------
+Error saving Xari Level: 135 Job: 312
+java.sql.BatchUpdateException: Data truncated for column 'locationtype' at row 1
+	at com.mysql.jdbc.PreparedStatement.executeBatchSerially(PreparedStatement.java:2018)
+	at com.mysql.jdbc.PreparedStatement.executeBatch(PreparedStatement.java:1454)
+	at client.MapleCharacter.saveToDB(MapleCharacter.java:4373)
+	at net.server.Server.saveAll(Server.java:130)
+	at net.server.Server$1.run(Server.java:174)
+	at server.TimerManager$LoggingSaveRunnable.run(TimerManager.java:143)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------
+Error saving Xari Level: 135 Job: 312
+java.sql.BatchUpdateException: Data truncated for column 'locationtype' at row 1
+	at com.mysql.jdbc.PreparedStatement.executeBatchSerially(PreparedStatement.java:2018)
+	at com.mysql.jdbc.PreparedStatement.executeBatch(PreparedStatement.java:1454)
+	at client.MapleCharacter.saveToDB(MapleCharacter.java:4373)
+	at net.server.Server.saveAll(Server.java:130)
+	at net.server.Server$1.run(Server.java:174)
+	at server.TimerManager$LoggingSaveRunnable.run(TimerManager.java:143)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------
+Error saving Xari Level: 135 Job: 312
+java.sql.BatchUpdateException: Data truncated for column 'locationtype' at row 1
+	at com.mysql.jdbc.PreparedStatement.executeBatchSerially(PreparedStatement.java:2018)
+	at com.mysql.jdbc.PreparedStatement.executeBatch(PreparedStatement.java:1454)
+	at client.MapleCharacter.saveToDB(MapleCharacter.java:4373)
+	at net.server.Server.saveAll(Server.java:130)
+	at net.server.Server$1.run(Server.java:174)
+	at server.TimerManager$LoggingSaveRunnable.run(TimerManager.java:143)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------
+Error saving Xari Level: 135 Job: 312
+java.sql.BatchUpdateException: Data truncated for column 'locationtype' at row 1
+	at com.mysql.jdbc.PreparedStatement.executeBatchSerially(PreparedStatement.java:2018)
+	at com.mysql.jdbc.PreparedStatement.executeBatch(PreparedStatement.java:1454)
+	at client.MapleCharacter.saveToDB(MapleCharacter.java:4373)
+	at net.server.Server.saveAll(Server.java:130)
+	at net.server.Server$1.run(Server.java:174)
+	at server.TimerManager$LoggingSaveRunnable.run(TimerManager.java:143)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------
+Error saving Xari Level: 135 Job: 312
+java.sql.BatchUpdateException: Data truncated for column 'locationtype' at row 1
+	at com.mysql.jdbc.PreparedStatement.executeBatchSerially(PreparedStatement.java:2018)
+	at com.mysql.jdbc.PreparedStatement.executeBatch(PreparedStatement.java:1454)
+	at client.MapleCharacter.saveToDB(MapleCharacter.java:4373)
+	at net.server.Server.saveAll(Server.java:130)
+	at net.server.Server$1.run(Server.java:174)
+	at server.TimerManager$LoggingSaveRunnable.run(TimerManager.java:143)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------
+Error saving Xari Level: 135 Job: 312
+java.sql.BatchUpdateException: Data truncated for column 'locationtype' at row 1
+	at com.mysql.jdbc.PreparedStatement.executeBatchSerially(PreparedStatement.java:2018)
+	at com.mysql.jdbc.PreparedStatement.executeBatch(PreparedStatement.java:1454)
+	at client.MapleCharacter.saveToDB(MapleCharacter.java:4373)
+	at net.server.Server.saveAll(Server.java:130)
+	at net.server.Server$1.run(Server.java:174)
+	at server.TimerManager$LoggingSaveRunnable.run(TimerManager.java:143)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------
+Error saving Xari Level: 135 Job: 312
+java.sql.BatchUpdateException: Data truncated for column 'locationtype' at row 1
+	at com.mysql.jdbc.PreparedStatement.executeBatchSerially(PreparedStatement.java:2018)
+	at com.mysql.jdbc.PreparedStatement.executeBatch(PreparedStatement.java:1454)
+	at client.MapleCharacter.saveToDB(MapleCharacter.java:4373)
+	at net.server.Server.saveAll(Server.java:130)
+	at net.server.Server$1.run(Server.java:174)
+	at server.TimerManager$LoggingSaveRunnable.run(TimerManager.java:143)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------
+Error saving Xari Level: 135 Job: 312
+java.sql.BatchUpdateException: Data truncated for column 'locationtype' at row 1
+	at com.mysql.jdbc.PreparedStatement.executeBatchSerially(PreparedStatement.java:2018)
+	at com.mysql.jdbc.PreparedStatement.executeBatch(PreparedStatement.java:1454)
+	at client.MapleCharacter.saveToDB(MapleCharacter.java:4373)
+	at net.server.Server.saveAll(Server.java:130)
+	at net.server.Server$1.run(Server.java:174)
+	at server.TimerManager$LoggingSaveRunnable.run(TimerManager.java:143)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------
+Error saving Xari Level: 135 Job: 312
+java.sql.BatchUpdateException: Data truncated for column 'locationtype' at row 1
+	at com.mysql.jdbc.PreparedStatement.executeBatchSerially(PreparedStatement.java:2018)
+	at com.mysql.jdbc.PreparedStatement.executeBatch(PreparedStatement.java:1454)
+	at client.MapleCharacter.saveToDB(MapleCharacter.java:4373)
+	at net.server.Server.saveAll(Server.java:130)
+	at net.server.Server$1.run(Server.java:174)
+	at server.TimerManager$LoggingSaveRunnable.run(TimerManager.java:143)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------
+Error saving Xari Level: 135 Job: 312
+java.sql.BatchUpdateException: Data truncated for column 'locationtype' at row 1
+	at com.mysql.jdbc.PreparedStatement.executeBatchSerially(PreparedStatement.java:2018)
+	at com.mysql.jdbc.PreparedStatement.executeBatch(PreparedStatement.java:1454)
+	at client.MapleCharacter.saveToDB(MapleCharacter.java:4373)
+	at net.server.Server.saveAll(Server.java:130)
+	at net.server.Server$1.run(Server.java:174)
+	at server.TimerManager$LoggingSaveRunnable.run(TimerManager.java:143)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------
+Error saving Xari Level: 135 Job: 312
+java.sql.BatchUpdateException: Data truncated for column 'locationtype' at row 1
+	at com.mysql.jdbc.PreparedStatement.executeBatchSerially(PreparedStatement.java:2018)
+	at com.mysql.jdbc.PreparedStatement.executeBatch(PreparedStatement.java:1454)
+	at client.MapleCharacter.saveToDB(MapleCharacter.java:4373)
+	at net.server.Server.saveAll(Server.java:130)
+	at net.server.Server$1.run(Server.java:174)
+	at server.TimerManager$LoggingSaveRunnable.run(TimerManager.java:143)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------
+Error saving Xari Level: 135 Job: 312
+java.sql.BatchUpdateException: Data truncated for column 'locationtype' at row 1
+	at com.mysql.jdbc.PreparedStatement.executeBatchSerially(PreparedStatement.java:2018)
+	at com.mysql.jdbc.PreparedStatement.executeBatch(PreparedStatement.java:1454)
+	at client.MapleCharacter.saveToDB(MapleCharacter.java:4373)
+	at net.server.Server.saveAll(Server.java:130)
+	at net.server.Server$1.run(Server.java:174)
+	at server.TimerManager$LoggingSaveRunnable.run(TimerManager.java:143)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------
+Error saving Xari Level: 135 Job: 312
+java.sql.BatchUpdateException: Data truncated for column 'locationtype' at row 1
+	at com.mysql.jdbc.PreparedStatement.executeBatchSerially(PreparedStatement.java:2018)
+	at com.mysql.jdbc.PreparedStatement.executeBatch(PreparedStatement.java:1454)
+	at client.MapleCharacter.saveToDB(MapleCharacter.java:4373)
+	at net.server.Server.saveAll(Server.java:130)
+	at net.server.Server$1.run(Server.java:174)
+	at server.TimerManager$LoggingSaveRunnable.run(TimerManager.java:143)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------
+Error saving Xari Level: 135 Job: 312
+java.sql.BatchUpdateException: Data truncated for column 'locationtype' at row 1
+	at com.mysql.jdbc.PreparedStatement.executeBatchSerially(PreparedStatement.java:2018)
+	at com.mysql.jdbc.PreparedStatement.executeBatch(PreparedStatement.java:1454)
+	at client.MapleCharacter.saveToDB(MapleCharacter.java:4373)
+	at net.server.Server.saveAll(Server.java:130)
+	at net.server.Server$1.run(Server.java:174)
+	at server.TimerManager$LoggingSaveRunnable.run(TimerManager.java:143)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------
+Error saving Xari Level: 135 Job: 312
+java.sql.BatchUpdateException: Data truncated for column 'locationtype' at row 1
+	at com.mysql.jdbc.PreparedStatement.executeBatchSerially(PreparedStatement.java:2018)
+	at com.mysql.jdbc.PreparedStatement.executeBatch(PreparedStatement.java:1454)
+	at client.MapleCharacter.saveToDB(MapleCharacter.java:4373)
+	at net.server.Server.saveAll(Server.java:130)
+	at net.server.Server$1.run(Server.java:174)
+	at server.TimerManager$LoggingSaveRunnable.run(TimerManager.java:143)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------
+Error saving Xari Level: 135 Job: 312
+java.sql.BatchUpdateException: Data truncated for column 'locationtype' at row 1
+	at com.mysql.jdbc.PreparedStatement.executeBatchSerially(PreparedStatement.java:2018)
+	at com.mysql.jdbc.PreparedStatement.executeBatch(PreparedStatement.java:1454)
+	at client.MapleCharacter.saveToDB(MapleCharacter.java:4373)
+	at net.server.Server.saveAll(Server.java:130)
+	at net.server.Server$1.run(Server.java:174)
+	at server.TimerManager$LoggingSaveRunnable.run(TimerManager.java:143)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------
+Error saving Xari Level: 135 Job: 312
+java.sql.BatchUpdateException: Data truncated for column 'locationtype' at row 1
+	at com.mysql.jdbc.PreparedStatement.executeBatchSerially(PreparedStatement.java:2018)
+	at com.mysql.jdbc.PreparedStatement.executeBatch(PreparedStatement.java:1454)
+	at client.MapleCharacter.saveToDB(MapleCharacter.java:4373)
+	at net.server.Server.saveAll(Server.java:130)
+	at net.server.Server$1.run(Server.java:174)
+	at server.TimerManager$LoggingSaveRunnable.run(TimerManager.java:143)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------
+Error saving Xari Level: 135 Job: 312
+java.sql.BatchUpdateException: Data truncated for column 'locationtype' at row 1
+	at com.mysql.jdbc.PreparedStatement.executeBatchSerially(PreparedStatement.java:2018)
+	at com.mysql.jdbc.PreparedStatement.executeBatch(PreparedStatement.java:1454)
+	at client.MapleCharacter.saveToDB(MapleCharacter.java:4373)
+	at net.server.Server.saveAll(Server.java:130)
+	at net.server.Server$1.run(Server.java:174)
+	at server.TimerManager$LoggingSaveRunnable.run(TimerManager.java:143)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------
+Error saving Xari Level: 135 Job: 312
+java.sql.BatchUpdateException: Data truncated for column 'locationtype' at row 1
+	at com.mysql.jdbc.PreparedStatement.executeBatchSerially(PreparedStatement.java:2018)
+	at com.mysql.jdbc.PreparedStatement.executeBatch(PreparedStatement.java:1454)
+	at client.MapleCharacter.saveToDB(MapleCharacter.java:4373)
+	at net.server.Server.saveAll(Server.java:130)
+	at net.server.Server$1.run(Server.java:174)
+	at server.TimerManager$LoggingSaveRunnable.run(TimerManager.java:143)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------
+Error saving Xari Level: 135 Job: 312
+java.sql.BatchUpdateException: Data truncated for column 'locationtype' at row 1
+	at com.mysql.jdbc.PreparedStatement.executeBatchSerially(PreparedStatement.java:2018)
+	at com.mysql.jdbc.PreparedStatement.executeBatch(PreparedStatement.java:1454)
+	at client.MapleCharacter.saveToDB(MapleCharacter.java:4373)
+	at net.server.Server.saveAll(Server.java:130)
+	at net.server.Server$1.run(Server.java:174)
+	at server.TimerManager$LoggingSaveRunnable.run(TimerManager.java:143)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------
+Error saving Xari Level: 135 Job: 312
+java.sql.BatchUpdateException: Data truncated for column 'locationtype' at row 1
+	at com.mysql.jdbc.PreparedStatement.executeBatchSerially(PreparedStatement.java:2018)
+	at com.mysql.jdbc.PreparedStatement.executeBatch(PreparedStatement.java:1454)
+	at client.MapleCharacter.saveToDB(MapleCharacter.java:4373)
+	at net.server.Server.saveAll(Server.java:130)
+	at net.server.Server$1.run(Server.java:174)
+	at server.TimerManager$LoggingSaveRunnable.run(TimerManager.java:143)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------
+Error saving Xari Level: 135 Job: 312
+java.sql.BatchUpdateException: Data truncated for column 'locationtype' at row 1
+	at com.mysql.jdbc.PreparedStatement.executeBatchSerially(PreparedStatement.java:2018)
+	at com.mysql.jdbc.PreparedStatement.executeBatch(PreparedStatement.java:1454)
+	at client.MapleCharacter.saveToDB(MapleCharacter.java:4373)
+	at net.server.Server.saveAll(Server.java:130)
+	at net.server.Server$1.run(Server.java:174)
+	at server.TimerManager$LoggingSaveRunnable.run(TimerManager.java:143)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------
+Error saving Xari Level: 135 Job: 312
+java.sql.BatchUpdateException: Data truncated for column 'locationtype' at row 1
+	at com.mysql.jdbc.PreparedStatement.executeBatchSerially(PreparedStatement.java:2018)
+	at com.mysql.jdbc.PreparedStatement.executeBatch(PreparedStatement.java:1454)
+	at client.MapleCharacter.saveToDB(MapleCharacter.java:4373)
+	at net.server.Server.saveAll(Server.java:130)
+	at net.server.Server$1.run(Server.java:174)
+	at server.TimerManager$LoggingSaveRunnable.run(TimerManager.java:143)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------
+Error saving Xari Level: 135 Job: 312
+java.sql.BatchUpdateException: Data truncated for column 'locationtype' at row 1
+	at com.mysql.jdbc.PreparedStatement.executeBatchSerially(PreparedStatement.java:2018)
+	at com.mysql.jdbc.PreparedStatement.executeBatch(PreparedStatement.java:1454)
+	at client.MapleCharacter.saveToDB(MapleCharacter.java:4373)
+	at net.server.Server.saveAll(Server.java:130)
+	at net.server.Server$1.run(Server.java:174)
+	at server.TimerManager$LoggingSaveRunnable.run(TimerManager.java:143)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------
+Error saving Xari Level: 135 Job: 312
+java.sql.BatchUpdateException: Data truncated for column 'locationtype' at row 1
+	at com.mysql.jdbc.PreparedStatement.executeBatchSerially(PreparedStatement.java:2018)
+	at com.mysql.jdbc.PreparedStatement.executeBatch(PreparedStatement.java:1454)
+	at client.MapleCharacter.saveToDB(MapleCharacter.java:4373)
+	at net.server.Server.saveAll(Server.java:130)
+	at net.server.Server$1.run(Server.java:174)
+	at server.TimerManager$LoggingSaveRunnable.run(TimerManager.java:143)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------
+Error saving Xari Level: 135 Job: 312
+java.sql.BatchUpdateException: Data truncated for column 'locationtype' at row 1
+	at com.mysql.jdbc.PreparedStatement.executeBatchSerially(PreparedStatement.java:2018)
+	at com.mysql.jdbc.PreparedStatement.executeBatch(PreparedStatement.java:1454)
+	at client.MapleCharacter.saveToDB(MapleCharacter.java:4373)
+	at net.server.Server.saveAll(Server.java:130)
+	at net.server.Server$1.run(Server.java:174)
+	at server.TimerManager$LoggingSaveRunnable.run(TimerManager.java:143)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------
+Error saving Xari Level: 135 Job: 312
+java.sql.BatchUpdateException: Data truncated for column 'locationtype' at row 1
+	at com.mysql.jdbc.PreparedStatement.executeBatchSerially(PreparedStatement.java:2018)
+	at com.mysql.jdbc.PreparedStatement.executeBatch(PreparedStatement.java:1454)
+	at client.MapleCharacter.saveToDB(MapleCharacter.java:4373)
+	at net.server.Server.saveAll(Server.java:130)
+	at net.server.Server$1.run(Server.java:174)
+	at server.TimerManager$LoggingSaveRunnable.run(TimerManager.java:143)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------
+Error saving Xari Level: 135 Job: 312
+java.sql.BatchUpdateException: Data truncated for column 'locationtype' at row 1
+	at com.mysql.jdbc.PreparedStatement.executeBatchSerially(PreparedStatement.java:2018)
+	at com.mysql.jdbc.PreparedStatement.executeBatch(PreparedStatement.java:1454)
+	at client.MapleCharacter.saveToDB(MapleCharacter.java:4373)
+	at net.server.Server.saveAll(Server.java:130)
+	at net.server.Server$1.run(Server.java:174)
+	at server.TimerManager$LoggingSaveRunnable.run(TimerManager.java:143)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------
+Error saving Xari Level: 135 Job: 312
+java.sql.BatchUpdateException: Data truncated for column 'locationtype' at row 1
+	at com.mysql.jdbc.PreparedStatement.executeBatchSerially(PreparedStatement.java:2018)
+	at com.mysql.jdbc.PreparedStatement.executeBatch(PreparedStatement.java:1454)
+	at client.MapleCharacter.saveToDB(MapleCharacter.java:4373)
+	at net.server.Server.saveAll(Server.java:130)
+	at net.server.Server$1.run(Server.java:174)
+	at server.TimerManager$LoggingSaveRunnable.run(TimerManager.java:143)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------
+Error saving Xari Level: 135 Job: 312
+java.sql.BatchUpdateException: Data truncated for column 'locationtype' at row 1
+	at com.mysql.jdbc.PreparedStatement.executeBatchSerially(PreparedStatement.java:2018)
+	at com.mysql.jdbc.PreparedStatement.executeBatch(PreparedStatement.java:1454)
+	at client.MapleCharacter.saveToDB(MapleCharacter.java:4373)
+	at net.server.Server.saveAll(Server.java:130)
+	at net.server.Server$1.run(Server.java:174)
+	at server.TimerManager$LoggingSaveRunnable.run(TimerManager.java:143)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------
+Error saving Xari Level: 135 Job: 312
+java.sql.BatchUpdateException: Data truncated for column 'locationtype' at row 1
+	at com.mysql.jdbc.PreparedStatement.executeBatchSerially(PreparedStatement.java:2018)
+	at com.mysql.jdbc.PreparedStatement.executeBatch(PreparedStatement.java:1454)
+	at client.MapleCharacter.saveToDB(MapleCharacter.java:4373)
+	at net.server.Server.saveAll(Server.java:130)
+	at net.server.Server$1.run(Server.java:174)
+	at server.TimerManager$LoggingSaveRunnable.run(TimerManager.java:143)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------
+Error saving Xari Level: 135 Job: 312
+java.sql.BatchUpdateException: Data truncated for column 'locationtype' at row 1
+	at com.mysql.jdbc.PreparedStatement.executeBatchSerially(PreparedStatement.java:2018)
+	at com.mysql.jdbc.PreparedStatement.executeBatch(PreparedStatement.java:1454)
+	at client.MapleCharacter.saveToDB(MapleCharacter.java:4373)
+	at net.server.Server.saveAll(Server.java:130)
+	at net.server.Server$1.run(Server.java:174)
+	at server.TimerManager$LoggingSaveRunnable.run(TimerManager.java:143)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------
+Error saving Xari Level: 135 Job: 312
+java.sql.BatchUpdateException: Data truncated for column 'locationtype' at row 1
+	at com.mysql.jdbc.PreparedStatement.executeBatchSerially(PreparedStatement.java:2018)
+	at com.mysql.jdbc.PreparedStatement.executeBatch(PreparedStatement.java:1454)
+	at client.MapleCharacter.saveToDB(MapleCharacter.java:4373)
+	at net.server.Server.saveAll(Server.java:130)
+	at net.server.Server$1.run(Server.java:174)
+	at server.TimerManager$LoggingSaveRunnable.run(TimerManager.java:143)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------
+Error saving Xari Level: 135 Job: 312
+java.sql.BatchUpdateException: Data truncated for column 'locationtype' at row 1
+	at com.mysql.jdbc.PreparedStatement.executeBatchSerially(PreparedStatement.java:2018)
+	at com.mysql.jdbc.PreparedStatement.executeBatch(PreparedStatement.java:1454)
+	at client.MapleCharacter.saveToDB(MapleCharacter.java:4373)
+	at net.server.Server.saveAll(Server.java:130)
+	at net.server.Server$1.run(Server.java:174)
+	at server.TimerManager$LoggingSaveRunnable.run(TimerManager.java:143)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------
+Error saving Xari Level: 135 Job: 312
+java.sql.BatchUpdateException: Data truncated for column 'locationtype' at row 1
+	at com.mysql.jdbc.PreparedStatement.executeBatchSerially(PreparedStatement.java:2018)
+	at com.mysql.jdbc.PreparedStatement.executeBatch(PreparedStatement.java:1454)
+	at client.MapleCharacter.saveToDB(MapleCharacter.java:4373)
+	at net.server.Server.saveAll(Server.java:130)
+	at net.server.Server$1.run(Server.java:174)
+	at server.TimerManager$LoggingSaveRunnable.run(TimerManager.java:143)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------
+Error saving Xari Level: 135 Job: 312
+java.sql.BatchUpdateException: Data truncated for column 'locationtype' at row 1
+	at com.mysql.jdbc.PreparedStatement.executeBatchSerially(PreparedStatement.java:2018)
+	at com.mysql.jdbc.PreparedStatement.executeBatch(PreparedStatement.java:1454)
+	at client.MapleCharacter.saveToDB(MapleCharacter.java:4373)
+	at net.server.Server.saveAll(Server.java:130)
+	at net.server.Server$1.run(Server.java:174)
+	at server.TimerManager$LoggingSaveRunnable.run(TimerManager.java:143)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------
+Error saving Xari Level: 135 Job: 312
+java.sql.BatchUpdateException: Data truncated for column 'locationtype' at row 1
+	at com.mysql.jdbc.PreparedStatement.executeBatchSerially(PreparedStatement.java:2018)
+	at com.mysql.jdbc.PreparedStatement.executeBatch(PreparedStatement.java:1454)
+	at client.MapleCharacter.saveToDB(MapleCharacter.java:4373)
+	at net.server.Server.saveAll(Server.java:130)
+	at net.server.Server$1.run(Server.java:174)
+	at server.TimerManager$LoggingSaveRunnable.run(TimerManager.java:143)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------
+Error saving Xari Level: 135 Job: 312
+java.sql.BatchUpdateException: Data truncated for column 'locationtype' at row 1
+	at com.mysql.jdbc.PreparedStatement.executeBatchSerially(PreparedStatement.java:2018)
+	at com.mysql.jdbc.PreparedStatement.executeBatch(PreparedStatement.java:1454)
+	at client.MapleCharacter.saveToDB(MapleCharacter.java:4373)
+	at net.server.Server.saveAll(Server.java:130)
+	at net.server.Server$1.run(Server.java:174)
+	at server.TimerManager$LoggingSaveRunnable.run(TimerManager.java:143)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------
+Error saving Xari Level: 135 Job: 312
+java.sql.BatchUpdateException: Data truncated for column 'locationtype' at row 1
+	at com.mysql.jdbc.PreparedStatement.executeBatchSerially(PreparedStatement.java:2018)
+	at com.mysql.jdbc.PreparedStatement.executeBatch(PreparedStatement.java:1454)
+	at client.MapleCharacter.saveToDB(MapleCharacter.java:4373)
+	at net.server.Server.saveAll(Server.java:130)
+	at net.server.Server$1.run(Server.java:174)
+	at server.TimerManager$LoggingSaveRunnable.run(TimerManager.java:143)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------
+Error saving Xari Level: 135 Job: 312
+java.sql.BatchUpdateException: Data truncated for column 'locationtype' at row 1
+	at com.mysql.jdbc.PreparedStatement.executeBatchSerially(PreparedStatement.java:2018)
+	at com.mysql.jdbc.PreparedStatement.executeBatch(PreparedStatement.java:1454)
+	at client.MapleCharacter.saveToDB(MapleCharacter.java:4373)
+	at net.server.Server.saveAll(Server.java:130)
+	at net.server.Server$1.run(Server.java:174)
+	at server.TimerManager$LoggingSaveRunnable.run(TimerManager.java:143)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------
+Error saving Xari Level: 135 Job: 312
+java.sql.BatchUpdateException: Data truncated for column 'locationtype' at row 1
+	at com.mysql.jdbc.PreparedStatement.executeBatchSerially(PreparedStatement.java:2018)
+	at com.mysql.jdbc.PreparedStatement.executeBatch(PreparedStatement.java:1454)
+	at client.MapleCharacter.saveToDB(MapleCharacter.java:4373)
+	at net.server.Server.saveAll(Server.java:130)
+	at net.server.Server$1.run(Server.java:174)
+	at server.TimerManager$LoggingSaveRunnable.run(TimerManager.java:143)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------
+Error saving Xari Level: 135 Job: 312
+java.sql.BatchUpdateException: Data truncated for column 'locationtype' at row 1
+	at com.mysql.jdbc.PreparedStatement.executeBatchSerially(PreparedStatement.java:2018)
+	at com.mysql.jdbc.PreparedStatement.executeBatch(PreparedStatement.java:1454)
+	at client.MapleCharacter.saveToDB(MapleCharacter.java:4373)
+	at net.server.Server.saveAll(Server.java:130)
+	at net.server.Server$1.run(Server.java:174)
+	at server.TimerManager$LoggingSaveRunnable.run(TimerManager.java:143)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------
+Error saving Xari Level: 135 Job: 312
+java.sql.BatchUpdateException: Data truncated for column 'locationtype' at row 1
+	at com.mysql.jdbc.PreparedStatement.executeBatchSerially(PreparedStatement.java:2018)
+	at com.mysql.jdbc.PreparedStatement.executeBatch(PreparedStatement.java:1454)
+	at client.MapleCharacter.saveToDB(MapleCharacter.java:4373)
+	at net.server.Server.saveAll(Server.java:130)
+	at net.server.Server$1.run(Server.java:174)
+	at server.TimerManager$LoggingSaveRunnable.run(TimerManager.java:143)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------
+Error saving Xari Level: 135 Job: 312
+java.sql.BatchUpdateException: Data truncated for column 'locationtype' at row 1
+	at com.mysql.jdbc.PreparedStatement.executeBatchSerially(PreparedStatement.java:2018)
+	at com.mysql.jdbc.PreparedStatement.executeBatch(PreparedStatement.java:1454)
+	at client.MapleCharacter.saveToDB(MapleCharacter.java:4373)
+	at net.server.Server.saveAll(Server.java:130)
+	at net.server.Server$1.run(Server.java:174)
+	at server.TimerManager$LoggingSaveRunnable.run(TimerManager.java:143)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------
+Error saving Xari Level: 135 Job: 312
+java.sql.BatchUpdateException: Data truncated for column 'locationtype' at row 1
+	at com.mysql.jdbc.PreparedStatement.executeBatchSerially(PreparedStatement.java:2018)
+	at com.mysql.jdbc.PreparedStatement.executeBatch(PreparedStatement.java:1454)
+	at client.MapleCharacter.saveToDB(MapleCharacter.java:4373)
+	at net.server.Server.saveAll(Server.java:130)
+	at net.server.Server$1.run(Server.java:174)
+	at server.TimerManager$LoggingSaveRunnable.run(TimerManager.java:143)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------
+Error saving Xari Level: 135 Job: 312
+java.sql.BatchUpdateException: Data truncated for column 'locationtype' at row 1
+	at com.mysql.jdbc.PreparedStatement.executeBatchSerially(PreparedStatement.java:2018)
+	at com.mysql.jdbc.PreparedStatement.executeBatch(PreparedStatement.java:1454)
+	at client.MapleCharacter.saveToDB(MapleCharacter.java:4373)
+	at net.server.Server.saveAll(Server.java:130)
+	at net.server.Server$1.run(Server.java:174)
+	at server.TimerManager$LoggingSaveRunnable.run(TimerManager.java:143)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------
+Error saving Xari Level: 135 Job: 312
+java.sql.BatchUpdateException: Data truncated for column 'locationtype' at row 1
+	at com.mysql.jdbc.PreparedStatement.executeBatchSerially(PreparedStatement.java:2018)
+	at com.mysql.jdbc.PreparedStatement.executeBatch(PreparedStatement.java:1454)
+	at client.MapleCharacter.saveToDB(MapleCharacter.java:4373)
+	at net.server.Server.saveAll(Server.java:130)
+	at net.server.Server$1.run(Server.java:174)
+	at server.TimerManager$LoggingSaveRunnable.run(TimerManager.java:143)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------
+Error saving Xari Level: 135 Job: 312
+java.sql.BatchUpdateException: Data truncated for column 'locationtype' at row 1
+	at com.mysql.jdbc.PreparedStatement.executeBatchSerially(PreparedStatement.java:2018)
+	at com.mysql.jdbc.PreparedStatement.executeBatch(PreparedStatement.java:1454)
+	at client.MapleCharacter.saveToDB(MapleCharacter.java:4373)
+	at net.server.Server.saveAll(Server.java:130)
+	at net.server.Server$1.run(Server.java:174)
+	at server.TimerManager$LoggingSaveRunnable.run(TimerManager.java:143)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------
+Error saving Xari Level: 135 Job: 312
+java.sql.BatchUpdateException: Data truncated for column 'locationtype' at row 1
+	at com.mysql.jdbc.PreparedStatement.executeBatchSerially(PreparedStatement.java:2018)
+	at com.mysql.jdbc.PreparedStatement.executeBatch(PreparedStatement.java:1454)
+	at client.MapleCharacter.saveToDB(MapleCharacter.java:4373)
+	at net.server.Server.saveAll(Server.java:130)
+	at net.server.Server$1.run(Server.java:174)
+	at server.TimerManager$LoggingSaveRunnable.run(TimerManager.java:143)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------
+Error saving Xari Level: 135 Job: 312
+java.sql.BatchUpdateException: Data truncated for column 'locationtype' at row 1
+	at com.mysql.jdbc.PreparedStatement.executeBatchSerially(PreparedStatement.java:2018)
+	at com.mysql.jdbc.PreparedStatement.executeBatch(PreparedStatement.java:1454)
+	at client.MapleCharacter.saveToDB(MapleCharacter.java:4373)
+	at net.server.Server.saveAll(Server.java:130)
+	at net.server.Server$1.run(Server.java:174)
+	at server.TimerManager$LoggingSaveRunnable.run(TimerManager.java:143)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------
+Error saving Xari Level: 135 Job: 312
+java.sql.BatchUpdateException: Data truncated for column 'locationtype' at row 1
+	at com.mysql.jdbc.PreparedStatement.executeBatchSerially(PreparedStatement.java:2018)
+	at com.mysql.jdbc.PreparedStatement.executeBatch(PreparedStatement.java:1454)
+	at client.MapleCharacter.saveToDB(MapleCharacter.java:4373)
+	at net.server.Server.saveAll(Server.java:130)
+	at net.server.Server$1.run(Server.java:174)
+	at server.TimerManager$LoggingSaveRunnable.run(TimerManager.java:143)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------
+Error saving Xari Level: 135 Job: 312
+java.sql.BatchUpdateException: Data truncated for column 'locationtype' at row 1
+	at com.mysql.jdbc.PreparedStatement.executeBatchSerially(PreparedStatement.java:2018)
+	at com.mysql.jdbc.PreparedStatement.executeBatch(PreparedStatement.java:1454)
+	at client.MapleCharacter.saveToDB(MapleCharacter.java:4373)
+	at net.server.Server.saveAll(Server.java:130)
+	at net.server.Server$1.run(Server.java:174)
+	at server.TimerManager$LoggingSaveRunnable.run(TimerManager.java:143)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------
+Error saving Xari Level: 135 Job: 312
+java.sql.BatchUpdateException: Data truncated for column 'locationtype' at row 1
+	at com.mysql.jdbc.PreparedStatement.executeBatchSerially(PreparedStatement.java:2018)
+	at com.mysql.jdbc.PreparedStatement.executeBatch(PreparedStatement.java:1454)
+	at client.MapleCharacter.saveToDB(MapleCharacter.java:4373)
+	at net.server.Server.saveAll(Server.java:130)
+	at net.server.Server$1.run(Server.java:174)
+	at server.TimerManager$LoggingSaveRunnable.run(TimerManager.java:143)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------
+Error saving Xari Level: 135 Job: 312
+java.sql.BatchUpdateException: Data truncated for column 'locationtype' at row 1
+	at com.mysql.jdbc.PreparedStatement.executeBatchSerially(PreparedStatement.java:2018)
+	at com.mysql.jdbc.PreparedStatement.executeBatch(PreparedStatement.java:1454)
+	at client.MapleCharacter.saveToDB(MapleCharacter.java:4373)
+	at net.server.Server.saveAll(Server.java:130)
+	at net.server.Server$1.run(Server.java:174)
+	at server.TimerManager$LoggingSaveRunnable.run(TimerManager.java:143)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------
+Error saving Xari Level: 135 Job: 312
+java.sql.BatchUpdateException: Data truncated for column 'locationtype' at row 1
+	at com.mysql.jdbc.PreparedStatement.executeBatchSerially(PreparedStatement.java:2018)
+	at com.mysql.jdbc.PreparedStatement.executeBatch(PreparedStatement.java:1454)
+	at client.MapleCharacter.saveToDB(MapleCharacter.java:4373)
+	at client.MapleClient.disconnect(MapleClient.java:770)
+	at net.MapleServerHandler.sessionClosed(MapleServerHandler.java:112)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$TailFilter.sessionClosed(DefaultIoFilterChain.java:642)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextSessionClosed(DefaultIoFilterChain.java:382)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$900(DefaultIoFilterChain.java:47)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.sessionClosed(DefaultIoFilterChain.java:750)
+	at org.apache.mina.filter.codec.ProtocolCodecFilter.sessionClosed(ProtocolCodecFilter.java:369)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextSessionClosed(DefaultIoFilterChain.java:382)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$900(DefaultIoFilterChain.java:47)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.sessionClosed(DefaultIoFilterChain.java:750)
+	at org.apache.mina.core.filterchain.IoFilterAdapter.sessionClosed(IoFilterAdapter.java:88)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextSessionClosed(DefaultIoFilterChain.java:382)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.fireSessionClosed(DefaultIoFilterChain.java:375)
+	at org.apache.mina.core.service.IoServiceListenerSupport.fireSessionDestroyed(IoServiceListenerSupport.java:244)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.removeNow(AbstractPollingIoProcessor.java:600)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.removeSessions(AbstractPollingIoProcessor.java:560)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.access$800(AbstractPollingIoProcessor.java:67)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.run(AbstractPollingIoProcessor.java:1132)
+	at org.apache.mina.util.NamePreservingRunnable.run(NamePreservingRunnable.java:64)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------

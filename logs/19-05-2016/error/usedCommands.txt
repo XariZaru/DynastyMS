@@ -1,0 +1,128 @@
+Xari used: !search item freeze 
+Xari used: !item 238056 
+Xari used: !item 2380526 
+Xari used: !search item freeze 
+Xari used: !item 2382056 
+Xari used: !search item freeze 
+Xari used: !item 4031267 
+Xari used: !item 5510000 
+Xari used: !item 4031267 
+Xari used: !kill Xari 
+Xari used: !item 5510000 
+Xari used: !kill Xari 
+Xari used: !item 5510000 
+Xari used: !item 4031267 
+Xari used: !kill Xari 
+Xari used: !item 5510000 
+Xari used: !item 4031267 
+Xari used: !kill Xari 
+Xari used: !item 4031267 100 
+Xari used: !kill Xari 
+Xari used: !item 4031267 
+Xari used: !kill Xari 
+Xari used: !item 4031267 100 
+Xari used: !kill Xari 
+Xari used: !kill Xari 
+Xari used: !item 4031267 
+Xari used: !kill Xari 
+Xari used: !item 4031267 
+Xari used: !kill Xari 
+Xari used: !item 4031267 
+Xari used: !kill Xari 
+Xari used: !kill Xari 
+Xari used: !item 4031267 
+Xari used: !kill Xari 
+Xari used: !item 4031267 100 
+Xari used: !kill Xari 
+Xari used: !item 4031267 
+Xari used: !kill Xari 
+Xari used: !kill Xari 
+Xari used: !item 4031267 100 
+Xari used: !kill Xari 
+Xari used: !item 4031267 100 
+Xari used: !kill Xari 
+Xari used: !item 4013267 
+Xari used: !item 4031267 
+Xari used: !kill Xari 
+Xari used: !heal 
+Xari used: !search item safety charm 
+Xari used: !search item gachapon ticket 
+Xari used: !search item party 
+Xari used: !item 5122000 
+Xari used: !search item party 
+Xari used: !item 1002345 
+Xari used: !search item party 
+Xari used: !item 2022302 
+Xari used: !search item party 
+Xari used: !search item fun 
+Xari used: !search item rice 
+Xari used: !search item sack 
+Xari used: !item 4031229 
+Xari used: !item 4031246 
+Xari used: !item 4031247 
+Xari used: !item 4031248 
+Xari used: !search item sack of 
+Xari used: !search item rice 
+Xari used: !item 4031279 
+Xari used: !search item icies 
+Xari used: !search item icy 
+Xari used: !search item ici 
+Xari used: !search item icicle 
+Xari used: !search item ring 
+Xari used: !item 2022238 
+Xari used: !search item ring 
+Xari used: !search item Lilin's Ring 
+Xari used: !server 
+Xari used: !search map 
+Xari used: /m 
+Xari used: !timerdebug 
+Xari used: !search mob zakum 
+Xari used: !spawn 88000000 
+Xari used: !spawn 8800000 
+Xari used: !heal 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !search mob zakum, 
+Xari used: !search mob zakum 
+Xari used: !search mob zakum 
+Xari used: !search item eye of fire 
+Xari used: !pos 
+Xari used: !search mob bigfoot 
+Xari used: !spawn 94000575 
+Xari used: !killall 
+Xari used: !spawn 100100 
+Xari used: !spawn 94000575 
+Xari used: !spawn 940571 
+Xari used: !spawn 9400571 
+Xari used: !spawn 9400571 
+Xari used: !search mob headless 
+Xari used: !search mob bigfoto 
+Xari used: !search mob bigfoot 
+Xari used: !spawn 9400575 
+Xari used: !killall 
+Xari used: !pos 
+Xari used: !pos 
+Xari used: !pos 
+Xari used: !spawn 100100 
+Xari used: !search npc vikoon 
+Xari used: !search npc pietra 
+Xari used: /heal 
+Xari used: /heal 
+Xari used: !heal 
+Xari used: !search mob boss 
+Xari used: !spawn 94000300 
+Xari used: !spawn 9400300 
+Xari used: !killlall 
+Xari used: !killall 
+Xari used: !search mob the boss 
+Xari used: !search mob boss 
+Xari used: !search mob boss 
+Xari used: !spawn 9501015 
+Xari used: !killall 
+Xari used: !search mob boss 
+Xari used: !spawn 9400122 
+Xari used: !killall 
+Xari used: !pnpc 2042000 
+Xari used: !saveall 

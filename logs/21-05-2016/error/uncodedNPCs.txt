@@ -1,0 +1,4 @@
+NPC Cassandra(9010010) is not coded.
+NPC Dalair(9000040) is not coded.
+NPC NimaKIN(9900001) is not coded.
+NPC NimaKIN(9900001) is not coded.

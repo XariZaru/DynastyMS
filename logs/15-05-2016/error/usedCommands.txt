@@ -1,0 +1,477 @@
+Xari used: !search item gms axe 
+Xari used: !search item gms axe 
+Xari used: !search item lucky 
+Xari used: !search item lucky scroll 
+Xari used: !search item safety 
+Xari used: !search item vega 
+Xari used: !item 5610000 
+Xari used: !search item 10% 
+Xari used: !item 2040026 
+Xari used: !gmshop 
+Xari used: !search item clean slate 
+Xari used: !item 2049003 
+Xari used: !search item reverse 
+Xari used: !search item VIP 
+Xari used: !search item crimson arch 
+Xari used: !search item crimson arc 
+Xari used: !item 1442068 
+Xari used: !job 2112 
+Xari used: !maxstats 
+Xari used: !maxstat 
+Xari used: !maxskills 
+Xari used: !search npc cody 
+Xari used: !search item zakum 
+Xari used: !search item zakum 
+Xari used: !item 1002430 
+Xari used: !item 1002420 
+Xari used: !item 1002430 
+Xari used: !search item zakum 
+Xari used: !item 1002357 
+Xari used: !search item zakum 
+Xari used: !item 1002390 
+Xari used: !search item scissors of 
+Xari used: !item 5520000 
+Xari used: !search item scar 
+Xari used: !item 1002306 
+Xari used: !item 1002036 
+Xari used: !search item scar 
+Xari used: !item 1003026 
+Xari used: !item 1003025 
+Xari used: !search item targa 
+Xari used: !item 100203 
+Xari used: !item 1002023 
+Xari used: !item 1003023 
+Xari used: !item 1003022 
+Xari used: !item 1003024 
+Xari used: !search item ravana 
+Xari used: !search item chaos zak 
+Xari used: !maxskills 
+Xari used: !maxstat 
+Xari used: !heal 
+Xari used: !job 412 
+Xari used: !job 910 
+Xari used: !item 1302000 
+Xari used: !item 1302000 
+Xari used: !maxstat 
+Xari used: !maxskills 
+Xari used: !heal 
+Xari used: !job 412 
+Xari used: !job 910 
+Xari used: !saveall 
+Xari used: !search item ap 
+Xari used: !search item ap reset 
+Xari used: !item 5050000 
+Xari used: !item 5050000 
+Xari used: !pos 
+Xari used: !level 35 
+Xari used: !pmob 3230102 10 
+Xari used: !pmob 3230102 10 
+Xari used: !pmob 3230102 10 
+Xari used: !pmob 3230102 10 
+Xari used: !pmob 3230102 10 
+Xari used: !pmob 3230102 10 
+Xari used: !pmob 3230102 10 
+Xari used: !pmob 3230102 10 
+Xari used: !pmob 3230102 10 
+Xari used: !pmob 3230102 10 
+Xari used: !pmob 3230102 10 
+Xari used: !pmob 3230102 10 
+Xari used: !pmob 3230102 10 
+Xari used: !pmob 3230102 10 
+Xari used: !pmob 3230102 10 
+Xari used: !pmob 3230102 10 
+Xari used: !pmob 3230102 10 
+Xari used: !pmob 3230102 10 
+Xari used: !pmob 3230102 10 
+Xari used: !pmob 3230102 10 
+Xari used: !pmob 3230102 10 
+Xari used: !pmob 3230102 10 
+Xari used: !pmob 3230102 10 
+Xari used: !pmob 3230102 10 
+Xari used: !pmob 3230102 10 
+Xari used: !pmob 3230102 10 
+Xari used: !pmob 3230102 10 
+Xari used: !pmob 3230102 10 
+Xari used: !pmob 3230102 10 
+Xari used: !pmob 3230102 10 
+Xari used: !pmob 3230102 10 
+Xari used: !pmob 3230102 10 
+Xari used: !pmob 3230102 10 
+Xari used: !pmob 4230104 10 
+Xari used: !pmob 4230104 10 
+Xari used: !pmob 4230104 10 
+Xari used: !pmob 4230104 10 
+Xari used: !pmob 4230104 10 
+Xari used: !pmob 4230104 10 
+Xari used: !pmob 4230104 10 
+Xari used: !pmob 4230104 10 
+Xari used: !pmob 4230104 10 
+Xari used: !pmob 4230104 10 
+Xari used: !pmob 4230104 10 
+Xari used: !pmob 4230104 10 
+Xari used: !pmob 4230104 10 
+Xari used: !pmob 4230104 10 
+Xari used: !pmob 4230104 10 
+Xari used: !pmob 4230104 10 
+Xari used: !pmob 4230104 10 
+Xari used: !pmob 4230104 10 
+Xari used: !pmob 4230104 10 
+Xari used: !pmob 4230104 10 
+Xari used: !pmob 4230104 10 
+Xari used: !pmob 4230104 10 
+Xari used: !pmob 4230104 10 
+Xari used: !pmob 4230104 10 
+Xari used: !pmob 4230104 10 
+Xari used: !pmob 4230104 10 
+Xari used: !pmob 4230104 10 
+Xari used: !pmob 4230104 10 
+Xari used: !pmob 4230104 10 
+Xari used: !pmob 4230104 10 
+Xari used: !pmob 4230104 10 
+Xari used: !pmob 4230104 10 
+Xari used: !pmob 4230104 10 
+Xari used: !pmob 4230104 10 
+Xari used: !pmob 4230104 10 
+Xari used: !pmob 4230104 10 
+Xari used: !pmob 4230104 10 
+Xari used: !pmob 4230104 10 
+Xari used: !pmob 4230104 10 
+Xari used: !pmob 4230104 10 
+Xari used: !pmob 4230104 10 
+Xari used: !pmob 4230104 10 
+Xari used: !pmob 4230104 10 
+Xari used: !pmob 4230104 10 
+Xari used: !pmob 4230104 10 
+Xari used: !pmob 4230104 10 
+Xari used: !pmob 4230104 10 
+Xari used: !pmob 4230104 10 
+Xari used: !pmob 4230104 10 
+Xari used: !pmob 4230104 10 
+Xari used: !pmob 4230104 10 
+Xari used: !pmob 4230104 10 
+Xari used: !pmob 4230104 10 
+Xari used: !pmob 4230104 10 
+Xari used: !killall 
+Xari used: !pmob 4230104 10 
+Xari used: !pmob 4230104 10 
+Xari used: !pmob 4230104 10 
+Xari used: !pmob 4230104 10 
+Xari used: !pmob 4230104 10 
+Xari used: !pmob 4230104 10 
+Xari used: !pmob 4230104 10 
+Xari used: !pmob 4230104 10 
+Xari used: !pmob 4230104 10 
+Xari used: !pmob 4230104 10 
+Xari used: !pmob 4230104 10 
+Xari used: !pmob 4230104 10 
+Xari used: !pmob 4230104 10 
+Xari used: !pmob 4230104 10 
+Xari used: !pmob 4230104 10 
+Xari used: !pmob 4230104 10 
+Xari used: !pmob 4230104 10 
+Xari used: !pmob 4230104 10 
+Xari used: !pmob 4230104 10 
+Xari used: !pmob 4230104 10 
+Xari used: !search mob king 
+Xari used: !pmob 5220000 600 
+Xari used: !spawn 5220000 
+Xari used: !spawn 5220000 
+Xari used: !spawn 5220000 
+Xari used: !spawn 5220000 
+Xari used: !spawn 5220000 
+Xari used: !spawn 5220000 
+Xari used: !spawn 5220000 
+Xari used: !spawn 5220000 
+Xari used: !spawn 5220000 
+Xari used: !spawn 5220000 
+Xari used: !spawn 5220000 
+Xari used: !spawn 5220000 
+Xari used: !spawn 5220000 
+Xari used: !spawn 5220000 
+Xari used: !spawn 5220000 
+Xari used: !spawn 5220000 
+Xari used: !killall 
+Xari used: !search mob cherry bubble 
+Xari used: !pmob 3400000 10 
+Xari used: !pmob 3400000 10 
+Xari used: !pmob 3400000 10 
+Xari used: !pmob 3400000 10 
+Xari used: !pmob 3400000 10 
+Xari used: !pmob 3400000 10 
+Xari used: !pmob 3400000 10 
+Xari used: !pmob 3400000 10 
+Xari used: !search mob cherry bubble 
+Xari used: !search mob cherry bubble 
+Xari used: !pmob 3400000 10 
+Xari used: !pmob 3400000 10 
+Xari used: !pmob 3400000 10 
+Xari used: !pmob 3400000 10 
+Xari used: !pmob 3400000 10 
+Xari used: !pmob 3400000 10 
+Xari used: !pmob 3400000 10 
+Xari used: !pmob 3400000 10 
+Xari used: !pmob 3400000 10 
+Xari used: !pmob 3400000 10 
+Xari used: !pmob 3400000 10 
+Xari used: !pmob 3400000 10 
+Xari used: !pmob 3400000 10 
+Xari used: !pmob 3400000 10 
+Xari used: !pmob 3400000 10 
+Xari used: !pmob 3400000 10 
+Xari used: !search mob yeti doll claw 
+Xari used: !pmob 3400003 10 
+Xari used: !pmob 3400003 10 
+Xari used: !pmob 3400003 10 
+Xari used: !pmob 3400003 10 
+Xari used: !pmob 3400003 10 
+Xari used: !pmob 3400003 10 
+Xari used: !pmob 3400003 10 
+Xari used: !pmob 3400003 10 
+Xari used: !pmob 3400003 10 
+Xari used: !pmob 3400003 10 
+Xari used: !pmob 3400003 10 
+Xari used: !pmob 3400003 10 
+Xari used: !pmob 3400003 10 
+Xari used: !pmob 3400003 10 
+Xari used: !pmob 3400003 10 
+Xari used: !pmob 3400003 10 
+Xari used: !pmob 3400003 10 
+Xari used: !pmob 3400003 10 
+Xari used: !pmob 3400003 10 
+Xari used: !pmob 3400003 10 
+Xari used: !search mob kid man 
+Xari used: !pmob 4300006 10 
+Xari used: !pmob 4300006 10 
+Xari used: !pmob 4300006 10 
+Xari used: !pmob 4300006 10 
+Xari used: !pmob 4300006 10 
+Xari used: !pmob 4300006 10 
+Xari used: !pmob 4300006 10 
+Xari used: !pmob 4300006 10 
+Xari used: !pmob 4300006 10 
+Xari used: !pmob 4300006 10 
+Xari used: !pmob 4300006 10 
+Xari used: !pmob 4300006 10 
+Xari used: !pmob 4300006 10 
+Xari used: !pmob 4300006 10 
+Xari used: !pmob 4300006 10 
+Xari used: !pmob 4300006 10 
+Xari used: !pmob 4300006 10 
+Xari used: !pmob 4300006 10 
+Xari used: !pmob 4300006 10 
+Xari used: !search mob female 
+Xari used: !pmob 4300007 10 
+Xari used: !pmob 4300007 10 
+Xari used: !pmob 4300007 10 
+Xari used: !pmob 4300007 10 
+Xari used: !pmob 4300007 10 
+Xari used: !pmob 4300007 10 
+Xari used: !pmob 4300007 10 
+Xari used: !pmob 4300007 10 
+Xari used: !pmob 4300007 10 
+Xari used: !pmob 4300007 10 
+Xari used: !pmob 4300007 10 
+Xari used: !pmob 4300007 10 
+Xari used: !pmob 4300007 10 
+Xari used: !pmob 4300007 10 
+Xari used: !pmob 4300007 10 
+Xari used: !pmob 4300007 10 
+Xari used: !pmob 4300007 10 
+Xari used: !pmob 4300007 10 
+Xari used: !pmob 4300007 10 
+Xari used: !pmob 4300007 10 
+Xari used: !pmob 4300008 10 
+Xari used: !pmob 4300008 10 
+Xari used: !pmob 4300008 10 
+Xari used: !pmob 4300008 10 
+Xari used: !pmob 4300008 10 
+Xari used: !pmob 4300008 10 
+Xari used: !pmob 4300008 10 
+Xari used: !pmob 4300008 10 
+Xari used: !pmob 4300008 10 
+Xari used: !pmob 4300008 10 
+Xari used: !pmob 4300008 10 
+Xari used: !pmob 4300008 10 
+Xari used: !pmob 4300008 10 
+Xari used: !pmob 4300008 10 
+Xari used: !pmob 4300008 10 
+Xari used: !pmob 4300008 10 
+Xari used: !pmob 4300008 10 
+Xari used: !pmob 4300008 10 
+Xari used: !pmob 4300008 10 
+Xari used: !pmob 4300008 10 
+Xari used: !pmob 4300008 10 
+Xari used: !pmob 4300008 10 
+Xari used: !pmob 4300008 10 
+Xari used: !pmob 4300008 10 
+Xari used: !pmob 4300008 10 
+Xari used: !pmob 4300008 10 
+Xari used: !pmob 4300008 10 
+Xari used: !pmob 4300008 10 
+Xari used: !pmob 4300008 10 
+Xari used: !pmob 4300008 10 
+Xari used: !pmob 4300008 10 
+Xari used: !pmob 4300008 10 
+Xari used: !pmob 4300008 10 
+Xari used: !pmob 4300008 10 
+Xari used: !pmob 4300008 10 
+Xari used: !pmob 4300008 10 
+Xari used: !pmob 4300008 10 
+Xari used: !pmob 4300008 10 
+Xari used: !pmob 4300008 10 
+Xari used: !search mob transformed doll 
+Xari used: !pmob 3400008 10 
+Xari used: !pmob 3400008 10 
+Xari used: !pmob 3400008 10 
+Xari used: !pmob 3400008 10 
+Xari used: !pmob 3400008 10 
+Xari used: !pmob 3400008 10 
+Xari used: !pmob 3400008 10 
+Xari used: !pmob 3400008 10 
+Xari used: !pmob 3400008 10 
+Xari used: !pmob 3400008 10 
+Xari used: !pmob 3400008 10 
+Xari used: !pmob 3400008 10 
+Xari used: !pmob 3400008 10 
+Xari used: !pmob 3400008 10 
+Xari used: !pmob 3400008 10 
+Xari used: !pmob 3400008 10 
+Xari used: !pmob 3400008 10 
+Xari used: !pmob 3400008 10 
+Xari used: !pmob 3400008 10 
+Xari used: !pmob 3400008 10 
+Xari used: !pmob 3400008 10 
+Xari used: !pmob 3400008 10 
+Xari used: !pmob 3400008 10 
+Xari used: !pmob 3400008 10 
+Xari used: !pmob 3400008 10 
+Xari used: !pmob 3400008 10 
+Xari used: !pmob 3400008 10 
+Xari used: !pmob 3400008 10 
+Xari used: !pmob 3400008 10 
+Xari used: !pmob 3400008 10 
+Xari used: !pmob 3400008 10 
+Xari used: !pmob 3400008 10 
+Xari used: !pmob 3400008 10 
+Xari used: !pmob 3400008 10 
+Xari used: !pmob 3400007 10 
+Xari used: !search mob jr. pepe doll 
+Xari used: !pmob 3400005 10 
+Xari used: !pmob 3400005 10 
+Xari used: !pmob 3400005 10 
+Xari used: !pmob 3400005 10 
+Xari used: !pmob 3400005 10 
+Xari used: !pmob 3400005 10 
+Xari used: !pmob 3400005 10 
+Xari used: !pmob 3400005 10 
+Xari used: !pmob 3400005 10 
+Xari used: !pmob 3400005 10 
+Xari used: !pmob 3400005 10 
+Xari used: !pmob 3400005 10 
+Xari used: !search mob dark 
+Xari used: !search mob dark rash 
+Xari used: !pmob 713051 10 
+Xari used: !search mob dark rash 
+Xari used: !pmob 7130501 10 
+Xari used: !pmob 7130501 10 
+Xari used: !pmob 7130501 10 
+Xari used: !pmob 7130501 10 
+Xari used: !pmob 7130501 10 
+Xari used: !pmob 7130501 10 
+Xari used: !pmob 7130501 10 
+Xari used: !pmob 7130501 10 
+Xari used: !pmob 7130501 10 
+Xari used: !pmob 7130501 10 
+Xari used: !pmob 7130501 10 
+Xari used: !pmob 7130501 10 
+Xari used: !pmob 7130501 10 
+Xari used: !pmob 7130501 10 
+Xari used: !pmob 7130501 10 
+Xari used: !pmob 7130501 10 
+Xari used: !pmob 7130501 10 
+Xari used: !pmob 7130501 10 
+Xari used: !pmob 7130501 10 
+Xari used: !pmob 7130501 10 
+Xari used: !search mob green hobi 
+Xari used: !pmob 7130601 10 
+Xari used: !pmob 7130601 10 
+Xari used: !pmob 7130601 10 
+Xari used: !pmob 7130601 10 
+Xari used: !pmob 7130601 10 
+Xari used: !pmob 7130601 10 
+Xari used: !pmob 7130601 10 
+Xari used: !pmob 7130601 10 
+Xari used: !pmob 7130601 10 
+Xari used: !pmob 7130601 10 
+Xari used: !pmob 7130601 10 
+Xari used: !pmob 7130601 10 
+Xari used: !pmob 7130601 10 
+Xari used: !pmob 7130601 10 
+Xari used: !pmob 7130501 10 
+Xari used: !pmob 7130501 10 
+Xari used: !search mob dual beetle 
+Xari used: !pmob 2130003 10 
+Xari used: !search mob dual beetle 
+Xari used: !pmob 7130003 10 
+Xari used: !pmob 7130003 10 
+Xari used: !pmob 7130003 10 
+Xari used: !pmob 7130003 10 
+Xari used: !pmob 7130003 10 
+Xari used: !pmob 7130003 10 
+Xari used: !pmob 7130003 10 
+Xari used: !pmob 7130003 10 
+Xari used: !pmob 7130003 10 
+Xari used: !pmob 7130003 10 
+Xari used: !pmob 7130003 10 
+Xari used: !pmob 7130003 10 
+Xari used: !pmob 7130003 10 
+Xari used: !pmob 7130003 10 
+Xari used: !pmob 7130003 10 
+Xari used: !pmob 7130003 10 
+Xari used: !pmob 7130003 10 
+Xari used: !pmob 7130003 10 
+Xari used: !search mob mr. alli 
+Xari used: !pmob 6130204 10 
+Xari used: !pmob 6130204 10 
+Xari used: !pmob 6130204 10 
+Xari used: !pmob 6130204 10 
+Xari used: !pmob 6130204 10 
+Xari used: !pmob 6130204 10 
+Xari used: !pmob 6130204 10 
+Xari used: !pmob 6130204 10 
+Xari used: !pmob 6130204 10 
+Xari used: !pmob 6130204 10 
+Xari used: !pmob 6130204 10 
+Xari used: !pmob 6130204 10 
+Xari used: !search mob kru 
+Xari used: !pmob 6130208 10 
+Xari used: !pmob 6130208 10 
+Xari used: !pmob 6130208 10 
+Xari used: !pmob 6130209 10 
+Xari used: !pmob 6130208 10 
+Xari used: !pmob 6130208 10 
+Xari used: !pmob 6130208 10 
+Xari used: !pmob 6130208 10 
+Xari used: !pmob 6130208 10 
+Xari used: !pmob 6130208 10 
+Xari used: !pmob 6130208 10 
+Xari used: !pmob 6130208 10 
+Xari used: !pmob 6130208 10 
+Xari used: !search mob captain 
+Xari used: !pmob 7130104 5 
+Xari used: !pmob 7130104 5 
+Xari used: !pmob 7130104 5 
+Xari used: !pmob 7130104 5 
+Xari used: !pmob 7130104 5 
+Xari used: !pmob 7130104 5 
+Xari used: !pmob 7130104 5 
+Xari used: !pmob 7130104 5 
+Xari used: !pmob 7130104 5 
+Xari used: !pmob 7130104 5 
+Xari used: !pmob 7130104 5 
+Xari used: !pmob 7130104 5 
+Xari used: !pmob 7130104 5 
+Xari used: !pmob 7130104 5 
+Xari used: !pmob 7130104 5 
+Xari used: !pmob 7130104 5 
+Xari used: !heal 

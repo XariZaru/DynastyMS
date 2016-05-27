@@ -1,0 +1,5 @@
+Bank caused DAMAGE_HACK DMG: 14 MaxDMG: 9 SID: 0 MobID: 100100 Map:  (300000000)
+Win caused DAMAGE_HACK DMG: 4308 MaxDMG: 2818 SID: 15111007 MobID: 9300018 Map: Exclusive Training Center (970030000)
+Win caused DAMAGE_HACK DMG: 4458 MaxDMG: 2818 SID: 15111007 MobID: 9300018 Map: Exclusive Training Center (970030000)
+Win caused DISTANCE_HACK Distance Sq to monster: 480250.0 SID: 15101003 MID: 9300018
+Win caused DISTANCE_HACK Distance Sq to monster: 316970.0 SID: 15101003 MID: 9300018

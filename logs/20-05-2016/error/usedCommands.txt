@@ -1,0 +1,485 @@
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !spawn 100100 1 
+Xari used: !spawn 100100 
+Xari used: !killall 
+Xari used: !spawn 100100 
+Xari used: !spawn 100100 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !spawn 100100 1 
+Xari used: !spawn 100100 10 
+Xari used: !killall 
+Xari used: !search mob king clang 
+Xari used: !spawn 5220000 
+Xari used: !search item pendant 
+Xari used: !item 1122012 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !search item timeless pen 
+Xari used: !saveall 
+Xari used: !saveall 
+Xari used: !search item horntail 
+Xari used: !item 1122000 
+Xari used: !search item horntail 
+Xari used: !search item dragon 
+Xari used: !search item dragon stone 
+Xari used: !item 20412000 
+Xari used: !item 2041000 
+Xari used: !search item dragon stone 
+Xari used: !item 2014200 
+Xari used: !item 2014200 
+Xari used: !search item dragon stone 
+Xari used: !item 2041200 
+Xari used: !search npc cody 
+Xari used: !search npc yue lao 
+Xari used: !item 2041200 
+Xari used: !item 2041200 3 
+Xari used: !item 2041200 3 
+Xari used: !level 120 
+Xari used: !search mob pink bean 
+Xari used: !npc 8820014 
+Xari used: @heper 
+Xari used: !search mob pink bean 
+Xari used: !spawn 8820014 
+Xari used: !spawn 8820014 
+Xari used: !search mob pink bean 
+Xari used: !spawn 8820014 
+Xari used: !spawn 100100 
+Xari used: !search mob pink bean 
+Xari used: !spawn 8820000 
+Xari used: !killall 
+Xari used: !spawn 8820000 
+Xari used: !killall 
+Xari used: !spawn 8820000 
+Xari used: !killall 
+Xari used: !spawn 8820014 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !spawn 8820000 
+Xari used: !killall 
+Xari used: !cleardrops 
+Xari used: !search mob pink bean 
+Xari used: !droprate 
+Xari used: !spawn 8820001 
+Xari used: !killall 
+Xari used: !spawn 8820001 
+Xari used: !killall 
+Xari used: !cleardrops 
+Xari used: !spawn 8820001 
+Xari used: !killall 
+Xari used: / 109040000 
+Xari used: / 10904000 
+Xari used: !killlall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !search mob pianus 
+Xari used: !spawn 8510000 
+Xari used: !killall 
+Xari used: !item 4031905 
+Xari used: !item 4001085 
+Xari used: !item 2000004 
+Xari used: !item 2020013 
+Xari used: !item 2020015 
+Xari used: !item 200006 
+Xari used: !item 2000006 
+Xari used: !item 2000005 
+Xari used: !item 2043113 
+Xari used: !item 2040504 
+Xari used: !item 2040501 
+Xari used: !item 2040513 
+Xari used: !item 2040516 
+Xari used: !item 2040622 
+Xari used: !item 2040536 
+Xari used: !item 2040536 
+Xari used: !item 2040536 
+Xari used: !item 2040320 
+Xari used: !item 2040401 
+Xari used: !item 2049000 
+Xari used: !item 2290132 
+Xari used: !item 2290132 
+Xari used: !item 2388020 
+Xari used: !item 1322029 
+Xari used: !item 1041123 
+Xari used: !item 1061122 
+Xari used: !item 1040121 
+Xari used: !item 1060110 
+Xari used: !item 1412010 
+Xari used: !item 1302023 
+Xari used: !item 1402005 
+Xari used: !item 1051102 
+Xari used: !item 1050103 
+Xari used: !item 1051106 
+Xari used: !item 4031905 
+Xari used: !item 4001085 
+Xari used: !item 2000004 
+Xari used: !item 2020013 
+Xari used: !item 2020015 
+Xari used: !item 2000006 
+Xari used: !item 2000005 
+Xari used: !item 2043113 
+Xari used: !item 2040504 
+Xari used: !item 2040501 
+Xari used: !item 2040513 
+Xari used: !item 2040516 
+Xari used: !item 2040622 
+Xari used: !item 2040320 
+Xari used: !item 2040401 
+Xari used: !item 2049000 
+Xari used: !item 2290132 
+Xari used: !item 2388020 
+Xari used: !item 1322029 
+Xari used: !item 1041123 
+Xari used: !item 1061122 
+Xari used: !item 1040121 
+Xari used: !item 1060110 
+Xari used: !item 1412010 
+Xari used: !item 1302023 
+Xari used: !item 1302023 
+Xari used: !item 1402005 
+Xari used: !item 1051102 
+Xari used: !item 1050103 
+Xari used: !item 1051106 
+Xari used: !item 1050107 
+Xari used: !item 2040536 
+Xari used: !item 2040536 
+Xari used: !item 2040536 
+Xari used: !item 2040536 
+Xari used: !heal 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !spawn 100100 
+Xari used: !spawn 100100 
+Xari used: !spawn 100100 
+Xari used: !job 312 
+Xari used: !maxskills 
+Xari used: !search item arrow 
+Xari used: !item 2060004 
+Xari used: !item 2006004 
+Xari used: !item 2060004 
+Xari used: !item 2060004 999 
+Xari used: !item 2060004 9999 
+Xari used: !search item summoning rock 
+Xari used: !item 4006001 100 
+Xari used: !heal 
+Xari used: !seach item all cure 
+Xari used: !search item all cure 
+Xari used: !heal 
+Xari used: !search item all cure 
+Xari used: !item 2050004 100 
+Xari used: !heal 
+Xari used: !heal 
+Xari used: !heal 
+Xari used: !heal 
+Xari used: !heal 
+Xari used: !heal 
+Xari used: !heal 
+Xari used: !heal 
+Xari used: !heal 
+Xari used: !heal 
+Xari used: !heal 
+Xari used: !heal 
+Xari used: !heal 
+Xari used: !heal 
+Xari used: !heal 
+Win used: @level 100 
+Win used: @map 10000000 
+Win used: @map 100000000 
+Win used: @map 1000000000 
+Win used: @warp 10000 
+Win used: @warp 100000000 
+Win used: !drop 10000 
+Win used: !drop 100000 
+Win used: !drop 1000000 
+Win used: !drop 140000 
+Win used: !drop 1400000 
+Win used: !drop 1402046 
+Win used: @level 2 
+Win used: @level 3 
+Win used: @level 4 
+Win used: @level 3 
+Win used: @level 2 
+Win used: @level 4 
+Win used: @level 3 
+Win used: @level 2 
+Win used: @level 2 
+Win used: @level 2 
+Win used: @level 2 
+Win used: @level 2 
+Win used: @level 2 
+Win used: @level 2 
+Win used: @level 2 
+Win used: @level 2 
+Win used: @level 2 
+Win used: @level 2 
+Win used: @level 2 
+Win used: @level 2 
+Win used: @level 2 
+Win used: @level 2 
+Win used: @level 2 
+Win used: @level 2 
+Win used: @level 2 
+Win used: @level 2 
+Win used: @level 2 
+Win used: @level 2 
+Win used: @level 2 
+Win used: @level 2 
+Win used: @level 2 
+Win used: @level 2 
+Win used: @level 2 
+Win used: @level 2 
+Win used: @level 2 
+Win used: @level 2 
+Win used: @level 2 
+Win used: @level 2 
+Win used: @level 2 
+Win used: @level 2 
+Win used: @level 2 
+Win used: @level 2 
+Win used: @level 2 
+Win used: @level 2 
+Win used: @level 2 
+Win used: @level 2 
+Win used: @level 10 
+Win used: @level 11 
+Win used: @level 20 
+Win used: @level 20 
+Win used: @level 20 
+Win used: @level 20 
+Win used: @level 20 
+Win used: @level 20 
+Win used: @level 20 
+Win used: @level 20 
+Win used: @level 20 
+Win used: @level 20 
+Win used: @level 20 
+Win used: @level 20 
+Win used: @level 20 
+Win used: @level 20 
+Win used: @level 20 
+Win used: @level 20 
+Win used: @level 20 
+Win used: @level 20 
+Win used: @level 20 
+Win used: @level 20 
+Win used: @level 20 
+Win used: @level 20 
+Win used: @level 20 
+Win used: @level 20 
+Win used: @level 20 
+Win used: @level 20 
+Win used: @level 20 
+Win used: @level 20 
+Win used: @level 20 
+Win used: !item 4000005 
+Win used: !item 4000005 50 
+Xari used: !search item pomade 
+Xari used: !item 4000094 
+Xari used: !search item maroon jangoon boots 
+Xari used: !search item maroon jangoon 
+Xari used: !search item pin hov 
+Xari used: !search item guardian katara 
+Xari used: !search item guardian 
+Xari used: !search item katara 
+Xari used: !search item heaven justice 
+Xari used: !search item bubblign 
+Xari used: !search item bubbling 
+Xari used: !timerdebug 
+Xari used: @helper] 
+Xari used: !search item ribbon 
+Xari used: !item 1001009 
+Xari used: !search item ribbon 
+Xari used: !item 4000002 
+Xari used: !search mob ribbon pig 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !search mob slimy 
+Xari used: !spawn 9420510 1000 
+Xari used: !killall 
+Xari used: !cleardrops 
+Xari used: !spawn 9420510 1000 
+Xari used: !killall 
+Xari used: !spawn 9420510 1000 
+Xari used: !killall 
+Xari used: !spawn 9420510 1000 
+Xari used: !killall 
+Xari used: !spawn 9420510 10000 
+Xari used: !killall 
+Xari used: !spawn 9420510 
+Xari used: !spawn 9420510 100000 
+Xari used: !killall 
+Xari used: !spawn 9420510 10000 
+Xari used: !killall 
+Xari used: !cleardrops 
+Xari used: ! 
+Xari used: !onliune 
+Xari used: !saveall 
+Xari used: !search mob dark stump 
+Xari used: !search item leaf 
+Xari used: !item 1012031 
+Xari used: !search item leaf 
+Xari used: !item 4000005 
+Xari used: !item 4000005 
+Xari used: !spawn 9452010 
+Xari used: !search mob slimy 
+Xari used: !spawn 9420510 
+Xari used: !spawn 9420510 100000 
+Xari used: !killall 
+Xari used: !spawn 9420510 500 
+Xari used: !killall 
+Xari used: !spawn 9452010 1000 
+Xari used: !killall 
+Xari used: !spawn 9452010 1000 
+Xari used: !spawn 9452010 1000 
+Xari used: !search 
+Xari used: !spawn 9452010 1000 
+Xari used: !search mob slimy 
+Xari used: !spawn 9420510 
+Xari used: !spawn 9420510 1000 
+Xari used: !killall 
+Xari used: !spawn 9452010 1000 
+Xari used: !spawn 9452010 1000 
+Xari used: !spawn 9425010 1000 
+Xari used: !search mob slimy 
+Xari used: !spawn 9420510 1000 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !spawn 9420510 1000 
+Xari used: !killall 
+Xari used: !spawn 9420510 1000 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !spawn 9420510 1000 
+Xari used: !killall 
+Xari used: !spawn 9420510 1000 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !spawn 9420510 1000 
+Xari used: !killall 
+Xari used: !spawn 9420510 1000 
+Xari used: !spawn 9420510 1000 
+Xari used: !spawn 9420510 1000 
+Xari used: !killall 
+Xari used: !cleardrops 
+Xari used: !spawn 9420510 
+Xari used: !spawn 9420510 
+Xari used: !spawn 9420510 30 
+Xari used: !killall 
+Xari used: !spawn 9420510 30 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !spawn 9420510 30 
+Xari used: !killall 
+Xari used: !spawn 9420510 30 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !spawn 9420510 30 
+Xari used: !spawn 9420510 30 
+Xari used: !spawn 9420510 30 
+Xari used: !killall 
+Xari used: !spawn 9420510 30 
+Xari used: !killall 
+Xari used: !spawn 9420510 30 
+Xari used: !killall 
+Xari used: !spawn 9420510 30 
+Xari used: !spawn 9420510 30 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !spawn 9420510 30 
+Xari used: !spawn 9420510 30 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !spawn 9420510 30 
+Xari used: !spawn 9420510 30 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !spawn 9420510 30 
+Xari used: !spawn 9420510 30 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !spawn 9420510 30 
+Xari used: !spawn 9420510 30 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !spawn 9420510 30 
+Xari used: !spawn 9420510 30 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !spawn 9420510 30 
+Xari used: !spawn 9420510 30 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !spawn 9420510 30 
+Xari used: !spawn 9420510 30 
+Xari used: !spawn 9420510 30 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !spawn 9420510 30 
+Xari used: !spawn 9420510 30 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !spawn 9420510 30 
+Xari used: !spawn 9420510 30 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !spawn 9420510 30 
+Xari used: !spawn 9420510 30 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !cleardrops 
+Xari used: !killall 
+Xari used: !spawn 9420510 30 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !cleardrops 
+Xari used: !killall 
+Xari used: !spawn 9420510 30 
+Xari used: !killall 
+Xari used: !spawn 9420510 30 
+Xari used: !killall 
+Xari used: !spawn 9420510 30 
+Xari used: !spawn 9420510 30 
+Xari used: !spawn 9420510 30 
+Xari used: !spawn 9420510 30 
+Xari used: !killall 
+Xari used: !spawn 9420510 30 
+Xari used: !killall 
+Xari used: !spawn 9420510 30 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !item 2040041 
+Xari used: !item 2040041 
+Xari used: !cleardrops 
+Xari used: !killall 
+Xari used: !search mob slimy 
+Xari used: !spawn 9420510 1000 
+Xari used: !killall 
+Xari used: !item 2040041 
+Xari used: !spawn 9420510 1000 
+Xari used: !killall 
+Xari used: !search mob mus 
+Xari used: !saveall 

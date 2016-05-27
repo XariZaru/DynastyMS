@@ -1,0 +1,42 @@
+Xari used: !search npc administrator 
+Xari used: !npc 2007 
+Xari used: !npc 2007 
+Xari used: !search npc gaga 
+Xari used: !npc 9000042 
+Xari used: !search npc gaga 
+Xari used: !timerdebug 
+Xari used: !timerdebug 
+Xari used: !timerdebug 
+Xari used: !meso 5000000 
+Xari used: !mesoperson Xari 5000000 
+Xari used: !mesos 5000000 
+Xari used: !search npc cherry 
+Xari used: !search npc rini 
+Xari used: / 
+Xari used: !timerdebug 
+Xari used: !search npc crane 
+Xari used: !search npc ramini 
+Xari used: !search npc tommie 
+Xari used: !search npc sunny 
+Xari used: !search npc tian 
+Xari used: !search npc geras 
+Xari used: !search npc assesson 
+Xari used: !search npc asesson 
+Xari used: !horntail 
+Xari used: !search mob horntail 
+Xari used: !spawn 8810018 
+Xari used: !search mob horntail 
+Xari used: !spawn 8810018 
+Xari used: !spawn 8810018 
+Xari used: /search mob horntali 
+Xari used: /search mob horntail 
+Xari used: !horntail 
+Xari used: !spawn 8810026 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !spawn 8810026 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 

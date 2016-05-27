@@ -1,0 +1,43 @@
+Win used: @drop 4000541 50 
+Win used: @drop 4000541 
+Win used: @drop 4032508 
+Win used: @drop 4032508 
+Win used: @drop 4032508 50 
+Win used: @drop 4032508 
+Win used: @drop 4000538 50 
+Win used: @drop 4000537 50 
+Win used: @drop 4032509 50 
+Win used: @drop 4000528 50 
+Win used: @drop 4000529 50 
+Win used: @drop 4000530 50 
+Win used: @drop 4000530 
+Win used: @drop 4000532 50 
+Win used: @drop 4000532 50 
+Win used: @drop 4000534 50 
+Win used: @drop 4000534 50 
+Win used: @drop 4000538 50 
+Win used: @drop 4000525 50 
+Win used: @drop 4000526 50 
+Win used: @drop 4000527 50 
+Win used: @drop 4032506 50 
+Win used: @drop 4032506 50 
+Win used: @drop 4032506 50 
+Win used: @drop 4000542 50 
+Win used: @drop 4000543 50 
+Win used: @drop 4000544 50 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !job 400 
+Xari used: !setquest 50 
+Win used: @item 5451000 
+Win used: @item 5451000 50 
+Win used: @give 5451000 50 
+Win used: @item 5451000 50 
+Win used: @item 5451000 50 
+Win used: @item 5451000 100 
+Win used: @item 5220023 100 
+Win used: @drop 5220023 
+Win used: @drop 5220023 
+Win used: @item 5220000 200 
+Win used: @item 5220000 200 

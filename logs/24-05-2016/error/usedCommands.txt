@@ -1,0 +1,163 @@
+Xari used: !item 1002357 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !reloadmap 
+Xari used: !search item eye of fire 
+Xari used: !item 4001017 
+Xari used: !item 4001017 99 
+Xari used: !spawn 88100003 
+Xari used: !search mob zakum 
+Xari used: !spawn 8800002 
+Xari used: !killall 
+Xari used: !spawn 8800002 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !spawn 8800002 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !cleardrops 
+Xari used: !spawn 8800002 
+Xari used: !killall 
+Xari used: !cleardrops 
+Xari used: !spawn 8800002 
+Xari used: !killall 
+Xari used: !cleardrops 
+Xari used: !spawn 8800002 
+Xari used: !killall 
+Xari used: !spawn 8800002 
+Xari used: !killall 
+Xari used: !cleardrops 
+Xari used: !spawn 8800002 
+Xari used: !killall 
+Xari used: !spawn 8800002 
+Xari used: !killall 
+Xari used: !cleardrops 
+Xari used: !spawn 8800002 
+Xari used: !killall 
+Xari used: !spawn 8800002 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !cleardrops 
+Xari used: !spawn 8800002 
+Xari used: !killall 
+Xari used: !spawn 8800002 
+Xari used: !killall 
+Xari used: !spawn 8800002 
+Xari used: !killall 
+Xari used: !cleardrops 
+Xari used: !spawn 8800002 
+Xari used: !killall 
+Xari used: !spawn 8800002 
+Xari used: !killall 
+Xari used: !spawn 8800002 
+Xari used: !killall 
+Xari used: !cleardrops 
+Xari used: !spawn 8800002 
+Xari used: !killall 
+Xari used: !spawn 8800002 
+Xari used: !killall 
+Xari used: !spawn 8800002 
+Xari used: !killall 
+Xari used: !spawn 8800002 
+Xari used: !killall 
+Xari used: !spawn 8800002 
+Xari used: !killall 
+Xari used: !spawn 8800002 
+Xari used: !killall 
+Xari used: !spawn 8800002 
+Xari used: !killall 
+Xari used: !spawn 8800002 
+Xari used: !killall 
+Xari used: !spawn 8800002 
+Xari used: !killall 
+Xari used: /spawn 8800002 
+Xari used: !killall 
+Xari used: /spawn 8800002 
+Xari used: !killall 
+Xari used: /spawn 8800002 
+Xari used: !killall 
+Xari used: !cleardrops 
+Xari used: /spawn 8800002 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: /spawn 8800002 
+Xari used: !killall 
+Xari used: !cleardrops 
+Xari used: /spawn 8800002 
+Xari used: !killall 
+Xari used: /spawn 8800002 
+Xari used: !cleardrops 
+Xari used: !killall 
+Xari used: !cleardrops 
+Xari used: /spawn 8800002 
+Xari used: !killall 
+Xari used: /search npc chest 
+Xari used: !search item scroll for accessory 
+Xari used: !saveall 
+Xari used: !warphere winsane 
+Xari used: !servernote hi 
+Xari used: !item 1002357 
+Xari used: !notice 
+Xari used: / 
+Xari used: !search item scroll for cape 
+Xari used: !search item scroll for cape for def 
+Xari used: !search item scroll for cape for w 
+Xari used: !search item scroll for cape for w 
+Xari used: !cleardrops 
+Xari used: !saveall 
+Xari used: !revision beta 1.0 Added a revision command for GM 
+Xari used: !revision beta 1.0 Added revision command to GM 
+Xari used: !revision beta 1.0 Added revision command to GM 
+Xari used: !revision beta 1.0 Added GM command to update revisions in game 
+Xari used: !revision beta 1.0 Added revision command for GMs 
+Xari used: !saveall 
+Xari used: !revision beta 1.0 Added revision update command for GM 
+Xari used: !saveall 
+Xari used: !warphere winsane 
+Xari used: !warphere winsane 
+Xari used: !warphere winsane 
+Xari used: !warphere winsane 
+Xari used: !warphere winsane 
+Xari used: !warphere winsane 
+Xari used: !warphere winsane 
+Xari used: !warphere winsane 
+Xari used: !warphere winsane 
+Xari used: !search item clean slate 
+Xari used: !drop 2049000 
+Xari used: !drop 2049001 
+Xari used: !drop 2049002 
+Xari used: !drop 2049003 
+Xari used: !item 2049000 
+Xari used: !item 2049100 
+Xari used: !item 2049101 
+Xari used: !item 2049102 
+Xari used: !item 2049000 
+Xari used: !item 2049102 
+Xari used: !item 2049100 
+Xari used: !saveall 
+Xari used: !notice Restarting and saving 
+Xari used: !saveall 
+Xari used: !drop 1002357 
+Xari used: / 180000000 
+Xari used: !saveall 
+Xari used: !saveall 
+Xari used: !search item scroll 
+Xari used: !search item scroll for 
+Xari used: !item 2040000 
+Xari used: /m180000000 
+Xari used: /m18000000 
+Xari used: !item 4031862 
+Xari used: !item 2049000 
+Xari used: !item 2049001 
+Xari used: !item 2049100 
+Xari used: !item 2049100 100 
+Xari used: !search npc warrio 
+Xari used: !search npc yue lao 
+Xari used: !search npc warrior 
+Xari used: !item 2049101 100 
+Xari used: !item 2049100 100 
+Xari used: !search npc tian sha 
+Xari used: !saveall 
+Xari used: @hjelper 
+Xari used: @heloper 
