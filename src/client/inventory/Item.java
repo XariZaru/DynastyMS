@@ -33,6 +33,7 @@ import tools.DatabaseConnection;
 public class Item implements Comparable<Item> {
 
     private int id, cashId, sn, invId;
+    private int originalid;
     private short position;
     private short quantity;
     private int petid = -1;
@@ -69,6 +70,14 @@ public class Item implements Comparable<Item> {
         ret.expiration = expiration;
         ret.log = new LinkedList<>(log);
         return ret;
+    }
+    
+    public void setOriginalId(int id) {
+    	this.originalid = id;
+    }
+    
+    public int getOriginalId() {
+    	return this.originalid;
     }
     
     

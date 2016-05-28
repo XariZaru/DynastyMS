@@ -110,6 +110,7 @@ public enum ItemFactory {
                     equip.setRingId(rs.getInt("ringid"));
                     equip.setInvId(rs.getInt("inventoryitemid"));
                     equip.setOriginality(equip.loadOriginal() == null ? true : false);
+                    equip.setOriginalId(rs.getInt("originalid"));
                     items.add(new Pair<Item, MapleInventoryType>(equip, mit));
                 } else {
                     Item item = new Item(rs.getInt("itemid"), (byte) rs.getInt("position"), (short) rs.getInt("quantity"), rs.getInt("petid"));
@@ -117,6 +118,7 @@ public enum ItemFactory {
                     item.setExpiration(rs.getLong("expiration"));
                     item.setGiftFrom(rs.getString("giftFrom"));
                     item.setFlag((byte) rs.getInt("flag"));
+                    item.setOriginalId(rs.getInt("originalid"));
                     items.add(new Pair<>(item, mit));
                 }
             }
@@ -150,25 +152,25 @@ public enum ItemFactory {
             ps.setInt(2, id);
             ps.executeUpdate();
             ps.close();
-            ps = con.prepareStatement("INSERT INTO `inventoryitems` VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
+            ps = con.prepareStatement("INSERT INTO `inventoryitems` VALUES (DEFAULT, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
 
             if (!items.isEmpty()) {
                 for (Pair<Item, MapleInventoryType> pair : items) {
                     Item item = pair.getLeft();
                     MapleInventoryType mit = pair.getRight();
-                    ps.setInt(1, item.getInvId());
-                    ps.setInt(2, value);
-                    ps.setString(3, account ? null : String.valueOf(id));
-                    ps.setString(4, account ? String.valueOf(id) : null);
-                    ps.setInt(5, item.getItemId());
-                    ps.setInt(6, mit.getType());
-                    ps.setInt(7, item.getPosition());
-                    ps.setInt(8, item.getQuantity());
-                    ps.setString(9, item.getOwner());
-                    ps.setInt(10, item.getPetId());
-                    ps.setInt(11, item.getFlag());
-                    ps.setLong(12, item.getExpiration());
-                    ps.setString(13, item.getGiftFrom());
+                    ps.setInt(1, value);
+                    ps.setString(2, account ? null : String.valueOf(id));
+                    ps.setString(3, account ? String.valueOf(id) : null);
+                    ps.setInt(4, item.getItemId());
+                    ps.setInt(5, mit.getType());
+                    ps.setInt(6, item.getPosition());
+                    ps.setInt(7, item.getQuantity());
+                    ps.setString(8, item.getOwner());
+                    ps.setInt(9, item.getPetId());
+                    ps.setInt(10, item.getFlag());
+                    ps.setLong(11, item.getExpiration());
+                    ps.setString(12, item.getGiftFrom());
+                    ps.setInt(13, item.getOriginalId());
                     ps.executeUpdate();
 
                     pse = con.prepareStatement("INSERT INTO `inventoryequipment` VALUES (DEFAULT, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");

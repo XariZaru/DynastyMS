@@ -9,20 +9,7 @@ var txt = "";
 var replace = null;
 
 function start() {
-	var dataProvider = MapleDataProviderFactory.getDataProvider(new File("wz/Sound.wz"));
-	var data = dataProvider.getData("Bgm00.img");
-	var txt = "";
-	if (data != null) {
-		var data = data.getChildren().toArray();
-		for (var x = 0; x < data.length; x++) {
-			txt += data[x].getName() + "\r\n";
-			//name = MapleDataTool.getString(searchData.getChildByPath("name"), "NO-NAME");
-			//if (name.toLowerCase().contains(search.toLowerCase())) {
-			//	sb.append("#b").append(Integer.parseInt(searchData.getName())).append("#k - #r").append(name).append("\r\n");
-			//}
-		}
-	}
-	cm.sendOk(txt);
+	cm.sendSimple(cm.getEquips());
 	//cm.getPlayer().addBossAttempt("Zakum");
 	//cm.sendOk(cm.getPlayer().getBossAttempt("Zakum"));
 	/*
@@ -45,9 +32,16 @@ function action(m,t,s) {
 	}
 	if (status == 0) {
 		slot = s;
-		equip = cm.getEquip(s);
-		cm.sendSimple("Loading these stats\r\n\r\n" + cm.getEquipInfo(equip.loadOriginal()));
-		cm.dispose();
+		equip = cm.getEquip(s).loadOriginal();
+		if (equip == null) {
+			cm.sendOk("There is no saved item for this.");
+			cm.dispose();
+			return;
+		}
+		cm.sendSimple("Loading item ("+ equip.getOriginalId() +") v. ("+cm.getEquip(s).getOriginalId()+") #i"+equip.getItemId()+"#\r\n\r\n" + cm.getEquipInfo(equip));
+		//cm.sendSimple(s + " Loading these stats ("+equip.getInvId()+")\r\n\r\n" + cm.getEquipInfo(equip.loadOriginal()));
+	} else if (status == 1) {
+		
 	}
 }
 		/*

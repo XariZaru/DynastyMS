@@ -1,0 +1,3 @@
+Win caused GENERAL  Tried to use RemoteGachaponHandler without a ticket.
+Win caused GENERAL  Tried to use RemoteGachaponHandler without a ticket.
+Wincake caused GENERAL  Tried to use RemoteGachaponHandler without a ticket.

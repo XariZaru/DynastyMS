@@ -105,30 +105,30 @@ public class Equip extends Item {
     public void saveEquip() {
         try (PreparedStatement record = DatabaseConnection.getConnection().prepareStatement(
     			"REPLACE INTO original_items "
-    	    			+ "(inventoryitemid, str, dex, luk, intelligence, hp, mp, wdef, mdef, watt, matt, acc, avoid, hands, speed, jump, vicious, upgrade_slots)"
+    	    			+ "(str, dex, luk, intelligence, hp, mp, wdef, mdef, watt, matt, acc, avoid, hands, speed, jump, vicious, upgrade_slots, originalid)"
     	    			+ " VALUES "
     	    			+ "(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)")) {
-	        	record.setInt(1, getInvId());
-	        	record.setInt(2, getStr());
-	    		record.setInt(3, getDex());
-	    		record.setInt(4, getLuk());
-	    		record.setInt(5, getInt());
-	    		record.setInt(6, getHp());
-	    		record.setInt(7, getMp());
-	    		record.setInt(8, getWdef());
-	    		record.setInt(9, getMdef());
-	    		record.setInt(10, getWatk());
-	    		record.setInt(11, getMatk());
-	    		record.setInt(12, getAcc());
-	    		record.setInt(13, getAvoid());
-	    		record.setInt(14, getHands());
-	    		record.setInt(15, getSpeed());
-	    		record.setInt(16, getJump());
-	    		record.setInt(17, getVicious());
-	    		record.setInt(18, getUpgradeSlots());
+	        	record.setInt(1, getStr());
+	    		record.setInt(2, getDex());
+	    		record.setInt(3, getLuk());
+	    		record.setInt(4, getInt());
+	    		record.setInt(5, getHp());
+	    		record.setInt(6, getMp());
+	    		record.setInt(7, getWdef());
+	    		record.setInt(8, getMdef());
+	    		record.setInt(9, getWatk());
+	    		record.setInt(10, getMatk());
+	    		record.setInt(11, getAcc());
+	    		record.setInt(12, getAvoid());
+	    		record.setInt(13, getHands());
+	    		record.setInt(14, getSpeed());
+	    		record.setInt(15, getJump());
+	    		record.setInt(16, getVicious());
+	    		record.setInt(17, getUpgradeSlots());
+	    		record.setInt(18, this.getInvId());
 	    		record.executeUpdate();
 	        	record.close();
-	        	this.is_original = false;
+	        	this.setOriginalId(this.getInvId());
         } catch (Exception e) {
         	e.printStackTrace();
         }
@@ -136,8 +136,10 @@ public class Equip extends Item {
     
     // Works with saveEquip ... gets the state of an item previously
     public Equip loadOriginal() {
-    	try (PreparedStatement ps = DatabaseConnection.getConnection().prepareStatement("SELECT * FROM original_items WHERE inventoryitemid = ?")) {
-    		ps.setInt(1, getInvId());
+    	if (getOriginalId() == 0)
+    		return null;
+    	try (PreparedStatement ps = DatabaseConnection.getConnection().prepareStatement("SELECT * FROM original_items WHERE originalid = ?")) {
+    		ps.setInt(1, getOriginalId());
     		ResultSet rs = ps.executeQuery();
     		if (rs.next()) {
                 Equip equip = (Equip) MapleItemInformationProvider.getInstance().getEquipById(this.getItemId());
@@ -158,7 +160,7 @@ public class Equip extends Item {
                 equip.setWatk((short) rs.getInt("watt"));
                 equip.setWdef((short) rs.getInt("wdef"));
                 equip.setUpgradeSlots((byte) rs.getInt("upgrade_slots"));
-                equip.setInvId(rs.getInt("inventoryitemid"));
+                equip.setOriginalId(rs.getInt("originalid"));
                 return equip;
     		}
     		ps.close();
@@ -170,7 +172,7 @@ public class Equip extends Item {
     }
     
     public boolean isOriginal() {
-    	return this.is_original;
+    	return this.getOriginalId() == 0;
     }
     
     public void setOriginality(boolean set) {
