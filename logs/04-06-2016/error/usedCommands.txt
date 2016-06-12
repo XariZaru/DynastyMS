@@ -1,0 +1,271 @@
+Fudge used: !warpto Fudges 
+Fudge used: !drop 5680016 
+Fudge used: !drop 5680016 
+Fudge used: !item 5680016 
+Fudge used: !drop 5211048 
+Fudge used: !drop 5211048 
+Fudge used: !buffme 
+Fudge used: !warphere Fudgs 
+Fudge used: !warphere Fudges 
+Fudge used: !giftmesos Fudges 10000000 
+Fudge used: !givemesos Fudges 10000000 
+Fudge used: !search item maple leaf 
+Fudge used: !drop 1012098 2000 
+Fudge used: !drop 1012098 2000 
+Fudge used: !search item maple leaf 
+Fudge used: !drop 4001126 
+Fudge used: !drop 4001126 3000 
+Fudge used: !warphere Fudges 
+Fudge used: !warphere Winsane 
+Fudge used: !search mob Golden slime 
+Fudge used: !spawn 940002 
+Fudge used: !search mob Golden slime 
+Fudge used: !spawn 9400202 
+Fudge used: !killall 
+Fudge used: !warpto Winsane 
+Fudge used: !warphere Fudges 
+Fudge used: !warpto Winsane 
+Fudge used: !buffme 
+Xari used: !level 10 
+Xari used: !killall 
+Xari used: !level 10 
+Xari used: !killall 
+Xari used: !level 10 
+Xari used: !spawn 9400300 
+Xari used: !killall 
+Xari used: !spawn 9400300 
+Xari used: !killall 
+Xari used: !spawn 9400300 10 
+Xari used: !killall 
+Xari used: !spawn 9400300 10 
+Xari used: !killall 
+Xari used: !spawn 9400300 10 
+Xari used: !killall 
+Xari used: !level 195 
+Xari used: !spawn 9400300 5 
+Xari used: !killall 
+Xari used: !spawn 9400300 3 
+Xari used: !killall 
+Xari used: !spawn 100100 
+Xari used: !spawn 9400300 
+Xari used: !killall 
+Xari used: !spawn 9400300 10 
+Xari used: !killall 
+Xari used: !spawn 9400300 10 
+Xari used: !spawn 9400300 10 
+Xari used: !spawn 9400300 10 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !level 199 
+Fudge used: !warpto Fudges 
+Fudge used: !drop 5530672 
+Fudge used: !drop 5530146 
+Fudge used: !drop 5530146 
+Fudge used: !drop 5211048 
+Fudge used: !drop 5211048 
+Fudge used: !killall 
+Fudge used: !warphere Fudges 
+Fudge used: !buffme\ 
+Fudge used: !buffme 
+Fudge used: !killall 
+Fudge used: !killall 
+Fudge used: !warpto Winsane 
+Fudge used: !warphere Fudges 
+Fudge used: !warphere Fudges 
+Fudge used: !warpto Winsane 
+Fudge used: !warphere Fudges 
+Fudge used: !buffme 
+Fudge used: !buffme 
+Fudge used: !search item onyx 
+Fudge used: !drop 20220179 
+Fudge used: !search item onyx 
+Fudge used: !drop 2022179 
+Fudge used: !drop 2022179 25 
+Fudge used: !warpto Winsane 
+Fudge used: !drop 4000384 
+Fudge used: !warpto Winsane 
+Fudge used: !giftnx Winsane 69 
+Fudge used: !warpto Winsane 
+Fudge used: !warphere Fudges 
+Fudge used: !search item chair 
+Fudge used: !drop 3010001 
+Fudge used: !drop 3010001 
+Fudge used: !warphere Fudges 
+Fudge used: !warpto Fudges 
+Fudge used: !drop 3010001 
+Fudge used: !warphere fudges 
+Fudge used: !warphere fudges 
+Fudge used: !warphere fudges 
+Fudge used: !warphere fudges 
+Fudge used: !warphere fudges 
+Fudge used: !warphere fudges 
+Fudge used: !warphere fudges 
+Fudge used: !warphere Winsane 
+Fudge used: !warpto Winsane 
+Fudge used: !warpto Fudges 
+Fudge used: !warphere Fudges 
+Fudge used: !warphere Fudges 
+Fudge used: !warphere Fudges 
+Fudge used: !warphere Fudges 
+Fudge used: !warphere Fudges 
+Fudge used: !warpto Winsane 
+Fudge used: !killall 
+Fudge used: !killall 
+Fudge used: !killall 
+Fudge used: !cleardroos 
+Fudge used: !cleardrops 
+Fudge used: !warphere Fudges 
+Fudge used: !warphere Fudges 
+Fudge used: !warphere Fudges 
+Fudge used: !warphere Fudges 
+Fudge used: !warphere Fudges 
+Fudge used: !warphere Fudges 
+Fudge used: !warphere Fudges 
+Fudge used: !warphere Fudges 
+Fudge used: !warphere Fudges 
+Fudge used: !warphere Fudges 
+Fudge used: !warphere Fudges 
+Fudge used: !warpto Winsane 
+Fudge used: !killall 
+Fudge used: !warpto Winsane 
+Fudge used: !warphere Fudges 
+Fudge used: !warphere Fudges 
+Fudge used: !warphere Fudges 
+Fudge used: !warphere Fudges 
+Fudge used: !warphere Fudges 
+Fudge used: !warphere Fudges 
+Fudge used: !warphere Fudges 
+Fudge used: !warphere Fudges 
+Fudge used: !warphere Fudges 
+Fudge used: !warphere Fudges 
+Fudge used: !warphere Fudges 
+Fudge used: !warphere Winsane 
+Fudge used: !warphere Winsane 
+Fudge used: !warphere Winsane 
+Fudge used: !warphere Fudges 
+Fudge used: !warphere Fudges 
+Fudge used: !warphere Fudges 
+Fudge used: !warpto Winsane 
+Fudge used: !warpto Fudges 
+Fudge used: !warphere Winsane 
+Fudge used: !warphere Fudges 
+Fudge used: !warphere Fudges 
+Fudge used: !wa 
+Fudge used: !warphere Winsane 
+Fudge used: !warphere Winsane 
+Fudge used: !warphere Fudges 
+Fudge used: !warphere Fudges 
+Fudge used: !warphere Fudges 
+Fudge used: !warphere Fudges 
+Fudge used: !warpto winsane 
+Fudge used: !warphere Winsane 
+Fudge used: !warphere fudges 
+Fudge used: !warphere fudges 
+Fudge used: !warphere Winsane 
+Fudge used: !warphere Winsane 
+Fudge used: !warphere fudges 
+Fudge used: !warphere fudges 
+Fudge used: !warphere fudges 
+Fudge used: !warphere fudges 
+Fudge used: !warpto Winsane 
+Fudge used: !warpto Winsane 
+Fudge used: !warphere Fudge 
+Fudge used: !warphere Fudges 
+Fudge used: !warphere Fudges 
+Fudge used: !warphere Winsane 
+Fudge used: !warphere Winsane 
+Fudge used: !warphere Fudges 
+Fudge used: !warphere Fudges 
+Fudge used: !warphere Winsane 
+Fudge used: !warphere Fudges 
+Fudge used: !warphere Fudges 
+Fudge used: !warphere Fudges 
+Fudge used: !warphere Winsane 
+Fudge used: !warphere Winsane 
+Fudge used: !warphere Fudges 
+Fudge used: !warphere Fudges 
+Fudge used: !warphere Winsane 
+Fudge used: !warphere Winsane 
+Fudge used: !warphere winsane 
+Fudge used: !warphere Winsane 
+Fudge used: !warphere Fudges 
+Fudge used: !warphere Fudges 
+Fudge used: !warphere Fudges 
+Fudge used: !warphere Fudges 
+Fudge used: !warphere Fudges 
+Fudge used: !warphere Fudges 
+Fudge used: !warphere Winsane 
+Fudge used: !warphere Fudges 
+Fudge used: !warphere Fudges 
+Fudge used: !warphere Winsane 
+Fudge used: !search mob silver slime 
+Fudge used: !spawn 9400103 
+Fudge used: !search mob silver slime 
+Fudge used: !spawn 9400203 
+Fudge used: !killall 
+Fudge used: !spawn 9400203 
+Fudge used: !killall 
+Fudge used: !warpto Winsane 
+Fudge used: !drop 2040804 
+Fudge used: !warphere Fudges 
+Fudge used: !spawn 9400203 
+Fudge used: !spawn 9400203 
+Fudge used: !warpto Winsane 
+Fudge used: !warphere Fudges 
+Fudge used: !buffme 
+Fudge used: !heal Fudges 
+Fudge used: !warphere Winsane 
+Fudge used: !warphere Fudges 
+Fudge used: !heal Winsane 
+Fudge used: !warpto Winsane 
+Fudge used: !buffme 
+Fudge used: !warpto Fudges 
+Fudge used: !search item Horse skull 
+Fudge used: !drop 4000208 10 
+Fudge used: !search item Pelvic bone 
+Fudge used: !drop 4000207 50 
+Fudge used: !warphere Fudges 
+Fudge used: !warphere Fudges 
+Fudge used: !warphere Fudges 
+Fudge used: !warphere Fudges 
+Fudge used: !warpto fudges 
+Fudge used: !buffme 
+Fudge used: !warpto Fudges 
+Fudge used: !warpto Fudges 
+Fudge used: !warpto Winsane 
+Fudge used: !search item Sp reset 
+Fudge used: !search item ap reset 
+Fudge used: !warpto fudges 
+Fudge used: !drop 5050000 1000 
+Fudge used: !search mob headless 
+Fudge used: !spawn 9400959 
+Fudge used: !search mob headless 
+Fudge used: !spawn 9400549 
+Fudge used: !buffme 
+Fudge used: !buffme 
+Fudge used: !buffme 
+Fudge used: !buffme 
+Fudge used: !killall 
+Fudge used: !warphere Fudges 
+Fudge used: !warphere Fudges 
+Fudge used: !warpto Fudges 
+Fudge used: !buffme 
+Fudge used: !buffme 
+Fudge used: !buffme 
+Fudge used: !buffme 
+Fudge used: !warpto Winsane 
+Fudge used: !buffme 
+Fudge used: !notice Lol 
+Fudge used: !killall 
+Fudge used: !killall 
+Fudge used: !search item coupon 
+Fudge used: !item 4001007 
+Fudge used: !item 4001007 100 
+Fudge used: !warpto Winsane 
+Fudge used: !drop 5211048 
+Fudge used: !drop 5211048 
+Win used: !drop 4004001 2 
+Win used: @drop 4004001 10 
+Win used: @drop 4000053 1 
+Win used: !servermessage 

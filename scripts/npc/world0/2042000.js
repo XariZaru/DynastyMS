@@ -1,9 +1,14 @@
 importPackage(Packages.server.life);
 importPackage(Packages.server.maps);
 var status = -1;
+
+// Maps that the bosses will spawn on and their respective names
 var maps = [280030000,109060005,109060005,109060005,109060005,109060005,109060005,109060005];
 var mobs = [8800000,9400575,9400549,9400121,9400300,8510000,8500001,8820001];
 var mob_names = ["Zakum", "Bigfoot", "Headless Horseman", "Anego", "The Boss", "Pianus", "Papulatus Clock", "Pink Bean"];
+
+// Default map you warp back to after you're done and the default map for bosses if not specified otherwise
+// Min party limit to do a boss run
 var default_boss_map = 109060005;
 var lobby_map = 109040000;
 var req_party_size = 1;
@@ -12,8 +17,10 @@ var req_party_size = 1;
 var x = 116, y = 154;
 
 function start() {
+	// If in the boss map
 	if (cm.getPlayer().getMapId() == default_boss_map || cm.getPlayer().getMapId() == 280030000) {
 		cm.sendYesNo("Do you wish to be taken out of this map?");
+	// If in lobby
 	} else {
 		var txt = "Which boss do you wish to fight today? You'll need a party of at least 2 people in order to participate!\r\n\r\n";
 		for (var x = 0; x < mobs.length; x++)
@@ -30,17 +37,23 @@ function action(m,t,s) {
 		status++;
 	}
 	if (status == 0) {
+		// Warp out if in boss map
 		if (cm.getPlayer().getMapId() == default_boss_map || cm.getPlayer().getMapId() == 280030000) {
 			cm.warp(109040000);
 			cm.dispose();
+		// No party
 		} else if (cm.getParty() == null) {
 			cm.sendOk("You must be in a party to start the party quest!");
 			cm.dispose();
+		// Party size too small
 		} else if (cm.getParty().getMembers().size() < req_party_size) {
 			cm.sendOk("You must have at least 2 members in a party to participate.");
 			cm.dispose();
+		// Otherwise, good to go
 		} else {
+			// If map is empty, then green light
 			if (isFree(cm, maps[s])) {
+				// Checks if any players have already hit their max for the day
 				cannot_boss = cannotBoss(cm.getPlayer().getParty(), mob_names[s]);
 				if (cannot_boss.length > 0) {
 					var txt = "You cannot enter and fight " + mob_names[s] + ". Someone in your party has fought this boss too many times this week.\r\n";
@@ -50,19 +63,35 @@ function action(m,t,s) {
 					cm.dispose();
 					return;
 				}
+				
+				// Level check to see if players are within 15 levels of average level of party
+				level_check = levelCheck(cm.getPlayer().getParty());
+				if (level_check.length > 0) {
+					var txt = "You cannot enter and fight " + mob_names[s] + ". Someone in your party is 15 levels below or above the average party level. #eAverage party level: "+averagePartyLevel(party)+"#n\r\n";
+					for (var x = 0; x < cannot_boss.length; x++)
+						txt += "\r\n" + cannot_boss[x];
+					cm.sendOk(txt);
+					cm.dispose();
+					return;
+				}
+				
+				// Record stuff and warp + boss
 				cm.getPlayer().addBossAttempt(mob_names[s]);
 				cm.getPlayer().getClient().getChannelServer().getMapFactory().getMap(maps[s]).resetAll();
 				cm.getPlayer().getClient().getChannelServer().getMapFactory().getMap(maps[s]).warpEveryone(lobby_map);
 				cm.warpParty(maps[s]);
-				if (s == 0) {
+				// Eye of Zak for those who want to fight Zak
+				if (s == 0) { 
 					if (!cm.haveItem(4001017))
 						cm.gainItem(4001017);
+				// Otherwise, the other bosses
 				} else {
 					var mob = MapleLifeFactory.getMonster(mobs[s]);
 					mob.givesBossPoints(true);
 					mob.addPartyListener(cm.getParty());
 					cm.getPlayer().getMap().spawnMonsterOnGroundBelow(mob, 116, 154);
 				}
+			// Map is full
 			} else {
 				cm.sendOk("The map is currently not free at the moment.");
 			}
@@ -71,6 +100,7 @@ function action(m,t,s) {
 	}
 }
 
+// If players still have boss attempts
 function cannotBoss(party, boss) {
 	var members = party.getMembers().toArray();
 	var cannot_boss = [];
@@ -80,6 +110,27 @@ function cannotBoss(party, boss) {
 	return cannot_boss;
 }
 
+// Average party level
+function averagePartyLevel(party) {
+	var members = party.getMembers().toArray();
+	var level = 0;
+	for (var x = 0; x < members.length; x++)
+		level += members[x].getPlayer().getLevel();
+	return Math.floor(level / members.length);
+}
+
+// Level check for whole party
+function levelCheck(party) {
+	var members = party.getMembers().toArray();
+	var outliers = [];
+	
+	for (var x = 0; x < members.length; x++)
+		if (Math.abs(averagePartyLevel(party) - members[x].getPlayer().getLevel()) >= 15)
+			outliers.push(members[x].getPlayer());
+	return outliers;
+}
+
+// People be bossin' or nah
 function isFree(cm, mapid) {
 	return cm.getPlayerCount(mapid) == 0 || 
 		cm.getPlayerCount(mapid) == 0 && cm.getPlayer().getClient().getChannelServer().getMapFactory().getMap(mapid).countMobs() < 1;

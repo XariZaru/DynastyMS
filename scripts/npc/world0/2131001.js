@@ -4,7 +4,8 @@ var quest = 10002;
 
 function start() {
     status = -1;
-    if (!cm.iQC(quest)) {
+    if (!cm.isQuestCompleted(quest)) {
+		cm.sendOk("#bTalk with Assistant Blue before continuing!#k", 2);
         cm.talkGuide("Talk with Assistant Blue before you can continue with the storyline.");
         cm.dispose();
     } else if (cm.getQ()==0) {
@@ -36,7 +37,7 @@ function start() {
             cm.sendOk("Good work. It was quick and swift, very efficient.\r\n\r\n\r\n\r\n#fUI/UIWindow.img/QuestIcon/4/0#\r\n#fUI/UIWindow.img/QuestIcon/8/0# 100 exp\r\n#fUI/UIWindow.img/QuestIcon/7/0# 550 meso"+
                 "\r\n100 #i"+bpot+"# 100 #i"+rpot+"#")
             cm.gainMeso(550);
-            cm.gainExp(100);
+            cm.gainExp(200);
             cm.gainItem(shell, -5);
 			cm.gainItem(bpot, 100);
 			cm.gainItem(rpot, 100);
@@ -53,7 +54,7 @@ function start() {
         } else {
             cm.sendOk("Well done. Your training seems to be going by very quickly ...\r\n\r\n\r\n\r\n#fUI/UIWindow.img/QuestIcon/4/0#\r\n#fUI/UIWindow.img/QuestIcon/8/0# 500 exp\r\n#fUI/UIWindow.img/QuestIcon/7/0# 1000 meso")
             cm.complete();
-            cm.gainExp(500);
+            cm.gainExp(900);
             cm.gainMeso(1000);
             cm.completeQ();
             cm.gainItem(squishy, -3);
@@ -88,6 +89,7 @@ function action(mode, type, selection) {
           } else if (cm.getQ()==7) {
               //newb = cm.getLevel() - 10, newb *= 3;
               cm.changeJobById(cm.getJobId() + (100 + (100 * selection)));
+			  cm.gainItem(cm.getJobId() == 1100 ? 1302077 : cm.getJobId() == 1200 ? 1372043 : cm.getJobId() == 1300 ? 1452051 : cm.getJobId() == 1400 ? 1332063 : 1482000);
               //cm.gainSp(newb);
               cm.getPlayer().resetStats();
               cm.sendOk("You have been gifted your position. If you'd like to leave this place, talk to me one last time."); // You have gained"+
@@ -102,6 +104,7 @@ function action(mode, type, selection) {
            " are beyond your capability.");
         } else if (cm.getQ()==3) {
                  cm.sendOk("Go collect #b3#k #i"+squishy+"# for me. I'll talk to you when you're done.");
+				 cm.talkGuide("I heard there were some slimes that were causing trouble in a tent! Let's go check it out?");
                  cm.completeQ();
                  cm.dispose(); 
         } else if (cm.getQ() == 5) {
@@ -118,7 +121,7 @@ function action(mode, type, selection) {
                 cm.sendOk("#b"+cm.getText()+"#k you say? A fine name.\r\n\r\n#fUI/UIWindow.img/QuestIcon/4/0#\r\n#fUI/UIWindow.img/QuestIcon/8/0# 15 exp\r\n#fUI/UIWindow.img/QuestIcon/7/0# 250 meso")
                 cm.completeQ();
                 cm.gainMeso(250);
-                cm.gainExp(15);
+                cm.gainExp(100);
                 cm.talkGuide("Let's speak with Perzen again. I think we can offer our assistance to him.");
                 cm.dispose();
             }

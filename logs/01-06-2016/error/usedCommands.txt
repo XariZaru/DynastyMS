@@ -1,0 +1,45 @@
+Win used: !nx 1000 
+Win used: !givenx 100000 
+Win used: @givenx win 1 
+Win used: @givenx win 1 
+Win used: !givenx win 1 
+Win used: !nx 1 
+Win used: !nx win 1 
+Win used: !givenx win 1 
+Win used: !giftnx win 100000 
+Win used: !giftnx win 200000 
+Win used: @job 200 
+Win used: @job 300 
+Win used: @job 400 
+Win used: @job 1400 
+Win used: @job 1400 
+Win used: @job 1410 
+Win used: @drop 4031703 1 
+Win used: @drop 4031774 1 
+Win used: @drop 4031796 1 
+Win used: @drop 4031696 1 
+Win used: @drop 4000357 100 
+Win used: @drop 4000358 100 
+Win used: @drop 4000359 100 
+Win used: @drop 4000364 100 
+Win used: @drop 4000353 100 
+Win used: @drop 4000365 160 
+Win used: @drop 4031695 1 
+Win used: @drop 4032511 1 
+Win used: @spawn 7120100 
+Win used: @killall 
+Win used: @spawn 7120100 
+Win used: @killall 
+Win used: @spawn 7120100 
+Win used: @spawn 7120101 
+Win used: @spawn 7120102 
+Win used: @drop 4032512 1 
+Win used: @drop 4032513 1 
+Win used: @drop 4000362 1 
+Win used: @drop 4000351 40 
+Win used: @drop 4031694 10 
+Win used: @spawn 2110301 80 
+Win used: @spawn 2110300 160 
+Win used: @drop 2022198 
+Xari used: !search npc neinheart 
+Xari used: !saveall 

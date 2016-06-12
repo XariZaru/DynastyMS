@@ -108,6 +108,7 @@ import server.partyquest.SpawnPQ;
 import server.partyquest.dynasty.CustomCPQ;
 import server.partyquest.dynasty.CustomCPQParty;
 import server.partyquest.dynasty.DynastyPQ;
+import server.partyquest.dynastyPQ.IPartyQuest;
 import server.quest.MapleQuest;
 import tools.DatabaseConnection;
 import tools.FilePrinter;
@@ -284,6 +285,7 @@ public class MapleCharacter extends AbstractAnimatedMapleMapObject {
     private MapleDragon dragon = null;
     private ClearMap clearmap;
 	private int bosspoints;
+	private IPartyQuest partylistener;
 
     private MapleCharacter() {
         setStance(0);
@@ -538,7 +540,7 @@ public class MapleCharacter extends AbstractAnimatedMapleMapObject {
     		ps.setInt(1, getLevel());
     		ResultSet rs = ps.executeQuery();
     		while (rs.next()) {
-    			if (isDynastyQuestAvailable(rs.getString("questName")))
+    			if (getDynastyQuest(rs.getString("questName")) == 0)
     				counter++;
     		}
     		return counter;
@@ -649,6 +651,10 @@ public class MapleCharacter extends AbstractAnimatedMapleMapObject {
         List<MapleBuffStat> buffStatList = Arrays.asList(stat);
         deregisterBuffStats(buffStatList);
         cancelPlayerBuffs(buffStatList);
+    }
+    
+    public void registerPQ(IPartyQuest pq) {
+    	this.partylistener = pq;
     }
 
     public void setCombo(short count) {
@@ -2686,7 +2692,7 @@ public class MapleCharacter extends AbstractAnimatedMapleMapObject {
             }
         }
         if (job == MapleJob.BEGINNER || job == MapleJob.NOBLESSE || job == MapleJob.LEGEND) {
-            maxhp += Randomizer.rand(12, 16);
+            maxhp += Randomizer.rand(18, 24);
             maxmp += Randomizer.rand(10, 12);
         } else if (job.isA(MapleJob.WARRIOR) || job.isA(MapleJob.DAWNWARRIOR1)) {
             improvingMaxHP = isCygnus() ? SkillFactory.getSkill(DawnWarrior.MAX_HP_INCREASE) : SkillFactory.getSkill(Swordsman.IMPROVED_MAX_HP_INCREASE);
@@ -2696,15 +2702,15 @@ public class MapleCharacter extends AbstractAnimatedMapleMapObject {
                 improvingMaxMP = SkillFactory.getSkill(11110000);
             }
             improvingMaxHPLevel = getSkillLevel(improvingMaxHP);
-            maxhp += Randomizer.rand(35, 40);
+            maxhp += Randomizer.rand(53, 60);
             maxmp += Randomizer.rand(4, 6);
         } else if (job.isA(MapleJob.MAGICIAN) || job.isA(MapleJob.BLAZEWIZARD1)) {
             improvingMaxMP = isCygnus() ? SkillFactory.getSkill(BlazeWizard.INCREASING_MAX_MP) : SkillFactory.getSkill(Magician.IMPROVED_MAX_MP_INCREASE);
             improvingMaxMPLevel = getSkillLevel(improvingMaxMP);
-            maxhp += Randomizer.rand(13, 17);
+            maxhp += Randomizer.rand(19, 25);
             maxmp += Randomizer.rand(22, 24);
         } else if (job.isA(MapleJob.BOWMAN) || job.isA(MapleJob.THIEF) || (job.getId() > 1299 && job.getId() < 1500)) {
-            maxhp += Randomizer.rand(34, 37);
+            maxhp += Randomizer.rand(52, 56);
             maxmp += Randomizer.rand(14, 16);
         } else if (job.isA(MapleJob.GM)) {
             maxhp = 30000;
@@ -2712,10 +2718,10 @@ public class MapleCharacter extends AbstractAnimatedMapleMapObject {
         } else if (job.isA(MapleJob.PIRATE) || job.isA(MapleJob.THUNDERBREAKER1)) {
             improvingMaxHP = isCygnus() ? SkillFactory.getSkill(ThunderBreaker.IMPROVE_MAX_HP) : SkillFactory.getSkill(5100000);
             improvingMaxHPLevel = getSkillLevel(improvingMaxHP);
-            maxhp += Randomizer.rand(35, 39);
+            maxhp += Randomizer.rand(53, 59);
             maxmp += Randomizer.rand(18, 23);
         } else if (job.isA(MapleJob.ARAN1)) {
-            maxhp += Randomizer.rand(54, 59);
+            maxhp += Randomizer.rand(81, 89);
             int aids = Randomizer.rand(4, 8);
             maxmp += aids + Math.floor(aids * 0.1);
         }
@@ -2906,36 +2912,37 @@ public class MapleCharacter extends AbstractAnimatedMapleMapObject {
 //        }
     }
     
-    public boolean isDynastyQuestAvailable(String questid) {
+    public int getDynastyQuest(String questid) {
     	try {
 	 	   	Connection con = DatabaseConnection.getConnection();
-	        PreparedStatement ps = con.prepareStatement("SELECT * FROM completedquests WHERE characterid = ? AND questName = ?");
+	        PreparedStatement ps = con.prepareStatement("SELECT status FROM completedquests WHERE characterid = ? AND questName = ?");
 			ps.setInt(1, this.id);
 	        ps.setString(2, questid);
 	        ResultSet rs = ps.executeQuery();
-	        boolean result = rs.next() ? false : true;
+	        int result = rs.next() ? rs.getInt("status") : 0;
 	        ps.close();
 	        rs.close();
 	        return result;
     	} catch (Exception e) {
     		System.out.println("isDynastyQuestAvailable: Failed to load from Db!");
     	}
-		return false;
+		return 0;
     }
     
-    public void completeDynastyQuest(String questid) throws SQLException {
+    public void completeDynastyQuest(String quest) throws SQLException {
         try {
-        	if (isDynastyQuestAvailable(questid)) {
-        		Connection con1 = DatabaseConnection.getConnection();
-	            PreparedStatement ps;
-	            ps = con1.prepareStatement("insert into completedquests (characterid, questName) values (?,?)");
-	            ps.setInt(1, this.id);
-	            ps.setString(2, questid);
-	            ps.executeUpdate();
-	            ps.close();
-        	}
-        } catch (Exception Ex) {
-        	System.out.println("Tried to save a duplicate questid to db.");
+    		Connection con1 = DatabaseConnection.getConnection();
+    		PreparedStatement ps;
+    		if (getDynastyQuest(quest) == 0)
+    			ps = con1.prepareStatement("INSERT INTO completedquests VALUES (DEFAULT,?,?,1)");
+    		else
+    			ps = con1.prepareStatement("UPDATE completedquests SET status = status + 1 WHERE characterid = ? AND questName = ?");
+            ps.setInt(1, this.id);
+            ps.setString(2, quest);
+            ps.executeUpdate();
+            ps.close();
+        } catch (Exception e) {
+        	e.printStackTrace();
         }
     }
     
@@ -4533,9 +4540,9 @@ public class MapleCharacter extends AbstractAnimatedMapleMapObject {
     		int to_return = rs.next() ? rs.getInt("attempt") : 0;
     		if (System.currentTimeMillis() - rs.getTimestamp("attempt_time").getTime() >= 604800000) {
     			PreparedStatement update_time = DatabaseConnection.getConnection().prepareStatement("UPDATE boss_attempts SET attempt_time = ?, attempt = 0 WHERE boss_attempts.character = ? AND boss_attempts.boss = ?");
-    			update_time.setString(1, getName());
-    			update_time.setString(2, boss);
     			update_time.setTimestamp(1, new Timestamp(System.currentTimeMillis()));
+    			update_time.setString(2, getName());
+    			update_time.setString(3, boss);
     			update_time.executeUpdate();
     			update_time.close();
     			to_return = 0;

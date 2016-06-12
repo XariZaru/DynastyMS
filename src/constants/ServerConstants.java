@@ -23,9 +23,9 @@ public class ServerConstants {
     // IP Configuration
     public static String HOST;
     //Database Configuration
-    public static String DB_URL = "jdbc:mysql://66.150.188.180:3306/maplesolaxia";
+    public static String DB_URL = "jdbc:mysql://localhost:3306/maplesolaxia";
     public static String DB_USER = "root";
-    public static String DB_PASS = "";
+    public static String DB_PASS = "matkimj";
     //Other Configuration
     public static boolean JAVA_8;
     public static boolean SHUTDOWNHOOK;

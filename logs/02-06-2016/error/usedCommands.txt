@@ -1,0 +1,68 @@
+Xari used: !npc 1101002 
+Xari used: !npc 1101005 
+Xari used: !job 1312 
+Xari used: !job 1311 
+Xari used: !job 1310 
+Xari used: !search npc roca 
+Xari used: !npc 1103001 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Fudge used: !giftnx Fudges 10000 
+Fudge used: !giftnx Fudges 10000 
+Fudge used: !giftnx Fudges 10000 
+Fudge used: !giftnx Fudges 10000 
+Fudge used: !giftnx Fudges 10000 
+Fudge used: !dc Winsane 
+Fudge used: !dc Winsane 
+Fudge used: !dc Winsane 
+Fudge used: !saveall 
+Fudge used: !restart 
+Fudge used: !restart 
+Fudge used: /restart 
+Fudge used: !serverrestart 
+Fudge used: !dc Winsane 
+Fudge used: !dc Winsane 
+Fudge used: !kill Winsane 
+Fudge used: !heal 
+Fudge used: !heal Winsane 
+Fudge used: !dc Winsane 
+Fudge used: !unban Winsane 
+Fudge used: !ban Winsane 
+Fudge used: !unban Winsane 
+Fudge used: !dc winsane 
+Fudge used: !refresh 
+Fudge used: !reset 
+Fudge used: !disposeall 
+Fudge used: !clock 60 
+Fudge used: !reload 
+Fudge used: !restartserver 
+Fudge used: !restartnow 
+Fudge used: !resetnow 
+Fudge used: !kill 
+Fudge used: !kill Winsane lol 
+Fudge used: !kill Winsane lol 
+Fudge used: !heal winsane 
+Fudge used: !dc Winsane 
+Fudge used: !reload 
+Fudge used: !killall 
+Fudge used: !refresh 
+Fudge used: !serverrestart 
+Fudge used: !serverrestart 
+Fudge used: !say fuck this 
+Fudge used: !notice Fuck winsane^ 
+Fudge used: !onlien 
+Fudge used: !dc Winsane 
+Fudge used: !dc Winsane 
+Fudge used: !killall 
+Fudge used: !dc winsane 
+Fudge used: @dc winsane 
+Fudge used: /dc winsane 
+Fudge used: @warphere asd 
+Fudge used: @dc winsane 
+Fudge used: !dc winsane 

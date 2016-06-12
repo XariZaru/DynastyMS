@@ -41,6 +41,7 @@ public class MapleMonsterInformationProvider {
 	// Author : LightPepsi
 
 	private static final MapleMonsterInformationProvider instance = new MapleMonsterInformationProvider();
+	// Mob id and the drop they drop
 	private final Map<Integer, List<MonsterDropEntry>> drops = new HashMap<>();
 	private final List<MonsterGlobalDropEntry> globaldrops = new ArrayList<>();
 
@@ -50,6 +51,10 @@ public class MapleMonsterInformationProvider {
 
 	public static MapleMonsterInformationProvider getInstance() {
 		return instance;
+	}
+	
+	public Map<Integer, List<MonsterDropEntry>> getDrops() {
+		return drops;
 	}
 
 	public final List<MonsterGlobalDropEntry> getGlobalDrop() {

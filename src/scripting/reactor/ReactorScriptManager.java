@@ -61,6 +61,10 @@ public class ReactorScriptManager extends AbstractScriptManager {
             FilePrinter.printError(FilePrinter.REACTOR + reactor.getId() + ".txt", e);
         }
     }
+    
+    public Map<Integer, List<ReactorDropEntry>> getDrops() {
+    	return drops;
+    }
 
     public List<ReactorDropEntry> getDrops(int rid) {
         List<ReactorDropEntry> ret = drops.get(rid);

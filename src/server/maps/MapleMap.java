@@ -384,7 +384,8 @@ public class MapleMap {
         final List<MonsterDropEntry> dropEntry = new ArrayList<>(mi.retrieveDrop(mob.getId()));
         
         //if (de.itemId == 0) { // meso
-    	int mesos = (int) ((Math.random() * (1.1 - .5) + .5) * Math.log(mob.getMaxHp()) * 10.497 * (mob.getStats().getLevel())/8);
+        // Nerf by 1.25x
+    	int mesos = (int) ((int) ((Math.random() * (1.1 - .6) + .6) * Math.log(mob.getMaxHp()) * 10.497 * (mob.getStats().getLevel())/8) * .75);
         //int mesos = Randomizer.nextInt(de.Maximum - de.Minimum) + de.Minimum;
         if (mesos > 0) {
             if (chr.getBuffedValue(MapleBuffStat.MESOUP) != null) {

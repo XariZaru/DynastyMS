@@ -64,6 +64,7 @@ import server.maps.MapleMapObject;
 import server.maps.MapleMapObjectType;
 import server.partyquest.SpawnPQ;
 import server.partyquest.dynasty.CustomCPQ;
+import server.partyquest.dynasty.MobListener;
 import tools.MaplePacketCreator;
 import tools.Pair;
 import tools.Randomizer;
@@ -93,6 +94,8 @@ public class MapleMonster extends AbstractLoadedMapleLife {
     private int damageTaken = 0;
     private MapleCharacter belongsToChar = null;
     private List<MapleParty> party_listeners = new ArrayList<MapleParty>();
+    
+    private List<MobListener> mob_listeners = new ArrayList<MobListener>();
     
     // Custom Dynasty Stuff
     private boolean bossPoints = false;
@@ -479,6 +482,16 @@ public class MapleMonster extends AbstractLoadedMapleLife {
     }
 
     public MapleCharacter killBy(MapleCharacter killer) {
+    	
+    	// Listeners
+    	
+    	for (MobListener listener : mob_listeners)
+    		listener.mobKilled(this);
+    	
+    	
+    	
+    	// End of Listeners
+    	
     	if (killer.getCPQParty() != null) {
     		if (killer.getCPQParty().getCPQ() != null) {
 	    		killer.getCPQParty().addPoints(getId());
@@ -600,6 +613,10 @@ public class MapleMonster extends AbstractLoadedMapleLife {
 
     public void addListener(MonsterListener listener) {
         listeners.add(listener);
+    }
+    
+    public void addListener(MobListener listener) {
+    	mob_listeners.add(listener);
     }
 
     public boolean isControllerHasAggro() {

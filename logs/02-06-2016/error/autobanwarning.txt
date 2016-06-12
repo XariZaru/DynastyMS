@@ -1,0 +1,1 @@
+Winsane caused PACKET_EDIT Winsane tried to packet edit in General Chat.

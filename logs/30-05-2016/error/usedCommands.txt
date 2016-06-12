@@ -1,0 +1,140 @@
+Xari used: !job 910 
+Xari used: !job 212 
+Xari used: !job 1111 
+Xari used: !job 1112 
+Xari used: !job 1113 
+Xari used: !job 1112 
+Xari used: !job 1111 
+Xari used: !search item panic 
+Xari used: !search item cygnus 
+Xari used: !item 243000 
+Xari used: !item 2043000 
+Xari used: !search item cygnus 
+Xari used: !item 2430000 
+Xari used: !item 2430000 19 
+Xari used: !search item warrior 
+Xari used: !item 2022071 
+Xari used: !search item warrior 
+Xari used: !item 1142009 
+Xari used: !search item warrior 
+Xari used: !search item warrior 
+Xari used: !item 4032374 
+Xari used: !search item commend 
+Xari used: !item 4031885 
+Xari used: !search item commend 
+Xari used: !item 4031288 
+Xari used: !item 4031288 
+Xari used: !search item commend 
+Xari used: !search item letter 
+Xari used: !search mob guardian 
+Xari used: !search mob guardian 
+Xari used: !search 
+Xari used: !search item commendation 
+Xari used: !search mob guardian 
+Xari used: !spawn 9400582 
+Xari used: !search ite 
+Xari used: !heper 
+Xari used: !search mob papulatus 
+Xari used: !search mob zakum3 
+Xari used: !search mob qualm 
+Xari used: !search mob crimson 
+Xari used: !search mob oblivion 
+Xari used: !search npc agent 
+Xari used: !search npc agent 
+Xari used: !npc 9201075 
+Xari used: !npc 9000062 
+Xari used: !npc 9000063 
+Xari used: !npc 9000039 
+Xari used: !npc 9000064 
+Xari used: !npc 9000065 
+Xari used: !search skill mp recovery enhance 
+Xari used: !search skill mp recovery 
+Xari used: !search skill mp recovery 
+Xari used: !search skill combo attack 
+Xari used: !search skill panic 
+Xari used: !search skill coma 
+Xari used: !search skill brandish 
+Xari used: !search skill advanced combo 
+Xari used: !search skill soul charge 
+Xari used: !search skill soul driver 
+Xari used: !search skill advanced combo 
+Xari used: !search skill soul driver 
+Xari used: !search skill brandish 
+Xari used: !search item commend 
+Xari used: !item 4032374 
+Xari used: !item 4032374 50 
+Xari used: !search skill elemental resistance 
+Xari used: !search skill elemental amp 
+Xari used: !search skill element amp 
+Xari used: !search skill seal 
+Xari used: !search skill meteor shower 
+Xari used: !search skill ifrit 
+Xari used: !search skill flame gear 
+Xari used: !search skill fire strike 
+Xari used: !job 1212 
+Xari used: !search skill strafe 
+Xari used: !job 1300 
+Xari used: !job 1312 
+Xari used: !job 1412 
+Xari used: !search skill alchemist 
+Xari used: !search skill triple throw 
+Xari used: !search skill poison bomb 
+Xari used: !job 1512 
+Xari used: !job 2000 
+Xari used: !search npc spindle 
+Xari used: !job 1512 
+Xari used: !job 1112 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !cleardrops 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !cleardrops 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !search npc anonymous 
+Xari used: !search item ring 
+Xari used: !search item maple ring 
+Xari used: !search item ring 
+Xari used: !search item earring 
+Xari used: !search item ring 
+Xari used: !search item zombie army 
+Xari used: !search item spiegelmann 
+Xari used: !item 1112401 
+Xari used: !item 1112402 
+Fudge used: !givenx Fudges 10000 
+Xari used: !search npc agent w 
+Xari used: !search npc agent w 
+Xari used: !search skill venom 
+Xari used: !search skill brandish 
+Xari used: !search skill advanced combo 
+Xari used: !search skill meteor 
+Xari used: !search skill infrit 
+Xari used: !search skill frit 
+Xari used: !search skill albatross 
+Xari used: !search skill albat 
+Xari used: !search skill tross 
+Xari used: !job 1312 
+Xari used: !search skill triple throw 
+Xari used: !search skill venom 
+Xari used: !search skill barrage 
+Xari used: !search skill speed infus 
+Xari used: !search skill eagle eye 
+Xari used: !search skill hurricane 
+Xari used: !search skill bow expert 
+Xari used: /pos 
+Xari used: !search npc perzen 
+Xari used: /pos 
+Xari used: !saveall 

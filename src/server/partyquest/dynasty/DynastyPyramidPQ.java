@@ -8,6 +8,7 @@ import java.util.concurrent.TimeUnit;
 import client.MapleCharacter;
 import net.server.world.MapleParty;
 import net.server.world.MaplePartyCharacter;
+import server.life.MapleMonster;
 
 public class DynastyPyramidPQ extends DynastyPQ implements MobListener, DynastyPQInterface, PointsInterface {
 
@@ -110,6 +111,12 @@ public class DynastyPyramidPQ extends DynastyPQ implements MobListener, DynastyP
 				chr.getPlayer().message("Congratulations on finishing the PQ!");
 			}
 		}
+	}
+
+	@Override
+	public void mobKilled(MapleMonster mob) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

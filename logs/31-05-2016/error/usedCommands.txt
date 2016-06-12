@@ -1,0 +1,59 @@
+Xari used: /pos 
+Xari used: !setquest 5 
+Xari used: !job 20000 
+Xari used: !job 2000 
+Xari used: !spawn 100100 3 
+Xari used: !killall 
+Xari used: !pmob 100100 3 
+Xari used: !pmob 100100 3 
+Xari used: !pmob 100100 3 
+Xari used: !pmob 100100 3 
+Xari used: !cleardrops 
+Xari used: !search mob slime 
+Xari used: !pmob 210100 10 
+Xari used: !pmob 210100 10 
+Xari used: !pmob 210100 10 
+Xari used: !pmob 100100 3 
+Xari used: !pmob 100100 3 
+Xari used: !pmob 100100 3 
+Xari used: /pos 
+Xari used: /pos 
+Xari used: !saveall 
+Xari used: !search npc assistant blue 
+Xari used: /pos 
+Xari used: /pos 
+Xari used: /pos 
+Xari used: /pos 
+Xari used: !reloadmap 
+Xari used: !setquest 3 
+Xari used: !job 1000 
+Xari used: !pmob 100100 3 
+Xari used: !pmob 100100 3 
+Xari used: !pmob 100100 3 
+Xari used: !search mob shroom 
+Xari used: !pmob 120100 5 
+Xari used: !pmob 120100 5 
+Xari used: !pmob 120100 5 
+Xari used: !search mob orange msh 
+Xari used: !search mob orange mush 
+Xari used: !search mob orange mush 
+Xari used: !search mob orange mush 
+Xari used: !pmob 1210102 5 
+Xari used: !pmob 1210102 5 
+Xari used: !search mob pig 
+Xari used: !pmob 1210100 5 
+Xari used: !pmob 1210100 5 
+Xari used: !pmob 100101 5 
+Xari used: !pmob 100101 5 
+Xari used: /pos 
+Xari used: /search npc santa 
+Xari used: /pos 
+Xari used: !search npc mom 
+Xari used: /pos 
+Xari used: /pos 
+Xari used: !saveall 
+Xari used: !reloadmap 
+Xari used: !search mob santa 
+Xari used: !search npc santa 
+Xari used: !pos 
+Xari used: !search npc santa 

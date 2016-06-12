@@ -55,6 +55,7 @@ import provider.MapleDataProviderFactory;
 import provider.MapleDataTool;
 import scripting.npc.NPCScriptManager;
 import scripting.portal.PortalScriptManager;
+import scripting.reactor.ReactorScriptManager;
 import server.MapleInventoryManipulator;
 import server.MapleItemInformationProvider;
 import server.MaplePortal;
@@ -372,8 +373,8 @@ public class Commands {
 		case "luk":
 		case "dex":
 		case "int":
-		case "hp":
-		case "mp":
+//		case "hp":
+//		case "mp":
 			try {
 				// Hp washing
 				if (Integer.parseInt(sub[1]) < 0) {
@@ -381,6 +382,15 @@ public class Commands {
 						player.dropMessage("You don't have enough AP resets subtract AP.");
 						break;
 					}
+					
+					int stats = sub[0].equals("str") ? player.getStr() : sub[0].equals("dex") ? player.getDex() : 
+						sub[0].equals("luk") ? player.getLuk() : sub[0].equals("int") ? player.getInt() : sub[0].equals("hp") ? player.getMaxHp() :
+						player.getMaxMp();
+					if (stats - Integer.parseInt(sub[1]) < 4) {
+						player.dropMessage("You cannot subtract your stats below this point.");
+						break;
+					}
+					
 					MapleInventoryManipulator.removeById(player.getClient(), MapleInventoryType.CASH, 5050000, 
 						Math.abs(Integer.parseInt(sub[1])), true, false);
 				}
@@ -822,13 +832,38 @@ public class Commands {
 				return false;
 			}
 		} else if (sub[0].equals("reloadmap")) {
+			int mapid = player.getMapId();
+			c.getChannelServer().getMapFactory().getMaps().remove(mapid);
 			MapleMap oldMap = c.getPlayer().getMap();
-			MapleMap newMap = c.getChannelServer().getMapFactory().getMap(player.getMapId());
+			MapleMap newMap = c.getChannelServer().getMapFactory().getMap(mapid);
 			for (MapleCharacter ch : oldMap.getCharacters()) {
 				ch.changeMap(newMap);
 			}
 			oldMap = null;
 			newMap.respawn();
+		} else if (sub[0].equals("addDrop")) {
+			if (sub.length < 4) {
+				player.dropMessage("Format is !addDrop <mobid> <itemid> <percentage chance of dropping>");
+				return false;
+			} else {
+				int chance = Integer.parseInt(sub[3]) * 1000000 / ServerConstants.DROP_RATE / 100;
+				if (MapleLifeFactory.getMonster(Integer.parseInt(sub[1])) == null) {
+					player.dropMessage("The mob id doesn't exist.");
+					return false;
+				}
+				try (PreparedStatement ps = DatabaseConnection.getConnection().prepareStatement("INSERT INTO drop_data VALUES (?,?,?,?,?,?)")) {
+					ps.setInt(1, Integer.parseInt(sub[1]));
+					ps.setInt(2, Integer.parseInt(sub[2]));
+					ps.setInt(3, 1);
+					ps.setInt(4, 1);
+					ps.setInt(5, 0);
+					ps.setInt(6, chance);
+					ps.executeUpdate();
+					ps.close();
+					player.dropMessage("Mob " + sub[1] + " with chance value " + chance + " ("+sub[3]+") inserted");
+				} catch (Exception e) {
+				}
+			}
 		} else if (sub[0].equals("music")){
 			if (sub.length < 2) {
 				player.yellowMessage("Syntax: !music <song>");
@@ -1620,6 +1655,26 @@ public class Commands {
 			player.getMap().spawnFakeMonsterOnGroudBelow(MapleLifeFactory.getMonster(8800000), player.getPosition());
 			for (int x = 8800003; x < 8800011; x++) {
 				player.getMap().spawnMonsterOnGroudBelow(MapleLifeFactory.getMonster(x), player.getPosition());
+			}
+			break;
+		case "resetmob":
+			if (sub.length < 2)
+				player.dropMessage("Need to specify a mobid.");
+			else {
+				if (MapleMonsterInformationProvider.getInstance().getDrops().containsKey(Integer.parseInt(sub[1]))) {
+					MapleMonsterInformationProvider.getInstance().getDrops().remove(Integer.parseInt(sub[1]));
+					player.dropMessage("Monster " + sub[1] + " drops reset.");
+				}
+			}
+			break;
+		case "resetreactor":
+			if (sub.length < 2)
+				player.dropMessage("Need to specify a mobid.");
+			else {
+				if (ReactorScriptManager.getInstance().getDrops().containsKey(Integer.parseInt(sub[1]))) {
+					ReactorScriptManager.getInstance().getDrops().remove(Integer.parseInt(sub[1]));
+					player.dropMessage("Reactor " + sub[1] + " drops reset.");
+				}
 			}
 			break;
 		case "clearquestcache":

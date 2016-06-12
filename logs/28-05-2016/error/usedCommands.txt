@@ -1,0 +1,214 @@
+Xari used: !search mob ultimate vis 
+Xari used: !search mob alishar 
+Xari used: !search mob ravana 
+Xari used: !job 800 
+Xari used: !warphere wincake 
+Xari used: !heal wincake 
+Xari used: !job 910 
+Xari used: !warphere wincake 
+Xari used: !setgmlevel fudgeisbug 1 
+Xari used: !gmlevel fudgeisbug 1 
+Xari used: !job 2200 
+Fudge used: !drop 4000384 
+Fudge used: !warp Wincake 
+Fudge used: !goto Wincake 
+Fudge used: !warpto Wincake 
+Fudge used: !job 1100 
+Fudge used: !job 1112 
+Fudge used: !item 1302000 
+Xari used: !drop 400384 
+Xari used: !drop 4000384 
+Fudge used: !job 1312 
+Fudge used: !item 1452000 
+Fudge used: !job 1512 
+Fudge used: !item 1482000 
+Fudge used: !job 1412 
+Fudge used: !item 1442018 
+Fudge used: !item 1442039 
+Fudge used: !job 132 
+Fudge used: !item 1422011 
+Fudge used: !job 1212 
+Fudge used: !job 1512 
+Fudge used: !job 1312 
+Fudge used: !job 232 
+Fudge used: !drop 5050003 50 
+Fudge used: !job 800 
+Fudge used: !job 910 
+Fudge used: !warpto Winsaneslave 
+Fudge used: !buffme 
+Fudge used: !spawn 9400203 1 
+Fudge used: !killall 
+Fudge used: !spawn 9400203 1 
+Fudge used: !killall 
+Fudge used: !spawn 9400203 5 
+Fudge used: !killall 
+Fudge used: !spawn 9400203 10 
+Fudge used: !killall 
+Fudge used: !spawn 9400203 10 
+Fudge used: !killall 
+Fudge used: !spawn 9400203 10 
+Fudge used: !killall 
+Fudge used: !spawn 9400203 10 
+Fudge used: !killall 
+Fudge used: !spawn 9400203 10 
+Xari used: !search npc dolphin 
+Fudge used: !killall 
+Fudge used: !spawn 9400203 10 
+Fudge used: !killall 
+Fudge used: !warpto Wincake 
+Xari used: !search npc crane 
+Fudge used: !warpto Winsaneslave 
+Fudge used: !search item snail shell 
+Fudge used: !drop 4000019 
+Fudge used: !drop 4000019 5 
+Fudge used: !search item squishy 
+Fudge used: !drop 4000004 5 
+Fudge used: !search item arthritis 
+Fudge used: !drop 4032423 
+Fudge used: !warphere Winsaneslave 
+Fudge used: !warpto Winsaneslave 
+Xari used: !search item perfect pitch 
+Xari used: !item 4310000 1000 
+Xari used: !search npg agent 
+Xari used: !search npc agent e 
+Xari used: !search npc perzen 
+Xari used: !item 1042000 
+Xari used: !search item beginner's 
+Xari used: !search item warrior's 
+Xari used: !search item beginner 
+Fudge used: !drop 4000017 2 
+Fudge used: !drop 4000021 10 
+Xari used: !item 1332063 
+Xari used: !search item knuckle 
+Fudge used: !warphere Winsaneslave 
+Fudge used: !spawn 9400203 10 
+Fudge used: !buffme 
+Xari used: !search item steel knuckler 
+Fudge used: !drop 1452054 
+Fudge used: !drop 1452054 
+Fudge used: !item 2044502 50 
+Fudge used: !drop 2060000 10000 
+Fudge used: !buffme 
+Fudge used: !drop 2022179 100 
+Fudge used: !spawn 9400203 100 
+Fudge used: !drop 5211003 
+Fudge used: !drop 5211046 
+Fudge used: !buffme 
+Fudge used: !spawn 9400203 100 
+Fudge used: !spawn 9400203 3 
+Fudge used: !spawn 9400203 1 
+Fudge used: !warphere Winsaneslave 
+Fudge used: !warphere Winsaneslave 
+Fudge used: !drop 1452045 
+Fudge used: !warphere Winsaneslave 
+Fudge used: !warphere Winsaneslave 
+Fudge used: !warphere Winsaneslave 
+Fudge used: !heal 
+Fudge used: !warphere Winsaneslave 
+Fudge used: !warpto Wincake 
+Fudge used: !drop 1050 
+Fudge used: !drop 2002020 10000 
+Fudge used: !drop 2002020 10000 
+Fudge used: !drop 2002020 1000 
+Fudge used: !warpto Wincake 
+Fudge used: !item 1002278 
+Fudge used: !item 1050078 
+Fudge used: !item 1072167 
+Fudge used: !item 1072185 
+Fudge used: !item 1082112 
+Fudge used: !item 1102024 
+Fudge used: !item 1452015 
+Fudge used: !item 2060003 10000 
+Fudge used: !item 2060003 800 
+Fudge used: !warpto Winsaneslave 
+Fudge used: !givefame WinsaneSlave 20 
+Fudge used: !setfame WinsaneSlave 20 
+Fudge used: !giftfame WinsaneSlave 20 
+Fudge used: !fame WinsaneSlave 20 
+Fudge used: !drop 2022544 10000 
+Fudge used: !drop 2022544 9999 
+Fudge used: !drop 2022544 9999 
+Fudge used: !drop 2022544 1000 
+Fudge used: !drop 2022544 1000 
+Fudge used: !drop 2022544 1000 
+Fudge used: !drop 2022544 1000 
+Fudge used: !drop 2022544 1000 
+Fudge used: !drop 2022544 1000 
+Fudge used: !drop 2022544 1000 
+Fudge used: !warpto Wincake 
+Fudge used: !warphere Winsaneslave 
+Fudge used: !drop 2002016 
+Fudge used: !drop 2002008 
+Fudge used: !drop 2002008 
+Fudge used: !drop 2002016 
+Fudge used: !drop 2002008 100 
+Fudge used: !drop 2002008 100 
+Fudge used: !setjobperson WinsaneSlave 1212 
+Fudge used: !setjob WinsaneSlave 1212 
+Fudge used: !job WinsaneSlave 1212 
+Fudge used: !job WinsaneSlave 1312 
+Fudge used: !drop 5050000 100 
+Fudge used: !drop 5050000 10000 
+Fudge used: !drop 5050000 1000 
+Fudge used: !drop 5050000 1000 
+Fudge used: !drop 5050000 1000 
+Fudge used: !drop 5050000 1000 
+Fudge used: !drop 5050000 1000 
+Fudge used: !drop 5050000 1000 
+Fudge used: !drop 5050000 1000 
+Fudge used: !drop 5050000 1000 
+Fudge used: !drop 5050000 1000 
+Fudge used: !drop 5050000 1000 
+Fudge used: !spawn 100100 
+Fudge used: !spawn 100100 
+Fudge used: !spawn 100100 
+Fudge used: !spawn 100100 
+Fudge used: !drop 5050000 1000 
+Fudge used: !drop 5050000 1000 
+Fudge used: !drop 5050000 1000 
+Fudge used: !drop 5050000 1000 
+Fudge used: !drop 5050000 1000 
+Fudge used: !drop 5050000 1000 
+Fudge used: !drop 5050000 1000 
+Fudge used: !drop 5050000 1000 
+Fudge used: !drop 5050000 1000 
+Fudge used: !drop 5050000 1000 
+Fudge used: !drop 5050000 1000 
+Fudge used: !drop 5050000 1000 
+Fudge used: !drop 5050000 1000 
+Fudge used: !drop 5050000 1000 
+Fudge used: !drop 5050000 1000 
+Fudge used: !drop 5050000 1000 
+Fudge used: !drop 5050000 1000 
+Fudge used: !drop 5050000 1000 
+Fudge used: !drop 5050000 1000 
+Fudge used: !drop 5050000 1000 
+Fudge used: !drop 5050000 1000 
+Fudge used: !drop 5050000 1000 
+Fudge used: !drop 5050000 1000 
+Fudge used: !drop 5050000 1000 
+Fudge used: !drop 5050000 1000 
+Fudge used: !drop 5050000 1000 
+Fudge used: !drop 5050000 1000 
+Fudge used: !drop 5050000 1000 
+Fudge used: !drop 5050000 1000 
+Fudge used: !drop 5050000 1000 
+Fudge used: !drop 5050000 1000 
+Fudge used: !drop 5050000 1000 
+Fudge used: !drop 5050000 1000 
+Fudge used: !drop 5050000 1000 
+Fudge used: !drop 5050000 1000 
+Fudge used: !drop 5050000 1000 
+Fudge used: !drop 5050000 1000 
+Fudge used: !drop 5050000 1000 
+Fudge used: !drop 5050000 1000 
+Fudge used: !drop 5050000 1000 
+Fudge used: !drop 5050000 1000 
+Fudge used: !drop 5050000 1000 
+Fudge used: !drop 5050000 1000 
+Fudge used: !drop 5050000 1000 
+Fudge used: !drop 5050000 1000 
+Fudge used: !drop 5050000 1000 
+Fudge used: !drop 5050000 1000 
+Fudge used: !drop 5050000 1000 
+Fudge used: !drop 5050000 1000 

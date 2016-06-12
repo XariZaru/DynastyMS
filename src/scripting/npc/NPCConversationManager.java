@@ -130,7 +130,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
  	        PreparedStatement ps = con.prepareStatement("SELECT * FROM available_quests");
  	        ResultSet rs = ps.executeQuery();
  	        while (rs.next()) {
- 	        	if (getPlayer().isDynastyQuestAvailable(rs.getString("questName")) && getLevel() >= rs.getInt("requiredLevel"))
+ 	        	if (getPlayer().getDynastyQuest(rs.getString("questName")) == 0 && getLevel() >= rs.getInt("requiredLevel"))
  	        		text += String.format("#L%2d#[Level %2d]: %s\r\n", rs.getInt("id"), rs.getInt("requiredLevel"), rs.getString("questName"));
  	        }
  	        ps.close();
@@ -246,7 +246,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
     		ResultSet rs = ps.executeQuery();
     		
     		while (rs.next())
-    			sb.append("#b#o").append(rs.getString("dropperid")).append("##k - #r").append(Double.parseDouble(rs.getString("chance")) / 1000000 * 100 * getPlayer().getDropRate()).append("%#k\r\n");
+    			sb.append("#b#o").append(rs.getString("dropperid")).append("##k ("+ rs.getString("dropperid") +") - #r").append(Double.parseDouble(rs.getString("chance")) / 1000000 * 100 * getPlayer().getDropRate()).append("%#k\r\n");
     		ps.close();
     		rs.close();
     		if (sb.length() == 0)

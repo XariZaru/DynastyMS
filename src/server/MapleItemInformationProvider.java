@@ -1157,8 +1157,6 @@ public class MapleItemInformationProvider {
                 i++;
             }
         }
-        
-        System.out.println("I - " + i);
 
         if (i > 0) {
             equip.wear(false);

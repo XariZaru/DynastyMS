@@ -9,7 +9,13 @@ var txt = "";
 var replace = null;
 
 function start() {
-	cm.sendSimple(cm.getEquips());
+	var skills = [
+					];
+	var txt = "";
+	for (var x = 0; x < skills.length; x++) {
+		txt += "#s" + skills[x] + "#"
+	}
+	cm.sendSimple(txt);
 	//cm.getPlayer().addBossAttempt("Zakum");
 	//cm.sendOk(cm.getPlayer().getBossAttempt("Zakum"));
 	/*

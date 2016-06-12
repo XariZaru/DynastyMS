@@ -1,0 +1,6 @@
+Win used: !giftnx win 1 
+Win used: !giftnx win 1 
+Win used: !giftnx win 100000 
+Win used: !giftnx win 100000 
+Win used: @drop 2040502 10 
+Win used: @drop 2040502 20 

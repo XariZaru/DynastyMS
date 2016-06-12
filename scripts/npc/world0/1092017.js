@@ -17,10 +17,10 @@ var currency_id = 4031229;
 var etc 	  =	{5220000:[1000,-1],5510000:[1000,-1],5130000:[1000, -1]};
 var usables   =	{5050000:[100,-1],5570000:[10000,-1],5450000:[1000, 86400000]};
 var currency  =	{4031229:[10000,-1]};
-var equipment = {1112405:[10000,432000000], 1122012: [5000000,-1]};
+var equipment = {1112405:[50000,432000000], 1112401: [30000000, -1], 1122012: [5000000,-1]};
 
 // Custom equipment stats using cm.gainEpicItem()
-var equipment_stats = {1122012:[15,15,15,15,5,5,5]};
+var equipment_stats = {1122012:[15,15,15,15,5,5,5], 1112401:[5,5,5,5,5,5,5]};
 var eq = null;
 
 var selections = null;
@@ -77,10 +77,14 @@ function action(m,t,s) {
 		}
 	} else if (status == 2) {
 		// Finalize purchasing equipment
-		if (selections == equipment && cm.getPlayer().getBossPoints() >= selections[to_buy][0]) {
-			cm.sendOk("You've completed your purchase. Thank you for shopping with us today!");
-			cm.gainEquip(eq, selections[to_buy][1]);
-			losePoints(cm.getPlayer(), -selections[to_buy][0]);
+		if (selections == equipment) {
+			if (cm.getPlayer().getBossPoints() >= selections[to_buy][0]) {
+				cm.sendOk("You've completed your purchase. Thank you for shopping with us today!");
+				cm.gainEquip(eq, selections[to_buy][1]);
+				losePoints(cm.getPlayer(), -selections[to_buy][0]);
+			} else {
+				cm.sendOk("You don't have enough points to purchase this.");
+			}
 		// Finalize purchase item 
 		} else if (cm.getPlayer().getBossPoints() >= selections[to_buy][0] * s) {
 			cm.sendOk("You've purchased " + s + " #b#z" + to_buy + "##k for " + selections[to_buy][0] * s + " points.");
@@ -104,7 +108,9 @@ function losePoints(player, to_lose) {
 function listItems(items) {
 	var text = "";
 	for (var item in items)
-		text += "#L " + item + "##i" + item +"# #z" + 
-				item + "# - " + items[item][0] + " points ("+(items[item][1] == - 1 ? "permanent" : (items[item][1] / 86400000) + " days") +")\r\n";
+		text += "#L " + item + "#" +
+				"#i" + item +"# " +
+				//"#z" + item + "# - " +
+				items[item][0] + " points ("+(items[item][1] == - 1 ? "permanent" : (items[item][1] / 86400000) + " days") +")\r\n";
 	return text + "#L999#Exit";
 }

@@ -1,6 +1,7 @@
-// cm.gainItem(2010000,1, false, true, 60000);
+// Messy as heck and not really nice to look at
+
 var items = [
-             [5211000,2],[5360001,2],[5211048,4],[5360042,4],[5211000,24],[5360001,24]
+             [5211000,2],[5360001,2],[5211000,4],[5360001,4],[5211000,24],[5360001,24]
              ];
 
 var costs = [5,5,10,10,30,30];
@@ -9,8 +10,8 @@ var selection;
 function start() {
 	text = "What would you like to purchase? You currently have #r"+cm.getPlayer().getVP()+"#k vote points\r\n#b";
 	for (var x = 0; x < items.length; x++) {
-		text += "\r\n\r\n#L" + x + "#"+costs[x]+" Vote Points - #i" + items[x][0] + "# #b"+ (x % 2 == 0 ? "2x exp" : "2x drop/meso")+" " +
-				"(" + items[x][1] + " hours)";
+		text += "\r\n#L" + x + "#"+costs[x]+" Vote Points - #b"+ (x % 2 == 0 ? "2x exp" : "2x drop/meso")+" " +
+				"card (" + items[x][1] + " hours)";
 	}
 	cm.sendSimple(text);
 }

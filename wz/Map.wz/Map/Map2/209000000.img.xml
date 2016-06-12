@@ -228,28 +228,28 @@
     <imgdir name="8">
       <string name="type" value="n" />
       <string name="id" value="9209100" />
-      <int name="x" value="271" />
-      <int name="y" value="-427" />
+      <int name="x" value="-13" />
+      <int name="y" value="154" />
       <int name="mobTime" value="0" />
       <int name="f" value="0" />
       <int name="hide" value="1" />
-      <int name="fh" value="2" />
-      <int name="cy" value="-390" />
-      <int name="rx0" value="251" />
-      <int name="rx1" value="289" />
+      <int name="fh" value="14" />
+      <int name="cy" value="154" />
+      <int name="rx0" value="-63" />
+      <int name="rx1" value="43" />
     </imgdir>
     <imgdir name="0">
       <string name="type" value="n" />
       <string name="id" value="9310058" />
-      <int name="x" value="1013" />
-      <int name="y" value="151" />
+      <int name="x" value="-13" />
+      <int name="y" value="154" />
       <int name="mobTime" value="0" />
       <int name="f" value="0" />
       <int name="hide" value="0" />
-      <int name="fh" value="23" />
+      <int name="fh" value="14" />
       <int name="cy" value="154" />
-      <int name="rx0" value="963" />
-      <int name="rx1" value="1063" />
+      <int name="rx0" value="-63" />
+      <int name="rx1" value="43" />
     </imgdir>
     <imgdir name="9">
       <string name="type" value="n" />

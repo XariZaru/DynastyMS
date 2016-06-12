@@ -4,7 +4,7 @@
 
 //230030200, 251000100 1000,10000
 
-var status, place = [230030200, 251000100, 1000, 10000], choice;
+var status, place = [230030200, 251000100, 251000000, 1000, 10000, 10000], choice;
 var gorge = 230040000;
 var lime = 4000182;
 var goby = 4000179;
@@ -61,7 +61,7 @@ function start() {
     }
     } else if (cm.getQ()!=18 && cm.getQ() > 22 && cm.getQ()!=33) {
         cm.sendSimple("Well, hello! I can take you to two of the following locations for a certain fee. Would you like to go?\r\n\r\n"+
-            "#b#L0##m"+230030200+"# (1000 meso)\r\n#L1##m"+251000100+"# (10000 mesos)");
+            "#b#L0##m"+230030200+"# (1000 meso)\r\n#L1##m"+251000100+"# (10000 mesos)\r\n#L2##m"+251000000+"# (10000 mesos)");
     }
 }
 

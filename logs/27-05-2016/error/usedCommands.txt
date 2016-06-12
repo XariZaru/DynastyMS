@@ -287,3 +287,27 @@ Win used: @drop 5211019
 Win used: @drop 5211020 
 Xari used: !search mob compilatoin 
 Xari used: !search mob compilation 
+Xari used: !search item item 
+Xari used: !item 5076000 
+Xari used: !search item purple gaia 
+Xari used: !search item gaia 
+Xari used: !search item adventure cape 
+Xari used: !search item adventurer 
+Xari used: !search item adventurer cape 
+Xari used: !search item 
+Xari used: !item 2049100 
+Xari used: !item 2340000 
+Xari used: !item 1082149 
+Xari used: !item 3010046 
+Xari used: !search item item mesg 
+Xari used: !search item item mes 
+Xari used: !search item item gac 
+Xari used: !search item item 
+Xari used: !item 5076000 100 
+Xari used: !search mob latanica 
+Xari used: !pos 
+Xari used: !pos 
+Xari used: !saveall 
+Xari used: !search mob latanica 
+Xari used: !pmob 9420513 2700 
+Xari used: !saveall 
