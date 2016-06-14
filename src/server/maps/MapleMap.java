@@ -136,6 +136,7 @@ public class MapleMap {
     private final WriteLock chrWLock;
     private final ReadLock objectRLock;
     private final WriteLock objectWLock;
+	private List<MapleCharacter> listeners;
 
     public MapleMap(int mapid, int world, int channel, int returnMapId, float monsterRate) {
         this.mapid = mapid;
@@ -382,21 +383,24 @@ public class MapleMap {
 
         final MapleMonsterInformationProvider mi = MapleMonsterInformationProvider.getInstance();
         final List<MonsterDropEntry> dropEntry = new ArrayList<>(mi.retrieveDrop(mob.getId()));
-        
-        //if (de.itemId == 0) { // meso
-        // Nerf by 1.25x
-    	int mesos = (int) ((int) ((Math.random() * (1.1 - .6) + .6) * Math.log(mob.getMaxHp()) * 10.497 * (mob.getStats().getLevel())/8) * .75);
-        //int mesos = Randomizer.nextInt(de.Maximum - de.Minimum) + de.Minimum;
-        if (mesos > 0) {
-            if (chr.getBuffedValue(MapleBuffStat.MESOUP) != null) {
-                mesos = (int) (mesos * chr.getBuffedValue(MapleBuffStat.MESOUP).doubleValue() / 100.0);
-            }
-            spawnMesoDrop(mesos * chr.getMesoRate(), new Point((int) (mob.getPosition().x + Math.random() * (2)), mob.getPosition().y), mob, chr, false, droptype);
-            //spawnMesoDrop(mesos * chr.getMesoRate(), calcDropPos(pos, mob.getPosition()), mob, chr, false, droptype);
-        }
+       
+        boolean mesos_dropped = false;
         Collections.shuffle(dropEntry);
         for (final MonsterDropEntry de : dropEntry) {
             if (Randomizer.nextInt(999999) < de.chance * chServerrate) {
+            	
+            	if (!mesos_dropped) {
+	                // Mesos drops
+	            	int mesos = (int) ((int) ((Math.random() * (1.1 - .6) + .6) * Math.log(mob.getMaxHp()) * 10.497 * (mob.getStats().getLevel())/8) * .75);
+	                if (mesos > 0) {
+	                    if (chr.getBuffedValue(MapleBuffStat.MESOUP) != null) {
+	                        mesos = (int) (mesos * chr.getBuffedValue(MapleBuffStat.MESOUP).doubleValue() / 100.0);
+	                    }
+	                    spawnMesoDrop(mesos * chr.getMesoRate(), new Point((int) (mob.getPosition().x + Math.random() * (2)), mob.getPosition().y), mob, chr, false, droptype);
+	                }
+	                d++;
+	                mesos_dropped = true;
+            	}
                 if (droptype == 3) {
                     pos.x = (int) (mobpos + (d % 2 == 0 ? (40 * (d + 1) / 2) : -(40 * (d / 2))));
                 } else {
@@ -1287,6 +1291,10 @@ public class MapleMap {
                 }
             }
         }
+    }
+    
+    public void addPlayerListener(MapleCharacter listener) {
+    	this.listeners.add(listener);
     }
 
     public final List<MapleMapObject> getAllReactor() {

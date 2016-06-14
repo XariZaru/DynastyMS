@@ -256,9 +256,9 @@ public abstract class AbstractDealDamageHandler extends AbstractMaplePacketHandl
 					if(attack.skill == Shadower.BOOMERANG_STEP)
 						distanceToDetect += 60000;
                     
-                    if(distance > distanceToDetect) {
-                        AutobanFactory.DISTANCE_HACK.alert(player, "Distance Sq to monster: " + distance + " SID: " + attack.skill + " MID: " + monster.getId());
-                    }
+//                    if(distance > distanceToDetect) {
+//                        AutobanFactory.DISTANCE_HACK.alert(player, "Distance Sq to monster: " + distance + " SID: " + attack.skill + " MID: " + monster.getId());
+//                    }
                     
                     int totDamageToOneMonster = 0;
                     List<Integer> onedList = attack.allDamage.get(oned);
@@ -758,15 +758,15 @@ public abstract class AbstractDealDamageHandler extends AbstractMaplePacketHandl
 				if(canCrit) // They can crit, so up the max.
 					maxWithCrit *= 2;
 				
-				// Warn if the damage is over 1.5x what we calculated above.
-                if(damage > maxWithCrit * 1.5 && !chr.isGM()) {
-                    AutobanFactory.DAMAGE_HACK.alert(chr, "DMG: " + damage + " MaxDMG: " + maxWithCrit + " SID: " + ret.skill + " MobID: " + (monster != null ? monster.getId() : "null") + " Map: " + chr.getMap().getMapName() + " (" + chr.getMapId() + ")");
-                }
-				
-				// Add a ab point if its over 5x what we calculated.
-				if(damage > maxWithCrit  * 5 && !chr.isGM()) {
-					AutobanFactory.DAMAGE_HACK.addPoint(chr.getAutobanManager(), "DMG: " + damage + " MaxDMG: " + maxWithCrit + " SID: " + ret.skill + " MobID: " + (monster != null ? monster.getId() : "null") + " Map: " + chr.getMap().getMapName() + " (" + chr.getMapId() + ")");
-				}
+//				// Warn if the damage is over 1.5x what we calculated above.
+//                if(damage > maxWithCrit * 1.5 && !chr.isGM()) {
+//                    AutobanFactory.DAMAGE_HACK.alert(chr, "DMG: " + damage + " MaxDMG: " + maxWithCrit + " SID: " + ret.skill + " MobID: " + (monster != null ? monster.getId() : "null") + " Map: " + chr.getMap().getMapName() + " (" + chr.getMapId() + ")");
+//                }
+//				
+//				// Add a ab point if its over 5x what we calculated.
+//				if(damage > maxWithCrit  * 5 && !chr.isGM()) {
+//					AutobanFactory.DAMAGE_HACK.addPoint(chr.getAutobanManager(), "DMG: " + damage + " MaxDMG: " + maxWithCrit + " SID: " + ret.skill + " MobID: " + (monster != null ? monster.getId() : "null") + " Map: " + chr.getMap().getMapName() + " (" + chr.getMapId() + ")");
+//				}
 				
 				if (ret.skill == Marksman.SNIPE || (canCrit && damage > hitDmgMax)) {
 					// If the skill is a crit, inverse the damage to make it show up on clients.

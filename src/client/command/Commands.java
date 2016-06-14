@@ -831,6 +831,12 @@ public class Commands {
 				player.yellowMessage("Map ID " + sub[1] + " is invalid.");
 				return false;
 			}
+		} else if (sub[0].equals("reloadmob")) {
+			MapleMonsterInformationProvider.getInstance().getDrops().remove(Integer.parseInt(sub[1]));
+			player.dropMessage(MapleMonsterInformationProvider.getMobNameFromID(Integer.parseInt(sub[1])) + " was reloaded from the database.");
+		} else if (sub[0].equals("reloaddrops")) {
+			MapleMonsterInformationProvider.getInstance().clearDrops();
+			player.dropMessage("All monster drops were reloaded from the database.");
 		} else if (sub[0].equals("reloadmap")) {
 			int mapid = player.getMapId();
 			c.getChannelServer().getMapFactory().getMaps().remove(mapid);
@@ -841,7 +847,7 @@ public class Commands {
 			}
 			oldMap = null;
 			newMap.respawn();
-		} else if (sub[0].equals("addDrop")) {
+		} else if (sub[0].equals("adddrop")) {
 			if (sub.length < 4) {
 				player.dropMessage("Format is !addDrop <mobid> <itemid> <percentage chance of dropping>");
 				return false;
@@ -851,7 +857,7 @@ public class Commands {
 					player.dropMessage("The mob id doesn't exist.");
 					return false;
 				}
-				try (PreparedStatement ps = DatabaseConnection.getConnection().prepareStatement("INSERT INTO drop_data VALUES (?,?,?,?,?,?)")) {
+				try (PreparedStatement ps = DatabaseConnection.getConnection().prepareStatement("INSERT INTO drop_data VALUES (DEFAULT,?,?,?,?,?,?)")) {
 					ps.setInt(1, Integer.parseInt(sub[1]));
 					ps.setInt(2, Integer.parseInt(sub[2]));
 					ps.setInt(3, 1);
@@ -861,6 +867,7 @@ public class Commands {
 					ps.executeUpdate();
 					ps.close();
 					player.dropMessage("Mob " + sub[1] + " with chance value " + chance + " ("+sub[3]+") inserted");
+					MapleMonsterInformationProvider.getInstance().getDrops().remove(Integer.parseInt(sub[1]));
 				} catch (Exception e) {
 				}
 			}

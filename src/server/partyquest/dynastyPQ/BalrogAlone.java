@@ -2,6 +2,8 @@ package server.partyquest.dynastyPQ;
 
 import java.awt.Point;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
@@ -36,7 +38,10 @@ public class BalrogAlone implements IPartyQuest, MobListener {
 	
 	private int	  stage1_initial_amount = 50;
 	private int	  stage2_initial_amount = 100;
-	private int   stage2_drop_id 			= 4031906;
+	private int   stage2_drop_id 		= 4031906;
+	
+	private int   balrog_spawn_delay = 5000;
+	private int   parts_killed = 0;
 	
 	private int time = 1800000; // in milliseconds -> 30 minutes
 	private long start_time;
@@ -71,7 +76,7 @@ public class BalrogAlone implements IPartyQuest, MobListener {
 			spawnMonster(MapleLifeFactory.getMonster(jr_balrog));
 		
 		// Ends PQ in 30 minutes -> set by var time
-		TimerManager.getInstance().schedule(new Runnable() {
+		schedule = TimerManager.getInstance().schedule(new Runnable() {
             @Override
             public void run() {
                 end();
@@ -94,10 +99,15 @@ public class BalrogAlone implements IPartyQuest, MobListener {
 			spawnMonster(mob);
 			getPlayer().getMap().broadcastTitleMessage(String.format("%d/%d", mob_counter, stage1_needed));
 		} else if (stage == 1) {
-			int rand = (int) (Math.random() * 100);
-			System.out.println(rand);
-			if (rand == 50)
+			if ((int) (Math.random() * 100) == 50)
 				player.getMap().spawnItemDrop(getPlayer(), getPlayer(), new Item(stage2_drop_id, (short) 0, (short) 1), mob.getPosition(), true, true);
+		} else if (stage == 2) {
+			this.parts_killed++;
+			if (parts_killed == 3) {
+				player.dropMessage("[Mu Young] You did it! You actually did it! I rooted for you the whole way and you did it! Come talk to me! I have something to give you.");
+				end();
+				rewards();
+			}
 		}
 	}
 	
@@ -109,6 +119,8 @@ public class BalrogAlone implements IPartyQuest, MobListener {
 			getPlayer().getMap().spawnMonsterOnGroudBelow(respawn, new Point(-317, 130));
 		else if (stage == 1) {
 			getPlayer().getMap().spawnMonsterOnGroudBelow(respawn, new Point(-449, 130));
+		} else if (stage == 2) {
+			getPlayer().getMap().spawnMonsterOnGroudBelow(respawn, new Point(477, 258));
 		}
 	}
 	
@@ -125,21 +137,27 @@ public class BalrogAlone implements IPartyQuest, MobListener {
 	// Destroys the PQ and schedulers
 	@Override
 	public void end() {
+		player.getMap().resetAll();
 		executor.shutdownNow();
+		this.schedule.cancel(true);
 		if (player != null)
 			player.changeMap(lobby);
+		player.setDynastyPQ(null);
 	}
 	
 	public void setStage() {
 		player.getMap().resetAll();
-		player.getMap().broadcastMessage(MaplePacketCreator.getClock((int) (time - (System.currentTimeMillis() - this.start_time) / 1000)));
 		player.changeMap(maps[stage]);
+		player.getMap().broadcastMessage(MaplePacketCreator.getClock((int) (time - (System.currentTimeMillis() - this.start_time) / 1000)));
+		
+		// Stage 2: Monsters respawn every 5 seconds and check if player has item in inventory
 		if (stage == 1) {
+			player.dropMessage("[Mu Young] You've got to collect a Balrog Claw from one of the monsters before you can proceed! These monsters are stopping"+
+		" us from getting to the real threat!");
 			for (int x = 0; x < stage2_initial_amount; x++)
 				spawnMonster(MapleLifeFactory.getMonster(this.stage2_mobs[(int) (Math.random() * stage2_mobs.length)]));
 			this.executor.scheduleAtFixedRate(new Runnable() {
 				public void run() {
-					System.out.println(String.format("Spawning %d",stage2_initial_amount - player.getMap().countMobs()));
 					if (player == null || !inMap()) {
 						end();
 						return;
@@ -153,8 +171,18 @@ public class BalrogAlone implements IPartyQuest, MobListener {
 						spawnMonster(MapleLifeFactory.getMonster(stage2_mobs[(int) (Math.random() * stage2_mobs.length)]));
 				}
 			}, 0, 5, TimeUnit.SECONDS);
+		
+		// Fight against Balrog -> when kill count = 3, finish.
 		} else if (stage == 2) {
-			player.changeMap(maps[stage]);
+			TimerManager.getInstance().schedule(new Runnable() {
+	            @Override
+	            public void run() {
+	            	player.dropMessage("[Mu Young] Holy crap ... is that what I think it is? A ... balrog?");
+	                for (int mobid : balrog_parts)
+	                	spawnMonster(MapleLifeFactory.getMonster(mobid));
+	            }
+
+	        }, balrog_spawn_delay);
 		}
 	}
 	

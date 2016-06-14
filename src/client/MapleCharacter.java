@@ -5756,16 +5756,19 @@ public class MapleCharacter extends AbstractAnimatedMapleMapObject {
     	return persuasion;
     }
     
-    public void gainHonor(int gain) {
+    public String gainHonor(int gain) {
     	honor += gain;
+    	return "#e\r\n\r\nHonor Level: +" + gain + "!#n";
     }
     
-    public void gainSteal(int gain) {
+    public String gainSteal(int gain) {
     	steal += gain;
+    	return "#e\r\n\r\nSteal Level: +" + gain + "!#n";
     }
     
-    public void gainPersuasion(int gain) {
+    public String gainPersuasion(int gain) {
     	persuasion += gain;
+    	return "#e\r\n\r\nPersuasion Level: +" + gain + "!#n";
     }
 
     // These need to be renamed, but I am too lazy right now to go through the scripts and rename them...
