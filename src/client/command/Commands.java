@@ -361,9 +361,9 @@ public class Commands {
 			NPCScriptManager.getInstance().dispose(c);
 			NPCScriptManager.getInstance().start(c, 9201107, null, null);
 			break;
-		case "time":
+		case "UDT":
 			DateFormat dateFormat = new SimpleDateFormat("h:mm a, zzzz");
-			dateFormat.setTimeZone(TimeZone.getTimeZone("PST"));
+			dateFormat.setTimeZone(TimeZone.getTimeZone("EDT"));
 			player.yellowMessage("Dynasty Server Time: " + dateFormat.format(new Date()));
 			break;
 		case "guide":
@@ -562,14 +562,17 @@ public class Commands {
 			}
 			break;
 		case "online":
+			short players_online = 0;
 			for (Channel ch : Server.getInstance().getChannelsFromWorld(player.getWorld())) {
+				players_online += ch.getPlayerStorage().getAllCharacters().size();
 				player.yellowMessage("Players in Channel " + ch.getId() + ":");
 				for (MapleCharacter chr : ch.getPlayerStorage().getAllCharacters()) {
-					if (!chr.isGM()) {
-						player.message(" >> " + MapleCharacter.makeMapleReadable(chr.getName()) + " is at " + chr.getMap().getMapName() + ".");
-					}
+					//if (!chr.isGM()) {
+					player.message(" >> " + MapleCharacter.makeMapleReadable(chr.getName()) + " is at " + chr.getMap().getMapName() + ".");
+					//}
 				}
 			}
+			player.yellowMessage("Number of players online: " + players_online);
 			break;
 		case "gm":
 			if (sub.length < 3) { // #goodbye 'hi'
@@ -787,6 +790,9 @@ public class Commands {
 				ch.reloadEventScriptManager();
 			}
 			player.dropMessage(5, "Reloaded Events");
+		} else if (sub[0].equals("reloadshops")) {
+			MapleShopFactory.getInstance().reloadShops();
+			player.dropMessage(5, "Reloaded shops");
 		} else if (sub[0].equals("reloaddrops")) {
 			MapleMonsterInformationProvider.getInstance().clearDrops();
 			player.dropMessage(5, "Reloaded Drops");
@@ -834,6 +840,9 @@ public class Commands {
 		} else if (sub[0].equals("reloadmob")) {
 			MapleMonsterInformationProvider.getInstance().getDrops().remove(Integer.parseInt(sub[1]));
 			player.dropMessage(MapleMonsterInformationProvider.getMobNameFromID(Integer.parseInt(sub[1])) + " was reloaded from the database.");
+		} else if (sub[0].equals("reloadmobs")) {
+			MapleLifeFactory.getMonsterStats().clear();
+			player.dropMessage("All mobs have been reloaded.");
 		} else if (sub[0].equals("reloaddrops")) {
 			MapleMonsterInformationProvider.getInstance().clearDrops();
 			player.dropMessage("All monster drops were reloaded from the database.");
@@ -914,6 +923,11 @@ public class Commands {
 			for (String ign : MapleLogger.monitored){
 				player.yellowMessage(ign + " is being monitored.");
 			}
+		} else if (sub[0].equals("warning")) {
+			for (Channel channel : Server.getInstance().getAllChannels())
+				for (MapleCharacter chr : channel.getPlayerStorage().getAllCharacters())
+					if (chr != player)
+						chr.dropMessage(1, joinStringFrom(sub, 1));
 		} else if (sub[0].equals("ignore")) {
 			if (sub.length < 1){
 				player.yellowMessage("Syntax: !ignore <ign>");
@@ -1164,7 +1178,7 @@ public class Commands {
 				MapleMonster monster = (MapleMonster) monstermo;
 				if (!monster.getStats().isFriendly()) {
 					map.killMonster(monster, player, true);
-					monster.giveExpToCharacter(player, monster.getExp() * c.getPlayer().getExpRate(), true, 1);
+					monster.giveExpToCharacter(player, monster.getExp(), true, 1);
 				}
 			}
 			player.dropMessage("Killed " + monsters.size() + " monsters.");

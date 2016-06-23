@@ -53,6 +53,10 @@ public class MapleLifeFactory {
             return null;
         }
     }
+    
+    public static Map<Integer, MapleMonsterStats>  getMonsterStats() {
+    	return monsterStats;
+    }
 
     public static MapleMonster getMonster(int mid) {
         MapleMonsterStats stats = monsterStats.get(Integer.valueOf(mid));

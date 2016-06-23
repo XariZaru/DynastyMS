@@ -486,9 +486,7 @@ public class MapleMonster extends AbstractLoadedMapleLife {
     	// Listeners
     	
     	for (MobListener listener : mob_listeners)
-    		listener.mobKilled(this);
-    	
-    	
+    		listener.mobKilled(this); 
     	
     	// End of Listeners
     	

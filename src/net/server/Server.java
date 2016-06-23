@@ -170,7 +170,6 @@ public class Server implements Runnable {
         tMan.register(new Runnable() {
         	@Override
         	public void run() { 
-        		System.out.println("Saving the entire world.");
         		Server.getInstance().saveAll();
         	}
         	

@@ -98,119 +98,122 @@ public final class DueyHandler extends AbstractMaplePacketHandler {
 
     @Override
     public final void handlePacket(SeekableLittleEndianAccessor slea, MapleClient c) {
-    	if (!ServerConstants.USE_DUEY){
-    		return;
-    	}
-        byte operation = slea.readByte();
-        if (operation == Actions.TOSERVER_SEND_ITEM.getCode()) {
-            final int fee = 5000;
-            byte inventId = slea.readByte();
-            short itemPos = slea.readShort();
-            short amount = slea.readShort();
-            int mesos = slea.readInt();
-            String recipient = slea.readMapleAsciiString();
-            if (mesos < 0 || (long) mesos > Integer.MAX_VALUE || ((long) mesos + fee + getFee(mesos)) > Integer.MAX_VALUE || amount < 1) {
-            	AutobanFactory.PACKET_EDIT.alert(c.getPlayer(), c.getPlayer().getName() + " tried to packet edit with duey.");
-            	FilePrinter.printError(FilePrinter.EXPLOITS + c.getPlayer().getName() + ".txt", c.getPlayer().getName() + " tried to use duey with mesos " + mesos + " and amount " + amount + "\r\n");           	
-            	c.disconnect(true, false);
-            	return;
-            }
-            int finalcost = mesos + fee + getFee(mesos);
-            boolean send = false;
-            if (c.getPlayer().getMeso() >= finalcost) {
-                int accid = getAccIdFromCNAME(recipient, true);
-                if (accid != -1) {
-                    if (accid != c.getAccID()) {
-                        c.getPlayer().gainMeso(-finalcost, false);
-                        c.announce(MaplePacketCreator.sendDueyMSG(Actions.TOCLIENT_SUCCESSFULLY_SENT.getCode()));
-                        send = true;
-                    } else {
-                        c.announce(MaplePacketCreator.sendDueyMSG(Actions.TOCLIENT_SAMEACC_ERROR.getCode()));
-                    }
-                } else {
-                    c.announce(MaplePacketCreator.sendDueyMSG(Actions.TOCLIENT_NAME_DOES_NOT_EXIST.getCode()));
-                }
-            } else {
-                c.announce(MaplePacketCreator.sendDueyMSG(Actions.TOCLIENT_NOT_ENOUGH_MESOS.getCode()));
-            }
-            boolean recipientOn = false;
-            MapleClient rClient = null;
-                int channel = c.getWorldServer().find(recipient);
-                if (channel > -1) {
-                    recipientOn = true;
-                    Channel rcserv = c.getWorldServer().getChannel(channel);
-                    rClient = rcserv.getPlayerStorage().getCharacterByName(recipient).getClient();
-                }
-            if (send) {
-                if (inventId > 0) {
-                    MapleInventoryType inv = MapleInventoryType.getByType(inventId);
-                    Item item = c.getPlayer().getInventory(inv).getItem(itemPos);
-                    if (item != null && c.getPlayer().getItemQuantity(item.getItemId(), false) > amount) {
-                        if (ItemConstants.isRechargable(item.getItemId())) {
-                            MapleInventoryManipulator.removeFromSlot(c, inv, itemPos, item.getQuantity(), true);
-                        } else {
-                            MapleInventoryManipulator.removeFromSlot(c, inv, itemPos, amount, true, false);
-                        }
-                        addItemToDB(item, amount, mesos, c.getPlayer().getName(), getAccIdFromCNAME(recipient, false));
-                    } else {
-                        return;
-                    }
-                } else {
-                    addMesoToDB(mesos, c.getPlayer().getName(), getAccIdFromCNAME(recipient, false));
-                }
-                if (recipientOn && rClient != null) {
-                    rClient.announce(MaplePacketCreator.sendDueyMSG(Actions.TOCLIENT_PACKAGE_MSG.getCode()));
-                }
-                c.getPlayer().gainMeso(-fee, false);
-            }
-        } else if (operation == Actions.TOSERVER_REMOVE_PACKAGE.getCode()) {
-            int packageid = slea.readInt();
-            removeItemFromDB(packageid);
-            c.announce(MaplePacketCreator.removeItemFromDuey(true, packageid));
-        } else if (operation == Actions.TOSERVER_CLAIM_PACKAGE.getCode()) {
-            int packageid = slea.readInt();
-            List<DueyPackages> packages = new LinkedList<>();
-            DueyPackages dp = null;
-            Connection con = DatabaseConnection.getConnection();
-            try {
-                DueyPackages dueypack;
-                try (PreparedStatement ps = con.prepareStatement("SELECT * FROM dueypackages LEFT JOIN dueyitems USING (PackageId) WHERE PackageId = ?")) {
-                    ps.setInt(1, packageid);
-                    try (ResultSet rs = ps.executeQuery()) {
-                        dueypack = null;
-                        if (rs.next()) {
-                            dueypack = getItemByPID(rs);
-                            dueypack.setSender(rs.getString("SenderName"));
-                            dueypack.setMesos(rs.getInt("Mesos"));
-                            dueypack.setSentTime(rs.getString("TimeStamp"));
-                            packages.add(dueypack);
-                        }
-                    }
-                }
-                dp = dueypack;
-            } catch (SQLException e) {
-            }
-            if (dp.getItem() != null) {
-                if (!MapleInventoryManipulator.checkSpace(c, dp.getItem().getItemId(), dp.getItem().getQuantity(), dp.getItem().getOwner())) {
-                    c.getPlayer().dropMessage(1, "Your inventory is full");
-                    c.announce(MaplePacketCreator.enableActions());
-                    return;
-                } else {
-                    MapleInventoryManipulator.addFromDrop(c, dp.getItem(), false);
-                }
-            }
-            int gainmesos = 0;
-            long totalmesos = (long) dp.getMesos() + (long) c.getPlayer().getMeso();
-            if (totalmesos >= Integer.MAX_VALUE) {
-                //gainmesos = c.getPlayer().getMeso() - Integer.MAX_VALUE;
-            } else if (totalmesos < 0 || dp.getMesos() < 0) {
-                c.getPlayer().gainMeso(c.getPlayer().getMeso(), false);
-            } else {
-                c.getPlayer().gainMeso(gainmesos, false);
-            }
-            removeItemFromDB(packageid);
-            c.announce(MaplePacketCreator.removeItemFromDuey(false, packageid));
-        }
+    	c.getPlayer().dropMessage(1, "Duey is disabled");
+    	return;
+//    	if (!ServerConstants.USE_DUEY){
+//    		return;
+//    	}
+//        byte operation = slea.readByte();
+//        if (operation == Actions.TOSERVER_SEND_ITEM.getCode()) {
+//            final int fee = 5000;
+//            byte inventId = slea.readByte();
+//            short itemPos = slea.readShort();
+//            short amount = slea.readShort();
+//            int mesos = slea.readInt();
+//            String recipient = slea.readMapleAsciiString();
+//            return;
+//            if (mesos < 0 || (long) mesos > Integer.MAX_VALUE || ((long) mesos + fee + getFee(mesos)) > Integer.MAX_VALUE || amount < 1) {
+//            	AutobanFactory.PACKET_EDIT.alert(c.getPlayer(), c.getPlayer().getName() + " tried to packet edit with duey.");
+//            	FilePrinter.printError(FilePrinter.EXPLOITS + c.getPlayer().getName() + ".txt", c.getPlayer().getName() + " tried to use duey with mesos " + mesos + " and amount " + amount + "\r\n");           	
+//            	c.disconnect(true, false);
+//            	return;
+//            }
+//            int finalcost = mesos + fee + getFee(mesos);
+//            boolean send = false;
+//            if (c.getPlayer().getMeso() >= finalcost) {
+//                int accid = getAccIdFromCNAME(recipient, true);
+//                if (accid != -1) {
+//                    if (accid != c.getAccID()) {
+//                        c.getPlayer().gainMeso(-finalcost, false);
+//                        c.announce(MaplePacketCreator.sendDueyMSG(Actions.TOCLIENT_SUCCESSFULLY_SENT.getCode()));
+//                        send = true;
+//                    } else {
+//                        c.announce(MaplePacketCreator.sendDueyMSG(Actions.TOCLIENT_SAMEACC_ERROR.getCode()));
+//                    }
+//                } else {
+//                    c.announce(MaplePacketCreator.sendDueyMSG(Actions.TOCLIENT_NAME_DOES_NOT_EXIST.getCode()));
+//                }
+//            } else {
+//                c.announce(MaplePacketCreator.sendDueyMSG(Actions.TOCLIENT_NOT_ENOUGH_MESOS.getCode()));
+//            }
+//            boolean recipientOn = false;
+//            MapleClient rClient = null;
+//                int channel = c.getWorldServer().find(recipient);
+//                if (channel > -1) {
+//                    recipientOn = true;
+//                    Channel rcserv = c.getWorldServer().getChannel(channel);
+//                    rClient = rcserv.getPlayerStorage().getCharacterByName(recipient).getClient();
+//                }
+//            if (send) {
+//                if (inventId > 0) {
+//                    MapleInventoryType inv = MapleInventoryType.getByType(inventId);
+//                    Item item = c.getPlayer().getInventory(inv).getItem(itemPos);
+//                    if (item != null && c.getPlayer().getItemQuantity(item.getItemId(), false) > amount) {
+//                        if (ItemConstants.isRechargable(item.getItemId())) {
+//                            MapleInventoryManipulator.removeFromSlot(c, inv, itemPos, item.getQuantity(), true);
+//                        } else {
+//                            MapleInventoryManipulator.removeFromSlot(c, inv, itemPos, amount, true, false);
+//                        }
+//                        addItemToDB(item, amount, mesos, c.getPlayer().getName(), getAccIdFromCNAME(recipient, false));
+//                    } else {
+//                        return;
+//                    }
+//                } else {
+//                    addMesoToDB(mesos, c.getPlayer().getName(), getAccIdFromCNAME(recipient, false));
+//                }
+//                if (recipientOn && rClient != null) {
+//                    rClient.announce(MaplePacketCreator.sendDueyMSG(Actions.TOCLIENT_PACKAGE_MSG.getCode()));
+//                }
+//                c.getPlayer().gainMeso(-fee, false);
+//            }
+//        } else if (operation == Actions.TOSERVER_REMOVE_PACKAGE.getCode()) {
+//            int packageid = slea.readInt();
+//            removeItemFromDB(packageid);
+//            c.announce(MaplePacketCreator.removeItemFromDuey(true, packageid));
+//        } else if (operation == Actions.TOSERVER_CLAIM_PACKAGE.getCode()) {
+//            int packageid = slea.readInt();
+//            List<DueyPackages> packages = new LinkedList<>();
+//            DueyPackages dp = null;
+//            Connection con = DatabaseConnection.getConnection();
+//            try {
+//                DueyPackages dueypack;
+//                try (PreparedStatement ps = con.prepareStatement("SELECT * FROM dueypackages LEFT JOIN dueyitems USING (PackageId) WHERE PackageId = ?")) {
+//                    ps.setInt(1, packageid);
+//                    try (ResultSet rs = ps.executeQuery()) {
+//                        dueypack = null;
+//                        if (rs.next()) {
+//                            dueypack = getItemByPID(rs);
+//                            dueypack.setSender(rs.getString("SenderName"));
+//                            dueypack.setMesos(rs.getInt("Mesos"));
+//                            dueypack.setSentTime(rs.getString("TimeStamp"));
+//                            packages.add(dueypack);
+//                        }
+//                    }
+//                }
+//                dp = dueypack;
+//            } catch (SQLException e) {
+//            }
+//            if (dp.getItem() != null) {
+//                if (!MapleInventoryManipulator.checkSpace(c, dp.getItem().getItemId(), dp.getItem().getQuantity(), dp.getItem().getOwner())) {
+//                    c.getPlayer().dropMessage(1, "Your inventory is full");
+//                    c.announce(MaplePacketCreator.enableActions());
+//                    return;
+//                } else {
+//                    MapleInventoryManipulator.addFromDrop(c, dp.getItem(), false);
+//                }
+//            }
+//            int gainmesos = 0;
+//            long totalmesos = (long) dp.getMesos() + (long) c.getPlayer().getMeso();
+//            if (totalmesos >= Integer.MAX_VALUE) {
+//                //gainmesos = c.getPlayer().getMeso() - Integer.MAX_VALUE;
+//            } else if (totalmesos < 0 || dp.getMesos() < 0) {
+//                c.getPlayer().gainMeso(c.getPlayer().getMeso(), false);
+//            } else {
+//                c.getPlayer().gainMeso(gainmesos, false);
+//            }
+//            removeItemFromDB(packageid);
+//            c.announce(MaplePacketCreator.removeItemFromDuey(false, packageid));
+//        }
     }
 
     private void addMesoToDB(int mesos, String sName, int recipientID) {

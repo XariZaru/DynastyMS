@@ -163,7 +163,7 @@ public class MapleCharacter extends AbstractAnimatedMapleMapObject {
     private static final int[] DEFAULT_KEY = {18, 65, 2, 23, 3, 4, 5, 6, 16, 17, 19, 25, 26, 27, 31, 34, 35, 37, 38, 40, 43, 44, 45, 46, 50, 56, 59, 60, 61, 62, 63, 64, 57, 48, 29, 7, 24, 33, 41, 39};
     private static final int[] DEFAULT_TYPE = {4, 6, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 5, 5, 4, 4, 5, 6, 6, 6, 6, 6, 6, 5, 4, 5, 4, 4, 4, 4, 4};
     private static final int[] DEFAULT_ACTION = {0, 106, 10, 1, 12, 13, 18, 24, 8, 5, 4, 19, 14, 15, 2, 17, 11, 3, 20, 16, 9, 50, 51, 6, 7, 53, 100, 101, 102, 103, 104, 105, 54, 22, 52, 21, 25, 26, 23, 27};
-    private static final String[] BLOCKED_NAMES = {"admin", "owner", "moderator", "intern", "donor", "administrator", "help", "helper", "alert", "notice", "maplestory", "Solaxia", "fuck", "wizet", "fucking", "negro", "fuk", "fuc", "penis", "pussy", "asshole", "gay",
+    private static final String[] BLOCKED_NAMES = {"admin", "owner", "moderator", "intern", "donor", "administrator", "help", "helper", "alert", "notice", "maplestory", "Dynasty", "fuck", "wizet", "fucking", "negro", "fuk", "fuc", "penis", "pussy", "asshole", "gay",
         "nigger", "homo", "suck", "cum", "shit", "shitty", "condom", "security", "official", "rape", "nigga", "sex", "tit", "boner", "orgy", "clit", "asshole", "fatass", "bitch", "support", "gamemaster", "cock", "gaay", "gm",
         "operate", "master", "sysop", "party", "GameMaster", "community", "message", "event", "test", "meso", "Scania", "renewal", "yata", "AsiaSoft", "henesys"};
     private int world;
@@ -4498,7 +4498,7 @@ public class MapleCharacter extends AbstractAnimatedMapleMapObject {
     }
 
     public void sendPolice(int greason, String reason, int duration) {
-        announce(MaplePacketCreator.sendPolice(String.format("You have been blocked by the#b %s Police for %s.#k", "Solaxia", reason)));
+        announce(MaplePacketCreator.sendPolice(String.format("You have been blocked by the#b %s Police for %s.#k", "Dynasty", reason)));
         this.isbanned = true;
         TimerManager.getInstance().schedule(new Runnable() {
             @Override
@@ -4538,7 +4538,7 @@ public class MapleCharacter extends AbstractAnimatedMapleMapObject {
     		ps.setString(2, boss);
     		ResultSet rs = ps.executeQuery();
     		int to_return = rs.next() ? rs.getInt("attempt") : 0;
-    		if (System.currentTimeMillis() - rs.getTimestamp("attempt_time").getTime() >= 604800000) {
+    		if (System.currentTimeMillis() - rs.getTimestamp("attempt_time").getTime() >= 43200000) {
     			PreparedStatement update_time = DatabaseConnection.getConnection().prepareStatement("UPDATE boss_attempts SET attempt_time = ?, attempt = 0 WHERE boss_attempts.character = ? AND boss_attempts.boss = ?");
     			update_time.setTimestamp(1, new Timestamp(System.currentTimeMillis()));
     			update_time.setString(2, getName());
@@ -4693,8 +4693,9 @@ public class MapleCharacter extends AbstractAnimatedMapleMapObject {
             this.dropRate = worldz.getDropRate();
             this.mesoRate = worldz.getMesoRate();
         }
-        if ((haveItem(5211000) && hr > 17 && hr < 21) || (haveItem(5211014) && hr > 6 && hr < 12) || (haveItem(5211015) && hr > 9 && hr < 15) || (haveItem(5211016) && hr > 12 && hr < 18) || (haveItem(5211017) && hr > 15 && hr < 21) || (haveItem(5211018) && hr > 14) || (haveItem(5211039) && hr < 5) || (haveItem(5211042) && hr > 2 && hr < 8) || (haveItem(5211045) && hr > 5 && hr < 11) || haveItem(5211048)) {
-            if (isBeginnerJob()) {
+        //if ((haveItem(5211000) && hr > 17 && hr < 21) || (haveItem(5211014) && hr > 6 && hr < 12) || (haveItem(5211015) && hr > 9 && hr < 15) || (haveItem(5211016) && hr > 12 && hr < 18) || (haveItem(5211017) && hr > 15 && hr < 21) || (haveItem(5211018) && hr > 14) || (haveItem(5211039) && hr < 5) || (haveItem(5211042) && hr > 2 && hr < 8) || (haveItem(5211045) && hr > 5 && hr < 11) || haveItem(5211048)) {
+        if (haveItem(5211000)) {
+        	if (isBeginnerJob()) {
                 this.expRate = 2; //Nerfed
             } else {
                 this.expRate = 2 * worldz.getExpRate(); //Nerfed
@@ -5422,7 +5423,7 @@ public class MapleCharacter extends AbstractAnimatedMapleMapObject {
 
     public void autoban(String reason) {
         this.ban(reason);
-        announce(MaplePacketCreator.sendPolice(String.format("You have been blocked by the#b %s Police for HACK reason.#k", "Solaxia")));
+        announce(MaplePacketCreator.sendPolice(String.format("You have been blocked by the#b %s Police for HACK reason.#k", "Dynasty")));
         TimerManager.getInstance().schedule(new Runnable() {
             @Override
             public void run() {
@@ -6013,7 +6014,7 @@ public class MapleCharacter extends AbstractAnimatedMapleMapObject {
     
     public void addVP(int vp) {
     	votepoints += vp;
-    	message("You have " + (vp > 0 ? "gained" : "lost") + vp + " Vote Points. You have " + votepoints
+    	message("You have " + (vp > 0 ? "gained" : "lost") + (int) Math.abs(vp) + " Vote Points. You have " + votepoints
     			+ " remaining.");
     }
     

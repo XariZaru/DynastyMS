@@ -101,8 +101,9 @@ public class BalrogAlone implements IPartyQuest, MobListener {
 		} else if (stage == 1) {
 			if ((int) (Math.random() * 100) == 50)
 				player.getMap().spawnItemDrop(getPlayer(), getPlayer(), new Item(stage2_drop_id, (short) 0, (short) 1), mob.getPosition(), true, true);
+		// Final Stage
 		} else if (stage == 2) {
-			this.parts_killed++;
+			this.parts_killed++; // 2
 			if (parts_killed == 3) {
 				player.dropMessage("[Mu Young] You did it! You actually did it! I rooted for you the whole way and you did it! Come talk to me! I have something to give you.");
 				end();
@@ -110,6 +111,7 @@ public class BalrogAlone implements IPartyQuest, MobListener {
 			}
 		}
 	}
+
 	
 	public void spawnMonster(MapleMonster mob) {
 		MapleMonster respawn = MapleLifeFactory.getMonster(mob.getId());
