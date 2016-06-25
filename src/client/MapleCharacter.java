@@ -1567,6 +1567,8 @@ public class MapleCharacter extends AbstractAnimatedMapleMapObject {
                             }
                         }
                         for (Item item : toberemove) {
+                        	if(item.getItemId() == 1122017)
+                                client.getPlayer().unequipPendantOfSpirit();
                             MapleInventoryManipulator.removeFromSlot(client, inv.getType(), item.getPosition(), item.getQuantity(), true);
                         }
                         toberemove.clear();
@@ -3725,6 +3727,11 @@ public class MapleCharacter extends AbstractAnimatedMapleMapObject {
             watk += equip.getWatk();
             speed += equip.getSpeed();
             jump += equip.getJump();
+        }
+        
+        if (getJob().getId() == 512) {
+        	magic += 60;
+        	watk += 60;
         }
         magic = Math.min(magic, 2000);
         Integer hbhp = getBuffedValue(MapleBuffStat.HYPERBODYHP);
@@ -6014,13 +6021,13 @@ public class MapleCharacter extends AbstractAnimatedMapleMapObject {
     
     public void addVP(int vp) {
     	votepoints += vp;
-    	message("You have " + (vp > 0 ? "gained" : "lost") + (int) Math.abs(vp) + " Vote Points. You have " + votepoints
+    	message("You have " + (vp > 0 ? "gained " : "lost ") + (int) Math.abs(vp) + " Vote Points. You have " + votepoints
     			+ " remaining.");
     }
     
     public void addDP(int dp) {
     	donorpoints += dp;
-    	message("You have " + (dp > 0 ? "gained" : "lost") + dp + " Donor Points. You have " + donorpoints
+    	message("You have " + (dp > 0 ? "gained " : "lost ") + dp + " Donor Points. You have " + donorpoints
     			+ " remaining.");
     }
 

@@ -337,7 +337,7 @@ public class Commands {
 			//player.message("@uptime: Shows how long Solaxia has been online.");
 			//player.message("@whatdropsfrom <monster name>: Displays a list of drops and chances for a specified monster.");
 			//player.message("@whodrops <item name>: Displays monsters that drop an item given an item name.");
-			//player.message("@uptime: Shows how long Dynasty has been online.");
+			//player.message("@up	: Shows how long Dynasty has been online.");
 			//player.message("@bosshp: Displays the remaining HP of the bosses on your map.");
 			break;
 		case "info":
@@ -361,7 +361,7 @@ public class Commands {
 			NPCScriptManager.getInstance().dispose(c);
 			NPCScriptManager.getInstance().start(c, 9201107, null, null);
 			break;
-		case "UDT":
+		case "time":
 			DateFormat dateFormat = new SimpleDateFormat("h:mm a, zzzz");
 			dateFormat.setTimeZone(TimeZone.getTimeZone("EDT"));
 			player.yellowMessage("Dynasty Server Time: " + dateFormat.format(new Date()));
@@ -840,6 +840,11 @@ public class Commands {
 		} else if (sub[0].equals("reloadmob")) {
 			MapleMonsterInformationProvider.getInstance().getDrops().remove(Integer.parseInt(sub[1]));
 			player.dropMessage(MapleMonsterInformationProvider.getMobNameFromID(Integer.parseInt(sub[1])) + " was reloaded from the database.");
+		} else if (sub[0].equals("mobs")) {
+			for (Integer obj : player.getMap().getUniqueMonsters()) {
+				MapleMonster mob = MapleLifeFactory.getMonster(obj);
+				player.dropMessage(mob.getName() + " (" + mob.getId() + ")");
+			}
 		} else if (sub[0].equals("reloadmobs")) {
 			MapleLifeFactory.getMonsterStats().clear();
 			player.dropMessage("All mobs have been reloaded.");
@@ -848,8 +853,8 @@ public class Commands {
 			player.dropMessage("All monster drops were reloaded from the database.");
 		} else if (sub[0].equals("reloadmap")) {
 			int mapid = player.getMapId();
-			c.getChannelServer().getMapFactory().getMaps().remove(mapid);
 			MapleMap oldMap = c.getPlayer().getMap();
+			c.getChannelServer().getMapFactory().getMaps().remove(mapid);
 			MapleMap newMap = c.getChannelServer().getMapFactory().getMap(mapid);
 			for (MapleCharacter ch : oldMap.getCharacters()) {
 				ch.changeMap(newMap);
@@ -1704,7 +1709,7 @@ public class Commands {
 			break;
 		case "clearquest":
 			if(sub.length < 1) {
-				player.dropMessage(5, "Plese include a quest ID.");
+				player.dropMessage(5, "Please include a quest ID.");
 				return;
 			}
 			MapleQuest.clearCache(Integer.parseInt(sub[1]));

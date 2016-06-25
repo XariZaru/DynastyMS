@@ -78,11 +78,15 @@ public final class DistributeAPHandler extends AbstractMaplePacketHandler {
                 c.getPlayer().addStat(4, 1);
                 break;
             case 2048: // HP
-                addHP(c.getPlayer(), addHP(c));
-                break;
+            	c.getPlayer().dropMessage(1, "HP disabled.");
+            	return false;
+                //addHP(c.getPlayer(), addHP(c));
+                //break;
             case 8192: // MP
-                addMP(c.getPlayer(), addMP(c));
-                break;
+            	c.getPlayer().dropMessage(1, "MP disabled.");
+            	return false;
+                //addMP(c.getPlayer(), addMP(c));
+                //break;
             default:
                 c.announce(MaplePacketCreator.updatePlayerStats(MaplePacketCreator.EMPTY_STATUPDATE, true, c.getPlayer()));
                 return false;
