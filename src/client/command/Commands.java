@@ -37,6 +37,7 @@ import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -363,7 +364,7 @@ public class Commands {
 			break;
 		case "time":
 			DateFormat dateFormat = new SimpleDateFormat("h:mm a, zzzz");
-			dateFormat.setTimeZone(TimeZone.getTimeZone("EDT"));
+			dateFormat.setTimeZone(TimeZone.getTimeZone("EST"));
 			player.yellowMessage("Dynasty Server Time: " + dateFormat.format(new Date()));
 			break;
 		case "guide":
@@ -854,16 +855,16 @@ public class Commands {
 		} else if (sub[0].equals("reloadmap")) {
 			int mapid = player.getMapId();
 			MapleMap oldMap = c.getPlayer().getMap();
-			c.getChannelServer().getMapFactory().getMaps().remove(mapid);
+			Collection<MapleCharacter> chrs = oldMap.getCharacters();
 			MapleMap newMap = c.getChannelServer().getMapFactory().getMap(mapid);
-			for (MapleCharacter ch : oldMap.getCharacters()) {
+			for (MapleCharacter ch : chrs)
 				ch.changeMap(newMap);
-			}
+			c.getChannelServer().getMapFactory().getMaps().remove(mapid);
 			oldMap = null;
 			newMap.respawn();
 		} else if (sub[0].equals("adddrop")) {
 			if (sub.length < 4) {
-				player.dropMessage("Format is !addDrop <mobid> <itemid> <percentage chance of dropping>");
+				player.dropMessage("Format is !adddrop <mobid> <itemid> <percentage chance of dropping>");
 				return false;
 			} else {
 				int chance = Integer.parseInt(sub[3]) * 1000000 / ServerConstants.DROP_RATE / 100;
@@ -968,25 +969,12 @@ public class Commands {
 			player.dropMessage("Map: " + player.getMap().getMapName() + "("+ player.getMapId() +")");
 		} else if (sub[0].equals("dc")) {
 			MapleCharacter victim = c.getWorldServer().getPlayerStorage().getCharacterByName(sub[1]);
-			if (victim == null) {
-				victim = c.getChannelServer().getPlayerStorage().getCharacterByName(sub[1]);
-				if (victim == null) {
-					victim = player.getMap().getCharacterByName(sub[1]);
-					if (victim != null) {
-						try {//sometimes bugged because the map = null
-							victim.getClient().disconnect(true, false);
-							player.getMap().removePlayer(victim);
-						} catch (Exception e) {
-						}
-					} else {
-						return true;
-					}
-				}
+			if (player.gmLevel() <= victim.gmLevel() || victim == null) {
+				player.dropMessage(5, "Character is either a GM or null.");
+			} else {
+				victim.getClient().disconnect(false, false);
+				player.dropMessage(5, "'" + victim.getName() + "' has been disconnected.");
 			}
-			if (player.gmLevel() < victim.gmLevel()) {
-				victim = player;
-			}
-			victim.getClient().disconnect(false, false);
 		} else if (sub[0].equals("exprate")) {
 			c.getWorldServer().setExpRate(Integer.parseInt(sub[1]));
 			player.message("EXP Rate being set to " + sub[1]);

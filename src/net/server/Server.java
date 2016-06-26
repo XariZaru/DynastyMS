@@ -211,6 +211,9 @@ public class Server implements Runnable {
                     channels.get(i).put(channelid, channel.getIP());
                 }
                 world.setServerMessage(p.getProperty("servermessage" + i));
+                System.out.println("Exp: " + world.getExpRate());
+                System.out.println("Drop: " + world.getDropRate());
+                System.out.println("Meso: " + world.getMesoRate());
                 System.out.println("Finished loading world " + i + "\r\n");
             }
         } catch (Exception e) {
