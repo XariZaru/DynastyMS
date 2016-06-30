@@ -98,7 +98,6 @@ import server.maps.PlayerNPCs;
 import server.maps.SavedLocation;
 import server.maps.SavedLocationType;
 import server.partyquest.ClearMap;
-import server.partyquest.ItemQuest;
 import server.partyquest.JumpQuest;
 import server.partyquest.MonsterCarnival;
 import server.partyquest.MonsterCarnivalParty;
@@ -1487,6 +1486,52 @@ public class MapleCharacter extends AbstractAnimatedMapleMapObject {
         client.announce(MaplePacketCreator.serverNotice(type, message));
     }
     
+    public boolean canVoteGTOP() throws SQLException {
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            ps = DatabaseConnection.getConnection().prepareStatement("SELECT * from votingrecords WHERE ip = ? AND siteid = 1");
+            ps.setString(1, getClient().getIP());
+            rs = ps.executeQuery();
+           
+            if (rs.next()) {
+                return ((System.currentTimeMillis() - rs.getInt("date") * 1000) >= 86400000);
+            }
+            return true;
+        } catch (Exception e) {
+            System.out.println("Failed to calculate GTOP vote.");
+        } finally {
+            if (ps != null)
+                ps.close();
+            if (rs != null)
+                rs.close();
+        }
+        return false;
+    }
+   
+    public boolean canVoteUltimate() throws SQLException {
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            ps = DatabaseConnection.getConnection().prepareStatement("SELECT * from votingrecords WHERE ip = ? AND siteid = 2");
+            ps.setString(1, getClient().getIP());
+            rs = ps.executeQuery();
+           
+            if (rs.next()) {
+                return ((System.currentTimeMillis() - rs.getInt("date") * 1000) >= 32400000);
+            }
+            return true;
+        } catch (Exception e) {
+            System.out.println("Failed to calculate UltimatePrivateServers vote.");
+        } finally {
+            if (ps != null)
+                ps.close();
+            if (rs != null)
+                rs.close();
+        }
+        return false;
+    }
+    
     public void titleMessage(String msg) {
     	client.announce(MaplePacketCreator.earnTitleMessage(msg));
     }
@@ -2772,7 +2817,6 @@ public class MapleCharacter extends AbstractAnimatedMapleMapObject {
         }
         client.announce(MaplePacketCreator.updatePlayerStats(statup, this));
         getMap().broadcastMessage(this, MaplePacketCreator.showForeignEffect(getId(), 0), false);
-        client.announce(MaplePacketCreator.showForeignEffect(getId(), 0));
         recalcLocalStats();
         setMPC(new MaplePartyCharacter(this));
         silentPartyUpdate();
@@ -3730,8 +3774,8 @@ public class MapleCharacter extends AbstractAnimatedMapleMapObject {
         }
         
         if (getJob().getId() == 512) {
-        	magic += 60;
-        	watk += 60;
+        	magic += 20;
+        	watk += 20;
         }
         magic = Math.min(magic, 2000);
         Integer hbhp = getBuffedValue(MapleBuffStat.HYPERBODYHP);
@@ -4574,15 +4618,15 @@ public class MapleCharacter extends AbstractAnimatedMapleMapObject {
             client.disconnect(false, false);
             FilePrinter.printError("autobandced.txt", message + "\r\n");
         }
-        //Server.getInstance().broadcastGMMessage(0, MaplePacketCreator.serverNotice(1, getName() + " received this - " + text));
-        //announce(MaplePacketCreator.sendPolice(text));
-        //this.isbanned = true;
-        //TimerManager.getInstance().schedule(new Runnable() {
-        //    @Override
-        //    public void run() {
-        //        client.disconnect(false, false);
-        //    }
-        //}, 6000);
+//        Server.getInstance().broadcastGMMessage(0, MaplePacketCreator.serverNotice(1, getName() + " received this - " + text));
+//        announce(MaplePacketCreator.sendPolice(text));
+//        this.isbanned = true;
+//        TimerManager.getInstance().schedule(new Runnable() {
+//            @Override
+//            public void run() {
+//                client.disconnect(false, false);
+//            }
+//        }, 6000);
     }
 
     public void sendKeymap() {
@@ -5429,8 +5473,8 @@ public class MapleCharacter extends AbstractAnimatedMapleMapObject {
     }
 
     public void autoban(String reason) {
-        this.ban(reason);
-        announce(MaplePacketCreator.sendPolice(String.format("You have been blocked by the#b %s Police for HACK reason.#k", "Dynasty")));
+        //this.ban(reason);
+        announce(MaplePacketCreator.sendPolice(String.format("You have been blocked by the#b %s Police for HACK reason. GMs will investigate this.#k", "Dynasty")));
         TimerManager.getInstance().schedule(new Runnable() {
             @Override
             public void run() {
@@ -5854,16 +5898,6 @@ public class MapleCharacter extends AbstractAnimatedMapleMapObject {
     }
     
     // DynastyMS PQ
-    private ItemQuest itemQuest;
-    
-    public ItemQuest getItemQuest() {
-    	return itemQuest;
-    }
-    
-    public void setItemQuest(ItemQuest itemQuest) {
-    	this.itemQuest = itemQuest;
-    }
-    
     public int getX() {
     	return getPosition().x;
     }

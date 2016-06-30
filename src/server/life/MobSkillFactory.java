@@ -55,8 +55,8 @@ public class MobSkillFactory {
         } finally {
             dataLock.readLock().unlock();
         }
-        dataLock.writeLock().lock();
         try {
+        	dataLock.writeLock().lock();
             MobSkill ret;
             ret = mobSkills.get(key);
             if (ret == null) {

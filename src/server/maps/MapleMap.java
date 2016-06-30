@@ -49,6 +49,8 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Random;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
@@ -86,10 +88,10 @@ import tools.Randomizer;
 public class MapleMap {
 
     private static final List<MapleMapObjectType> rangedMapobjectTypes = Arrays.asList(MapleMapObjectType.SHOP, MapleMapObjectType.ITEM, MapleMapObjectType.NPC, MapleMapObjectType.MONSTER, MapleMapObjectType.DOOR, MapleMapObjectType.SUMMON, MapleMapObjectType.REACTOR);
-    private Map<Integer, MapleMapObject> mapobjects = new LinkedHashMap<>();
+    private Map<Integer, MapleMapObject> mapobjects = new ConcurrentHashMap<>();
     private Collection<SpawnPoint> monsterSpawn = Collections.synchronizedList(new LinkedList<SpawnPoint>());
     private AtomicInteger spawnedMonstersOnMap = new AtomicInteger(0);
-    private Collection<MapleCharacter> characters = new LinkedHashSet<>();
+    private Collection<MapleCharacter> characters = new ConcurrentLinkedQueue<>();
     private Map<Integer, MaplePortal> portals = new HashMap<>();
     private Map<Integer, Integer> backgroundTypes = new HashMap<>();
     private List<Rectangle> areas = new ArrayList<>();

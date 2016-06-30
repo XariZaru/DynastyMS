@@ -26,6 +26,7 @@ import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -174,6 +175,25 @@ public class Server implements Runnable {
         	}
         	
         } , 600000, 10000);
+        
+        tMan.register(new Runnable() {
+        	@Override
+        	public void run() {
+        		try {
+        			PreparedStatement ps = null;
+        			ResultSet rs = null;
+        			for (Channel ch : Server.getInstance().getAllChannels())
+        				for (MapleCharacter player : ch.getPlayerStorage().getAllCharacters()) {
+        					if (player.canVoteGTOP())
+        						player.dropMessage("You can vote for GTOP100!");
+        					if (player.canVoteUltimate())
+        						player.dropMessage("You can vote for UltimatePrivateServers!");
+        				}
+        		} catch (Exception e) {
+        			e.printStackTrace();
+        		}
+        	}
+        }, 3600000, 10000);
         
         long timeToTake = System.currentTimeMillis();
         SkillFactory.loadAllSkills();

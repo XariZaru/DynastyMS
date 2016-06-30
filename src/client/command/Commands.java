@@ -56,6 +56,7 @@ import provider.MapleDataProviderFactory;
 import provider.MapleDataTool;
 import scripting.npc.NPCScriptManager;
 import scripting.portal.PortalScriptManager;
+import scripting.quest.QuestScriptManager;
 import scripting.reactor.ReactorScriptManager;
 import server.MapleInventoryManipulator;
 import server.MapleItemInformationProvider;
@@ -364,7 +365,7 @@ public class Commands {
 			break;
 		case "time":
 			DateFormat dateFormat = new SimpleDateFormat("h:mm a, zzzz");
-			dateFormat.setTimeZone(TimeZone.getTimeZone("EST"));
+			dateFormat.setTimeZone(TimeZone.getTimeZone("GMT-04"));
 			player.yellowMessage("Dynasty Server Time: " + dateFormat.format(new Date()));
 			break;
 		case "guide":
@@ -565,11 +566,12 @@ public class Commands {
 		case "online":
 			short players_online = 0;
 			for (Channel ch : Server.getInstance().getChannelsFromWorld(player.getWorld())) {
-				players_online += ch.getPlayerStorage().getAllCharacters().size();
 				player.yellowMessage("Players in Channel " + ch.getId() + ":");
 				for (MapleCharacter chr : ch.getPlayerStorage().getAllCharacters()) {
-					//if (!chr.isGM()) {
+					if (chr.isGM() && !player.isGM())
+						continue;
 					player.message(" >> " + MapleCharacter.makeMapleReadable(chr.getName()) + " is at " + chr.getMap().getMapName() + ".");
+					players_online++;
 					//}
 				}
 			}
@@ -791,6 +793,8 @@ public class Commands {
 				ch.reloadEventScriptManager();
 			}
 			player.dropMessage(5, "Reloaded Events");
+		} else if (sub[0].equals("reloadquestscripts")) {
+			QuestScriptManager.getInstance().getScripts().clear();
 		} else if (sub[0].equals("reloadshops")) {
 			MapleShopFactory.getInstance().reloadShops();
 			player.dropMessage(5, "Reloaded shops");
@@ -853,15 +857,30 @@ public class Commands {
 			MapleMonsterInformationProvider.getInstance().clearDrops();
 			player.dropMessage("All monster drops were reloaded from the database.");
 		} else if (sub[0].equals("reloadmap")) {
-			int mapid = player.getMapId();
 			MapleMap oldMap = c.getPlayer().getMap();
 			Collection<MapleCharacter> chrs = oldMap.getCharacters();
-			MapleMap newMap = c.getChannelServer().getMapFactory().getMap(mapid);
+			c.getChannelServer().getMapFactory().getMaps().remove(oldMap.getId());
+			MapleMap newMap = c.getChannelServer().getMapFactory().getMap(oldMap.getId());
+			oldMap = null;
 			for (MapleCharacter ch : chrs)
 				ch.changeMap(newMap);
-			c.getChannelServer().getMapFactory().getMaps().remove(mapid);
-			oldMap = null;
 			newMap.respawn();
+		} else if (sub[0].equals("changedrop")) {
+			if (sub.length < 4) {
+				player.dropMessage("Format is !changedrop <mobid> <itemid> <percentage chance of dropping>");
+				return false;
+			}
+			try {
+				int chance = Integer.parseInt(sub[3]) * 1000000 / ServerConstants.DROP_RATE / 100;
+				PreparedStatement ps = DatabaseConnection.getConnection().prepareStatement("UPDATE drop_data set chance = ? WHERE itemid = ? AND dropperid = ?");
+				ps.setInt(1, chance);
+				ps.setInt(2, Integer.parseInt(sub[2]));
+				ps.setInt(3, Integer.parseInt(sub[1]));
+				ps.executeUpdate();
+				ps.close();
+			} catch (Exception e) {
+				player.dropMessage("Failed to modify drop");
+			}
 		} else if (sub[0].equals("adddrop")) {
 			if (sub.length < 4) {
 				player.dropMessage("Format is !adddrop <mobid> <itemid> <percentage chance of dropping>");
@@ -1437,7 +1456,7 @@ public class Commands {
             } else {
                 player.yellowMessage("There is already a NPC named \""+sub[1]+"\".");
             }
-		} else if (sub[0].equals("quest")) {
+		} else if (sub[0].equals("getquest")) {
 			player.message("Current Quest: " + player.getQuest());
 		} else if (sub[0].equals("setquest")) {
 			player.setQuest(Integer.parseInt(sub[1]));
@@ -1452,6 +1471,17 @@ public class Commands {
 				return true;
 			}
 			player.message("Unbanned " + sub[1]);
+		} else if (sub[0].equals("togglehuds")) {
+			if (sub.length < 2) {
+				player.yellowMessage("Specify true or false if you want to disable HUDs");
+			} else if (sub[1] == "true" || sub[1] == "false"){
+				for (MapleCharacter target : player.getMap().getCharacters()) {
+					if (!target.isGM()) {
+						target.getClient().announce(MaplePacketCreator.disableUI(sub[1] == "true" ? true : false));
+						target.getClient().announce(MaplePacketCreator.lockUI(sub[1] == "true" ? true : false));
+					}
+				}
+			}
 		} else if (sub[0].equals("ban")) {
 			if (sub.length < 3) {
 				player.yellowMessage("Syntax: !ban <IGN> <Reason> (Please be descriptive)");
@@ -1460,6 +1490,8 @@ public class Commands {
 			String ign = sub[1];
 			String reason = joinStringFrom(sub, 2);
 			MapleCharacter target = c.getChannelServer().getPlayerStorage().getCharacterByName(ign);
+			target.getClient().announce(MaplePacketCreator.playSound("Party1/Failed"));
+			target.getClient().announce(MaplePacketCreator.showEffect("quest/party/wrong_kor"));
 			if (target != null) {
 				String readableTargetName = MapleCharacter.makeMapleReadable(target.getName());
 				String ip = target.getClient().getSession().getRemoteAddress().toString().split(":")[0];

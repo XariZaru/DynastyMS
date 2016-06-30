@@ -235,6 +235,11 @@ public class MapleClient {
 //		return difference < 86400 && difference > 0;
 //	}
 	
+	public String getIP() {
+		String[] address = getSession().getRemoteAddress().toString().split(":");
+		return address[0].substring(1, address[0].length());
+	}
+	
 	public boolean hasBannedHWID() {
 		if(hwid == null)
 			return false;

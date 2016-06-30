@@ -45,6 +45,10 @@ public class QuestScriptManager extends AbstractScriptManager {
 	public synchronized static QuestScriptManager getInstance() {
 		return instance;
 	}
+	
+	public Map<MapleClient, Invocable> getScripts() {
+		return scripts;
+	}
 
 	public void start(MapleClient c, short questid, int npc) {
 		MapleQuest quest = MapleQuest.getInstance(questid);

@@ -31,30 +31,30 @@ public class AutobanManager {
     }
 
     public void addPoint(AutobanFactory fac, String reason) {
-//    	if (chr.isGM() || chr.isBanned()){
-//    		return;
-//    	}
-//        if (lastTime.containsKey(fac)) {
-//            if (lastTime.get(fac) < (System.currentTimeMillis() - fac.getExpire())) {
-//                points.put(fac, points.get(fac) / 2); //So the points are not completely gone.
-//            }
-//        }
-//        if (fac.getExpire() != -1)
-//            lastTime.put(fac, System.currentTimeMillis());
-//        
-//        if (points.containsKey(fac)) {
-//            points.put(fac, points.get(fac) + 1);
-//        } else
-//            points.put(fac, 1);
-//
-//        if (points.get(fac) >= fac.getMaximum()) {
-//        	chr.autoban(reason);
-//            //chr.autoban("Autobanned for " + fac.name() + " ;" + reason, 1);
-//            //chr.sendPolice("You have been blocked by #bMooplePolice for the HACK reason#k.");
-//        }
-//        
-//        // Lets log every single point too.
-//        FilePrinter.printError("autobanwarning.txt", MapleCharacter.makeMapleReadable(chr.getName()) + " caused " + fac.name() + " " + reason + "\r\n");
+    	if (chr.isGM() || chr.isBanned()){
+    		return;
+    	}
+        if (lastTime.containsKey(fac)) {
+            if (lastTime.get(fac) < (System.currentTimeMillis() - fac.getExpire())) {
+                points.put(fac, points.get(fac) / 2); //So the points are not completely gone.
+            }
+        }
+        if (fac.getExpire() != -1)
+            lastTime.put(fac, System.currentTimeMillis());
+        
+        if (points.containsKey(fac)) {
+            points.put(fac, points.get(fac) + 1);
+        } else
+            points.put(fac, 1);
+
+        if (points.get(fac) >= fac.getMaximum()) {
+        	chr.autoban(reason);
+            //chr.autoban("Autobanned for " + fac.name() + " ;" + reason, 1);
+            chr.sendPolice("You have been blocked by #bMooplePolice for the HACK reason#k.");
+        }
+        
+        // Lets log every single point too.
+        FilePrinter.printError("autobanwarning.txt", MapleCharacter.makeMapleReadable(chr.getName()) + " caused " + fac.name() + " " + reason + "\r\n");
     }
 
     public void addMiss() {

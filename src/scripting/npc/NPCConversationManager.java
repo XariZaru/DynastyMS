@@ -54,7 +54,6 @@ import server.life.MapleMonster;
 import server.maps.MapleMap;
 import server.maps.MapleMapFactory;
 import server.partyquest.ClearMap;
-import server.partyquest.ItemQuest;
 import server.partyquest.JumpQuest;
 import server.partyquest.KillMobs;
 import server.partyquest.Pyramid;
@@ -96,14 +95,12 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
 	private String scriptName;
 	private String getText;
 	private String lastMethod = null;
-	private ItemQuest iQ;
 	private int status = -1;
 
 	public NPCConversationManager(MapleClient c, int npc, String scriptName) {
 		super(c);
 		this.npc = npc;
 		this.scriptName = scriptName;
-		this.iQ = getPlayer().getItemQuest();
 	}
 	
 	public void fadeMessage(String msg) {
@@ -544,26 +541,6 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
 		
 		new SpawnPQ(getPartyMembers(), getPlayer().getMap()); 
 		
-	}
-	
-	public void startItemQuest(List<Integer> mobs, List<Integer> item, List<Integer> amount) {
-		if (getPlayer().getParty() == null) {
-			System.out.println("The player has no party so this method was called when creating the quest.");
-		} else {
-			new ItemQuest(mobs, item, amount, getPartyMembers(), getPlayer().getMap());
-		}
-	}
-
-	public String getItemQuestRequirements() {
-		return getItemQuestAmount() + " #i"+getItemQuestItem()+"#";
-	}
-	
-	public int getItemQuestItem() {
-		return iQ.getItem(iQ.getLevel());
-	}
-	
-	public int getItemQuestAmount() {
-		return iQ.getAmount(iQ.getLevel());
 	}
 	
 	// End of DynastyPQ Stuff

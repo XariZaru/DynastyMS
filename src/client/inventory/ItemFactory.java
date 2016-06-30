@@ -141,9 +141,8 @@ public enum ItemFactory {
         PreparedStatement pse = null;
 		ResultSet rs = null;
 		
-		lock.lock();
-		
         try {
+        	lock.lock();
             StringBuilder query = new StringBuilder();
             query.append("DELETE `inventoryitems`, `inventoryequipment` FROM `inventoryitems` LEFT JOIN `inventoryequipment` USING(`inventoryitemid`) WHERE `type` = ? AND `");
             query.append(account ? "accountid" : "characterid").append("` = ?");
@@ -227,7 +226,6 @@ public enum ItemFactory {
 			if(rs != null && !rs.isClosed()) {
 				rs.close();
 			}
-			
 			lock.unlock();
         }
     }
