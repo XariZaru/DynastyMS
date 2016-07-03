@@ -273,7 +273,7 @@ public class MapleCharacter extends AbstractAnimatedMapleMapObject {
     private Map<Short, String> area_info = new LinkedHashMap<>();
     private AutobanManager autoban;
     private boolean isbanned = false, canWarp = true;
-    private boolean guide = false;
+    private boolean guide = false, isVisible = false;
     private ScheduledFuture<?> pendantOfSpirit = null; //1122017
     private byte pendantExp = 0, lastmobcount = 0;
     private List<Integer> trockmaps = new ArrayList<>();
@@ -1486,48 +1486,45 @@ public class MapleCharacter extends AbstractAnimatedMapleMapObject {
         client.announce(MaplePacketCreator.serverNotice(type, message));
     }
     
-    public boolean canVoteGTOP() throws SQLException {
-        PreparedStatement ps = null;
-        ResultSet rs = null;
+    public boolean canVoteGTOP() {
         try {
-            ps = DatabaseConnection.getConnection().prepareStatement("SELECT * from votingrecords WHERE ip = ? AND siteid = 1");
+            PreparedStatement ps = DatabaseConnection.getConnection().prepareStatement("SELECT * from votingrecords WHERE ip = ? AND account = ? AND siteid = 1");
             ps.setString(1, getClient().getIP());
-            rs = ps.executeQuery();
-           
-            if (rs.next()) {
-                return ((System.currentTimeMillis() - rs.getInt("date") * 1000) >= 86400000);
-            }
-            return true;
+            ps.setString(2, getClient().getAccountName());
+            ResultSet rs = ps.executeQuery();
+            boolean can_vote = false;
+            
+            if (rs.next()) 
+                can_vote = ((System.currentTimeMillis() - (rs.getInt("date") * 1000)) >= 86400000);
+            else 
+            	can_vote = true;
+            ps.close();
+            rs.close();
+            return can_vote;
         } catch (Exception e) {
             System.out.println("Failed to calculate GTOP vote.");
         } finally {
-            if (ps != null)
-                ps.close();
-            if (rs != null)
-                rs.close();
         }
         return false;
     }
    
-    public boolean canVoteUltimate() throws SQLException {
-        PreparedStatement ps = null;
-        ResultSet rs = null;
+    public boolean canVoteUltimate() {
         try {
-            ps = DatabaseConnection.getConnection().prepareStatement("SELECT * from votingrecords WHERE ip = ? AND siteid = 2");
+            PreparedStatement ps = DatabaseConnection.getConnection().prepareStatement("SELECT * from votingrecords WHERE ip = ? AND siteid = 2");
             ps.setString(1, getClient().getIP());
-            rs = ps.executeQuery();
-           
-            if (rs.next()) {
-                return ((System.currentTimeMillis() - rs.getInt("date") * 1000) >= 32400000);
-            }
-            return true;
+            ResultSet rs = ps.executeQuery();
+            boolean can_vote = false;
+            
+            if (rs.next()) 
+                can_vote = ((System.currentTimeMillis() - (rs.getInt("date") * 1000)) >= 86400000);
+            else 
+            	can_vote = true;
+            ps.close();
+            rs.close();
+            return can_vote;
         } catch (Exception e) {
             System.out.println("Failed to calculate UltimatePrivateServers vote.");
         } finally {
-            if (ps != null)
-                ps.close();
-            if (rs != null)
-                rs.close();
         }
         return false;
     }
@@ -2992,6 +2989,14 @@ public class MapleCharacter extends AbstractAnimatedMapleMapObject {
         }
     }
     
+    public void setVisibility(boolean visibility) {
+    	this.isVisible = visibility;
+    }
+    
+    public boolean isVisible() {
+    	return isGM() ? this.isVisible : true;
+    }
+    
     public String getRevisionsLog(String revName) {
     	try {
     		String txt = "\t\t\t\t\t\t\t#e---===Revision Logs===---#n\r\n";
@@ -3774,6 +3779,9 @@ public class MapleCharacter extends AbstractAnimatedMapleMapObject {
         }
         
         if (getJob().getId() == 512) {
+        	magic += 40;
+        	watk += 40;
+        } else if (getJob().getId() == 511) {
         	magic += 20;
         	watk += 20;
         }
@@ -4509,9 +4517,10 @@ public class MapleCharacter extends AbstractAnimatedMapleMapObject {
                 }
             }
             psf.close();
-            ps = con.prepareStatement("UPDATE accounts SET gm = ? WHERE id = ?");
+            ps = con.prepareStatement("UPDATE accounts SET gm = ?, votepoints = ? WHERE id = ?");
             ps.setInt(1, gmLevel);
-            ps.setInt(2, client.getAccID());
+            ps.setInt(2, votepoints);
+            ps.setInt(3, client.getAccID());
             ps.executeUpdate();
             ps.close();
 			

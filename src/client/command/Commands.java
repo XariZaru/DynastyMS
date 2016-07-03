@@ -563,16 +563,17 @@ public class Commands {
 				player.message("Players under level 10 always have 1x exp.");
 			}
 			break;
+		case "say":
+			Server.getInstance().broadcastMessage(MaplePacketCreator.serverNotice(6, "["+player.getName()+"] " + joinStringFrom(sub, 1)));
 		case "online":
 			short players_online = 0;
 			for (Channel ch : Server.getInstance().getChannelsFromWorld(player.getWorld())) {
 				player.yellowMessage("Players in Channel " + ch.getId() + ":");
 				for (MapleCharacter chr : ch.getPlayerStorage().getAllCharacters()) {
-					if (chr.isGM() && !player.isGM())
+					if (!chr.isVisible() && !player.isGM())
 						continue;
 					player.message(" >> " + MapleCharacter.makeMapleReadable(chr.getName()) + " is at " + chr.getMap().getMapName() + ".");
 					players_online++;
-					//}
 				}
 			}
 			player.yellowMessage("Number of players online: " + players_online);
@@ -886,7 +887,7 @@ public class Commands {
 				player.dropMessage("Format is !adddrop <mobid> <itemid> <percentage chance of dropping>");
 				return false;
 			} else {
-				int chance = Integer.parseInt(sub[3]) * 1000000 / ServerConstants.DROP_RATE / 100;
+				int chance = (int) (Double.parseDouble(sub[3]) * 1000000 / ServerConstants.DROP_RATE / 100);
 				if (MapleLifeFactory.getMonster(Integer.parseInt(sub[1])) == null) {
 					player.dropMessage("The mob id doesn't exist.");
 					return false;
@@ -900,7 +901,7 @@ public class Commands {
 					ps.setInt(6, chance);
 					ps.executeUpdate();
 					ps.close();
-					player.dropMessage("Mob " + sub[1] + " with chance value " + chance + " ("+sub[3]+") inserted");
+					player.dropMessage("Mob " + MapleLifeFactory.getMonster(Integer.parseInt(sub[1])).getName() + " with chance value " + chance + " ("+sub[3]+"%) inserted");
 					MapleMonsterInformationProvider.getInstance().getDrops().remove(Integer.parseInt(sub[1]));
 				} catch (Exception e) {
 				}
@@ -1157,6 +1158,9 @@ public class Commands {
 					e.printStackTrace();
 				}
 			}
+		} else if (sub[0].equals("visible")) {
+			player.setVisibility(!player.isVisible());
+			player.dropMessage("Visibility set to " + player.isVisible());
 		} else if (sub[0].equals("servernote")) {
 			if (sub[1] == null) {
 				player.dropMessage("Specify a message in order to send a note.");
@@ -1179,6 +1183,7 @@ public class Commands {
 				ps.setString(3, "- " + joinStringFrom(sub, 3));
 				ps.executeUpdate();
 				player.dropMessage("Added your revision to the database.");
+				Server.getInstance().broadcastMessage(MaplePacketCreator.serverNotice(5, "Patch " + sub[2] + ": " + joinStringFrom(sub, 3)));
 				ps.close();
 			} catch (Exception e) {
 				player.dropMessage("Failed to add revision log");
@@ -1477,11 +1482,13 @@ public class Commands {
 			} else if (sub[1] == "true" || sub[1] == "false"){
 				for (MapleCharacter target : player.getMap().getCharacters()) {
 					if (!target.isGM()) {
-						target.getClient().announce(MaplePacketCreator.disableUI(sub[1] == "true" ? true : false));
-						target.getClient().announce(MaplePacketCreator.lockUI(sub[1] == "true" ? true : false));
+						target.getClient().announce(MaplePacketCreator.disableUI(sub[1].equals("true") ? true : false));
+						target.getClient().announce(MaplePacketCreator.lockUI(sub[1].equals("true") ? true : false));
 					}
 				}
 			}
+		} else if (sub[0].equals("clock")) {
+			player.getMap().broadcastGMMessage(MaplePacketCreator.getClock(60 * Integer.parseInt(sub[1])));
 		} else if (sub[0].equals("ban")) {
 			if (sub.length < 3) {
 				player.yellowMessage("Syntax: !ban <IGN> <Reason> (Please be descriptive)");

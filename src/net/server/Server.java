@@ -167,7 +167,7 @@ public class Server implements Runnable {
         tMan.start();
         tMan.register(tMan.purge(), 300000);//Purging ftw...
         tMan.register(new RankingWorker(), ServerConstants.RANKING_INTERVAL);
-        //tMan.register(new VoteChecker(), 2 * 60 * 1000);  
+        tMan.register(new VoteChecker(), 2 * 60 * 1000);  
         tMan.register(new Runnable() {
         	@Override
         	public void run() { 

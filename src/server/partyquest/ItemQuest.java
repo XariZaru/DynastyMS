@@ -18,15 +18,7 @@ public class ItemQuest extends DynastyMS {
 		this.item = item;
 		this.amount = amount;
 		
-		addInstances();
 		
-		
-	}
-	
-	private void addInstances() {
-		for (MapleCharacter chr : getParty()) {
-			chr.setItemQuest(this);
-		}
 	}
 
 	public boolean checkWin() {

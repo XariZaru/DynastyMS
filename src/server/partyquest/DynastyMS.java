@@ -73,31 +73,6 @@ public class DynastyMS {
         }, /* same, can be 0*/ time / 1000 , time / 1000, TimeUnit.SECONDS);
 	}
 	
-	public void stillHere() {
-		for (MapleCharacter chr : getParty()) {
-			if (chr.getMapId() == map.getId()) {
-				return;
-			}
-		}
-		removeInstances();
-	}
-	
-	public void removeInstances() {
-		for (MapleCharacter chr : getParty()) {
-			chr.setItemQuest(null);
-		}
-	}
-	
-	public void endPQ(int map) {
-		killAll();
-		for (MapleCharacter chr : getParty()) {
-			chr.changeMap(map);
-			chr.setItemQuest(null);
-		}
-		System.out.println("Warping player out to mapid " + map);
-		executor.shutdown();
-	}
-	
 	public int getLevel() {
 		return this.level;
 	}
