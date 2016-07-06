@@ -1,4 +1,4 @@
-var npcs = [9201082, 9010000,9000021,9000039];
+var npcs = [9201082, 9010000,9000021,9000039,1092017];
 
 function start() {
 	cm.sendSimple("What of the following wares would you like to view?#b\r\n\r\n#L100#Go Back",
@@ -6,7 +6,8 @@ function start() {
 			"Speak with Spindle (Vote Points)",
 			"Speak with Maple Administrator (NX Cash)",
 			"Speak with Gaga (Maple Leaves)",
-			"Speak with Agent W (Cygnus 3rd Skills)");
+			"Speak with Agent W (Cygnus 3rd Skills)",
+			"Speak with Anonymous Merchant (Boss Points)");
 }
 
 function action(m,t,s,status) {

@@ -1,7 +1,7 @@
 var diamond = 4021007;
 
 function start() {
-    if (cm.getJobId() == 2000 && cm.getQ() == 8) {
+    if (cm.getJobId() == 2000 && cm.getQ() == 7) {
             cm.sendYesNo("There are some sparkling jewels within the chest. Do you wish to take something from the chest?");
     } else {
         cm.sendOk("It is a chest full of many beautiful things.");

@@ -2832,6 +2832,10 @@ public class MapleCharacter extends AbstractAnimatedMapleMapObject {
         }
         levelUpMessages();
         guildUpdate();
+        if (this.getLevel() > 50) {
+        	this.dropMessage(5, "Because you hit level 51, your rates have been set back to normal!");
+        	this.setRates();
+        }
     }
 
     public void gainAp(int amount) {
@@ -3189,7 +3193,7 @@ public class MapleCharacter extends AbstractAnimatedMapleMapObject {
                 Item itemz = item.getLeft();
                 if (itemz.getPetId() > -1) {
                     MaplePet pet = itemz.getPet();
-                    if (pet != null && pet.isSummoned()) {
+                    if (pet != null && pet.isSummoned() && !ret.isGM()) {
                         ret.addPet(pet);
                     }
                     continue;
@@ -3779,9 +3783,11 @@ public class MapleCharacter extends AbstractAnimatedMapleMapObject {
         }
         
         if (getJob().getId() == 512) {
+        	this.dropMessage(5, "Your WATK and MATK has been buffed by 40 since you are a buccaneer.");
         	magic += 40;
         	watk += 40;
         } else if (getJob().getId() == 511) {
+        	this.dropMessage(5, "Your WATK and MATK has been buffed by 20 since you are a marauder.");
         	magic += 20;
         	watk += 20;
         }
@@ -4766,6 +4772,9 @@ public class MapleCharacter extends AbstractAnimatedMapleMapObject {
             } else {
                 this.expRate = worldz.getExpRate();
             }
+        }
+        if (this.getLevel() < 51 && expRate < worldz.getExpRate() * 2) {
+        	this.expRate = worldz.getExpRate() * 2;
         }
         //this.expRate += (client.hasVotedAlready() ? 1 : 0);
         //this.mesoRate += getGuild() != null ? 1 : 0;

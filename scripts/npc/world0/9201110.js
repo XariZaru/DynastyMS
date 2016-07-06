@@ -10,19 +10,36 @@ var info = [//<editor-fold defaultstate="collapsed" desc="Information on the Net
   "I've been a mediator for quite some time now. You might wonder why exactly my person is that of a statue, but that's because I, as a person, was infused into this rock a long time ago. How exactly long ago" +
   " I'm not quite sure, but it must have been at least over 4 score decades already."],["You can get missions through me. Sejan can also relay you missions by putting you into direct communication with me if you do happen to find him. Either way, I'll be the one that distributes the mission to you, and you'll undertake it. They'll be good, rewarding missions, mind you. So don't worry about the pay."]];
 var intel,who,how, sel;
+var cm = null;
+
+importPackage(Packages.tools);
+importPackage(Packages.java.sql);
+
+function questDetails(level, title) {
+	var ps = DatabaseConnection.getConnection().prepareStatement("SELECT information from aran_info WHERE id = ?");
+	ps.setInt(1, cm.getQ());
+	var rs = ps.executeQuery();
+	var details = "NO DETAILS";
+	if (rs.next())
+		details = rs.getString("information");
+	ps.close();
+	rs.close();
+	return "#e#r[Level "+level+"] : " + title + "#n#k\r\n_____________________________________________\r\n\r\n" + details;
+}
 
 function start() {
+	cm = cm;
     if (cm.getJobId()>=2000 && cm.getJobId()<=2999) {
-    	if (cm.getQ() == 29)
+    	if (cm.getQ() == 28)
     		cm.sendNext("#b(The statue seems to be unmoving and stoic)#k",2);
-    	else if (cm.getQ() == 30)
+    	else if (cm.getQ() == 29)
     		cm.sendNext("#bSejan#k tells me that you have traveled far from the desert sands of Ariant. You are now in the metropolis of" +
     				" #eOrbis#n, the thriving heart of the Empire, whom I assume you do not care about; however, this is much to the city that you need " +
     				"to learn, and that without proper knowledge of the Imperial's innerworkings you may find yourself in a tight situation.\r\n\r\n " +
     				"There is change occuring as we speak right now, and even though our network is vast we're unable to gather a significant amount of information " +
     				"about this particular foe.");
-    	else if (cm.getQ() > 30)
-            cm.sendSimple("What do you wish to do? You may enter the hideout whenever you wish to, but to go to other maps you will have to wait an entire day for it to replenish for our network is spread thin at this moment.\r\n\r\n#b#L0#Go to the Hideout\r\n#L1#Other Maps");
+    	else if (cm.getQ() > 29)
+            cm.sendSimple("What do you wish to do? You may enter the hideout whenever you wish to, but to go to other maps you will have to wait an entire day for it to replenish for our network is spread thin at this moment.\r\n\r\n#b#L2#Talk to Master Thief (storyline)\r\n#L0#Go to the Hideout\r\n#L1#Other Maps");
     	else {
     		cm.sendOk("#b(The statue seems to be unmoving and stoic.)#k", 2);
     		cm.dispose();
@@ -43,10 +60,18 @@ function action(m,t,s) {
     }
     if (status == 0) {
         switch(cm.getQ()) {
-            case 29:
+			case 30:
+				if (cm.getLevel() < 30) {
+					cm.sendOk(questDetails(30, "A Quick Checkup"));
+					cm.dispose();
+				} else {
+					cm.dispose();
+				}
+				break;
+            case 28:
                 cm.sendNext("#b(The statue's eyes suddenly shine brightly and then fade away evanescently)#k",2);
                 break;
-            case 30:
+            case 29:
             	cm.sendNext("You, having been trained in our ways for quite a long time, understand how important it is that we feed " +
             			"the needy. Without our services many can go hungry. It is of utmost importance then to maintain updated information " +
             			"about various prominent figures so that we can make our raids accordingly.\r\n\r\nFor now, I'll take you to our network on " +
@@ -56,7 +81,7 @@ function action(m,t,s) {
                 if (s == 0) {
                     if (cm.getPlayerCount((train)) < 1) {
                         cm.getPlayer().saveLocation("WORLDTOUR");
-                        cm.warp(train+i); 
+                        cm.warp(train); 
                     } else {
                         cm.sendOk("There is currently a person in the training map. Please change channels or try again at another time.");                          
                     }
@@ -72,10 +97,10 @@ function action(m,t,s) {
         }
     } else if (status == 1) {
         switch(cm.getQ()) {
-            case 29:
-                cm.sendSimple("The statue's rumbles, and then a deep voice speaks out: \"What do you wish to learn?\"\r\n\r\n#b#L0#What is the thief network?\r\n#L1#Who are you?\r\n#L2#How do I get missions?"+(intel && how && who ? "\r\n#L3##e#rThat's all I need for now#n#k" : "")+"");
+            case 28:
+                cm.sendSimple("The statue's rumbles, and then a deep voice speaks out: \"What do you wish to learn?\" (Read all options)\r\n\r\n#b#L0#What is the thief network?\r\n#L1#Who are you?\r\n#L2#How do I get missions?"+(intel && how && who ? "\r\n#L3##e#rThat's all I need for now#n#k" : "")+"");
                 break;
-            case 30:
+            case 29:
             	cm.sendAcceptDecline("You can accept my offer at any time you wish to leave.\r\n\r\nAre you willing to leave now?");
             	break;
             default:
@@ -92,7 +117,7 @@ function action(m,t,s) {
     } else if (status == 2) {
         if (cm.getJobId() >= 2100) {
             switch(cm.getQ()) {
-                case 29:
+                case 28:
                 	if (s == 3) {
                 		cm.sendOk("Okay, talk to me again if you have the time.");
                 		cm.completeQ();
@@ -114,9 +139,9 @@ function action(m,t,s) {
 			            	resetInfo();
                 	}
 		            break;
-                case 30:
+                case 29:
                 	cm.warp(100000000,0);
-                	cm.sendOk("#bSejan#k will call upon you and give you your next task when you're needed. To access our current task log, click on the helper nearby you to find " +
+                	cm.sendOk("#bI#k will call upon you and give you your next task when you're needed. To access our current task log, click on the helper nearby you to find " +
                 			"receive information on the latest quest.");
                 	cm.completeQ();
                 	cm.dispose();

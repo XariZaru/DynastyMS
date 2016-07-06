@@ -52,9 +52,10 @@ function action(m,t,s, status) {
 		if (s == 0) {
 			cm.getPlayer().saveLocation("FREE_MARKET");
 			cm.warp(910000000);
+			cm.dispose();
 		} else if (s == 100) {
 			cm.openNpc(9300003);
-			cm.dispose();
+			return;
 		} else if (!cm.haveItem(item, cost)) {
 			cm.sendOk("You don't have enough #e#z"+item+"##n to purchase this ride.");
 			cm.dispose();

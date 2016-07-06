@@ -155,7 +155,7 @@ public final class PlayerLoggedinHandler extends AbstractMaplePacketHandler {
             player.announce(MaplePacketCreator.sendAutoHpPot(player.getKeymap().get(91).getAction()));
         if(player.getKeymap().get(92) != null)
             player.announce(MaplePacketCreator.sendAutoMpPot(player.getKeymap().get(92).getAction()));
-        
+
         player.getMap().addPlayer(player);
         World world = server.getWorld(c.getWorld());
         world.getPlayerStorage().addPlayer(player);
@@ -244,7 +244,7 @@ public final class PlayerLoggedinHandler extends AbstractMaplePacketHandler {
         player.setRates();
         player.setGuide();
         
-        if (player.getLevel() <= 5) {
+        if (player.getLevel() <= 2) {
 	        c.removeClickedNPC();
 			NPCScriptManager.getInstance().dispose(c);
 			NPCScriptManager.getInstance().start(c, (!player.isCygnus() ? 1202000 : 
@@ -261,6 +261,8 @@ public final class PlayerLoggedinHandler extends AbstractMaplePacketHandler {
 //            if (!c.hasVotedAlready()){
 //            	player.announce(MaplePacketCreator.earnTitleMessage("You can vote now! Vote and earn a vote point!"));
 //            }
+        	if (player.getLevel() < 51)
+            	player.dropMessage(5, "As a player under level 50, your EXP rate has been doubled to " + player.getExpRate() + " for the week because you are under level 50!");
             if (player.isGM()){
             	Server.getInstance().broadcastGMMessage(MaplePacketCreator.earnTitleMessage("GM " + player.getName() + " has logged in"));
             }

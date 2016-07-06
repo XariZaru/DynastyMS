@@ -24,7 +24,7 @@ function action(m,t,s,status) {
 			}
 		}
 	} else if (status == 1) {
-		cm.startDamageTest(9300018, s, 265, 2145);
+		cm.startDamageTest(9500400, s, 265, 2145);
 		cm.dispose();
 	}
 }

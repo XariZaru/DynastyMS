@@ -13,13 +13,16 @@ function start() {
             cm.dispose();
     	} else if (cm.getQ()==6) {
             cm.sendNext("Hey, peasant, what are you doing here? You understand palace grounds are off limits, right?");
-        } else if (cm.getQ()==9) {
+        } else if (cm.getQ()==8) {
             cm.sendNext("Hey, you! Where do you think you're going? You're not going anywhere you little scumbag!");
-        } else {
+        } else if (cm.getQ()==10) {
             cm.warp(260000300);
             cm.talkGuide("That was a close one ... hopefully Sejan will be satisfied by what we took from the throne room.");
             cm.completeQ();
             cm.dispose();
+		} else {
+			cm.sendOk("Yes? Is there something you want?");
+			cm.dispose();
         }
     } else {
     	cm.sendOk("Hey! Back away from that entrance! Only royals allowed.");
@@ -43,7 +46,7 @@ function action(mode,type,selection) {
         status++;
     }
     if (status == 0) {
-         if (cm.getQ()==9) {
+         if (cm.getQ()==8) {
             cm.spawn(9300018, 5, -168, 153);
             cm.getPlayer().setQuesting(true, 5);
             cm.talkGuide("We have to get rid of these guards, otherwise they'll follow us back to Sejan!");
@@ -67,6 +70,6 @@ function action(mode,type,selection) {
     } else if (status == 4) {
         cm.sendOk("I ... I suppose so. You can enter through the gates, then. Just don't do anything stupid. We have guards posted everywhere.#e"+
             ""+cm.getPlayer().gainPersuasion(1)+"#n"+sQuest(100,5000)+"");
-    cm.completeQ(), cm.talkGuide("Let's go inside now that it is open and steal something useful."), cm.dispose();
+			cm.talkGuide("Let's go inside now that it is open and steal something useful."), cm.dispose();
         }
     }

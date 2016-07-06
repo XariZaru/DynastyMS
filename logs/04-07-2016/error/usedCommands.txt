@@ -1,0 +1,12 @@
+Xari used: !killall 
+Xari used: !npc 9900001 
+Xari used: !killall 
+Xari used: !npc 9900001 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 

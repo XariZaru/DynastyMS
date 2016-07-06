@@ -1,4 +1,7 @@
 function start() {
+	cm.sendOk("Hi! I'm Spiegelmann! I handle all of the empire's unique monsters. This will probably be the only time you'll see them!");
+	cm.dispose();
+	return;
 	if (cm.getPlayer().getCPQParty() != null) {
 		if (cm.getPlayer().getCPQParty().canGetRewards()) {
 			cm.sendNext("Hey, congratulations on getting to the end of the PQ! I'll give you your exp" +

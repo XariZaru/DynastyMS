@@ -514,6 +514,10 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
         playSound("Party1/Clear");
     }
 	
+	public void completeQuestSound() {
+        complete();
+    }
+	
 	public ClearMap getClearMap() {
 		return getPlayer().getClearNpc();
 	}

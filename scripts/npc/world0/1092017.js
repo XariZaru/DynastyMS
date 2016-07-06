@@ -17,10 +17,11 @@ var currency_id = 4031229;
 var etc 	  =	{5220000:[1000,-1],5510000:[1000,-1],5130000:[1000, -1]};
 var usables   =	{5050000:[100,-1],5570000:[10000,-1],5450000:[1000, 86400000]};
 var currency  =	{4031229:[10000,-1]};
-var equipment = {1112405:[50000,432000000], 1112401: [30000000, -1], 1122012: [5000000,-1]};
+var equipment = {1112408:[5000, -1], 1122012: [250000,-1], /*1112401: [2000000, -1]*/};
+var upgradable_stuff = [1112408];
 
 // Custom equipment stats using cm.gainEpicItem()
-var equipment_stats = {1122012:[15,15,15,15,5,5,5], 1112401:[5,5,5,5,5,5,5]};
+var equipment_stats = {1122012:[15,15,15,15,5,5,5] /*1112401:[50,50,50,50,50,50,0]*/, 1112408: [1,1,1,1,1,1,0]};
 var eq = null;
 
 var selections = null;
@@ -31,10 +32,10 @@ function start() {
 	// For GMs to do some testing
 	if (cm.getPlayer().isGM() && cm.getPlayer().getBossPoints() < 1000000)
 		cm.getPlayer().gainBossPoints(1000000);
-	if (map == pq_map || map == 910000000)
+	else
 		// Categories
 		cm.sendSimple("You currently have #b" + cm.getPlayer().getBossPoints() + "#k points. What do you want to buy?"+
-							"\r\n\r\n#L3#Exchange points for currency\r\n#L4#Exchange currency for points\r\n#L0#Usables\r\n#L1#Etc\r\n#L2#Equipment");
+							"\r\n\r\n#L0#Usables\r\n#L1#Etc\r\n#L2#Equipment\r\n#L5#Upgrade Equipment");
 }
 
 function action(m,t,s) {
@@ -49,6 +50,9 @@ function action(m,t,s) {
 		if (s == 4) {
 			to_buy = s;
 			cm.sendGetNumber("How many would you like to exchange?", cm.itemQuantity(currency_id), 0, cm.itemQuantity(currency_id));
+		} else if (s == 5) {
+			cm.openNpc(cm.getNpc(), "upgradeEquipment");
+			return;
 		// Other categories and items
 		} else {
 			selections = (s == 0 ? usables : s == 1 ? etc : s == 2 ? equipment : s == 3 ? currency : currency);
@@ -73,6 +77,7 @@ function action(m,t,s) {
 					equipment_stats[s][1],equipment_stats[s][2],
 					equipment_stats[s][3],equipment_stats[s][4],
 					equipment_stats[s][5], equipment_stats[s][6]);
+			eq.setFlag(8);
 			cm.sendSimple("These are the item's stats. Do you still wish to buy it?\r\n\r\n" + cm.getEquipInfo(eq));
 		}
 	} else if (status == 2) {
@@ -100,7 +105,7 @@ function action(m,t,s) {
 
 // PQ Point calculation and message
 function losePoints(player, to_lose) {
-	Server.getInstance().broadcastGMMessage(MaplePacketCreator.earnTitleMessage(to_lose + " pq points"));
+	player.getClient().announce(MaplePacketCreator.earnTitleMessage(to_lose + " pq points"));
 	player.gainBossPoints(to_lose);
 }
 
@@ -110,7 +115,7 @@ function listItems(items) {
 	for (var item in items)
 		text += "#L " + item + "#" +
 				"#i" + item +"# " +
-				//"#z" + item + "# - " +
-				items[item][0] + " points ("+(items[item][1] == - 1 ? "permanent" : (items[item][1] / 86400000) + " days") +")\r\n";
+				items[item][0] + " points ("+(items[item][1] == - 1 ? "permanent" : (items[item][1] / 86400000) + " days") +") "+
+				""+ (upgradable_stuff.indexOf(parseInt(item)) > -1 ? "(upgradable)" : item < 2000000 ? "(non-upgradeable)" : "") +"\r\n";
 	return text + "#L999#Exit";
 }

@@ -89,7 +89,9 @@ function action(mode, type, selection) {
           } else if (cm.getQ()==7) {
               //newb = cm.getLevel() - 10, newb *= 3;
               cm.changeJobById(cm.getJobId() + (100 + (100 * selection)));
-			  cm.gainItem(cm.getJobId() == 1100 ? 1302077 : cm.getJobId() == 1200 ? 1372043 : cm.getJobId() == 1300 ? 1452051 : cm.getJobId() == 1400 ? 1332063 : 1482000);
+			  cm.gainItem(cm.getJobId() == 1100 ? 1302077 : cm.getJobId() == 1200 ? 1372043 : cm.getJobId() == 1300 ? 1452051 : cm.getJobId() == 1400 ? 1472061 : 1482000);
+			  if (cm.getJobId() == 1400 || cm.getJobId()==1300)
+				  cm.gainItem((cm.getJobId() == 1400 ? 2070000 : 2060000), 2000);
               //cm.gainSp(newb);
               cm.getPlayer().resetStats();
               cm.sendOk("You have been gifted your position. If you'd like to leave this place, talk to me one last time."); // You have gained"+

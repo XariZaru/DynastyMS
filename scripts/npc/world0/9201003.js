@@ -110,8 +110,7 @@ function action(mode, type, selection) {
                 if (cm.getQ()==6) {
                     cm.sendAcceptDecline("Oh, no. Actually, I think your Mother and I would love to spend the night, though. Can you make reservations with Simon?")
                 } else if (cm.getQ()==14) {
-                    cm.sendOk("Talk to one of those statues over there and they'll take you to the necessary place to get started on your training."+
-                        " don't worry about funding. Your mother and I will provide all the money you need.");
+                    cm.sendOk("We're going to take you to a new place where you'll be able to train and get stronger for the good of our people. And don't you worry about about funding. Your mother and I will provide all the money you need.\r\n\r\n#eSpeak with Taeng the Explorer#n when you arrive at your new location.");
                 } else if (cm.getQ()==13) {
                     cm.warp(104000000);
                     cm.completeQ();
@@ -121,9 +120,11 @@ function action(mode, type, selection) {
         }
         } else if (status == 3) {
             if (cm.getQ()==14) {
+				cm.warp(101000000);
                 cm.completeQ();
+				cm.completeQ();
                 cm.complete();
-                cm.talkGuide("Speak to one of those statues to the right to contine with your story!");
+                cm.talkGuide("Hey, let's talk to Taeng the Explorer! I heard he is in charge of everything around here.");
                 cm.dispose();
             } else {
                     cm.completeQ();                  

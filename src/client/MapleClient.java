@@ -760,6 +760,7 @@ public class MapleClient {
 		}
 		disconnecting = true;
 		if (player != null && player.isLoggedin() && player.getClient() != null) {
+			//player.getClient().getChannelServer().getPlayerStorage().removePlayer(player.getId());
 			MapleMap map = player.getMap();
 			final MapleParty party = player.getParty();
 			final int idz = player.getId();

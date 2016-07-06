@@ -16,10 +16,10 @@ function action(mode, type, selection) {
     }
     if (status == 0) {
         cm.sendSimple(""+(again != 1 ? "I keep log of all the patch and revisions made every week by the #bDynasty#k team. Which of the patch notes would you like to"+
-        " review?" : "What other logs or revisions would you like to review?")+"\r\n\r\n#b#L0#Pre-Alpha\r\n#L1#Alpha\r\n#L2#Beta");
+        " review?" : "What other logs or revisions would you like to review?")+"\r\n\r\n#b#L0#Pre-Alpha\r\n#L1#Alpha\r\n#L2#Beta\r\n#L3#Patches");
     } else if (status == 1) {
-    	sel = selection == 0 ? "prealpha" : selection == 1 ? "alpha" : "beta";
-    	cm.sendSimple(cm.getPlayer().getRevisionsLog(selection == 0 ? "prealpha" : selection == 1 ? "alpha" : "beta"));
+    	sel = selection == 0 ? "prealpha" : selection == 1 ? "alpha" : selection == 2 ? "beta" : "Patches";
+    	cm.sendSimple(cm.getPlayer().getRevisionsLog(selection == 0 ? "prealpha" : selection == 1 ? "alpha" : selection == 2 ?"beta" : "Patches"));
     } else if (status == 2) {
     	cm.sendNext(cm.getPlayer().getRevision((selection * .1) + 1, sel));
     } else if (status == 3) {

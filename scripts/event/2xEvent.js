@@ -34,35 +34,17 @@ var timer4;
 importPackage(Packages.client);
 
 function init() {
-	if(em.getChannelServer().getId() == 1) { // Only run on channel 1.
-		// AEST
-		timer1 = em.scheduleAtTimestamp("start", 1428220800000);
-		timer2 = em.scheduleAtTimestamp("stop", 1428228000000);
-		// EDT
-		timer1 = em.scheduleAtTimestamp("start", 1428271200000);
-		timer2 = em.scheduleAtTimestamp("stop", 1428278400000);
-	}
+
 }
 
 function cancelSchedule() {
-    if (timer1 != null)
-        timer1.cancel(true);
-	if (timer2 != null)
-        timer2.cancel(true);
-	if (timer3 != null)
-        timer3.cancel(true);
-	if (timer4 != null)
-        timer4.cancel(true);
+
 }
 
 function start() {
-   var world = Packages.net.server.Server.getInstance().getWorld(em.getChannelServer().getWorld());
-   world.setExpRate(8);
-   world.broadcastPacket(Packages.tools.MaplePacketCreator.serverNotice(6, "The Bunny Onslaught Survival Scanner (BOSS) has detected an Easter Bunny onslaught soon! The GM team has activated the Emergency XP Pool (EXP) that doubles experience gained for the next two hours!"));
+
 }
 
 function stop() {
-   var world = Packages.net.server.Server.getInstance().getWorld(em.getChannelServer().getWorld());
-   world.setExpRate(4);
-   world.broadcastPacket(Packages.tools.MaplePacketCreator.serverNotice(6, "Unfortunately the Emergency XP Pool (EXP) has run out of juice for now and needs to recharge causing the EXP rate to go back to normal."));
+
 }

@@ -2,11 +2,11 @@ var status = -1;
 var dream = 108000700;
 var correct = 0;
 var riddles = ["There is a man and a woman. They both sit upon the fringes of the lake and are fishing for their meal of the day. A rich man comes upon them and yells #e\"Watch out\"!#n And a great shark launches from the watery depths and kills the woman. What literary device does this echo?\r\n\r\n#bTone/Imagery\r\nMotif\r\nIron\r\nSoliloquy\r\nMetaphor\r\nEulogy\r\nEuphemism", "What starts with E, ends with E, and has a letter in it?", "Who is the person you report to for all of your missions? I only need the first name.", "What neutral town did the Knights of Cygnus wish to consummate a deal with? Yes ... I know your contemporary events. Do not question my power.", "Have you ever been fatally wounded (killed) during your training?"];
-var answers = ["metaphor","envelope","taeng","sleepywood","yes"];
+var answers = ["tone/imagery","envelope","taeng","sleepywood","yes"];
 var progress = 0;
 var newReq;
 var token = 4000524;
-var skills = [1121000,1221000,1321000,2121000,2221000,2321000,3121000,3221000,4121000,4221000,5121000,5221000,21121000,1120004,1220005,1320005,1121001,1221001,1321001,1121008,11111004,1321007,1221009,3121002,3221002,3120005,13110003,3121007,3221006,3220004,2121001,2221001,2321001,2121002,2221002,2321002,2321005,2221006,4120002,4220002,14110004,4221007,4121006,4120005,4220005,5121007,15111004,5121001,5121009,5221010,15111005,5121002];
+var skills = [1121000,1221000,1321000,2121000,2221000,2321000,3121000,3221000,4121000,4221000,5121000,5221000,2321003,2321008,2321006,3211003,2221003,2221005,2121007,2121003,2121005,5121003,5121004,5121005,5121010,5221006,5221008,5221009,1120005,1220006,1121006,1221007,1321003,1121002,1221002,1321002,1121010,1320006,1320008,1320009,1221003,1221004,1221011,3121003,3221003,3121008,3121004,3221005,3221001,3221007,4121004,4121008,4221004,4121003,4221003,4221001,4221006];
 
 function start() 
 {

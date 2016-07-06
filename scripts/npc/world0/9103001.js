@@ -119,7 +119,7 @@ function checkPartyLevels(){
         pass = false;
     }else{
         for (var i = 0; i < party.size() && pass; i++) {
-            if ((party.get(i).getLevel() < minlvl) || (party.get(i).getLevel() > maxlvl) || (party.get(i).getMapid() != cm.getMapId())) {
+            if ((party.get(i).getLevel() < minlvl) || (party.get(i).getLevel() > maxlvl) || (party.get(i).getMapId() != cm.getMapId())) {
                 pass = false;
             }
         }

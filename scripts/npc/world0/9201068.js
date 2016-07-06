@@ -26,7 +26,7 @@ oldSelection = -1;
 function start() {
     var text = "Here's the ticket reader.";
     if(cm.haveItem(4031713))
-        text += " You will be brought in inmmediately. Which ticket you would like to use?#b";
+        text += " You will be brought in immediately. Which ticket you would like to use?#b";
     else
         close = true;
     if(cm.haveItem(4031713))
@@ -48,20 +48,9 @@ function action(mode, type, selection) {
     }
     if (status == 0) {
         if(selection == 0){
-            var em = cm.getEventManager("Subway");
-            if (em.getProperty("entry") == "true")
-                cm.sendYesNo("It looks like there's plenty of room for this ride. Please have your ticket ready so I can let you in. The ride will be long, but you'll get to your destination just fine. What do you think? Do you wants to get on this ride?");
-            else{
-                cm.sendNext("We will begin boarding 1 minute before the takeoff. Please be patient and wait for a few minutes. Be aware that the subway will take off right on time, and we stop receiving tickets 1 minute before that, so please make sure to be here on time.");
-                cm.dispose();
-            }
+			cm.warp(103000100);
+			cm.gainItem(4031713, -1);
+			cm.dispose();
         }
-        oldSelection = selection;
-    }else if(status == 1){
-        if(oldSelection == 0){
-            cm.gainItem(4031713, -1);
-            cm.warp(600010002);
-        }
-        cm.dispose();
     }
 }

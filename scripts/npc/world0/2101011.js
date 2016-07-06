@@ -69,7 +69,7 @@ function action(mode, type, selection) {
                     " do they expect us to do? Sit on the side lines and rot in the burning desert?\r\n\r\n"+
                 "#b#L0#No, I haven't found anything worth taking, but I will soon find some. I'll have the food"+
             " before nightfall.");
-                } else if (cm.getQ()==17) {
+                } else if (cm.getQ()==16) {
                 	if (cm.getLevel() >= 10)
                 		cm.sendNext("You are quite the strong man, aren't you? I believe we can get far with skills such as yours. Here, this is a little of what I know myself. It's not much, I'll be honest, but it should most definitely help with your training.");
                 	else {
@@ -78,26 +78,26 @@ function action(mode, type, selection) {
                 			text += "#L" + x + "##m" + training[x] + "#\r\n";
                 		cm.sendSimple(text);
                 	}
-                } else if (cm.getQ()==16) {
+                } else if (cm.getQ()==15) {
                     if (count > 0) {
                         finish();
                     } else {
                         cm.sendOk("That was a very good display of your potential prowess. Excellent work of your skills, although they can be refurbished."+sQuest(500,2000)+"");
                         cm.dispose();
                     }
-                } else if (cm.getQ()==15) {
-                    cm.sendAcceptDecline("You went up against very easy enemies. I'm sure you'll have more difficulties with what I'm about to send against you. Are you ready for this?");
                 } else if (cm.getQ()==14) {
+                    cm.sendAcceptDecline("You went up against very easy enemies. I'm sure you'll have more difficulties with what I'm about to send against you. Are you ready for this?");
+                } else if (cm.getQ()==13) {
                     if (count > 0) {
                        finish();
                     } else {
                         cm.sendOk("Haha! That was very well done! I've yet to see such a warrior prove himself on a field of battle like that; however, those animals are paltry. They are weak! You'll simply have to kill some more before I am positively sure of your prowess. Let me find you something bigger to kill, yes?"+sQuest(200,1000)+"");
                     }
-                } else if (cm.getQ()==13) {
-                    cm.sendYesNo("Very good! First order of business is to get you to level 10 as fast as possible. From there we can begin to use your wily ways to extort and coerce others to accept our somewhat imbalanced propositions. But hey, that is the life of a poor man, is it not?");
                 } else if (cm.getQ()==12) {
-                    cm.sendNext("That was a terribly close call. It's a good thing we left Ariant, though. I had a feeling something was bound to happen anyway. The better the sooner, eh?");
+                    cm.sendYesNo("Very good! First order of business is to get you to level 10 as fast as possible. From there we can begin to use your wily ways to extort and coerce others to accept our somewhat imbalanced propositions. But hey, that is the life of a poor man, is it not?");
                 } else if (cm.getQ()==11) {
+                    cm.sendNext("That was a terribly close call. It's a good thing we left Ariant, though. I had a feeling something was bound to happen anyway. The better the sooner, eh?");
+                } else if (cm.getQ()==10) {
                     if (cm.getMapId()!=200000000) {
                         cm.sendOk("What are you still doing here? Leave this place before they kill you!");
                         cm.talkGuide("Sejan wants us to leave this place and head to Orbis. We should heed his advice and leave as soon as possible.");
@@ -106,7 +106,7 @@ function action(mode, type, selection) {
                         cm.sendOk("It's good to see you here in one piece."+sQuest(100,2000)+"");
                         cm.dispose();
                     }
-                } else if (cm.getQ()==10) {
+                } else if (cm.getQ()==9) {
                     cm.sendNext("Sejan! The guards! They're everywhere! They caught us as we were leaving the throne room ... I'm not sure if they're still coming after us. We have to leave right away, otherwise it'll be our heads on their pikes. Please, we have to leave right now!",2);
             } else if (cm.getQ() < 3 && cm.getQ() >= 1) {
                 cm.sendOk("Have you gotten the supplies we may need for tonight? The whole group is counting on your contribution as well.");
@@ -154,7 +154,7 @@ function action(mode, type, selection) {
             cm.sendNext("Then do so, for the group relies on all of our contributions. If one fails to"+
                 " perform his or her duty, we all suffer as a consequence. Look around town; perhaps"+
             " there are still things worth looking for.");
-        } else if (cm.getQ()==17) {
+        } else if (cm.getQ()==16) {
         	if (cm.getLevel() < 10) {
         		cm.getPlayer().saveLocation("FREE_MARKET");
         		cm.warp(training[selection], 0);        		
@@ -164,16 +164,16 @@ function action(mode, type, selection) {
 	            cm.changeJobById(2100);
         	}
             cm.dispose();
-     } else if (cm.getQ()==15) {
+     } else if (cm.getQ()==14) {
          cm.spawn(100101,5,596,83);
          cm.getPlayer().setQuesting(true, 5);
          cm.talkGuide("I'm sure we can best them as we bested the monsters before! We must be stay strong!");
          cm.dispose();
-     } else if (cm.getQ()==13) {
+     } else if (cm.getQ()==12) {
          cm.sendOk("Haha! Good. The first thing we should do is test your endurance. Let's see if you can handle a few monsters. I brought a few of these exotic creatures from Ariant and have been breeding them for times such as this.");
-    } else if (cm.getQ()==12) {
+    } else if (cm.getQ()==11) {
         cm.sendAcceptDecline("Anyways, the first thing to do is set up our base of operations here in #bOrbis#k. I've already scouted a place for you to further train. There we can train all your skills and craft you into a brilliant conniving artist ever to exist. Sounds great, yes?");
-        } else if (cm.getQ()==10) {
+        } else if (cm.getQ()==9) {
             cm.sendNext("Is it that bad? Quick, we must leave right away. I feel we're going to be unable to make a living here any longer. I'll gather the children and take them aboard the first ship. We must leave #bAriant#k before they cut us off. You can give me whatever you've stolen when we're safe.");
         } else if (cm.getQ() == 4) {
             cm.sendNext("Imagine never living on the streets again, never having to sweat and toil on the streets. Imagine never"+
@@ -194,14 +194,14 @@ function action(mode, type, selection) {
         if (cm.getQ()==0) {
             cm.sendOk("Perhaps you should talk to the locals in this area. You may find something worth stealing, if you know what I mean.");
             cm.completeQ(), cm.talkGuide("Sejan said to talk with the various people around town and see if you can steal something."), cm.dispose();
-             } else if (cm.getQ()==13) {
+             } else if (cm.getQ()==12) {
                  cm.getPlayer().setQuesting(true,10);
                  cm.talkGuide("Let's test ourselves against these monsters! We should work only to better our potential.");
                  cm.spawn(100100,10,564,83);
                  cm.dispose();
-        } else if (cm.getQ()==12) {
+        } else if (cm.getQ()==11) {
                 cm.sendOk("Great, I'll take you there myself. It'll be a long walk, and the area will be completely secluded, but with enough determination we should be able to find our way quite easily.");
-        } else if (cm.getQ()==10) {
+        } else if (cm.getQ()==9) {
             cm.sendNext("Wait, so where should we meet? I have not the slightest idea of where to go.",2);
         } else if (cm.getQ()==5) {
             cm.sendOk("Great, I'll just stand watch and make sure we have an escape route. We can't afford to be cut off should they find"+
@@ -218,10 +218,14 @@ function action(mode, type, selection) {
       }
     } else if (status == 3) {
 		if (cm.getJobId()==2000) {
-		    if (cm.getQ()==10) {
+		    if (cm.getQ()==9) {
 		        cm.sendOk("Take the boat off of Ariant and head to #bOrbis#k. Meet me there in the main city. You'll have to look for me. It is a large, urban area, unlike the sandy deserts of Ariant. Quick, you must fly. I'll leave you coin to take the boat."+sQuest(100,20000)+"");
 		        cm.talkGuide("Sejan said to meet him in Orbis as soon as possible. Let us quickly take the boat to Orbis before the guards fall upon us.");
-		    } else if (cm.getQ()==12) {
+		    } else if (cm.getQ()==11) {
+				if (cm.getPlayerCount(train) > 0) {
+					cm.sendOk("It seems someone else is in the area I'm taking you to. Perhaps you should change channels.");
+					return;
+				}
 		        cm.warp(train);
 		        cm.completeQ();
 		        cm.dispose();

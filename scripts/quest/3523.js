@@ -20,12 +20,12 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 /* Author: PurpleMadness
- * In search for the lost memory - warrior
+ * In search for the lost memory - pirate
 */
 
 function start(mode, type, selection) {
-    qm.startQuest();
-	qm.getPlayer().updateQuestInfo(3507, 1);
+	qm.startQuest();
+	qm.forceCompleteQuest(3507);
     qm.completeQuest();
     qm.sendOk("You have regained your memories and are now allowed to go to #m270020000#.");
     qm.dispose();

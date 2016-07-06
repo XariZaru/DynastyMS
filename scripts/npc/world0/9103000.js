@@ -47,13 +47,15 @@ function action(mode, type, selection){
             } else
                 cm.sendYesNo("Do you have all the coupons of the party and would like to get out of here?");
         } else if (status == 1) {
-            var members = cm.getPlayer().getEventInstance().getPlayers();
-            cm.givePartyExp(50 * (cm.itemQuantity(4001106)), members);
-            if (cm.itemQuantity(4001106) >= 30)
-                cm.warpMembers(809050017, members);
-             else 
-                cm.warpMembers(809050016, members);
-            cm.removeFromParty(4001106, members);
+            var members = cm.getPlayer().getEventInstance().getPlayers().toArray();
+			for (var x = 0; x < members.length; x++) {
+				members[x].gainExp((250 * cm.itemQuantity(4001106)), true, true);
+				if (cm.itemQuantity(4001106) >= 100)
+					members[x].changeMap(809050017);
+				else
+					members[x].changeMap(809050016);
+			}
+            cm.gainItem(4001106, -cm.itemQuantity(4001106));
             cm.dispose();
         }	
     }

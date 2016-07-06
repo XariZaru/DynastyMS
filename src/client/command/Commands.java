@@ -1488,7 +1488,7 @@ public class Commands {
 				}
 			}
 		} else if (sub[0].equals("clock")) {
-			player.getMap().broadcastGMMessage(MaplePacketCreator.getClock(60 * Integer.parseInt(sub[1])));
+			player.getMap().broadcastNONGMMessage(player, MaplePacketCreator.getClock(60 * Integer.parseInt(sub[1])), true);
 		} else if (sub[0].equals("ban")) {
 			if (sub.length < 3) {
 				player.yellowMessage("Syntax: !ban <IGN> <Reason> (Please be descriptive)");

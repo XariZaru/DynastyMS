@@ -1,22 +1,31 @@
 importPackage(Packages.server.life);
 importPackage(Packages.server.maps);
+importPackage(Packages.java.awt);
+
 var status = -1;
 
 // Maps that the bosses will spawn on and their respective names
-var maps = [280030000,109060005,109060005,109060005,109060005,109060005,109060005,109060005];
-var mobs = [8800000,9400575,9400549,9400121,9400300,8510000,8500001,8820001];
-var mob_names = ["Zakum", "Bigfoot", "Headless Horseman", "Anego", "The Boss", "Pianus", "Papulatus Clock", "Pink Bean"];
+var maps = [280030000,910510000,910510000,910510000,910510000,910510000,910510000,910510000,910510000,910510000];
+var mobs = [8800000,8180000,8180001,9400575,9400549,9400121,9400300,8510000,8500001,8820001];
+var mob_names = ["Zakum", "Manon", "Griffey", "Bigfoot", "Headless Horseman", "Anego", "The Boss", "Pianus", "Papulatus Clock", "Pink Bean"];
 
 // Default map you warp back to after you're done and the default map for bosses if not specified otherwise
 // Min party limit to do a boss run
-var default_boss_map = 109060005;
-var lobby_map = 109040000;
+var default_boss_map = 910510000;
+var lobby_map = 910510000;
 var req_party_size = 1;
+var party = null;
 
 // Coordinates for the monster to spawn
 var x = 116, y = 154;
 
 function start() {
+	if (!cm.getPlayer().isGM()) {
+		cm.sendOk("Disabled until I can debug what's stopping people from getting points sporadically.");
+		cm.dispose();
+		return;
+	}
+	party = cm.getParty();
 	// If in the boss map
 	if (cm.getPlayer().getMapId() == default_boss_map || cm.getPlayer().getMapId() == 280030000) {
 		cm.sendYesNo("Do you wish to be taken out of this map?");
@@ -42,11 +51,11 @@ function action(m,t,s) {
 			cm.warp(109040000);
 			cm.dispose();
 		// No party
-		} else if (cm.getParty() == null) {
+		} else if (party == null) {
 			cm.sendOk("You must be in a party to start the party quest!");
 			cm.dispose();
 		// Party size too small
-		} else if (cm.getParty().getMembers().size() < req_party_size) {
+		} else if (party.getMembers().size() < req_party_size) {
 			cm.sendOk("You must have at least 2 members in a party to participate.");
 			cm.dispose();
 		// Otherwise, good to go
@@ -65,9 +74,9 @@ function action(m,t,s) {
 				}
 				
 				// Level check to see if players are within 15 levels of average level of party
-				level_check = levelCheck(cm.getPlayer().getParty());
+				level_check = levelCheck(party);
 				if (level_check.length > 0) {
-					var txt = "You cannot enter and fight " + mob_names[s] + ". Someone in your party is 15 levels below or above the average party level. #eAverage party level: "+averagePartyLevel(party)+"#n\r\n";
+					var txt = "You cannot enter and fight " + mob_names[s] + ". Someone in your party is 15 levels below or above the average party level. This rule does not apply to party members who are level 120 and above. #eAverage party level: "+averagePartyLevel(party)+"#n\r\n";
 					for (var x = 0; x < cannot_boss.length; x++)
 						txt += "\r\n" + cannot_boss[x];
 					cm.sendOk(txt);
@@ -76,20 +85,32 @@ function action(m,t,s) {
 				}
 				
 				// Record stuff and warp + boss
-				cm.getPlayer().addBossAttempt(mob_names[s]);
+				var members = cm.getParty().getMembers().toArray();
+				for (var x = 0; x < members.length; x++)
+					if (!members[x].getPlayer().isGM())
+						members[x].getPlayer().addBossAttempt("bossmanager");
 				cm.getPlayer().getClient().getChannelServer().getMapFactory().getMap(maps[s]).resetAll();
 				cm.getPlayer().getClient().getChannelServer().getMapFactory().getMap(maps[s]).warpEveryone(lobby_map);
 				cm.warpParty(maps[s]);
 				// Eye of Zak for those who want to fight Zak
 				if (s == 0) { 
-					if (!cm.haveItem(4001017))
-						cm.gainItem(4001017);
+					var zak_body = MapleLifeFactory.getMonster(8800000);
+					zak_body.givesBossPoints(true);
+					zak_body.addPartyListener(cm.getParty());
+					cm.getPlayer().getMap().spawnFakeMonsterOnGroudBelow(zak_body, new Point(-25, -230));
+					for (var x = 8800003; x < 8800011; x++) {
+						var body_part = MapleLifeFactory.getMonster(x);
+						body_part.givesBossPoints(true);
+						body_part.addPartyListener(cm.getParty());
+						cm.getPlayer().getMap().spawnMonsterOnGroundBelow(body_part, -25, -230);
+					}
+					cm.changeMusic("Bgm06/FinalFight");
 				// Otherwise, the other bosses
 				} else {
 					var mob = MapleLifeFactory.getMonster(mobs[s]);
 					mob.givesBossPoints(true);
 					mob.addPartyListener(cm.getParty());
-					cm.getPlayer().getMap().spawnMonsterOnGroundBelow(mob, 116, 154);
+					cm.getPlayer().getMap().spawnMonsterOnGroundBelow(mob, 862, 260);
 				}
 			// Map is full
 			} else {
@@ -105,7 +126,7 @@ function cannotBoss(party, boss) {
 	var members = party.getMembers().toArray();
 	var cannot_boss = [];
 	for (var x = 0; x < members.length; x++)
-		if (members[x].getPlayer().getBossAttempt(boss) >= 3)
+		if (members[x].getPlayer().getBossAttempt("bossmanager") >= 2)
 			cannot_boss.push(members[x].getPlayer().getName());
 	return cannot_boss;
 }
@@ -125,15 +146,15 @@ function levelCheck(party) {
 	var outliers = [];
 	
 	for (var x = 0; x < members.length; x++)
-		if (Math.abs(averagePartyLevel(party) - members[x].getPlayer().getLevel()) >= 15)
+		if (Math.abs(averagePartyLevel(party) - members[x].getPlayer().getLevel()) > 15 && members[x].getPlayer().getLevel() < 80)
 			outliers.push(members[x].getPlayer());
 	return outliers;
 }
 
-// People be bossin' or nah
+// People be bossin' or they finished but didn't dip.
 function isFree(cm, mapid) {
 	return cm.getPlayerCount(mapid) == 0 || 
-		cm.getPlayerCount(mapid) == 0 && cm.getPlayer().getClient().getChannelServer().getMapFactory().getMap(mapid).countMobs() < 1;
+		cm.getPlayerCount(mapid) > 0 && cm.getPlayer().getClient().getChannelServer().getMapFactory().getMap(mapid).countMobs() < 1;
 }
 
 
@@ -154,7 +175,7 @@ var selection;
 var leadersInMap;
 
 function start() {
-	if (cm.getParty()==null) {
+	if (party==null) {
 		cm.sendAcceptDecline("Welcome to the Dynasty's #bCustom CPQ#k! It's such a delight having you folk come by " +
 				"and seem so interested in this new invention. Come close, come close! I'll tell you all about it " +
 				"if you like.");
@@ -177,7 +198,7 @@ function start() {
 
 function action(m,t,s,status) {
 	if (status == 0) {
-		if (cm.getParty()==null) {
+		if (party==null) {
 			cm.sendSimple("What would you like to read about o' boy?#b\r\n", "How do I play?", "What are my rewards?");
 		} else {
 			if (cm.getPlayerCount(rooms[s]) < 1) {
@@ -201,7 +222,7 @@ function action(m,t,s,status) {
 			cm.sendNext(info[s]);
 		} else {
 			leader = cm.getPartyLeaders(rooms[selection]).toArray()[0];
-			leader.getCPQParty().sendRequest(cm.getParty());
+			leader.getCPQParty().sendRequest(party);
 			cm.openNpcForPlayer(leader.getName(), 2042000, "beginPQ");
 		}
 	} else if (status == 2) {

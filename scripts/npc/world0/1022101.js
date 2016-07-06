@@ -68,9 +68,9 @@ function action(mode, type, selection) {
     if (status == 0) {
         sel = selection;
         if (selection == 1) {
-            if (cm.getPlayer().isDynastyQuestAvailable("A Gift for a New Player")) {
+            if (cm.getPlayer().getDynastyQuest("A Gift for a New Player") == 0) {
                cm.sendOk("You have received your one-time items. Enjoy your time at DynastyMS!"),
-               cm.gainItem(1002419,1), cm.gainMeso(10000), cm.getPlayer().completeDynastyQuest("A Gift for a New Player"), cm.dispose();
+               cm.gainItem(1002419,1), cm.gainItem(3010000, 1), cm.gainMeso(10000), cm.getPlayer().completeDynastyQuest("A Gift for a New Player"), cm.dispose();
             } else {
                 cm.sendOk("You have already claimed this one-time gift. Please try again another time.");
                 cm.dispose();

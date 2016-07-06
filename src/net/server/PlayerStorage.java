@@ -52,6 +52,15 @@ public class PlayerStorage {
             wlock.unlock();
         }
     }
+    
+    public MapleCharacter removePlayer(String chr) {
+        wlock.lock();
+        try {
+            return storage.remove(getCharacterByName(chr).getId());
+        } finally {
+            wlock.unlock();
+        }
+    }
 
     public MapleCharacter getCharacterByName(String name) {
         rlock.lock();    

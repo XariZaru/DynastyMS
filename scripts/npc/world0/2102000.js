@@ -32,10 +32,10 @@ var ticket = 4031045;
 function start() {
 	if (cm.getJobId() < 2000) {	
 		cm.sendYesNo("Would you like to leave to Orbis?");
-	} else if (cm.getQ() < 11 && cm.getJobId() >= 2000) {
+	} else if (cm.getQ() < 10 && cm.getJobId() >= 2000) {
         cm.sendOk("You may not leave this town, #h #. You know it isn't safe out there.");
         cm.dispose();
-    } else if (cm.getJobId()==2000 && cm.getQ()==11) {
+    } else if (cm.getJobId()==2000 && cm.getQ()==10) {
         if (!cm.haveItem(ticket,1)) {
             cm.sendOk("What do you need, #h #?");
             cm.dispose();
@@ -53,7 +53,7 @@ function start() {
                 cm.dispose();
                 break;
             case 2:
-			   cm.sendYesNo(""+(cm.getQ()==11 ? "Ah, #h #, you are finally leaving desert place, eh? " : "")+"It looks like there's plenty of room for this ride. Please have your ticket ready so I can let you in. The ride will be long but you'll get to your destination just fine. What do you think? Do you want to get on this ride?");  
+			   cm.sendYesNo(""+(cm.getQ()==10 ? "Ah, #h #, you are finally leaving desert place, eh? " : "")+"It looks like there's plenty of room for this ride. Please have your ticket ready so I can let you in. The ride will be long but you'll get to your destination just fine. What do you think? Do you want to get on this ride?");  
 			   break;
            }
     }
@@ -74,7 +74,7 @@ function action(mode, type, selection) {
         else
             status--;
         if (status == 1) {
-             if (cm.getJobId()==2000 && cm.getQ()==11) {
+             if (cm.getJobId()==2000 && cm.getQ()==10) {
                  cm.warp(200000100);
                  cm.gainItem(ticket,-1);
                  cm.talkGuide("Okay, now all we have to do is just find Sejan. He must be here somewhere!");

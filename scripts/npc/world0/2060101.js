@@ -1,4 +1,7 @@
-    //<editor-fold defaultstate="collapsed" desc="earlier variables">
+importPackage(Packages.net.server);
+importPackage(Packages.tools);   
+
+   //<editor-fold defaultstate="collapsed" desc="earlier variables">
 var status, bj = [[100,200,300,400,500], ["warrior", "magician", "bowman", "thief", "pirate"]], sel,
         nul = "\r\n\r\nDo you need something? I don't think I've any missions for you to do at this time. Come back later and maybe"+
         " we'll be able to find something for you.", leaf = 4000005, cap = 4000012;
@@ -598,9 +601,8 @@ function action(mode, type, selection) {
                 cm.sendOk("It is done! You are now one of us, one of the mighty commanders who lead our valiant forces to victory.\n\
 \r\n\r\n#eTo earn your basic 4th job skills complete the next arc of the storyline by talking to Taeng#n!"+sQuest(10000000,5000000,"We have come so far to be so strong. We are now worthy warriors of the Rebellion. Your mother and father would be so proud\n\
  of what you have done these past events.")+"");
-                cm.broadcastServerMessage(""+cm.getPlayer().getName()+" has achieved his or her fourth job! This remarkable achievement is applauded\n\
- throughout Victoria Island and its surrounding satellites.");
-                cm.changeJobById(cm.getJobId() + 1);
+                Server.getInstance().broadcastMessage(MaplePacketCreator.serverNotice(5, ""+cm.getPlayer().getName()+" has achieved his or her fourth job! This remarkable achievement is applauded throughout Victoria Island and its surrounding satellites."));
+                cm.changeJobById((cm.getJobId() + 1));
                 cm.dispose();
             } else {
                 cm.talkGuide("Sign your name correctly! This matter is very important to the Rebellion plight.");

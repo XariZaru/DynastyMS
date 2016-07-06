@@ -10,6 +10,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Collection;
+
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -61,7 +63,7 @@ public class VoteChecker implements Runnable {
 					} catch (DOMException e) {
 						e.printStackTrace();
 					} catch (ParseException e) {
-						e.printStackTrace();
+						// e.printStackTrace();
 					}
                     logVote(ip, "");
                     countVoteByIp(ip);
@@ -152,14 +154,18 @@ public class VoteChecker implements Runnable {
         	ResultSet rs = ps.executeQuery();
         	rs.next();
         	
-        	for (Channel ch : Server.getInstance().getAllChannels())
-        		for (MapleCharacter chr : ch.getPlayerStorage().getAllCharacters())
-        			if (chr.getClient().getAccountName().equals(rs.getString("account"))) {
-        				chr.addVP(2);
-        				chr.gainNX(10000);
-        				chr.dropMessage(5, "Your account has received its rewards for voting! Thank you for voting!");
-        				return true;
-        			}
+        	for (Channel ch : Server.getInstance().getAllChannels()) {
+        		Collection<MapleCharacter> players = ch.getPlayerStorage().getAllCharacters();
+        		synchronized (players) {
+	        		for (MapleCharacter chr : players)
+	        			if (chr.getClient().getAccountName().equals(rs.getString("account"))) {
+	        				chr.addVP(2);
+	        				chr.gainNX(10000);
+	        				chr.dropMessage(5, "Your account has received its rewards for voting! Thank you for voting!");
+	        				return true;
+	        			}
+        		}
+        	}
         	
         	
             ps = con.prepareStatement("UPDATE `accounts` "
@@ -180,14 +186,18 @@ public class VoteChecker implements Runnable {
     public static boolean countVote(String account) {
         Connection con = DatabaseConnection.getConnection();
         try {
-        	for (Channel ch : Server.getInstance().getAllChannels())
-        		for (MapleCharacter chr : ch.getPlayerStorage().getAllCharacters())
-        			if (chr.getClient().getAccountName().equals(account)) {
-        				chr.addVP(2);
-        				chr.gainNX(10000);
-        				chr.dropMessage(5, "Your account has received its rewards for voting! Thank you for voting!");
-        				return true;
-        			}
+        	for (Channel ch : Server.getInstance().getAllChannels()) {
+        		Collection<MapleCharacter> players = ch.getPlayerStorage().getAllCharacters();
+	    		synchronized (players) {
+	        		for (MapleCharacter chr : players)
+	        			if (chr.getClient().getAccountName().equals(account)) {
+	        				chr.addVP(2);
+	        				chr.gainNX(10000);
+	        				chr.dropMessage(5, "Your account has received its rewards for voting! Thank you for voting!");
+	        				return true;
+	        			}
+	    		}
+        	}
         	
             PreparedStatement ps = con.prepareStatement("UPDATE `accounts` "
                                                       + "SET `votepoints` = `votepoints` + 2,"

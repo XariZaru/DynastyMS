@@ -384,23 +384,8 @@ public class MapleMonster extends AbstractLoadedMapleLife {
 
     public void distributeExperience(MapleCharacter killer) {
     	int killerId = killer.getId();
-        if (isAlive()) {
+        if (isAlive() || killer == null) {
             return;
-        }
-        
-    	// Messy and should probably be in a different function, but lazy. Contributing to the colossal mess?
-    	// Handle listeners here. Can move to another method if needed.
-    	
-        if (this.isBoss() && this.givesBossPoints()) {
-	    	for (MapleParty party : this.party_listeners) {
-	    		for (MaplePartyCharacter chr : party.getMembers()) {
-	    			if (chr.getPlayer().getMap() == this.getMap()) {
-		    			double rand = Math.random() * (1.1 - .9 + .1) + .9;
-		    			chr.getPlayer().gainBossPoints((int) (.0000625 * rand *  this.getMaxHp()));
-		    			chr.getPlayer().titleMessage((int) (.0000625 * rand * this.getMaxHp()) + " boss points");
-	    			}
-	    		}
-	    	}
         }
     	
         if (getSpawnPQ() != null) {
@@ -491,13 +476,27 @@ public class MapleMonster extends AbstractLoadedMapleLife {
     	
     	// Listeners
     	
+    	// Single Mob listener
     	for (MobListener listener : mob_listeners)
     		listener.mobKilled(this);
     	
-    	
+    	// Party listeners
+        if (this.givesBossPoints()) 
+	    	for (MapleParty party : this.party_listeners) 
+	    		for (MaplePartyCharacter chr : party.getMembers()) {
+	    			MapleCharacter character = killer.getClient().getChannelServer().getPlayerStorage().getCharacterByName(chr.getName());
+	    			if (character != null && character.getMap() == this.getMap()) {
+		    			double rand = (Math.random() * .3) + .9;
+		    			int bosspoints = (int) (.0000625 * rand * this.getMaxHp());
+		    			character.gainBossPoints(bosspoints);
+		    			character.titleMessage("Gained " + bosspoints + " boss points");
+		    			character.titleMessage("Gained" + bosspoints + " boss points");
+	    			}
+	    		}
     	
     	// End of Listeners
     	
+        /*
     	if (killer.getCPQParty() != null) {
     		if (killer.getCPQParty().getCPQ() != null) {
 	    		killer.getCPQParty().addPoints(getId());
@@ -505,13 +504,13 @@ public class MapleMonster extends AbstractLoadedMapleLife {
 	    			killer.getCPQParty().addSpawn(this.getId());
 	    		}
     		}
-    	}
+    	}*/
     	
     	if (killer.isQuesting()) {
     		killer.mobKilled();
     	}
     	
-        distributeExperience(killer != null ? killer : null);
+        distributeExperience(killer);
         
         if (getController() != null) { // this can/should only happen when a hidden gm attacks the monster
             getController().getClient().announce(MaplePacketCreator.stopControllingMonster(this.getObjectId()));
@@ -552,7 +551,7 @@ public class MapleMonster extends AbstractLoadedMapleLife {
                     for (Integer mid : toSpawn) {
                         final MapleMonster mob = MapleLifeFactory.getMonster(mid);
                         mob.setPosition(getPosition());
-                        if (mob.givesBossPoints()) {
+                        if (givesBossPoints()) {
 	                        mob.givesBossPoints(true);
 	                        mob.setPartyListeners(getPartyListeners());
                         }

@@ -29,6 +29,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
@@ -126,10 +127,9 @@ public class Server implements Runnable {
     }
     
     public void saveAll() {
-    	for (World world : Server.getInstance().getWorlds()) {
-    		for (MapleCharacter chr : world.getPlayerStorage().getAllCharacters())
-    			chr.saveToDB();
-    	}
+    	for (World world : Server.getInstance().getWorlds())
+			for (MapleCharacter chr : world.getPlayerStorage().getAllCharacters())
+				chr.saveToDB();
     }
 
     @Override

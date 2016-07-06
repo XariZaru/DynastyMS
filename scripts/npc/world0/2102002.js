@@ -39,7 +39,7 @@ function action(mode, type, selection) {
             return;
         }
         if(status == 0) {
-            if (cm.getJobId()==2000 && cm.getQ() < 11) {
+            if (cm.getJobId()==2000 && cm.getQ() < 10) {
                 cm.talkGuide("We shouldn't board this flight. Sejan still needs us here to work with him.");
                 cm.dispose();
             } else {
@@ -47,6 +47,7 @@ function action(mode, type, selection) {
             }
         } else if(status == 1) {
             if(cm.getMeso() >= cost && cm.canHold(4031045)) {
+				cm.talkGuide("We got the ticket! Let's board!");
                 cm.gainItem(4031045,1);
                 cm.gainMeso(-cost);
             } else {
