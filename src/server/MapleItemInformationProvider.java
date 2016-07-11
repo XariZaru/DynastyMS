@@ -710,6 +710,16 @@ public class MapleItemInformationProvider {
         int lMaxRange = (int) Math.min(Math.ceil(defaultValue * 0.1), maxRange);
         return (short) ((defaultValue - lMaxRange) + Math.floor(Randomizer.nextDouble() * (lMaxRange * 2 + 1)));
     }
+    
+    public Equip addGodlyStats(Equip equip) {
+    	equip.setStr((short) (equip.getStr() + Math.random() * 6)); 
+    	equip.setLuk((short) (equip.getLuk() + Math.random() * 6)); 
+    	equip.setInt((short) (equip.getInt() + Math.random() * 6)); 
+    	equip.setDex((short) (equip.getDex() + Math.random() * 6));
+    	equip.setMatk((short) (equip.getMatk() + Math.random() * 6)); 
+    	equip.setWatk((short) (equip.getWatk() + Math.random() * 6)); 
+    	return equip;
+    }
 
     public Equip randomizeStats(Equip equip) {
         equip.setStr(getRandStat(equip.getStr(), 5));

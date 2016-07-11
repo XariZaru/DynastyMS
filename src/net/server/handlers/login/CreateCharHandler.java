@@ -21,9 +21,13 @@
  */
 package net.server.handlers.login;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
 import net.AbstractMaplePacketHandler;
 import net.server.Server;
 import server.MapleItemInformationProvider;
+import tools.DatabaseConnection;
 import tools.FilePrinter;
 import tools.MaplePacketCreator;
 import tools.data.input.SeekableLittleEndianAccessor;
@@ -96,15 +100,15 @@ public final class CreateCharHandler extends AbstractMaplePacketHandler {
 
 		if (job == 0) { // Knights of Cygnus
             newchar.setJob(MapleJob.NOBLESSE);
-            newchar.setMapId(300000000);
+            newchar.setMapId(300000010);
             newchar.getInventory(MapleInventoryType.ETC).addItem(new Item(4161047, (byte) 0, (short) 1));
         } else if (job == 1) { // Adventurer
             newchar.setJob(MapleJob.BEGINNER);
-            newchar.setMapId(209000000);
+            newchar.setMapId(209000001);
             newchar.getInventory(MapleInventoryType.ETC).addItem(new Item(4161001, (byte) 0, (short) 1));
         } else if (job == 2) { // Aran
             newchar.setJob(MapleJob.LEGEND);
-            newchar.setMapId(260000200);
+            newchar.setMapId(260000206);
             newchar.getInventory(MapleInventoryType.ETC).addItem(new Item(4161048, (byte) 0, (short) 1));
         } else {
             c.announce(MaplePacketCreator.deleteCharResponse(0, 9));
@@ -125,6 +129,20 @@ public final class CreateCharHandler extends AbstractMaplePacketHandler {
 		Item eq_weapon = MapleItemInformationProvider.getInstance().getEquipById(weapon);
 		eq_weapon.setPosition((byte) -11);
 		equipped.addFromDB(eq_weapon.copy());
+		
+		try {
+			PreparedStatement ps = DatabaseConnection.getConnection().prepareStatement("SELECT name FROM characters WHERE accountid = ?");
+			ps.setInt(1, c.getAccID());
+			ResultSet rs = ps.executeQuery();
+			if (!rs.next()) {
+				Server.getInstance().broadcastGMMessage(MaplePacketCreator.sendYellowTip("[NEW PLAYER]: " + c.getAccountName() + " has created a first character with IGN " + name));
+				FilePrinter.printError(FilePrinter.EXPLOITS  + newchar + ".txt", c.getAccountName() + " has created a character called " + name);	
+			}
+			rs.close();
+			ps.close();
+		} catch (Exception e) {
+			
+		}
 
 		if (!newchar.insertNewChar()) {
 			c.announce(MaplePacketCreator.deleteCharResponse(0, 9));

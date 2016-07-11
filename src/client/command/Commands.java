@@ -341,13 +341,35 @@ public class Commands {
 			//player.message("@whodrops <item name>: Displays monsters that drop an item given an item name.");
 			//player.message("@up	: Shows how long Dynasty has been online.");
 			//player.message("@bosshp: Displays the remaining HP of the bosses on your map.");
+			player.message("@mesodrop [amount] [# of bags]: Drops X amount of mesos dropped between # of bags for meso explosion.");
+			break;
+		case "mesodrop":
+			if (sub.length != 3) {
+				player.dropMessage(5, "You need to specify 3 arguments. No more, no less.");
+			} else if (Integer.parseInt(sub[2]) > 100) {
+				player.dropMessage(5, "You can only drop at max 100 bags at a time.");
+			} else {
+				int mesos_per_drop = Integer.parseInt(sub[1])/Integer.parseInt(sub[2]); // Parse string into integer and get mesos per bag
+				if (mesos_per_drop <= 0 || Integer.parseInt(sub[2]) <= 0) { // Check for exploits and positive meso drops (exploits)
+					player.dropMessage(5, "You need to input a positive number when dropping mesos.");
+					break;
+				}
+				for (int x = 0; x < Integer.parseInt(sub[2]); x++)
+					if (player.getMeso() >= mesos_per_drop) {
+						player.gainMeso(-mesos_per_drop, true);
+						player.getMap().spawnMesoDrop(mesos_per_drop, player.getPosition(), player, player, true, (byte) 2);
+					} else {
+						player.dropMessage(5, "You ran out of mesos to drop anything.");
+						break;
+					}
+			}
 			break;
 		case "info":
 			c.removeClickedNPC();
 			NPCScriptManager.getInstance().dispose(c);
 			c.announce(MaplePacketCreator.enableActions());
 			player.saveToDB();
-			player.dropMessage(String.format("Vote points: %d, Donor points: %d, Boss points: %d", player.getVP(), player.getDP(), player.getBossPoints()));
+			player.dropMessage(String.format("Vote points: %d, Donor points: %d, Boss points: %d, NX: %d", player.getVP(), player.getDP(), player.getBossPoints(), player.getCashShop().getCash(1)));
 			break;
 		case "save":
 			player.dropMessage("Your character has been saved.");
@@ -565,6 +587,7 @@ public class Commands {
 			break;
 		case "say":
 			Server.getInstance().broadcastMessage(MaplePacketCreator.serverNotice(6, "["+player.getName()+"] " + joinStringFrom(sub, 1)));
+			break;
 		case "online":
 			short players_online = 0;
 			for (Channel ch : Server.getInstance().getChannelsFromWorld(player.getWorld())) {
@@ -978,8 +1001,11 @@ public class Commands {
 				player.yellowMessage(ign + " is being ignored.");
 			}
 		} else if (sub[0].equals("dp")) {
-			MapleCharacter victim = c.getWorldServer().getPlayerStorage().getCharacterByName(sub[1]);
-			victim.addDP(Integer.parseInt(sub[2]));
+			if (sub.length == 2)
+				c.getPlayer().addDP(Integer.parseInt(sub[1]));
+			else {
+				c.getChannelServer().getPlayerStorage().getCharacterByName(sub[1]).addDP(Integer.parseInt(sub[2]));
+			}
 		} else if (sub[0].equals("pos")) {
 			float xpos = player.getPosition().x;
 			float ypos = player.getPosition().y;
@@ -1078,7 +1104,11 @@ public class Commands {
 		} else if (sub[0].equals("heal")) {
 			player.setHpMp(30000);
 		} else if (sub[0].equals("vp")) {
-			c.addVotePoints(Integer.parseInt(sub[1]));
+			if (sub.length == 2)
+				c.getPlayer().addVP(Integer.parseInt(sub[1]));
+			else {
+				c.getChannelServer().getPlayerStorage().getCharacterByName(sub[1]).addVP(Integer.parseInt(sub[2]));
+			}
 		} else if (sub[0].equals("id")) {
 			try {
 				try (BufferedReader dis = new BufferedReader(new InputStreamReader(new URL("http://www.mapletip.com/search_java.php?search_value=" + sub[1] + "&check=true").openConnection().getInputStream()))) {
@@ -1476,16 +1506,18 @@ public class Commands {
 				return true;
 			}
 			player.message("Unbanned " + sub[1]);
-		} else if (sub[0].equals("togglehuds")) {
+		} else if (sub[0].equals("disablehuds")) {
 			if (sub.length < 2) {
 				player.yellowMessage("Specify true or false if you want to disable HUDs");
-			} else if (sub[1] == "true" || sub[1] == "false"){
+			} else if (sub[1].equals("true") || sub[1].equals("false")) {
 				for (MapleCharacter target : player.getMap().getCharacters()) {
 					if (!target.isGM()) {
 						target.getClient().announce(MaplePacketCreator.disableUI(sub[1].equals("true") ? true : false));
 						target.getClient().announce(MaplePacketCreator.lockUI(sub[1].equals("true") ? true : false));
 					}
 				}
+			} else {
+				player.yellowMessage("You need to specify true or false and no other substring.");
 			}
 		} else if (sub[0].equals("clock")) {
 			player.getMap().broadcastNONGMMessage(player, MaplePacketCreator.getClock(60 * Integer.parseInt(sub[1])), true);

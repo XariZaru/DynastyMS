@@ -65,7 +65,6 @@ public class VoteChecker implements Runnable {
 					} catch (ParseException e) {
 						// e.printStackTrace();
 					}
-                    logVote(ip, "");
                     countVoteByIp(ip);
                     SimpleDateFormat sdf = new SimpleDateFormat("hh:mm dd/MM");
                     log("IP: " + ip + " voted at: " + sdf.format(new Date(time)));

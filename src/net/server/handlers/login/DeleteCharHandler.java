@@ -21,8 +21,12 @@
  */
 package net.server.handlers.login;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
 import client.MapleClient;
 import net.AbstractMaplePacketHandler;
+import tools.DatabaseConnection;
 import tools.FilePrinter;
 import tools.MaplePacketCreator;
 import tools.data.input.SeekableLittleEndianAccessor;
@@ -33,8 +37,20 @@ public final class DeleteCharHandler extends AbstractMaplePacketHandler {
     public final void handlePacket(SeekableLittleEndianAccessor slea, MapleClient c) {
         String pic = slea.readMapleAsciiString();
         int cid = slea.readInt();
+        String name = "";
         if (c.checkPic(pic)) {
-        	FilePrinter.printError(FilePrinter.DELETED_CHARACTERS + c.getAccountName() + ".txt", c.getAccountName() + " deleted CID: " + cid + "\r\n");			
+        	try {
+        		PreparedStatement ps = DatabaseConnection.getConnection().prepareStatement("SELECT name FROM characters where id = ?");
+        		ps.setInt(1, cid);
+        		ResultSet rs = ps.executeQuery();
+        		rs.next();
+        		name = rs.getString("name");
+        		ps.close();
+        		rs.close();
+        	} catch (Exception e) {
+        		
+        	}
+        	FilePrinter.printError(FilePrinter.DELETED_CHARACTERS + c.getAccountName() + ".txt", c.getAccountName() + " deleted CID: " + cid + " ("+name+")\r\n");			
             c.announce(MaplePacketCreator.deleteCharResponse(cid, 0));
             c.deleteCharacter(cid);
         } else {

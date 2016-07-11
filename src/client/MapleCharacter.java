@@ -4748,37 +4748,15 @@ public class MapleCharacter extends AbstractAnimatedMapleMapObject {
 
     public void setRates() {
         Calendar cal = Calendar.getInstance();
-        cal.setTimeZone(TimeZone.getTimeZone("PST"));
+        cal.setTimeZone(TimeZone.getTimeZone("GMT-04"));
         World worldz = Server.getInstance().getWorld(world);
-        int hr = cal.get(Calendar.HOUR_OF_DAY);
-        if ((haveItem(5360001) && hr > 6 && hr < 12) || (haveItem(5360002) && hr > 9 && hr < 15) || (haveItem(536000) && hr > 12 && hr < 18) || (haveItem(5360004) && hr > 15 && hr < 21) || (haveItem(536000) && hr > 18) || (haveItem(5360006) && hr < 5) || (haveItem(5360007) && hr > 2 && hr < 6) || (haveItem(5360008) && hr >= 6 && hr < 11)) {
-            this.dropRate = worldz.getDropRate(); //Nerfed
-            this.mesoRate = worldz.getMesoRate(); //Nerfed
-        // Normal meso and drop
-        } else {
-            this.dropRate = worldz.getDropRate();
-            this.mesoRate = worldz.getMesoRate();
-        }
-        //if ((haveItem(5211000) && hr > 17 && hr < 21) || (haveItem(5211014) && hr > 6 && hr < 12) || (haveItem(5211015) && hr > 9 && hr < 15) || (haveItem(5211016) && hr > 12 && hr < 18) || (haveItem(5211017) && hr > 15 && hr < 21) || (haveItem(5211018) && hr > 14) || (haveItem(5211039) && hr < 5) || (haveItem(5211042) && hr > 2 && hr < 8) || (haveItem(5211045) && hr > 5 && hr < 11) || haveItem(5211048)) {
-        if (haveItem(5211000)) {
-        	if (isBeginnerJob()) {
-                this.expRate = 2; //Nerfed
-            } else {
-                this.expRate = 2 * worldz.getExpRate(); //Nerfed
-            }
-        } else {
-            if (isBeginnerJob()) {
-                this.expRate = 3;
-            } else {
-                this.expRate = worldz.getExpRate();
-            }
-        }
-        if (this.getLevel() < 51 && expRate < worldz.getExpRate() * 2) {
+        this.expRate = worldz.getExpRate();
+        this.dropRate = worldz.getDropRate();
+        this.mesoRate = worldz.getMesoRate();
+        
+        if (this.getLevel() < 51)
         	this.expRate = worldz.getExpRate() * 2;
-        }
-        //this.expRate += (client.hasVotedAlready() ? 1 : 0);
-        //this.mesoRate += getGuild() != null ? 1 : 0;
-        //this.dropRate += level / 100;
+
     }
 
     public void setEnergyBar(int set) {

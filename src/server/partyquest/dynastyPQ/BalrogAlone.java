@@ -264,9 +264,15 @@ public class BalrogAlone implements IPartyQuest, MobListener {
 	}
 
 	@Override
-	public void mobDied() {
+	public void playerKilled(MapleCharacter player) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public int getPoints() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }

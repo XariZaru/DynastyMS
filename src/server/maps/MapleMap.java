@@ -438,7 +438,7 @@ public class MapleMap {
                     //chr.getCashShop().gainCash(1, 80);
                 } else {
                     if (ItemConstants.getInventoryType(de.itemId) == MapleInventoryType.EQUIP) {
-                        idrop = ii.randomizeStats((Equip) ii.getEquipById(de.itemId));
+                        idrop = ii.randomizeStats((Equip) ii.getEquipById(de.itemId));                       
                     } else {
                         idrop = new Item(de.itemId, (short) 0, (short) (de.Maximum != 1 ? Randomizer.nextInt(de.Maximum - de.Minimum) + de.Minimum : 1));
                     }
@@ -1866,15 +1866,17 @@ public class MapleMap {
         Collection<MapleMapObject> visibleObjects = player.getVisibleMapObjects();
         MapleMapObject[] visibleObjectsNow = visibleObjects.toArray(new MapleMapObject[visibleObjects.size()]);
         try {
-            for (MapleMapObject mo : visibleObjectsNow) {
-                if (mo != null) {
-                    if (mapobjects.get(mo.getObjectId()) == mo) {
-                        updateMapObjectVisibility(player, mo);
-                    } else {
-                        player.removeVisibleMapObject(mo);
-                    }
-                }
-            }
+        	synchronized (visibleObjectsNow) {
+	            for (MapleMapObject mo : visibleObjectsNow) {
+	                if (mo != null) {
+	                    if (mapobjects.get(mo.getObjectId()) == mo) {
+	                        updateMapObjectVisibility(player, mo);
+	                    } else {
+	                        player.removeVisibleMapObject(mo);
+	                    }
+	                }
+	            }
+        	}
         } catch (Exception e) {
             e.printStackTrace();
         }

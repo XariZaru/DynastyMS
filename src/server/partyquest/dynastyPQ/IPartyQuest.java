@@ -8,8 +8,8 @@ public interface IPartyQuest {
 	public MapleParty getParty();
 	public void registerParty();
 	
-	public void mobDied();
 	public void addPoints();
+	public int getPoints();
 	
 	public void start();
 	public void end();
@@ -19,4 +19,6 @@ public interface IPartyQuest {
 	
 	public void unregisterPlayer(MapleCharacter player);
 	public void registerPlayer(MapleCharacter player);
+	
+	public void playerKilled(MapleCharacter player);
 }

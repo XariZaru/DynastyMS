@@ -51,6 +51,10 @@ public final class SpecialMoveHandler extends AbstractMaplePacketHandler {
     
     @Override
     public final void handlePacket(SeekableLittleEndianAccessor slea, MapleClient c) {
+    	if (c == null) {
+    		System.out.println("SpecialMoveHandler: nullpointer");
+    		return;
+    	}
     	MapleCharacter chr = c.getPlayer();
         chr.getAutobanManager().setTimestamp(4, slea.readInt(), 3);
         int skillid = slea.readInt();
