@@ -1,4 +1,5 @@
 var status = -1, cont = 4031474, yes;
+var supply = 2430032;
 
 function start() {
     if (cm.getQ()==11) {
@@ -24,17 +25,18 @@ function action(m,t,s) {
 	if (status == 0) {
             if (cm.getQ()==11) {
                 cm.sendNext("Yup, that was me. You were the guy he told me to give the supplies to.", 2);
-            } else if (cm.getQ()==3) {
-			cm.sendNext("Oh, are those my supplies?\r\n\r\n#fUI/UIWindow.img/QuestIcon/4/0#\r\n#fUI/UIWindow.img/QuestIcon/8/0# 50 exp");
+        } else if (cm.getQ()==3) {
+			cm.sendOk("Oh, are those my supplies?\r\n\r\n#fUI/UIWindow.img/QuestIcon/4/0#\r\n#fUI/UIWindow.img/QuestIcon/8/0# 50 exp");
 		}
 	} else if (status == 1) {
-            if (cm.getQ()==11) {
-                cm.sendNext("That's right, I remember now. Do you happen to have your contract on you?");
-            } else if (cm.getQ()==3) {
+		if (cm.getQ()==11) {
+			cm.sendNext("That's right, I remember now. Do you happen to have your contract on you?");
+		} else if (cm.getQ()==3) {
 			cm.complete();
 			cm.completeQ();
 			cm.gainExp(50);
-			cm.talkGuide("That's what Santa wanted. We should probably go see him now.");
+			cm.talkGuide("That's what Santa wanted. We should probably go see him now.", 0);
+			cm.gainItem(supply, -cm.itemQuantity(supply));
 			cm.dispose();
 		}
         } else if (status == 2) {

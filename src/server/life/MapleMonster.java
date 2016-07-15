@@ -480,7 +480,12 @@ public class MapleMonster extends AbstractLoadedMapleLife {
     	for (MobListener listener : mob_listeners)
     		listener.mobKilled(this);
     	
-    	// Party listeners
+    	// Party PQ listeners
+    	if (killer.getParty() != null)
+    		if (killer.getParty().getPQ() != null)
+    			killer.getParty().getPQ().mobKilled();
+    	
+    	// BPQ listeners
         if (this.givesBossPoints()) 
 	    	for (MapleParty party : this.party_listeners) 
 	    		for (MaplePartyCharacter chr : party.getMembers()) {

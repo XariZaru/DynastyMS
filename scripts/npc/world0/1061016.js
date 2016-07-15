@@ -183,7 +183,7 @@ function action(mode, type, selection) {
             cm.sendSimple("Oh, before you go, which position were you thinking about advancing to?#b\r\n\r\n"+
                 ""+(cm.getJobId()==100 ? "#L0#Fighter #L1#Page #L2#Spearman" : cm.getJobId()==200 ? "#L0#Fire/Poison #L1#Ice/Lightning"+
             " #L2#Cleric" : cm.getJobId()==300 ? "#L0#Hunter #L1#Crossbowman" : cm.getJobId()==400 ? "#L0#Assassin #L1#Bandit" : ""+
-        "#L0#Brawler #L1#Marauder")+"");
+        "#L0#Brawler #L1#Gunslinger")+"");
         } else if (cm.getQ()==26) {
             cm.sendAcceptDecline("I'll need you to dig up some information on the agents. You'll have to act like an innocent person, with no prior"+
                 " knowledge to why you are bothering them. You know ... just act casual. Find out as much information as you can about"+
@@ -207,7 +207,7 @@ function action(mode, type, selection) {
                     cm.gainItem(1042181), cm.gainItem(1062035), cm.gainItem(1082079), cm.gainItem(1102066), 
                    cm.gainItem(1002605), cm.gainItem(1702251), cm.gainItem(1022015), cm.completeQ(), cm.dispose();
         } else if (cm.getQ()==32) {
-            cm.changeJobById((cm.getJobId()+10) + (10 * selection));
+            cm.changeJobById(cm.getJobId()+ 10 + (10 * selection));
             cm.sendOk("Use the promotion wisely. It'll get you places ... I think you should go to the #bsauna#k here and cool off.");
             cm.talkGuide("My god, he's given you a new ranking! This is exhilerating isn't it? Let's go to the sauna.");
             cm.completeQ();

@@ -13,10 +13,10 @@ function start() {
 		} else {
 				cm.sendNext("How does it feel? That boost must be revitalizing, yes? God, I do love holiday spirit. I'll have to run and issue some errands. Perhaps you should return to your parents?"+
 				"\r\n\r\n#fUI/UIWindow.img/QuestIcon/4/0#\r\n\r\n#fUI/UIWindow.img/QuestIcon/8/0# 50 exp\r\n#fUI/UIWindow.img/QuestIcon/7/0# 2500 meso");
-	}
+		}
 		//10003
         } else if (cm.getQ() == 1) {
-		cm.sendNext("Hohoho! Huh? Who are you?");
+			cm.sendNext("Hohoho! Huh? Who are you?");
 	} else if (cm.getQ() == 3) {
 		cm.sendOk("Why haven't you gone to see #rCliff#k yet? He needs to leave with those supplies! The code is #b#esleighbells#n#k.");
 		cm.dispose();
@@ -48,17 +48,19 @@ function action(mode, type, selection) {
 	}
 	if (status == 0) {
 			//10004
-			if (cm.getQ() == 5) {
+		if (cm.getQ() == 5) {
 				cm.complete();
 				cm.completeQ();
 				cm.gainExp(50);
 				cm.gainMeso(2500);
-				cm.talkGuide("Let's go see your Mom and Dad again.");
+				cm.talkGuide("Let's go see your Mom and Dad again.", 0);
 				cm.dispose();
 			//10003
-                } else if (cm.getQ() == 1) {
+        } else if (cm.getQ() == 1) {
+			cm.sendOk("You must be someone who wants to help! Talk to me again and I'll have something for you to do!");
 			cm.gainExp(15);
-			cm.talkGuide("I think Santa wants to say something else. Why don't you talk to him?");
+			cm.talkGuide("I think Santa wants to say something else. Why don't you talk to him?",3);
+			cm.talkGuide("A lot of NPCs will need you to talk to them again to begin the next quest, so never just walk away!", 6);
 			cm.completeQ();
 			cm.dispose();
 		} else if (cm.getQ()==4) {
@@ -71,7 +73,7 @@ function action(mode, type, selection) {
 	} else if (status == 1) {
 		if (cm.getQ() == 4) {
 			cm.sendOk("Just set these off anywhere in #bHappyville#k. They'll give you a boost and supply others with an invisible form of spirit.");
-                } else if (cm.getQ() == 2) {
+        } else if (cm.getQ() == 2) {
 			cm.sendAcceptDecline("Well that's just grand! I need #bCliff#k to make some deliveries to my workers. We're"+
 			" a little behind our schedule. Can you deliver the packages to him?");
 		}
@@ -81,7 +83,8 @@ function action(mode, type, selection) {
 			" regulations.");
         } else if (cm.getQ() == 4) {
 			cm.gainItem(firework);
-			cm.talkGuide("Let's set these off right now! Go into your inventory (I) and double click on those fireworks!");
+			cm.talkGuide("Let's set these off right now! Go into your #einventory (I)#n and double click on those fireworks!", 0);
+			cm.talkGuide("The fireworks should be in your use inventory. Just use them for a nice boost in holidy cheer!", 4);
 			cm.completeQ();
 			cm.dispose();                
 		}
@@ -93,7 +96,7 @@ function action(mode, type, selection) {
 		if (cm.getQ() == 2) {
 			text = cm.getText();
 			if (text != cm.getPlayer().getName()) {
-				cm.talkGuide("You didn't spell your name correctly! How will Santa recognize you later?");
+				cm.talkGuide("You didn't spell your name correctly! How will Santa recognize you later?",0);
 				cm.dispose();
 			} else {
 				cm.sendYesNo("Is this your name, \"#b"+text+"#k\"?");
@@ -101,8 +104,11 @@ function action(mode, type, selection) {
 		}
 	} else if (status == 5) {
 		if (cm.getQ() == 2) {
-			cm.sendOk("Okay! Perfect. I've given you some supplies, #i"+supply+"#, and here is the contract you have signed. When you see #rCliff#k"+
-			" use this code #e#bsleighbells#n#k. \r\n\r\n#eReceived!#n\r\n#i"+4031474+"#.");
+			cm.sendOk("Okay! Perfect. I've given you some supplies, #i"+supply+"#, and here is the contract you have signed.\r\n\r\n#eReceived!#n\r\n#i"+4031474+"#.");
+		}
+	} else if (status == 6) {
+		if (cm.getQ() == 2) {
+			cm.talkGuide("Let's talk to Cliff to deliver these supplies!", 0);
 			cm.completeQ();
 			cm.gainItem(supply);
 			cm.gainItem(4031474);

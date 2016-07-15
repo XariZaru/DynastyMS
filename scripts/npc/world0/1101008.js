@@ -44,15 +44,18 @@ function action(mode, type, selection) {
 
 
 function beginnerMessage() {
-	cm.sendOk("Therefore, pay close attention to non-playable characters when they speak to you is imperative" +
+	if (status == 0) {
+	cm.sendOk("Use #e@helper#n! It's an important command! Pay close attention to non-playable characters when they speak to you is imperative" +
 			" to understanding the game. If you're lost you can always speak to me for information on your quests. " +
 			"I can also tell you the unique non-playable characters that are specific to each major map if you want!\r\n\r\nAll these features" +
-			" are available starting at #elevel 6#n.");
-	if (cm.getQ()<1 && cm.getJobId()==0) {
-        cm.talkGuide("I think it's best if we find Mom and Dad. They should be able to"+
-            " help us get started in this world.");
-    }
-	cm.dispose();
+			" are available starting at #elevel 6#n.\r\n\r\n#eImportant commands:#n\r\n@helper\r\n@gm\r\n@str, luk, dex, int\r\n\r\n#eImportant Features:#n\r\nNo stat requirements on items\r\nStoryline\r\nGreat community boss area\r\nSome revamping of monster maps and mobs");
+	} else if (status == 1) {
+		if (cm.getMapId() != 300000010)
+			cm.warp(300000010);
+		cm.talkGuide("Let's go find #bPerzen#k. He's the storyline NPC for Cygnus Knights.", 0);
+		cm.talkGuide("I'm your guide for Cygnus Knights. If you ever need to catch up on your storyline, double click me.", 5);
+		cm.dispose();
+	}
 }
 
 function normalOptions(selection) {

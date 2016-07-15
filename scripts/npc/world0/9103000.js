@@ -50,10 +50,10 @@ function action(mode, type, selection){
             var members = cm.getPlayer().getEventInstance().getPlayers().toArray();
 			for (var x = 0; x < members.length; x++) {
 				members[x].gainExp((250 * cm.itemQuantity(4001106)), true, true);
-				if (cm.itemQuantity(4001106) >= 100)
-					members[x].changeMap(809050017);
-				else
+				if (cm.itemQuantity(4001106) >= 200)
 					members[x].changeMap(809050016);
+				else
+					members[x].changeMap(809050017);
 			}
             cm.gainItem(4001106, -cm.itemQuantity(4001106));
             cm.dispose();

@@ -523,7 +523,7 @@ public final class PlayerInteractionHandler extends AbstractMaplePacketHandler {
             if (merchant.getItems().isEmpty()) {
                 c.announce(MaplePacketCreator.hiredMerchantOwnerLeave());
                 c.announce(MaplePacketCreator.leaveHiredMerchant(0x00, 0x03));
-                merchant.closeShop(c, false);
+                merchant.closeShop(c, true);
                 chr.setHasMerchant(false);
                 return;
             }

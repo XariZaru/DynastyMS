@@ -17,7 +17,7 @@
     <int name="VRBottom" value="438" />
     <int name="VRRight" value="2221" />
     <int name="reactorShuffle" value="1" />
-    <string name="onFirstUserEnter" value="StageMsg_davy" />
+    <string name="onUserEnter" value="PiratePQ" />
   </imgdir>
   <imgdir name="back">
     <imgdir name="0">
@@ -1106,7 +1106,7 @@
       <int name="y" value="240" />
       <int name="tm" value="999999999" />
       <string name="tn" value="" />
-      <string name="script" value="davy_next2" />
+      <string name="script" value="piratepq" />
       <int name="hideTooltip" value="0" />
       <int name="delay" value="0" />
     </imgdir>

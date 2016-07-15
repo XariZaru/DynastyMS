@@ -32,6 +32,7 @@ import client.inventory.MaplePet;
 import client.status.MonsterStatus;
 import client.status.MonsterStatusEffect;
 import constants.ItemConstants;
+
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.util.ArrayList;
@@ -56,10 +57,12 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock.ReadLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock.WriteLock;
+
 import net.server.Server;
 import net.server.channel.Channel;
 import net.server.world.MapleParty;
 import scripting.map.MapScriptManager;
+import scripting.portal.PortalScriptManager;
 import server.MapleItemInformationProvider;
 import server.MaplePortal;
 import server.MapleStatEffect;
@@ -69,6 +72,7 @@ import server.events.gm.MapleFitness;
 import server.events.gm.MapleOla;
 import server.events.gm.MapleOxQuiz;
 import server.events.gm.MapleSnowball;
+import server.life.AbstractLoadedMapleLife;
 import server.life.MapleLifeFactory;
 import server.life.MapleLifeFactory.selfDestruction;
 import server.life.MapleMonster;
@@ -164,6 +168,19 @@ public class MapleMap {
     
     public WriteLock getCharacterWriteLock() {
         return chrWLock;
+    }
+    
+    public void reloadMap() {
+		MapleMap oldMap = this;
+		Collection<MapleCharacter> chrs = oldMap.getCharacters();
+		Server.getInstance().getChannel(this.world, this.channel).getMapFactory().getMaps().remove(oldMap.getId());
+		MapleMap newMap = Server.getInstance().getChannel(this.world, this.channel).getMapFactory().getMap(oldMap.getId());
+		oldMap = null;
+		for (MapleCharacter ch : chrs)
+			ch.changeMap(newMap);
+		newMap.respawn();
+		MapScriptManager.getInstance().reloadScripts();
+		PortalScriptManager.getInstance().reloadPortalScripts();
     }
 
     public void broadcastMessage(MapleCharacter source, final byte[] packet) {
@@ -501,6 +518,15 @@ public class MapleMap {
         }
         return null;
     }
+    
+    public List<Integer> getNPCs() {
+    	List<Integer> npcs = new ArrayList<Integer>();
+    	for (MapleMapObject obj : getMapObjectsInRange(new Point(0, 0), Double.POSITIVE_INFINITY, Arrays.asList(MapleMapObjectType.NPC))) {
+    		MapleNPC npc = (MapleNPC) obj;
+    		npcs.add(npc.getId());
+    	}
+    	return npcs;
+    }
 
     public int countMonster(int id) {
         int count = 0;
@@ -791,6 +817,8 @@ public class MapleMap {
     	killAllMonsters();
     	clearDrops();
     	resetReactors();
+    	for (MaplePortal portal : this.getPortals())
+    		portal.setPortalState(false);
     }
 
     public void resetReactors() {

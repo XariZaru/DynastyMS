@@ -1,0 +1,25 @@
+Xari used: !search item mushroom 
+Xari used: !item 5030000 
+Xari used: !item 2049001 
+Xari used: !item 2049002 
+Xari used: !item 2049003 
+Xari used: !item 2049004 
+Xari used: !item 2049005 
+Xari used: !item 2040000 
+Xari used: !item 2040001 
+Xari used: !item 2040002 
+Xari used: !item 2040003 
+Xari used: !item 2040004 
+Xari used: !item 2040005 
+Xari used: !item 2040006 
+Xari used: !item 20400068 
+Xari used: !item 2040006 2 
+Xari used: !item 2040005 2 
+Xari used: !item 2049007 1 
+Xari used: !item 2049006 1 
+Xari used: !item 2049000 
+Xari used: !search npc dolphin 
+Xari used: !item 2049000 
+Xari used: !item 2049000 2 
+Xari used: !item 2049000 
+Xari used: !item 2049000 

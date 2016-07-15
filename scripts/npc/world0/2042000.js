@@ -20,11 +20,13 @@ var party = null;
 var x = 116, y = 154;
 
 function start() {
+	/*
 	if (!cm.getPlayer().isGM()) {
 		cm.sendOk("Disabled until I can debug what's stopping people from getting points sporadically.");
 		cm.dispose();
 		return;
 	}
+	*/
 	party = cm.getParty();
 	// If in the boss map
 	if (cm.getPlayer().getMapId() == default_boss_map || cm.getPlayer().getMapId() == 280030000) {

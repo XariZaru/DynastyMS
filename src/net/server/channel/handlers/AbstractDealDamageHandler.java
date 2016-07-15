@@ -294,23 +294,38 @@ public abstract class AbstractDealDamageHandler extends AbstractMaplePacketHandl
                         }
                     } else if (attack.skill == Marauder.ENERGY_DRAIN || attack.skill == ThunderBreaker.ENERGY_DRAIN || attack.skill == NightWalker.VAMPIRE || attack.skill == Assassin.DRAIN) {
                         player.addHP(Math.min(monster.getMaxHp(), Math.min((int) ((double) totDamage * (double) SkillFactory.getSkill(attack.skill).getEffect(player.getSkillLevel(SkillFactory.getSkill(attack.skill))).getX() / 100.0), player.getMaxHp() / 2)));
-                    } else if (attack.skill == Bandit.STEAL) {                    	
+                    } else if (attack.skill == Bandit.STEAL) {                     
                         Skill steal = SkillFactory.getSkill(Bandit.STEAL);
                         if (monster.getStolen().size() < 1) { // One steal per mob <3
-	                        if (Math.random() < 0.3 && steal.getEffect(player.getSkillLevel(steal)).makeChanceResult()) { //Else it drops too many cool stuff :(
-	                            List<MonsterDropEntry> toSteals = MapleMonsterInformationProvider.getInstance().retrieveDrop(monster.getId());
-	                            Collections.shuffle(toSteals);
-	                            int toSteal = toSteals.get(rand(0, (toSteals.size() - 1))).itemId;
-	                            MapleItemInformationProvider ii = MapleItemInformationProvider.getInstance();
-	                            Item item;
-	                            if (ItemConstants.getInventoryType(toSteal).equals(MapleInventoryType.EQUIP)) {
-	                                item = ii.randomizeStats((Equip) ii.getEquipById(toSteal));
-	                            } else {
-	                                item = new Item(toSteal, (byte) 0, (short) 1, -1);
-	                            }
-	                            player.getMap().spawnItemDrop(monster, player, item, monster.getPosition(), false, false);
-	                            monster.addStolen(toSteal);
-	                        }
+                            if (steal.getEffect(player.getSkillLevel(steal)).makeChanceResult()) { //Else it drops too many cool stuff :(
+                                List<MonsterDropEntry> toSteals = MapleMonsterInformationProvider.getInstance().retrieveDrop(monster.getId());
+                                Collections.shuffle(toSteals);
+                                int toSteal = -1;
+                                for (MonsterDropEntry drop : toSteals)
+	                                if (Randomizer.nextInt(999999) < drop.chance * player.getDropRate()) {
+	                                	toSteal = drop.itemId;
+	                                	break;
+	                                }
+                                MapleItemInformationProvider ii = MapleItemInformationProvider.getInstance();
+                                Item item;
+                                if (toSteal != -1) {
+                                    if (ItemConstants.getInventoryType(toSteal).equals(MapleInventoryType.EQUIP)) {
+                                        item = ii.randomizeStats((Equip) ii.getEquipById(toSteal));
+                                    } else {
+                                        item = new Item(toSteal, (byte) 0, (short) 1, -1);
+                                    }
+                                    player.getMap().spawnItemDrop(monster, player, item, monster.getPosition(), false, false);
+                                    monster.addStolen(toSteal);
+                                } else {
+                                	int mesos = (int) ((int) ((Math.random() * (1.1 - .6) + .6) * Math.log(monster.getMaxHp()) * 10.497 * (monster.getStats().getLevel())/8) * .75);
+                	                if (mesos > 0) {
+                	                    if (player.getBuffedValue(MapleBuffStat.MESOUP) != null) {
+                	                        mesos = (int) (mesos * player.getBuffedValue(MapleBuffStat.MESOUP).doubleValue() / 100.0);
+                	                    }
+                	                    player.getMap().spawnMesoDrop(mesos * player.getMesoRate(), monster.getPosition(), monster, player, false, (byte) 0);
+                	                }
+                                }
+                            }
                         }                        
                     } else if (attack.skill == FPArchMage.FIRE_DEMON) {
                         monster.setTempEffectiveness(Element.ICE, ElementalEffectiveness.WEAK, SkillFactory.getSkill(FPArchMage.FIRE_DEMON).getEffect(player.getSkillLevel(SkillFactory.getSkill(FPArchMage.FIRE_DEMON))).getDuration() * 1000);

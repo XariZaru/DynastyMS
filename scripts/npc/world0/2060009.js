@@ -17,49 +17,49 @@ var teeth = 4000180;
 function start() {
     status = -1;
     if (cm.getJobId() > 999 && cm.getJobId() < 2000) {
-    if (cm.getQ()==34) {
-        if (!cm.haveItem(lime, 25) || !cm.haveItem(goby,45)) {
-            var alime = cm.itemQuantity(lime);
-            var agoby = cm.itemQuantity(goby);
-            var dgoby = Math.round(agoby/45 * 100);
-            cm.sendOk("Oh, let's see how much you have collected so far ...\r\n\r\n#b#z"+lime+"##k #B"+cm.itemQuantity(lime)/25+"# - "+
-                    ""+(alime/25 * 100)+"% ("+alime+"/25)\r\n#b#z"+goby+"##k #B"+agoby/45+"# - "+(dgoby)+"% ("+agoby+"/45)");
-            cm.dispose();
-        } else {
-            cm.sendNext("Oh, are those the materials? Fantastic, let me send word to the merchants who specialize in those items and we'll work out"+
-                " a plan. With this surplus, assuming it goes successful, I'm sure we can push for a restart of the town's economy");
-        }
-    } else if (cm.getQ()==35) {
-        if (cm.getLevel() < 100) {
-            cm.sendOk("#e#r[Level 100] : A Deep Plunge#n#k\r\n\r\n"+
-                    "I think I've got something else in mind ... a permanent solution to our disaster at Aquarium.");
-            cm.dispose();
-        } else {
-            cm.sendNext("You know those merchants we supplied the extra goby and ink to? Well, it turns out the caravan made it across the trench"+
-                " without a single hindrance. It seems when you showed those monsters a work down at the bay, you really scared the others off; however,"+
-            " that's not to include the Sharks and other frightening abyss monsters that dwell in the underwater caverns below our town.");
-        }
-    } else if (cm.getQ()==33) {
-        cm.sendNext("Hey, #bDolphin#k, has there been any disturbances lately in aqua? When I left the town seemed at rest, but recently there have"+
-            " been outbreaks of monster invasions throughout the Empire. Are there any infestations or issues I can take care of for you? I'm here"+
-            " on behalf of the past treaties and current treaties which tie the town and the Empire together.",2);
-    } else if (cm.getQ()!=18 && cm.getQ() > 22 && cm.getQ()!=33) {
-        cm.sendSimple("Well, hello! I can take you to two of the following locations for a certain fee. Would you like to go?\r\n\r\n"+
-            "#b#L0##m"+230030200+"# (1000 meso)\r\n#L1##m"+251000100+"# (10000 mesos)");
-    } else {
-        if (cm.getQ() == 18) {
-            cm.sendNext("Hello, I was wondering if I may speak with you privately. I have something"+
-            " that I must ask of you.",2);
-        } else if (cm.getQ() == 22) {
-            cm.sendNext("Look, I found the guy, but he refuses to accompany me to his trial. I need evidence to lock him away permanently."+
-                " If he doesn't come with me, then the loyalists will force themselves into this town and search each individual home until"+
-            " you are forced to hand over the evidence. What do you say?",2);
-        } else {
-            cm.sendOk("What do you need me for? Go find the guy!");
-            cm.dispose();
-        }
-    }
-    } else if (cm.getQ()!=18 && cm.getQ() > 22 && cm.getQ()!=33) {
+		if (cm.getQ()==34) {
+			if (!cm.haveItem(lime, 25) || !cm.haveItem(goby,45)) {
+				var alime = cm.itemQuantity(lime);
+				var agoby = cm.itemQuantity(goby);
+				var dgoby = Math.round(agoby/45 * 100);
+				cm.sendOk("Oh, let's see how much you have collected so far ...\r\n\r\n#b#z"+lime+"##k #B"+cm.itemQuantity(lime)/25+"# - "+
+						""+(alime/25 * 100)+"% ("+alime+"/25)\r\n#b#z"+goby+"##k #B"+agoby/45+"# - "+(dgoby)+"% ("+agoby+"/45)");
+				cm.dispose();
+			} else {
+				cm.sendNext("Oh, are those the materials? Fantastic, let me send word to the merchants who specialize in those items and we'll work out"+
+					" a plan. With this surplus, assuming it goes successful, I'm sure we can push for a restart of the town's economy");
+			}
+		} else if (cm.getQ()==35) {
+			if (cm.getLevel() < 100) {
+				cm.sendOk("#e#r[Level 100] : A Deep Plunge#n#k\r\n\r\n"+
+						"I think I've got something else in mind ... a permanent solution to our disaster at Aquarium.");
+				cm.dispose();
+			} else {
+				cm.sendNext("You know those merchants we supplied the extra goby and ink to? Well, it turns out the caravan made it across the trench"+
+					" without a single hindrance. It seems when you showed those monsters a work down at the bay, you really scared the others off; however,"+
+				" that's not to include the Sharks and other frightening abyss monsters that dwell in the underwater caverns below our town.");
+			}
+		} else if (cm.getQ()==33) {
+			cm.sendNext("Hey, #bDolphin#k, has there been any disturbances lately in aqua? When I left the town seemed at rest, but recently there have"+
+				" been outbreaks of monster invasions throughout the Empire. Are there any infestations or issues I can take care of for you? I'm here"+
+				" on behalf of the past treaties and current treaties which tie the town and the Empire together.",2);
+		} else if (cm.getQ()!=18 && cm.getQ() > 22 && cm.getQ()!=33) {
+			cm.sendSimple("Well, hello! I can take you to two of the following locations for a certain fee. Would you like to go?\r\n\r\n"+
+				"#b#L0##m"+230030200+"# (1000 meso)\r\n#L1##m"+251000100+"# (10000 mesos)");
+		} else {
+			if (cm.getQ() == 18) {
+				cm.sendNext("Hello, I was wondering if I may speak with you privately. I have something"+
+				" that I must ask of you.",2);
+			} else if (cm.getQ() == 22) {
+				cm.sendNext("Look, I found the guy, but he refuses to accompany me to his trial. I need evidence to lock him away permanently."+
+					" If he doesn't come with me, then the loyalists will force themselves into this town and search each individual home until"+
+				" you are forced to hand over the evidence. What do you say?",2);
+			} else {
+				cm.sendOk("What do you need me for? Go find the guy!");
+				cm.dispose();
+			}
+		}
+    } else /*if (cm.getQ()!=18 && cm.getQ() > 22 && cm.getQ()!=33 && cm.getJobId() < 1000 && cm.getJobId() >= 2000)*/ {
         cm.sendSimple("Well, hello! I can take you to two of the following locations for a certain fee. Would you like to go?\r\n\r\n"+
             "#b#L0##m"+230030200+"# (1000 meso)\r\n#L1##m"+251000100+"# (10000 mesos)\r\n#L2##m"+251000000+"# (10000 mesos)");
     }
@@ -74,37 +74,37 @@ function action(mode, type, selection) {
     }
     if (status == 0) {
        if (cm.getJobId() > 999 && cm.getJobId() < 2000) {
-        if (cm.getQ()==34) {
-            cm.sendOk("Let me take these from you and send them to our suppliers . . ."+
-                    "\r\n\r\n#fUI/UIWindow.img/QuestIcon/4/0#\r\n#fUI/UIWindow.img/QuestIcon/8/0# 850000 exp\r\n#fUI/UIWindow.img/QuestIcon/7/0# 350000 meso"+
-                ""+(rand == 58 ? "Wow, it seems #bDolphin#k had 1 #b#t"+chaos+"##k in stock and gave it to you! (1/100 chance)" : 
-                "\r\n\r\nAww! You had a 1/100 chance of winning a #b#t"+chaos+"##k! The number you pulled was #b"+rand+"#k while the winning"+
-            " number was #b"+lottery+"#k")+".");       
-            cm.gainMeso(350000), cm.gainExp(850000), cm.completeQ(), cm.gainItem(goby,-45), cm.gainItem(lime,-25);
-            (rand == lottery ? cm.gainItem(chaos,1) : cm.dispose()), cm.talkGuide("It seems Dolphin wishes to speak with us some more."), cm.dispose();
-        } else if (cm.getQ()==35) {
-            cm.sendNext("They"+
-        " scare off what used to be potential tourists and make the caverns inhospitable for commercial activity. Perhaps if you cleared up the infestation"+
-    " a little, and whatever stemmed the growth of monsters in the area, we would be able to bring this town back to a full recovery.");           
-       } else if (cm.getQ()==33) {
-            cm.sendNext("Yes! When you left the monsters began to grow in strength, overwhelming the city guards and our patrolmen. The Empire's"+
-                " few remaining sentries were killed within a fortnight. Convoys and caravans have been unable to come in or out of the town, and as"+
-            " a result we are being starved to death. We need to jumpstart the economy; it's in shambles and there is no merchant brave enough to"+
-        " take a gambit and send a caravan to Orbis.\r\n\r\n#L0##bWhat can I do to help?");
-        } else if (cm.getQ()!=18 && cm.getQ() > 22 && cm.getQ()!=33) {
-            choice = selection;
-            cm.sendYesNo("Are you sure you want to go to #b#m"+place[selection]+"##k? It will cost you #b"+place[(selection + 2)]+"#k mesos.");        
-        } else {
-            if (cm.getQ()!= 22) {
-            cm.sendNext("Wait! Okay, I know why you're here. It's about that guy who's been snooping around and causing trouble. Treason, your"+
-                " men call it, right?\r\n\r\n#L0##bYes, you are correct. Who is he?");
-            } else {
-                cm.sendNext("If it's evidence you require, then you shall get it, but you need to leave this town alone. I'll need a promise,"+
-                    " a declaration--a treaty. I need some legal document that states you will leave the town alone in all instances"+
-                " except treason, commerce, and drafts.");
-            }
-        }
-         } else if (cm.getQ()!=18 && cm.getQ() > 22 && cm.getQ()!=33) {
+			if (cm.getQ()==34) {
+				cm.sendOk("Let me take these from you and send them to our suppliers . . ."+
+						"\r\n\r\n#fUI/UIWindow.img/QuestIcon/4/0#\r\n#fUI/UIWindow.img/QuestIcon/8/0# 850000 exp\r\n#fUI/UIWindow.img/QuestIcon/7/0# 350000 meso"+
+					""+(rand == 58 ? "Wow, it seems #bDolphin#k had 1 #b#t"+chaos+"##k in stock and gave it to you! (1/100 chance)" : 
+					"\r\n\r\nAww! You had a 1/100 chance of winning a #b#t"+chaos+"##k! The number you pulled was #b"+rand+"#k while the winning"+
+				" number was #b"+lottery+"#k")+".");       
+				cm.gainMeso(350000), cm.gainExp(850000), cm.completeQ(), cm.gainItem(goby,-45), cm.gainItem(lime,-25);
+				(rand == lottery ? cm.gainItem(chaos,1) : cm.dispose()), cm.talkGuide("It seems Dolphin wishes to speak with us some more."), cm.dispose();
+			} else if (cm.getQ()==35) {
+				cm.sendNext("They"+
+			" scare off what used to be potential tourists and make the caverns inhospitable for commercial activity. Perhaps if you cleared up the infestation"+
+		" a little, and whatever stemmed the growth of monsters in the area, we would be able to bring this town back to a full recovery.");           
+		   } else if (cm.getQ()==33) {
+				cm.sendNext("Yes! When you left the monsters began to grow in strength, overwhelming the city guards and our patrolmen. The Empire's"+
+					" few remaining sentries were killed within a fortnight. Convoys and caravans have been unable to come in or out of the town, and as"+
+				" a result we are being starved to death. We need to jumpstart the economy; it's in shambles and there is no merchant brave enough to"+
+			" take a gambit and send a caravan to Orbis.\r\n\r\n#L0##bWhat can I do to help?");
+			} else if (cm.getQ()!=18 && cm.getQ() > 22 && cm.getQ()!=33) {
+				choice = selection;
+				cm.sendYesNo("Are you sure you want to go to #b#m"+place[selection]+"##k? It will cost you #b"+place[(selection + 2)]+"#k mesos.");        
+			} else {
+				if (cm.getQ()!= 22) {
+				cm.sendNext("Wait! Okay, I know why you're here. It's about that guy who's been snooping around and causing trouble. Treason, your"+
+					" men call it, right?\r\n\r\n#L0##bYes, you are correct. Who is he?");
+				} else {
+					cm.sendNext("If it's evidence you require, then you shall get it, but you need to leave this town alone. I'll need a promise,"+
+						" a declaration--a treaty. I need some legal document that states you will leave the town alone in all instances"+
+					" except treason, commerce, and drafts.");
+				}
+			}
+         } else /*if (cm.getQ()!=18 && cm.getQ() > 22 && cm.getQ()!=33)*/ {
             choice = selection;
             cm.sendYesNo("Are you sure you want to go to #b#m"+place[selection]+"##k? It will cost you #b"+place[(selection + 2)]+"#k mesos.");
          }
@@ -135,7 +135,7 @@ function action(mode, type, selection) {
                 cm.sendNext("Go ahead, write the document. I'll wait for you to come with the final draft.",2);
             }
         }
-    } else if (cm.getQ()!=18 && cm.getQ() > 22 && cm.getQ()!=33) {
+    } else /*if (cm.getQ()!=18 && cm.getQ() > 22 && cm.getQ()!=33)*/ {
             if (cm.getMeso() < place[choice + 2]) {
                 cm.sendOk("You are lacking the funds to go to this area.");
                 cm.dispose();

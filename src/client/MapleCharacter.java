@@ -2832,7 +2832,7 @@ public class MapleCharacter extends AbstractAnimatedMapleMapObject {
         }
         levelUpMessages();
         guildUpdate();
-        if (this.getLevel() > 50) {
+        if (this.getLevel() == 51) {
         	this.dropMessage(5, "Because you hit level 51, your rates have been set back to normal!");
         	this.setRates();
         }

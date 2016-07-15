@@ -17,15 +17,7 @@ var replace = null;
 
 function start() {
 	var skills = [1121000,1221000,1321000,2121000,2221000,2321000,3121000,3221000,4121000,4221000,5121000,5221000,2321003,2321008,2321006,3211003,2221003,2221005,2121007,2121003,2121005,5121003,5121004,5121005,5121010,5221006,5221008,5221009,1120005,1220006,1121006,1221007,1321003,1121002,1221002,1321002,1121010,1320006,1320008,1320009,1221003,1221004,1221011,3121003,3221003,3121008,3121004,3221005,3221001,3221007,4121004,4121008,4221004,4121003,4221003,4221001,4221006];
-	//cm.getPlayer().dropMessage(cm.getParty());
-	var player = cm.getClient().getChannelServer().getPlayerStorage().getCharacterByName("Xari");
-	var party = player.getParty().getMembers().toArray();
-	var mob = cm.getPlayer().getMap().getMonsterById(8180000);
-	cm.getPlayer().dropMessage(mob.getPartyListeners());
-	//cm.getPlayer().dropMessage(cm.getParty());
-	for (var x = 0; x < cm.getParty().getMembers().size(); x++) {
-		cm.getPlayer().dropMessage(cm.getParty().getMembers().toArray()[x].getPlayer());
-	}
+
 	/*
 	if (cm.getPlayer().getName()=="Xari") {
 		var pet = cm.getPlayer().getPetIndex(43);
@@ -33,8 +25,9 @@ function start() {
 		cm.dispose();
 	}
 	*/
-	//var playerid = cm.getClient().getChannelServer().getPlayerStorage().getCharacterByName("Xari").getId();
+	var playerid = cm.getPlayer().getClient().getChannelServer().getPlayerStorage().removePlayer("Blizzard");
 	//var player = cm.getClient().getChannelServer().getPlayerStorage().removePlayer(playerid);
+	cm.getPlayer().dropMessage("Kessie");
 	//cm.getClient().disconnect(false, false);
 	//cm.dispose();
 	// ZAKUM TOTAL HP: 66000000 + 88000000 + 110000000 + 33000000 + 33000000 + 22000000 + 22000000 + 27500000 + 30000000 + 25300000 + 25300000;

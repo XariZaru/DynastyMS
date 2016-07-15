@@ -16,8 +16,10 @@ function action(mode,type,selection) {
             cm.sendOk("What? I don't understand what you're talking about.");
             cm.dispose();
         } else {
-            cm.sendOk("Brilliant! Orders from #bAgent E#k again, let me just take that off your hands ...\r\n\r\n#eItem(s) lost!#n\r\n#i"+4032091+"#");
-            cm.gainItem(4032091,-1), cm.completeQ(), cm.talkGuide("Let's go find the others. There should be two left."), cm.dispose();
+            cm.sendOk("Brilliant! Orders from #bAgent E#k again, let me just take that off your hands ...\r\n\r\n#eItem(s) lost!#n\r\n#i"+4032091+"#\r\n\r\n#fUI/UIWindow.img/QuestIcon/8/0# 3000");
+            cm.gainItem(4032091,-1), cm.completeQ(), cm.talkGuide("Let's go find the others. There should be two left.");
+			cm.gainExp(3000);
+			cm.dispose();
         }
     } else {
         cm.dispose();

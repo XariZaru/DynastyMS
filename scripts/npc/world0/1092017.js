@@ -1,7 +1,7 @@
 /*
 Coded By: Jonathan Nguyen
 Date: 5/19/2016
-Description: PQ Rewards NPC that exchanges pq points for items/equipment. Only specific items can be purchased here as well. 
+Description: Boss Rewards NPC that exchanges boss points for items/equipment. Only specific items can be purchased here as well. 
 
 
 */
@@ -26,6 +26,7 @@ var eq = null;
 
 var selections = null;
 var to_buy = null;
+var amount = null;
 
 function start() {
 	var map = cm.getPlayer().getMapId();
@@ -35,7 +36,7 @@ function start() {
 	else
 		// Categories
 		cm.sendSimple("You currently have #b" + cm.getPlayer().getBossPoints() + "#k points. What do you want to buy?"+
-							"\r\n\r\n#L0#Usables\r\n#L1#Etc\r\n#L2#Equipment\r\n#L5#Upgrade Equipment");
+							"\r\n\r\n#L0#Usables\r\n#L3#NX Cash\r\n#L1#Etc\r\n#L2#Equipment\r\n#L5#Upgrade Equipment");
 }
 
 function action(m,t,s) {
@@ -50,6 +51,9 @@ function action(m,t,s) {
 		if (s == 4) {
 			to_buy = s;
 			cm.sendGetNumber("How many would you like to exchange?", cm.itemQuantity(currency_id), 0, cm.itemQuantity(currency_id));
+		} else if (s == 3) {
+			to_buy = s;
+			cm.sendGetNumber("How much NX cash do you want? It is a 1 to 1 currency exchange, so 1 boss point is equal to 1 NX cash.", 1, 1, 999999);
 		} else if (s == 5) {
 			cm.openNpc(cm.getNpc(), "upgradeEquipment");
 			return;
@@ -59,20 +63,22 @@ function action(m,t,s) {
 			cm.sendSimple("What do you wish to buy?\r\n\r\n" + listItems(selections));
 		}
 	} else if (status == 1) {
-		// Currency exchange finalized 2
-		if (to_buy != null) {
-			cm.sendOk("You exchanged " + s + " #b#z" + currency_id + "##k and got " + 10000 * s + " pq points in return!");
-			cm.gainItem(currency_id, -s, true);
-			losePoints(cm.getPlayer(), s * 10000);
-			cm.dispose();
-			return;
-		}
+		// NX Cash
+		if (to_buy == 3) {
+			if (cm.getPlayer().getBossPoints() < s) {
+				cm.sendOk("You need more boss points for this purchase.");
+				cm.dispose();
+			} else {
+				amount = s;
+				cm.sendYesNo("Would you like to purchase #b" + s +  "#k NX cash for #b" + s + "#k boss points?");
+			}
 		// How many of chosen item player wishes to purchase (not equipment)
-		to_buy = s;
-		if (selections != equipment) {
+		} else if (selections != equipment) {
+			to_buy = s;
 			cm.sendGetNumber("How many of this would you wish to buy? You currently have #b" + cm.getPlayer().getBossPoints() + "#k points.\r\n",1,1,100);
 		} else {
 			// Purchasing equipment (show equipment info)
+			to_buy = s;
 			eq = equipment_stats[s] == null ? cm.getItem(s) : cm.createEpicItem(s, equipment_stats[s][0],
 					equipment_stats[s][1],equipment_stats[s][2],
 					equipment_stats[s][3],equipment_stats[s][4],
@@ -81,8 +87,13 @@ function action(m,t,s) {
 			cm.sendSimple("These are the item's stats. Do you still wish to buy it?\r\n\r\n" + cm.getEquipInfo(eq));
 		}
 	} else if (status == 2) {
-		// Finalize purchasing equipment
-		if (selections == equipment) {
+		if (to_buy == 3) {
+			cm.getPlayer().gainNX(-amount);
+			cm.getPlayer().dropMessage(5, "You have gained " + amount + " NX cash in this transaction.");
+			losePoints(cm.getPlayer(), -amount);
+			cm.dispose();
+		// Finalize purchase equipment
+		} else if (selections == equipment) {
 			if (cm.getPlayer().getBossPoints() >= selections[to_buy][0]) {
 				cm.sendOk("You've completed your purchase. Thank you for shopping with us today!");
 				cm.gainEquip(eq, selections[to_buy][1]);
@@ -97,15 +108,16 @@ function action(m,t,s) {
 			cm.gainItem(to_buy, s, false, true, selections[to_buy][1]);
 		// Not enough points
 		} else {
-			cm.sendOk("You don't have enough pq points to purchase these items.");
+			cm.sendOk("You don't have enough boss points to purchase these items.");
 		}
 		cm.dispose();
 	}
 }
 
-// PQ Point calculation and message
+// Boss Point calculation and message
 function losePoints(player, to_lose) {
-	player.getClient().announce(MaplePacketCreator.earnTitleMessage(to_lose + " pq points"));
+	player.getClient().announce(MaplePacketCreator.earnTitleMessage(to_lose + " boss points"));
+	player.dropMessage(5, "You have gained " + to_lose + " boss points.");
 	player.gainBossPoints(to_lose);
 }
 

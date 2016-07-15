@@ -141,14 +141,14 @@ function action(m,t,selection) {
           //</editor-fold>
           //<editor-fold defaultstate="collapsed" desc="27">
           case 25:
-        	  cm.spawn(2110200,15,bottom,height);
-              cm.getPlayer().setQuesting(true, 15);
+        	  cm.spawn(1210100,5,bottom,height);
+              cm.getPlayer().setQuesting(true, 5);
               cm.talkGuide("Let's get at them!");
               cm.dispose();
               break; 
           case 24:
-              cm.spawn(2110200,8,bottom,height);
-              cm.getPlayer().setQuesting(true, 18);
+              cm.spawn(210100,6,bottom,height);
+              cm.getPlayer().setQuesting(true, 6);
               cm.talkGuide("Haha, if he thinks he can stop us with a few of these cappy looking monsters, he's sorely mistake! C'mon "+cm.getPlayer().getName()+", let's get at them!");
               cm.dispose();
               break;

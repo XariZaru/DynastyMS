@@ -30,9 +30,9 @@
 */
 
 var status = 0;
-var minlvl = 0;
-var maxlvl = 200;
-var minplayers = 0;
+var minlvl = 50;
+var maxlvl = 70;
+var minplayers = 2;
 var maxplayers = 6;
 var time = 15;
 var open = true;
@@ -87,11 +87,9 @@ function action(mode, type, selection) {
 }
      
 function getPartySize(){
-    if(cm.getPlayer().getParty() == null){
+    if(cm.getPlayer().getParty() == null)
         return 0;
-    }else{
-        return (cm.getPlayer().getParty().getMembers().size());
-    }
+    return (cm.getPlayer().getParty().getMembers().size());
 }
 
 function isLeader(){
@@ -128,9 +126,5 @@ function checkPartyLevels(){
 }
 
 function hasParty(){
-    if(cm.getPlayer().getParty() == null){
-        return false;
-    }else{
-        return true;
-    }
+	return cm.getPlayer().getParty() != null;
 }

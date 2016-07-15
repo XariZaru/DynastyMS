@@ -16,8 +16,10 @@ function action(mode,type,selection) {
             cm.sendOk("What? I don't understand what you're talking about.");
             cm.dispose();
         } else {
-            cm.sendOk("Oh, are those commands from #bAgent E#k? It must instructions on where to transport the goods ... \r\n\r\n#eItem(s) lost!#n\r\n#i"+4032091+"#");
-            cm.gainItem(4032091,-1), cm.completeQ(), cm.talkGuide("This only leaves one person, let's go find him."), cm.dispose();
+            cm.sendOk("Oh, are those commands from #bAgent E#k? It must instructions on where to transport the goods ... \r\n\r\n#eItem(s) lost!#n\r\n#i"+4032091+"#\r\n\r\n#fUI/UIWindow.img/QuestIcon/8/0# 7000");
+            cm.gainItem(4032091,-1), cm.completeQ(), cm.talkGuide("This only leaves one person, let's go find him.");
+			cm.gainExp(7000);
+			cm.dispose();
         }
     } else {
         cm.dispose();

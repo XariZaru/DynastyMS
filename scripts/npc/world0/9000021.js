@@ -13,7 +13,7 @@ var maple64 = [1302064, 1402039,1332055,1332056,1372034,1382039,1312032,1412027,
 // [golden claw]
 var req64 = [[1302020,1302030],[1332025],[1382009,1382012],[1412011],[1422014],[1432012],[1442024],
     [1452016,1452022],[1462014,1462019],[1472030,1472032],[1492020,1472032],[1482020,1482021]];
-var cost64 = [2500,2000];
+var cost64 = [1250,1000];
 var shields = [[1092030,1092045,1092046,1092047],[1000,2000]];
 var throwing = [2070011,500];
 
@@ -96,7 +96,7 @@ function action(mode, type, selection) {
                 cm.dispose();
             } else {
                 cm.sendOk("You have gained #i"+shields[0][sel2]+"# as a result of your choice.");
-                cm.gainItem(shields[0][sel2],1);
+                cm.gainItem(shields[0][sel2],1, true, true);
                 cm.gainItem(leaf,-shields[1][(sel2 == 0 ? 0 : 1)]);
                 (sel2 != 0 ? cm.gainItem(shields[0][0], -1) : status);
                 cm.dispose();
@@ -104,7 +104,7 @@ function action(mode, type, selection) {
         } else if (sel == 0 || sel == 1){
                 cm.sendOk("You have purchased a #i"+(sel == 0 ? maple35[sel2] : maple43[sel2])+"# for"+
                     " #b"+items3543[sel]+"#k leaves.");
-                cm.gainItem((sel == 0 ? maple35[sel2] : maple43[sel2]), 1);
+                cm.gainItem((sel == 0 ? maple35[sel2] : maple43[sel2]), 1, true, true);
                 cm.gainItem(leaf, -items3543[sel]);
                 cm.dispose();
         } else {
@@ -114,7 +114,7 @@ function action(mode, type, selection) {
             } else {
                 cm.sendOk("You have received a #i"+maple64[sel2]+"# in exchange for #b"+cost64[selection]+"#k #i"+leaf+"#.");
                 cm.gainItem(leaf, -cost64[selection]);
-                cm.gainItem(maple64[sel2],1);
+                cm.gainItem(maple64[sel2],1, true, true);
                 cm.gainItem(req64[fag][selection],-1);
                 cm.dispose();
             }

@@ -58,7 +58,7 @@ function start() {
     		cm.sendOk("I cannot possibly speak to you when there are monsters about! Eliminate them all!");
 			cm.dispose();
     	} else if (cm.getQ()==9) {
-            cm.sendNext("Yes, what do you need?");
+            cm.sendNext("#e(This NPC will be your job advancement NPC from now on)#n\r\n\r\nYes, what do you need?");
         } else if (cm.getQ() == 32) {
             if (cm.getLevel() < 90) {
                 cm.sendOk("#e#r[Level 90] : And the Onslaught Begins#n#k"+nul+"");
@@ -188,20 +188,20 @@ function action(mode, type, selection) {
     (mode == 1 ? status++ : mode == -1 ? (cm.dispose(), status = -10) : status--);
     if (status == 0) {
         if (cm.getJobId()<1000) {
-       if (cm.getQ()==34 && cm.getMapId()==105040401) {
-           cm.sendNext("#b\"Command retaliation\"#k? What the heck is that even supposed to mean? You mean you're going to take action against me?", 2);
-       } else if (cm.getQ()==43) {
-           cm.sendNext("Really? I've never heard of record keeping ...");
-        } else if (cm.getQ()==41) {
-            cm.sendSimple("Of course, you know it. It's quite simple: just the extent of our power.\r\n\r\n#b#L0#Misty Shadows\r\n"+
-                "#L1#Shadow Mountain\r\n#L2#Damp Fog\r\n#L3#Shadow Isle\r\n#L4#Eternal Flame");
-        } else {
-            cm.sendOk("Get out of my face. I don't speak to people like you. Especially the fishy ones.");
-            cm.completeQ();
-            cm.talkGuide("Oh, she's a hard one. I guess we've sucked out all the information we can receive."+
-                " Let's go talk to our Agent.");
-            cm.dispose();
-        }
+		   if (cm.getQ()==34 && cm.getMapId()==105040401) {
+			   cm.sendNext("#b\"Command retaliation\"#k? What the heck is that even supposed to mean? You mean you're going to take action against me?", 2);
+		   } else if (cm.getQ()==43) {
+			   cm.sendNext("Really? I've never heard of record keeping ...");
+			} else if (cm.getQ()==41) {
+				cm.sendSimple("Of course, you know it. It's quite simple: just the extent of our power.\r\n\r\n#b#L0#Misty Shadows\r\n"+
+					"#L1#Shadow Mountain\r\n#L2#Damp Fog\r\n#L3#Shadow Isle\r\n#L4#Eternal Flame");
+			} else {
+				cm.sendOk("Get out of my face. I don't speak to people like you. Especially the fishy ones.");
+				cm.completeQ();
+				cm.talkGuide("Oh, she's a hard one. I guess we've sucked out all the information we can receive."+
+					" Let's go talk to our Agent.");
+				cm.dispose();
+			}
         } else {
             if (cm.getQ()==9) {
                 cm.sendNext("I was sent here by a man named #bPerzen#k, down at the #bAltaire Encampment#k where he trained me. He"+
@@ -298,8 +298,8 @@ function action(mode, type, selection) {
             		cm.sendOk("This map is not free right now. Please change channels or try again later.");
             		cm.dispose();
             	} else {
-	                cm.resetMap(100000204), cm.getPlayer().saveLocation("FREE_MARKET"), cm.warp(100000204);
-	                cm.spawnDiff(100000204, 9400740, 3, 66, 161), cm.getPlayer().setQuesting(true, 3), cm.dispose();
+	                cm.warp(100000204), cm.getPlayer().getMap().resetAll(), cm.getPlayer().saveLocation("FREE_MARKET");
+	                cm.spawnDiff(100000204, 2100108, 3, 66, 161), cm.getPlayer().setQuesting(true, 3), cm.dispose();
             	}
             } else if (cm.getQ()==11) {
                 cm.sendAcceptDecline("Onto the main point, I need you to communicate certain important messages to our base in #bKerning City#k"+

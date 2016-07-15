@@ -18,8 +18,10 @@ function action(mode,type,selection) {
             cm.sendOk("What? I don't understand what you're talking about.");
             cm.dispose();
         } else {
-            cm.sendOk("Aha! More supplies of arms? Brilliant! \r\n\r\n#eItem(s) lost!#n\r\n#i"+4032091+"#");
-            cm.gainItem(4032091,-1), cm.completeQ(), cm.talkGuide("Let's go to talk to Agent E again. We're done here."), cm.dispose();
+            cm.sendOk("Aha! More supplies of arms? Brilliant! \r\n\r\n#eItem(s) lost!#n\r\n#i"+4032091+"#\r\n\r\n#fUI/UIWindow.img/QuestIcon/8/0# 5000");
+            cm.gainItem(4032091,-1), cm.completeQ(), cm.talkGuide("Let's go to talk to Agent E again. We're done here.");
+			cm.gainExp(5000);
+			cm.dispose();
         }
     } else {
         cm.dispose();

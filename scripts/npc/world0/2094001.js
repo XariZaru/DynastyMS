@@ -20,6 +20,9 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 function start() {
-    cm.warp(100000000, 0);
-    cm.dispose();
+	if (cm.isLeader())
+		cm.getParty().setPQ(null);
+    cm.gainExp(650000);
+	cm.warp(251010404);
+	cm.dispose();
 }

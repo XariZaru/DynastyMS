@@ -10,6 +10,7 @@ var info = [//<editor-fold defaultstate="collapsed" desc="Information on the Net
   "I've been a mediator for quite some time now. You might wonder why exactly my person is that of a statue, but that's because I, as a person, was infused into this rock a long time ago. How exactly long ago" +
   " I'm not quite sure, but it must have been at least over 4 score decades already."],["You can get missions through me. Sejan can also relay you missions by putting you into direct communication with me if you do happen to find him. Either way, I'll be the one that distributes the mission to you, and you'll undertake it. They'll be good, rewarding missions, mind you. So don't worry about the pay."]];
 var intel,who,how, sel;
+var food = 4031580;
 var cm = null;
 
 importPackage(Packages.tools);
@@ -60,13 +61,22 @@ function action(m,t,s) {
     }
     if (status == 0) {
         switch(cm.getQ()) {
+			case 32:
+			case 33:
+			case 34:
+				cm.sendOk("Well? Did you get the #i"+food+"# I asked you to get? Check #eHenesys Market#n to see if there are any heavy lifters you can snatch from.");
+				cm.dispose();
+				break;
 			case 30:
 				if (cm.getLevel() < 30) {
 					cm.sendOk(questDetails(30, "A Quick Checkup"));
 					cm.dispose();
 				} else {
-					cm.dispose();
+					cm.sendOk("Good, good! I'm happy to see you work so hard for your rewards. Here, take this power that has been entrusted from younglings to younglings for generations.");
 				}
+				break;
+			case 31:
+				cm.sendYesNo("Look, I see you what to make a difference in this cold world. So do many of the people in our organization. But look at this place. It is a pinnacle of disaster, of poverty. People are poor. Look at them come in droves from around the world, hoping to find solace in a desolate place such as this. Do you want to make a change to this world?");
 				break;
             case 28:
                 cm.sendNext("#b(The statue's eyes suddenly shine brightly and then fade away evanescently)#k",2);
@@ -97,6 +107,15 @@ function action(m,t,s) {
         }
     } else if (status == 1) {
         switch(cm.getQ()) {
+			case 30:
+				cm.changeJobById(2110);
+				cm.completeQ();
+				cm.talkGuide("Let's see what the Master Thief has to say! It seems he has a quest for us.", 0);
+				cm.dispose();
+				break;
+			case 31:
+				cm.sendOk("Then I want you to do something about this sickness that's plagueing the town. I need you to apply the skills you learned with #bSejan#k and find a source of food for these starving people.\r\n\r\nCheck nearby #eHenesys Market#n. I'm sure there's someone there with a purse heavier than he needs.\r\nIf you can, bring me back some #i"+food+"# for the people.");
+				break;
             case 28:
                 cm.sendSimple("The statue's rumbles, and then a deep voice speaks out: \"What do you wish to learn?\" (Read all options)\r\n\r\n#b#L0#What is the thief network?\r\n#L1#Who are you?\r\n#L2#How do I get missions?"+(intel && how && who ? "\r\n#L3##e#rThat's all I need for now#n#k" : "")+"");
                 break;
@@ -117,6 +136,12 @@ function action(m,t,s) {
     } else if (status == 2) {
         if (cm.getJobId() >= 2100) {
             switch(cm.getQ()) {
+				case 31: 
+					cm.talkGuide("The organization is depending on us to make a difference in people's lives!", 0);
+					cm.talkGuide("Let's go to the Henesys Market and see who is despicable enough for us to thieve from!", 5);
+					cm.completeQ();
+					cm.dispose();
+					break;
                 case 28:
                 	if (s == 3) {
                 		cm.sendOk("Okay, talk to me again if you have the time.");

@@ -482,7 +482,7 @@ function start() {
             cm.dispose();
         }
     } else if (cm.getQ() === 17) {
-        cm.sendAcceptDecline("#r#e[Getting Started] : Level 7+#n#k\r\n\r\nYou seem to be all right there. Why don't you train in the area "+
+        cm.sendAcceptDecline("#r#e[Getting Started] [Job Advance] : Level 7+#n#k\r\n\r\nYou seem to be all right there. Why don't you train in the area "+
                 "to the left of here? There are an abundance in all types of monsters that you can train on.");
     } else {
         cm.sendOk("I am Taeng. Make yourself appear in a better fashion!");
@@ -586,7 +586,8 @@ function action(mode, type, selection) {
             cm.sendYesNo("Are you sure you want to be a #b"+bj[1][selection]+"#k?");
         } else if (cm.getQ()===17) {
             cm.sendOk("Fantastic! Train on the slimes until you're #r#elevel 10#n#k (or 8 if you desire to be a magician), then come and see me.");
-                cm.completeQ();
+            cm.talkGuide("Taeng the Explorer will handle all job advancement in this server for explorers, so please talk to him after you're done with your quests!", 4);
+			cm.completeQ();
             cm.dispose();
         } else if (cm.getQ()===22) {
             cm.sendAcceptDecline("However, recently there have been sightings of a smaller infestation growing down near #bEllinia#k. Normally I'd send a new recruit"+
@@ -655,16 +656,14 @@ function action(mode, type, selection) {
             cm.completeQ();
             cm.dispose();
     } else if (cm.getQ()===19) {
-        newbb = (cm.getLevel() - 10), newbb *= 3;
 		if (cm.getLevel() < 10 && sel != 1) {
 			cm.sendOk("You must be level 10 at least to select this job.");
 			cm.dispose();
 		} else {
             cm.sendOk("You have become a #b"+bj[1][sel]+"#k, congratulations."); //You have gained #b"+newbb+"#k sp in compensation for overleveling.");
             cm.changeJobById(bj[0][sel]);
-            //(sel === 1 ? cm.gainSp(6) : status);
-            //cm.gainSp(newbb);
-            cm.getPlayer().resetStats();
+			cm.gainMeso(50000);
+            resetStats();
             cm.completeQ();
             cm.dispose();
         }
@@ -737,4 +736,21 @@ function action(mode, type, selection) {
             status = -1;
         }
     }
+}
+
+importPackage(Packages.client);
+
+function resetStats() {
+	var totAp = cm.getPlayer().getStr() + cm.getPlayer().getDex() + cm.getPlayer().getLuk() + cm.getPlayer().getInt() + cm.getPlayer().getRemainingAp();
+	cm.getPlayer().setStr(4);
+	cm.getPlayer().setDex(4);
+	cm.getPlayer().setLuk(4);
+	cm.getPlayer().setInt(4);
+	cm.getPlayer().dropMessage(totAp - 16);
+	cm.getPlayer().setRemainingAp(totAp - 16);
+	cm.getPlayer().updateSingleStat(MapleStat.STR, 4);
+	cm.getPlayer().updateSingleStat(MapleStat.DEX, 4);
+	cm.getPlayer().updateSingleStat(MapleStat.LUK, 4);
+	cm.getPlayer().updateSingleStat(MapleStat.INT, 4);
+	cm.getPlayer().updateSingleStat(MapleStat.AVAILABLEAP, totAp - 16);
 }

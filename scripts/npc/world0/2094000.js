@@ -19,79 +19,46 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-var status = 0;
+var status = -1;
 var minLevel = 55;
 var maxLevel = 100;
-var minPlayers = 0;
+var minPlayers = 1;
 var maxPlayers = 6;
 
+importPackage(Packages.server.partyquest.dynastyPQ);
+
 function start() {
-    status = -1;
-    action(1, 0, 0);
+    if (cm.getParty() == null) {
+		cm.sendOk("Please form a party before taking on the #bLord Pirate#k. You wouldn't want to go in by yourself, would you?");
+		cm.dispose();
+	} else if (!cm.isLeader()) {
+		cm.sendOk("You're going to need the #eleader#n of your party to come talk to me. No underlings allowed!");
+		cm.dispose();
+	} else {
+		cm.sendYesNo("To take on the #bLord Pirate#k is a daunting task. Do you think you can do that for us?");
+	}
 }
 
 function action(mode, type, selection) {
-    if (mode == -1) {
-        cm.dispose();
-    } else {
-        if (mode == 0 && status == 0) {
-            cm.dispose();
-            return;
-        }
-        if (mode == 1)
-            status++;
-        else
-            status--;
-        if (status == 0) {
-            if (cm.getParty() == null) {
-                cm.sendOk("Please come back to me after you've formed a party.");
-                cm.dispose();
-                return;
-            }
-            if (!cm.isLeader()) {
-                cm.sendSimple("You are not the party leader.");
-                cm.dispose();
-            } else {
-                var party = cm.getParty().getMembers();
-                var mapId = cm.getPlayer().getMapId();
-                var next = true;
-                var levelValid = 0;
-                var inMap = 0;
-                if (party.size() < minPlayers || party.size() > maxPlayers)
-                    next = false;
-                else {
-                    for (var i = 0; i < party.size() && next; i++) {
-                        if ((party.get(i).getLevel() >= minLevel) && (party.get(i).getLevel() <= maxLevel))
-                            levelValid += 1;
-                        if (party.get(i).getMapid() == mapId)
-                            inMap += 1;
-                    }
-                    if (levelValid < minPlayers || inMap < minPlayers)
-                        next = false;
-                }
-                if (next) {
-                    var em = cm.getEventManager("PiratePQ");
-                    if (em == null) {
-                        cm.sendOk("PiratePQ does not work.");
-                        cm.dispose();
-                    }
-                    else {
-                        em.startInstance(cm.getParty(),cm.getPlayer().getMap());
-                        party = cm.getPlayer().getEventInstance().getPlayers();
-                    }
-                    cm.dispose();
-                }
-                else {
-                    cm.sendOk("Your party is not a party of six.  Make sure all your members are present and qualified to participate in this quest.  I see #b" + levelValid.toString() + " #kmembers are in the right level range, and #b" + inMap.toString() + "#k are in my map. If this seems wrong, #blog out and log back in,#k or reform the party.");
-                    cm.dispose();
-                }
-            }
-        }
-        else {
-            cm.sendOk("PiratePQ does not exist.");
-            cm.dispose();
-        }
-    }
+    if (mode != 1) {
+		cm.dispose();
+		return;
+	}
+	status++;
+	if (status == 0) {
+		var maps = [925100000, 925100100, 925100200, 925100300, 925100400, 925100500];
+		for (var x in maps) {
+			if (cm.getPlayerCount(maps[x]) > 0) {
+				cm.sendOk("There is currently another party contesting the #bLord Pirate's#k ship at the moment.");
+				cm.dispose();
+				return;
+			}
+			cm.getClient().getChannelServer().getMapFactory().getMap(maps[x]).resetAll();
+		}
+		cm.getParty().setPQ(new PiratePQ(cm.getParty()));
+		cm.warpParty(925100000);
+		cm.dispose();
+	}
 }
 					
 					

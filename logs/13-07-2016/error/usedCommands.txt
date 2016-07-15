@@ -1,0 +1,345 @@
+Xari used: !pos 
+Xari used: !portal 
+Xari used: !pos 
+Xari used: !pos 
+Xari used: !portal 
+Xari used: !portal 
+Xari used: !pos 
+Xari used: !reloadmap 
+Xari used: !reloadmap 
+Xari used: !reloadmap 
+Xari used: !reloadportals 
+Xari used: !reloadmap 
+Xari used: !reloadmap 
+Xari used: !closeportal next00 
+Xari used: !closeportal next00 
+Xari used: !relaodmap 
+Xari used: !reloadmap 
+Xari used: !closeportal next00 
+Xari used: !reloadmap 
+Xari used: !openportal next00 
+Xari used: !reloadmap 
+Xari used: !reloadportals 
+Xari used: !killall 
+Xari used: !openportal next00 
+Xari used: !reloadmap 
+Xari used: !openportal next00 
+Xari used: !reloadportals 
+Xari used: !reloadmap 
+Xari used: !reloadportals 
+Xari used: !openportal next00 
+Xari used: !killall 
+Xari used: !pos 
+Xari used: !reloadmap 
+Xari used: !reloadportals 
+Xari used: !openportal next00 
+Xari used: !pos 
+Xari used: !killall 
+Xari used: !pos 
+Xari used: !search mob pirate lord 
+Xari used: !search mob pirate 
+Xari used: !search mob lord pirate 
+Xari used: !pos 
+Xari used: !reloadmap 
+Xari used: !reloadportals 
+Xari used: !openportal next00 
+Xari used: !search mob lord pirate 
+Xari used: !reloadportals 
+Xari used: !reloadmap 
+Xari used: !openportal next00 
+Xari used: !heal 
+Xari used: !adddrop 9300105 2020014 100 
+Xari used: !item 5120024 
+Xari used: !item 5120024 
+Xari used: !item 5120025 
+Xari used: !item 5120026 
+Xari used: !item 5120027 
+Xari used: !item 5120016 
+Xari used: !item 5120017 
+Xari used: !item 5120018 
+Xari used: !item 5120019 
+Xari used: !item 5120020 
+Xari used: !pos 
+Xari used: !reloadmap 
+Xari used: !reloadmap 
+Xari used: !reloadmap 
+Xari used: !reloadmap 
+Xari used: !reloadmap 
+Xari used: !reloadmap 
+Xari used: !reloadmap 
+Xari used: /reloadmap 
+Xari used: !reloadmap 
+Xari used: !reloadmap 
+Xari used: !reloadmap 
+Xari used: !reloadmap 
+Xari used: /reloadmap 
+Xari used: !reloadmap 
+Xari used: !pos 
+Xari used: !reloadmap 
+Xari used: !whereami 
+Xari used: !search item emblems 
+Xari used: !search item emblem 
+Xari used: !search item black pirate 
+Xari used: !search item pirate 
+Xari used: !whereami 
+Xari used: !reloadevents 
+Xari used: !reloadevents 
+Xari used: !reloadevents 
+Xari used: !search npc rolly 
+Xari used: !spawn 100100 
+Xari used: !killall 
+Xari used: !spawn 100100 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: /search mob lord pirate's 
+Xari used: !whereami 
+Xari used: !search item mark of 
+Xari used: !killall 
+Xari used: !whereami 
+Xari used: !pos 
+Xari used: !search item mark of 
+Xari used: !item 4001120 20 
+Xari used: !item 4001121 20 
+Xari used: !item 4001122 20 
+Xari used: !spawn 100100 
+Xari used: !killall 
+Xari used: !pos 
+Xari used: !spawn 100100 
+Xari used: !killall 
+Xari used: !pos 
+Xari used: !killall 
+Xari used: !spawn 100100 
+Xari used: !killall 
+Xari used: !spawn 100100 
+Xari used: !killall 
+Xari used: !reloadmap 
+Xari used: !killall 
+Xari used: !item 4001120 20 
+Xari used: !item 4001121 20 
+Xari used: !item 4001122 20 
+Xari used: !spawn 100100 
+Xari used: !killall 
+Xari used: !item 4001120 20 
+Xari used: !item 4001121 20 
+Xari used: !item 4001122 20 
+Xari used: !pos 
+Xari used: !spawn 100100 
+Xari used: !killall 
+Xari used: !pos 
+Xari used: !spawn 100100 
+Xari used: !killall 
+Xari used: !search item key 
+Xari used: !search item pirate 
+Xari used: !item 4001123 
+Xari used: !item 4001124 
+Xari used: !item 4001119 
+Xari used: !item 4001118 
+Xari used: !item 4001124 
+Xari used: !item 4001124 
+Xari used: !item 4001125 
+Xari used: !item 4001126 
+Xari used: !search item key 
+Xari used: !search item skeleton key 
+Xari used: !search item key 
+Xari used: !search item old metal 
+Xari used: !item 4001117 4 
+Xari used: !pos 
+Xari used: !spawn 100100 
+Xari used: !killall 
+Xari used: !item 4001120 20 
+Xari used: !item 4001121 20 
+Xari used: !item 4001122 20 
+Xari used: !reloadmap 
+Xari used: !item 4001120 20 
+Xari used: !item 4001121 20 
+Xari used: !item 4001122 20 
+Xari used: !reloadmap 
+Xari used: !spawn 100100 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !item 4001117 4 
+Xari used: !spawn 100100 
+Xari used: !item 4001120 20 
+Xari used: !item 4001121 20 
+Xari used: !item 4001122 20 
+Xari used: !spawn 100100 
+Xari used: !spawn 100100 
+Xari used: !killall 
+Xari used: !item 4001120 20 
+Xari used: !item 4001121 20 
+Xari used: !item 4001122 20 
+Xari used: !spawn 100100 
+Xari used: !killall 
+Xari used: !spawn 100100 
+Xari used: !killall 
+Xari used: !item 4001117 4 
+Xari used: !killall 
+Xari used: !search npc wu yang 
+Xari used: !level 75 
+Xari used: !pos 
+Xari used: !pos 
+Xari used: !pos 
+Xari used: !pos 
+Xari used: !pos 
+Xari used: !reloadmap 
+Xari used: !reloadmap 
+Xari used: !reloadmap 
+Xari used: !reloadmap 
+Xari used: !killall 
+Xari used: !pos 
+Xari used: !reloadmap 
+Xari used: !killall 
+Xari used: !item 4001120 20 
+Xari used: !item 4001121 20 
+Xari used: !item 40011212 20 
+Xari used: !item 4001122 20 
+Xari used: !pos 
+Xari used: !spawn 9300111 
+Xari used: !spawn 9300112 
+Xari used: !spawn 9300113 
+Xari used: !pos 
+Xari used: !pos 
+Xari used: !pos 
+Xari used: !pos 
+Xari used: !pos 
+Xari used: !pos 
+Xari used: !pos 
+Xari used: !reloadmap 
+Xari used: !reloadmap 
+Xari used: !spawn 100100 
+Xari used: !killall 
+Xari used: !pos 
+Xari used: !spawn 100100 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !pmob 9300120 5 
+Xari used: !pmob 9300120 5 
+Xari used: !pmob 9300121 5 
+Xari used: !pmob 9300121 5 
+Xari used: !pmob 9300121 5 
+Xari used: !pmob 9300121 5 
+Xari used: !pmob 9300121 5 
+Xari used: !pmob 9300122 5 
+Xari used: !pmob 9300122 5 
+Xari used: !pmob 9300122 5 
+Xari used: !pmob 9300122 5 
+Xari used: !pmob 9300122 5 
+Xari used: !pmob 9300122 5 
+Xari used: !pmob 9300122 5 
+Xari used: !pmob 9300122 5 
+Xari used: !pmob 9300121 5 
+Xari used: !pmob 9300121 5 
+Xari used: !pmob 9300121 5 
+Xari used: !pmob 9300121 5 
+Xari used: !pmob 9300121 5 
+Xari used: !pmob 9300121 5 
+Xari used: !pmob 9300121 5 
+Xari used: !item 4001117 4 
+Xari used: !killall 
+Xari used: !spawn 9300119 
+Xari used: !spawn 9300119 
+Xari used: !killall 
+Xari used: !spawn 9300119 
+Xari used: !spawn 9300119 
+Xari used: !spawn 9300119 
+Xari used: !spawn 9300119 
+Xari used: !killall 
+Xari used: !reloadmap 
+Xari used: !reloadmap 
+Xari used: !reloadmap 
+Xari used: !killall 
+Xari used: !item 4001120 20 
+Xari used: !item 4001121 20 
+Xari used: !item 4001122 20 
+Xari used: !reloadmap 
+Xari used: !pos 
+Xari used: !reloadmap 
+Xari used: !killall 
+Xari used: !item 4001120 20 
+Xari used: !item 4001121 20 
+Xari used: !item 4001122 20 
+Xari used: !reloadmap 
+Xari used: !pos 
+Xari used: !reloadmap 
+Xari used: !spawn 100100 
+Xari used: !killall 
+Xari used: !spawn 100100 
+Xari used: !killall 
+Xari used: !spawn 4001120 20 
+Xari used: !spawn 4001121 20 
+Xari used: !spawn 4001122 20 
+Xari used: !spawn 4001121 20 
+Xari used: !item 4001120 20 
+Xari used: !item 40011212 20 
+Xari used: !item 4001121 20 
+Xari used: !item 4001122 20 
+Xari used: !reloadmap 
+Xari used: !reloadmap 
+Xari used: !spawn 100100 
+Xari used: !killall 
+Xari used: !reloadmap 
+Xari used: !spawn 100100 
+Xari used: !killall 
+Xari used: !reloadmap 
+Xari used: !reloadmap 
+Xari used: !reloadmap 
+Xari used: !reloadmap 
+Xari used: !reloadmap 
+Xari used: !reloadscripts 
+Xari used: !reloadmapscripts 
+Xari used: !reloadmap 
+Xari used: !reloadmap 
+Xari used: !reloadmap 
+Xari used: !reloadmap 
+Xari used: !reloadmap 
+Xari used: !reloadscripts 
+Xari used: !reloadmapscripts 
+Xari used: !reloadmap 
+Xari used: !reloadmap 
+Xari used: !reloadmap 
+Xari used: !reloadmap 
+Xari used: !reloadmap 
+Xari used: !reloadmap 
+Xari used: !reloadmap 
+Xari used: !reloadmap 
+Xari used: !reloadmap 
+Xari used: !killall 
+Xari used: !item 4001120 20 
+Xari used: !item 4001121 20 
+Xari used: !item 4001122 20 
+Xari used: !item 4001121 20 
+Xari used: !reloadmap 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !pos 
+Xari used: !reloadmap 
+Xari used: !item 4001117 4 
+Xari used: !killall 
+Xari used: !reloadmap 
+Xari used: !reloadmap 
+Xari used: !reloadmap 
+Xari used: !killall 
+Xari used: !item 4001120 20 
+Xari used: !item 4001121 20 
+Xari used: !item 4001122 20 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !item 4001117 4 
+Xari used: !killall 
+Xari used: !pqinfo 
+Xari used: !pqinfo 
+Xari used: !pqinfo 
+Xari used: !reloadmap 
+Xari used: !killall 
+Xari used: !item 4001120 20 
+Xari used: !item 4001121 20 
+Xari used: !item 4001122 20 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !item 4001117 
+Xari used: !item 4001117 
+Xari used: !item 4001117 
+Xari used: !item 4001117 
+Xari used: !killall 

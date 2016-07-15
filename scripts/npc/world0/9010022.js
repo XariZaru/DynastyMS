@@ -22,6 +22,9 @@ function action(mode, type, selection) {
         else 
             status--; 
             if (status == 0) { 
+				cm.sendOk("Not coded>");
+				cm.dispose();
+				return
             if (cm.getLevel() < 20) { 
                 cm.sendDimensionalMirror("#-1# There is no place for you to transport to from here."); 
                 cm.dispose(); 

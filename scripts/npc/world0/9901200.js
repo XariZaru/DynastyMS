@@ -33,8 +33,15 @@ importPackage(Packages.client.inventory);
 var target = null;
 
 function start() {
-	target = cm.getClient().getChannelServer().getPlayerStorage().getCharacterByName("Wiggy");
-	cm.sendSimple("These are "+target.getName()+"'s items.\r\n#L0#Equips\r\n#L1#Use\r\n#L2#Setup\r\n#L999#Exit");
+	cm.sendOk(cm.getPlayer().getPets());
+	//cm.getPlayer().addVP(8);
+	//cm.getPlayer().gainNX(20000);
+	//cm.warp(250000000);
+	//cm.sendOk("Hi.");
+	//cm.dispose();
+	//return;
+	//target = cm.getClient().getChannelServer().getPlayerStorage().removePlayer("Banana");//getCharacterByName("Wiggy");
+	//cm.sendSimple("These are "+target.getName()+"'s items.\r\n#L0#Equips\r\n#L1#Use\r\n#L2#Setup\r\n#L999#Exit");
 }
 
 function action(mode, type, selection) {
@@ -60,4 +67,19 @@ function action(mode, type, selection) {
 			text += "#i" + inventory[x].getValue().getItemId() + "#";
 		cm.sendOk(text);
 	}
+}
+
+function resetStats() {
+	var totAp = cm.getPlayer().getStr() + cm.getPlayer().getDex() + cm.getPlayer().getLuk() + cm.getPlayer().getInt() + cm.getPlayer().getRemainingAp();
+	cm.getPlayer().setStr(4);
+	cm.getPlayer().setDex(4);
+	cm.getPlayer().setLuk(4);
+	cm.getPlayer().setInt(4);
+	cm.getPlayer().dropMessage(totAp - 16);
+	cm.getPlayer().setRemainingAp(totAp - 16);
+	cm.getPlayer().updateSingleStat(MapleStat.STR, 4);
+	cm.getPlayer().updateSingleStat(MapleStat.DEX, 4);
+	cm.getPlayer().updateSingleStat(MapleStat.LUK, 4);
+	cm.getPlayer().updateSingleStat(MapleStat.INT, 4);
+	cm.getPlayer().updateSingleStat(MapleStat.AVAILABLEAP, totAp - 16);
 }

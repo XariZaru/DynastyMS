@@ -50,7 +50,9 @@ function action(m,t,s, status) {
 	}
 	if (status == 0) {
 		if (s == 0) {
-			cm.getPlayer().saveLocation("FREE_MARKET");
+			var blocked_locations = [910000000, 109040000, 970030000];
+			if (blocked_locations.indexOf(cm.getMapId()) == -1)
+				cm.getPlayer().saveLocation("FREE_MARKET");
 			cm.warp(910000000);
 			cm.dispose();
 		} else if (s == 100) {

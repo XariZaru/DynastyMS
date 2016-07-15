@@ -245,7 +245,7 @@ public class HiredMerchant extends AbstractMapleMapObject {
                 items.clear();
             }
             try {
-                this.saveItems(timeout);
+                this.saveItems(true);
             } catch (Exception e) {
             }
             items.clear();

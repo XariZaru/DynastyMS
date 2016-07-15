@@ -455,7 +455,8 @@ public final class UseCashItemHandler extends AbstractMaplePacketHandler {
                             player.getMap().broadcastMessage(MaplePacketCreator.showPetLevelUp(c.getPlayer(), index));
                         }
                         Item item = player.getInventory(MapleInventoryType.CASH).getItem(pet.getPosition());
-                        player.forceUpdateItem(item);
+                        if (item != null) //TODO: For some reason when pet is first purchased from CS it's not added to the player
+                        	player.forceUpdateItem(item);
                         player.getMap().broadcastMessage(c.getPlayer(), MaplePacketCreator.commandResponse(player.getId(), i, 1, true), true);
                         remove(c, itemId);
                         break;

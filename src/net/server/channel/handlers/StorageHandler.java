@@ -110,7 +110,7 @@ public final class StorageHandler extends AbstractMaplePacketHandler {
 				c.announce(MaplePacketCreator.getStorageError((byte) 0x11));
 				return;
 			}
-			short meso = (short) (chr.getMap().getId() == 910000000 ? -500 : -100);
+			short meso = (short) (chr.getMap().getId() == 910000000 ? 500 : 1000);
 			if (chr.getMeso() < meso) {
 				c.announce(MaplePacketCreator.getStorageError((byte) 0x0B));
 			} else {

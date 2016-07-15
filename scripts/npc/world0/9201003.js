@@ -11,12 +11,12 @@ var tix = 4032055, hut = 209000100;
 var quest = 10002;
 
 function start() {
-    if (!cm.iQC(quest) && cm.getJobId()==0) {
-        cm.talkGuide("You must speak with Assistant Blue on your left before you can continue.\r\n\r\n<--------------------------------------------");
-        cm.dispose();
-    } else {
+   // if (!cm.iQC(quest) && cm.getJobId()==0) {
+     //   cm.talkGuide("You must speak with Assistant Blue on your left before you can continue.\r\n\r\n<--------------------------------------------",0);
+       // cm.dispose();
+    //} else {
 	cm.sendNext("Hey, #h #, how are you doing? Is everything all right?");
-    }
+    //}
 }
 	
 function action(mode, type, selection) {
@@ -52,7 +52,7 @@ function action(mode, type, selection) {
                             text += "#L"+i+"##i"+reward[i]+"# ";
                         cm.sendSimple(text);
               } else if (cm.getQ()==7) {
-                        cm.sendOk("Have you gotten the hotel tickets yet? We'd love to spend the night here.");
+                        cm.sendOk("Have you gotten the hotel tickets yet? We'd love to spend the night here. I think #eSimon#n will give us the tickets for the night.");
                         cm.dispose();
                 } else if (cm.getQ() == 6) {
                         cm.sendNext("How was #bSanta#k? Did you like him?");
@@ -66,14 +66,14 @@ function action(mode, type, selection) {
 			cm.sendOk("Your mother and I are just admiring the "+(cm.getMapId()==209000000 ? "view" : cm.getMapId()==104000000 ? 
                         "harbor" : cm.getMapId()==680000004 ? "view" : "hotel")+". You should go and "+(cm.getMapId()==209000000 ? 
                         "play with some new friends." : "take a look around the place.")+"");
-			cm.talkGuide("Perhaps we should go train or help "+(cm.getMapId()==209000000 ? "Santa with his" : "people with their")+" troubles.");
+			cm.talkGuide("Perhaps we should go train or help "+(cm.getMapId()==209000000 ? "Santa with his" : "people with their")+" troubles.", 3);
 			cm.dispose();
         }
 	} else if (status == 1) {    
             if (cm.getQ()==12) {
                 cm.warp(cm.getMapId());
                 cm.completeQ();
-                cm.talkGuide("Ah. I feel refreshed from those accomodations. Let's talk with your #bMom and Dad#k to see what's up.");
+                cm.talkGuide("Ah. I feel refreshed from those accomodations. Let's talk with your #bMom and Dad#k to see what's up.", 0);
                 cm.dispose();
             } else if (cm.getQ()==14) {
                 cm.sendNext("I know you've still got a lot to learn, more experience to gain, but we promise you that it'll be worth it in the end.")
@@ -84,38 +84,43 @@ function action(mode, type, selection) {
                 cm.complete();
                 cm.completeQ();
                 cm.talkGuide("Let's talk to Cliff and see how he's like. There's a lot to do, and I'm sure he has some"+
-                    " suggestions.");
+                    " suggestions.", 0);
                 cm.gainExp(1000);
-        } else if (cm.getQ()==9) {
-                 cm.warp(hut);
-                 cm.completeQ();
-                 cm.dispose();
-        } else if (cm.getQ()==8) {
-                        cm.completeQ();
-                        cm.gainItem(reward[selection]);
-                        cm.gainItem(tix,-2);
-                        cm.gainExp(800);
-                        cm.gainMeso(3000);
-                        cm.talkGuide("I think your parents still want to talk to you.");
-                        cm.dispose();
-                } else if (cm.getQ()==6) {
-                        cm.sendNext("Yeah, I liked him. He's nice. Do you need anything else?",2);
-                } else if (cm.getQ() == 0) {
-			cm.sendOk("It'd be nice if you took a look around. You can go meet #bSanta#k. I think he needs some help. You should spread some spirit by giving a hand!")
-			cm.completeQ();
-			//cm.talkGuide("Speak with the snowman on the right to leave this map. I'm your guide, and you can spawn me with @guide. I'll help you throughout your journey on DynastyMS!");
-			cm.dispose();
+			} else if (cm.getQ()==9) {
+					 cm.warp(hut);
+					 cm.talkGuide("There's your parents! Let's go talk to them!", 1);
+					 cm.completeQ();
+					 cm.dispose();
+			} else if (cm.getQ()==8) {
+				cm.completeQ();
+				cm.gainItem(reward[selection]);
+				if (selection == 2 || selection == 3)
+					cm.gainItem(selection == 2 ? 2070000 : 2060000, 2000);
+				cm.gainItem(tix,-2);
+				cm.gainExp(800);
+				cm.gainMeso(3000);
+				cm.talkGuide("I think your #eparents#n still want to talk to you. Let's talk to them again!", 0);
+				cm.dispose();
+			} else if (cm.getQ()==6) {
+					cm.sendNext("Yeah, I liked him. He's nice. Do you need anything else?",2);
+			} else if (cm.getQ() == 0) {
+				cm.sendOk("It'd be nice if you took a look around. You can go meet #bSanta#k. I think he needs some help. You should spread some spirit by giving a hand!");
 		}
         } else if (status == 2) {
                 if (cm.getQ()==6) {
-                    cm.sendAcceptDecline("Oh, no. Actually, I think your Mother and I would love to spend the night, though. Can you make reservations with Simon?")
+                    cm.sendAcceptDecline("Oh, no. Actually, I think your Mother and I would love to spend the night, though. Can you make reservations with Simon?");
+				} else if (cm.getQ() == 0) {
+					cm.completeQ();
+					cm.talkGuide("Speak with #bSanta#k nearby! I'm your guide for #rDynastyMS#k. I'll be helping you throughout your adventures. Just click on me and you can see some quest details!", 0);
+					cm.talkGuide("By speaking with Santa, you further your storyline. This lets you job advance when you can!", 5);
+					cm.dispose();
                 } else if (cm.getQ()==14) {
                     cm.sendOk("We're going to take you to a new place where you'll be able to train and get stronger for the good of our people. And don't you worry about about funding. Your mother and I will provide all the money you need.\r\n\r\n#eSpeak with Taeng the Explorer#n when you arrive at your new location.");
                 } else if (cm.getQ()==13) {
                     cm.warp(104000000);
                     cm.completeQ();
                     cm.talkGuide("Let's go find Mom and Dad. We got separated on flight, but I'm sure they're relaxing somewhere. Let's go look"+
-                        " for them!");
+                        " for them!", 1);
                     cm.dispose();
         }
         } else if (status == 3) {
@@ -124,11 +129,12 @@ function action(mode, type, selection) {
                 cm.completeQ();
 				cm.completeQ();
                 cm.complete();
-                cm.talkGuide("Hey, let's talk to Taeng the Explorer! I heard he is in charge of everything around here.");
+                cm.talkGuide("Hey, let's talk to Taeng the Explorer! I heard he is in charge of everything around here.", 1);
+				cm.gainMeso(75000);
                 cm.dispose();
             } else {
                     cm.completeQ();                  
-                    cm.talkGuide("Simon should be around here. Perhaps we should browse around town.");
+                    cm.talkGuide("Simon should be around here. Perhaps we should browse around town.", 0);
                     cm.dispose();
             }
 	}

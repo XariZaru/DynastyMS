@@ -148,7 +148,7 @@ public class VoteChecker implements Runnable {
     	Connection con = DatabaseConnection.getConnection();
         try {
         	
-        	PreparedStatement ps = con.prepareStatement("SELECT * FROM votingrecords WHERE ip = ? AND siteid = 1 LIMIT 1");
+        	PreparedStatement ps = con.prepareStatement("SELECT * FROM votingrecords WHERE ip = ? AND siteid = 1 ORDER BY date DESC LIMIT 1");
         	ps.setString(1, ip);
         	ResultSet rs = ps.executeQuery();
         	rs.next();

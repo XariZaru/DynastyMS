@@ -1,0 +1,52 @@
+Xari used: !job 42 
+Xari used: !job 422 
+Xari used: !maxskills 
+Xari used: !reset 
+Xari used: !resetstats 
+Xari used: !resetstat 
+Xari used: !search mob captain 
+Xari used: !spawn 7130104 10 
+Xari used: !spawn 7130104 10 
+Xari used: !spawn 7130104 10 
+Xari used: !spawn 7130104 10 
+Xari used: !killall 
+Xari used: !cleardrops 
+Xari used: !spawn 7130104 10 
+Xari used: !killall 
+Xari used: !spawn 7130104 1 
+Xari used: !spawn 7130104 1 
+Xari used: !spawn 7130104 1 
+Xari used: !spawn 7130104 1 
+Xari used: !pos 
+Xari used: !pos 
+Xari used: !whereami 
+Xari used: !pos 
+Xari used: !pos 
+Xari used: !pos 
+Xari used: !pos 
+Xari used: !pos 
+Xari used: !pos 
+Xari used: !reloadreactors 
+Xari used: !reloadreactor 
+Xari used: !resetreactor 2519000 
+Xari used: !resetreactor 2519000 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !pos 
+Xari used: !pos 
+Xari used: !pos 
+Xari used: !pos 
+Xari used: !pos 
+Xari used: !pos 
+Xari used: !pos 
+Xari used: !pos 
+Xari used: !pos 
+Xari used: !pos 
+Xari used: !pos 
+Xari used: !pos 
+Xari used: !pos 
+Xari used: !killall 
+Xari used: !resetreactor 2519000 
+Xari used: !reloadmap 
+Xari used: !killall 
+Xari used: !heal 

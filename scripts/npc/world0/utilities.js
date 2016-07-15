@@ -1,5 +1,5 @@
-var npc 	= [9300003,9300003,9300003,9300003, 9000037,9000037,9250052,9250052];
-var scripts = ["", "mobDrops", "mobStats", "mobInMapStats", "", "changeRate", "", "buglog"];
+var npc 	= [9300003,9300003,9300003,9300003, 9000037,9000037,9250052];
+var scripts = ["", "mobDrops", "mobStats", "mobInMapStats", "", "changeRate", "buglog"];
 
 function start() {
 	cm.sendSimple("Which of the functionalities would you like to use?", 
@@ -10,7 +10,7 @@ function start() {
 			"Check your damage [Damage per second]",
 			//"Juke Box (Donor Options Too)",
 			"Change your exp rate",
-			"View News Stand (Revision Logs)",
+			//"View News Stand (Revision Logs)",
 			"View/Submit Bugs");
 }
 

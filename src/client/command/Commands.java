@@ -42,6 +42,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 import java.util.TimeZone;
 
@@ -54,6 +55,7 @@ import provider.MapleData;
 import provider.MapleDataProvider;
 import provider.MapleDataProviderFactory;
 import provider.MapleDataTool;
+import scripting.map.MapScriptManager;
 import scripting.npc.NPCScriptManager;
 import scripting.portal.PortalScriptManager;
 import scripting.quest.QuestScriptManager;
@@ -100,7 +102,9 @@ import client.inventory.MaplePet;
 import constants.GameConstants;
 import constants.ItemConstants;
 import constants.ServerConstants;
+
 import java.util.ArrayList;
+
 import server.maps.FieldLimit;
 
 public class Commands {
@@ -348,6 +352,8 @@ public class Commands {
 				player.dropMessage(5, "You need to specify 3 arguments. No more, no less.");
 			} else if (Integer.parseInt(sub[2]) > 100) {
 				player.dropMessage(5, "You can only drop at max 100 bags at a time.");
+			} else if (Integer.parseInt(sub[1]) > 50000) {
+				player.dropMessage(5, "You can't drop more than 50k at a time.");
 			} else {
 				int mesos_per_drop = Integer.parseInt(sub[1])/Integer.parseInt(sub[2]); // Parse string into integer and get mesos per bag
 				if (mesos_per_drop <= 0 || Integer.parseInt(sub[2]) <= 0) { // Check for exploits and positive meso drops (exploits)
@@ -434,15 +440,10 @@ public class Commands {
 				
 			}
 		case "staff":
-			player.yellowMessage("MapleSolaxia Staff");
-			player.yellowMessage("Aria - Administrator");
-			player.yellowMessage("Twdtwd - Administrator");
-			player.yellowMessage("Exorcist - Developer");
-			player.yellowMessage("SharpAceX - Developer");
-			player.yellowMessage("Zygon - Freelance Developer");
-			player.yellowMessage("SourMjolk - Game Master");
-			player.yellowMessage("Kanade - Game Master");
-			player.yellowMessage("Kitsune - Game Master");
+			player.yellowMessage("Dynasty Staff");
+			player.yellowMessage("Xari - Administrator/Developer");
+			player.yellowMessage("xZero - Graphics");
+			player.yellowMessage("Qrow - Forum Moderator");
 			break;
 		case "lastrestart":
 		case "uptime":
@@ -451,7 +452,7 @@ public class Commands {
 			int minutes = (int) ((milliseconds / (1000*60)) % 60);
 			int hours   = (int) ((milliseconds / (1000*60*60)) % 24);
 			int days	= (int) ((milliseconds / (1000*60*60*24)));
- 			player.yellowMessage("Solaxia has been online for " + days + " days " + hours + " hours " + minutes + " minutes and " + seconds + " seconds.");
+ 			player.yellowMessage("Dynasty has been online for " + days + " days " + hours + " hours " + minutes + " minutes and " + seconds + " seconds.");
 			break;
 		case "gacha":
 			if (player.gmLevel() == 0) { // Sigh, need it for now...
@@ -584,9 +585,6 @@ public class Commands {
 			if (player.getLevel() < 10) { 
 				player.message("Players under level 10 always have 1x exp.");
 			}
-			break;
-		case "say":
-			Server.getInstance().broadcastMessage(MaplePacketCreator.serverNotice(6, "["+player.getName()+"] " + joinStringFrom(sub, 1)));
 			break;
 		case "online":
 			short players_online = 0;
@@ -747,6 +745,8 @@ public class Commands {
 				victim.setRemainingAp(Integer.parseInt(sub[2]));
 				victim.updateSingleStat(MapleStat.AVAILABLEAP, victim.getRemainingAp());
 			}
+		} else if (sub[0].equals("say")) {
+			Server.getInstance().broadcastMessage(MaplePacketCreator.serverNotice(6, "["+player.getName()+"] " + joinStringFrom(sub, 1)));
 		} else if (sub[0].equals("buffme")) {
 			final int[] array = {9001000, 9101002, 9101003, 9101008, 2001002, 1101007, 1005, 2301003, 5121009, 1111002, 4111001, 4111002, 4211003, 4211005, 1321000, 2321004, 3121002};
 			for (int i : array) {
@@ -881,14 +881,12 @@ public class Commands {
 			MapleMonsterInformationProvider.getInstance().clearDrops();
 			player.dropMessage("All monster drops were reloaded from the database.");
 		} else if (sub[0].equals("reloadmap")) {
-			MapleMap oldMap = c.getPlayer().getMap();
-			Collection<MapleCharacter> chrs = oldMap.getCharacters();
-			c.getChannelServer().getMapFactory().getMaps().remove(oldMap.getId());
-			MapleMap newMap = c.getChannelServer().getMapFactory().getMap(oldMap.getId());
-			oldMap = null;
-			for (MapleCharacter ch : chrs)
-				ch.changeMap(newMap);
-			newMap.respawn();
+			player.getMap().reloadMap();
+		} else if (sub[0].equals("reloadmaps")) { // can't use: concurrent modification
+			for (Channel ch : Server.getInstance().getAllChannels())
+				for (MapleMap map : ch.getMapFactory().getMaps().values())
+					map.reloadMap();
+			player.dropMessage("All maps were reloaded.");
 		} else if (sub[0].equals("changedrop")) {
 			if (sub.length < 4) {
 				player.dropMessage("Format is !changedrop <mobid> <itemid> <percentage chance of dropping>");
@@ -1197,7 +1195,7 @@ public class Commands {
 				return false;
 			}
 			Server.getInstance().broadcastMessage(MaplePacketCreator.serverNotice(6, "[Server Note] " + joinStringFrom(sub, 1)));
-			try (PreparedStatement ps = DatabaseConnection.getConnection().prepareStatement("SELECT * FROM characters")){
+			try (PreparedStatement ps = DatabaseConnection.getConnection().prepareStatement("SELECT * FROM characters")) {
 				ResultSet rs = ps.executeQuery();
 				while (rs.next() && !rs.getString("name").equals(player.getName()))
 					player.sendNote(rs.getString("name"), player.getName(), "[Server Note] " + joinStringFrom(sub, 1), 0);
@@ -1519,6 +1517,8 @@ public class Commands {
 			} else {
 				player.yellowMessage("You need to specify true or false and no other substring.");
 			}
+		} else if (sub[0].equals("pqinfo")) {
+			player.yellowMessage("Stage: " + player.getParty().getPQ().getStage());
 		} else if (sub[0].equals("clock")) {
 			player.getMap().broadcastNONGMMessage(player, MaplePacketCreator.getClock(60 * Integer.parseInt(sub[1])), true);
 		} else if (sub[0].equals("ban")) {

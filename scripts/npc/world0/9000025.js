@@ -22,7 +22,11 @@ function start() {
                 cm.dispose();
                 break;
         }
-    }
+    } else { 
+		cm.sendOk("You can job advance as an explorer by speaking to #eTaeng the Explorer#n here in Ellinia near the bottom of the map.");
+		cm.dispose();
+		return
+	}
 }
 
 /*
@@ -31,6 +35,10 @@ function start() {
 
 function action(m,t,s) {
     if (m == 1) {
+		if (!cm.getPlayer().isFourth()) {
+			cm.dispose();
+			return;
+		}
         status++;
     } else {
         cm.dispose();

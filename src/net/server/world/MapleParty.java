@@ -27,12 +27,14 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
+import server.partyquest.dynastyPQ.IPartyQuest;
 import client.MapleCharacter;
 
 public class MapleParty {
     private MaplePartyCharacter leader;
     private List<MaplePartyCharacter> members = new LinkedList<MaplePartyCharacter>();
     private int id;
+    private IPartyQuest pq;
 
     public MapleParty(int id, MaplePartyCharacter chrfor) {
         this.leader = chrfor;
@@ -89,6 +91,14 @@ public class MapleParty {
     		text += chr.getName() + " (Member of "+leader.getName()+"'s Party): Level " + chr.getLevel() + "\r\n";
     	}
     	return text;
+    }
+    
+    public IPartyQuest getPQ() {
+    	return pq;
+    }
+    
+    public void setPQ(IPartyQuest pq) {
+    	this.pq = pq;
     }
     
     public List<MaplePartyCharacter> getNonLeader() {

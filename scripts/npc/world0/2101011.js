@@ -9,7 +9,7 @@ var bottom = 596;
 var height = 83;
 var pole = 1442000;
 var maps = 1;
-var training = [1010100, 1010200, 1010300];
+var training = [1010100, 1010200, 1010300, 1010400];
 
 function finish() {
   cm.sendOk("You have to kill all the monsters before we can continue!");
@@ -59,8 +59,8 @@ function action(mode, type, selection) {
         } else if (selection == 3) {
             map = cm.getPlayer().getSavedLocation("WORLDTOUR");
             cm.warp(map);
-        } else { 
-            if (cm.getJobId()>=2000 && cm.getJobId()<=2999 && cm.getMapId()==200000000 && cm.getQ() > 13) {
+        } else {
+            if (cm.getJobId()>=2000 && cm.getJobId()<=2999 && cm.getMapId()==200000000 && cm.getQ() >= 12) {
                      cm.sendYesNo("Do you wish to return to our training map?");
             } else if (cm.getJobId()==2000) {
                 if (cm.getQ()==0) {
@@ -162,6 +162,7 @@ function action(mode, type, selection) {
 	            cm.sendOk("Like I said: it's not much, but you can build on what I know. I like to think of myself as a man who takes opportunities at not only face value, but the values that are tacit behind them."+sQuest(1000,50000)+"");
 	            cm.talkGuide("Where should we go now? I believe Sejan has the answer for us.");
 	            cm.changeJobById(2100);
+				cm.gainMeso(50000);
         	}
             cm.dispose();
      } else if (cm.getQ()==14) {
@@ -209,7 +210,7 @@ function action(mode, type, selection) {
         } else if (cm.getQ()==4) {
             cm.sendOk("And all you have to do is meet me at the royal palace gates just outside the town. You should be able to find"+
                 " it; everyone knows where it is. Just meet me at #b#m260000300##k, and bring no one else. I'll fill you in there.");
-        cm.completeQ(), cm.talkGuide("Sejan told us to meet him at the Ariant Castle just outside the town. We can find it on our minimap(W).");
+        cm.completeQ(), cm.warp(260000300), cm.talkGuide("Sejan told us to meet him at the Ariant Castle just outside the town.", 0);
         cm.dispose();
         } else if (cm.getQ()==3) {
             cm.sendOk("Good, speak to me again ... I'll have to get the information needed for us to begin.", 15, 1000);
@@ -220,10 +221,13 @@ function action(mode, type, selection) {
 		if (cm.getJobId()==2000) {
 		    if (cm.getQ()==9) {
 		        cm.sendOk("Take the boat off of Ariant and head to #bOrbis#k. Meet me there in the main city. You'll have to look for me. It is a large, urban area, unlike the sandy deserts of Ariant. Quick, you must fly. I'll leave you coin to take the boat."+sQuest(100,20000)+"");
-		        cm.talkGuide("Sejan said to meet him in Orbis as soon as possible. Let us quickly take the boat to Orbis before the guards fall upon us.");
+				cm.gainItem(4021007, -cm.itemQuantity(4021007));
+				cm.warp(260000100);
+		        cm.talkGuide("Sejan said to meet him in Orbis as soon as possible. Let us quickly take the boat to Orbis before the guards fall upon us.", 0);
 		    } else if (cm.getQ()==11) {
 				if (cm.getPlayerCount(train) > 0) {
 					cm.sendOk("It seems someone else is in the area I'm taking you to. Perhaps you should change channels.");
+					cm.dispose();
 					return;
 				}
 		        cm.warp(train);

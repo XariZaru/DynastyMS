@@ -1,14 +1,16 @@
 var status, shell = 4000019, squishy = 4000004, arthritis = 4032423, rpot = 2000013, bpot = 2000014;
 var quest = 10002;
 
+importPackage(Packages.client);
+
 
 function start() {
     status = -1;
-    if (!cm.isQuestCompleted(quest)) {
-		cm.sendOk("#bTalk with Assistant Blue before continuing!#k", 2);
-        cm.talkGuide("Talk with Assistant Blue before you can continue with the storyline.");
-        cm.dispose();
-    } else if (cm.getQ()==0) {
+    //if (!cm.isQuestCompleted(quest)) {
+		//cm.sendOk("#bTalk with Assistant Blue before continuing!#k", 2);
+        //cm.talkGuide("Talk with Assistant Blue before you can continue with the storyline.");
+        //cm.dispose();
+    if (cm.getQ()==0) {
         cm.sendNext("Oh, who are you? My name is #bPerzen#k, and I am the trainer of this forest's encampment.");
     } else if (cm.getQ() == 8) {
         cm.sendNext("I'll ship you off to our central base in #bVictoria Island#k, \"Henesys\". When you get there, find a woman called"+
@@ -36,14 +38,6 @@ function start() {
         } else {
             cm.sendOk("Good work. It was quick and swift, very efficient.\r\n\r\n\r\n\r\n#fUI/UIWindow.img/QuestIcon/4/0#\r\n#fUI/UIWindow.img/QuestIcon/8/0# 100 exp\r\n#fUI/UIWindow.img/QuestIcon/7/0# 550 meso"+
                 "\r\n100 #i"+bpot+"# 100 #i"+rpot+"#")
-            cm.gainMeso(550);
-            cm.gainExp(200);
-            cm.gainItem(shell, -5);
-			cm.gainItem(bpot, 100);
-			cm.gainItem(rpot, 100);
-            cm.completeQ();
-            cm.talkGuide("Remember to talk to your trainer after the completion of each quest to see what else he has in store. He is your storyline NPC.");       
-            cm.dispose();
             }
     } else if (cm.getQ()==3) {
             cm.sendAcceptDecline("You're looking pretty strong there.\r\n\r\nLet's step it up a notch. Why don't you go kill some\r\n#bslimes#k. Bring back\r\n\r\n#b3#k #i"+squishy+"#\r\n\r\nCan you do that?");    
@@ -53,12 +47,6 @@ function start() {
             cm.dispose();
         } else {
             cm.sendOk("Well done. Your training seems to be going by very quickly ...\r\n\r\n\r\n\r\n#fUI/UIWindow.img/QuestIcon/4/0#\r\n#fUI/UIWindow.img/QuestIcon/8/0# 500 exp\r\n#fUI/UIWindow.img/QuestIcon/7/0# 1000 meso")
-            cm.complete();
-            cm.gainExp(900);
-            cm.gainMeso(1000);
-            cm.completeQ();
-            cm.gainItem(squishy, -3);
-            cm.dispose();
         }         
     } else if (cm.getQ() == 5) {
         cm.sendNext("So, #bPerzen#k, what should I do now?", 2)
@@ -81,9 +69,28 @@ function action(mode, type, selection) {
         if (status == 0) {
           if (cm.getQ()==0) {
                 cm.sendGetText("What is your name?\r\n#e(Input your name correctly, including capitals and n umbers)#n");
+		  } else if (cm.getQ() == 4) {
+				cm.talkGuide("Talk with Perzen again!", 0);
+				cm.complete();
+				cm.gainExp(900);
+				cm.gainMeso(1000);
+				cm.completeQ();
+				cm.gainItem(squishy, -3);
+				cm.dispose();
+		  } else if (cm.getQ()==2) {
+			cm.gainMeso(550);
+            cm.gainExp(200);
+            cm.gainItem(shell, -5);
+			cm.gainItem(bpot, 100);
+			cm.gainItem(rpot, 100);
+            cm.completeQ();
+            cm.talkGuide("Remember to talk to your trainer after the completion of each quest to see what else he has in store. He is your storyline NPC.", 0);       
+            cm.dispose();
           } else if (cm.getQ()==8) {
               cm.warp(100000000);
-              cm.talkGuide("He said to find a woman named Agent E. Let's not waste our time walking around and enjoying the scenery.");
+			  cm.gainMeso(75000);
+              cm.talkGuide("He said to find a woman named Agent E. I think she'll be our job advancement from now on!", 2);
+			  cm.talkGuide("I think Agent E is supposed to be nearby the center of town. Let's check it out.", 7);
               cm.completeQ();
               cm.dispose();
           } else if (cm.getQ()==7) {
@@ -92,11 +99,12 @@ function action(mode, type, selection) {
 			  cm.gainItem(cm.getJobId() == 1100 ? 1302077 : cm.getJobId() == 1200 ? 1372043 : cm.getJobId() == 1300 ? 1452051 : cm.getJobId() == 1400 ? 1472061 : 1482000);
 			  if (cm.getJobId() == 1400 || cm.getJobId()==1300)
 				  cm.gainItem((cm.getJobId() == 1400 ? 2070000 : 2060000), 2000);
+			  cm.gainMeso(50000);
               //cm.gainSp(newb);
-              cm.getPlayer().resetStats();
+              resetStats();
               cm.sendOk("You have been gifted your position. If you'd like to leave this place, talk to me one last time."); // You have gained"+
                  // " #b"+newb+"#k additional sp since you overleveled.");
-              cm.talkGuide("If we want to leave, Perzen said we'd have to talk to him.");
+              cm.talkGuide("If we want to leave, Perzen said we'd have to talk to him.", 2);
               cm.completeQ();
               cm.dispose();
         } else if (cm.getQ()==1) {
@@ -106,9 +114,6 @@ function action(mode, type, selection) {
            " are beyond your capability.");
         } else if (cm.getQ()==3) {
                  cm.sendOk("Go collect #b3#k #i"+squishy+"# for me. I'll talk to you when you're done.");
-				 cm.talkGuide("I heard there were some slimes that were causing trouble in a tent! Let's go check it out?");
-                 cm.completeQ();
-                 cm.dispose(); 
         } else if (cm.getQ() == 5) {
                 cm.sendAcceptDecline("You should probably train some more, but I have something better in mind. You'll have to learn how to make quick deliveries when"+
                         " you arrive in the army. Perhaps you should take this package to #bLoha#k. She's a blessing to this encampment and constantly uses our"+
@@ -121,25 +126,49 @@ function action(mode, type, selection) {
                 cm.dispose();
             } else {
                 cm.sendOk("#b"+cm.getText()+"#k you say? A fine name.\r\n\r\n#fUI/UIWindow.img/QuestIcon/4/0#\r\n#fUI/UIWindow.img/QuestIcon/8/0# 15 exp\r\n#fUI/UIWindow.img/QuestIcon/7/0# 250 meso")
-                cm.completeQ();
-                cm.gainMeso(250);
-                cm.gainExp(100);
-                cm.talkGuide("Let's speak with Perzen again. I think we can offer our assistance to him.");
-                cm.dispose();
             }
-        } else if (cm.getQ()==1) {
+			} else if (cm.getQ() == 3) {
+				 cm.talkGuide("Let's take that portal up top and kill some slimes!", 0);
+				 cm.completeQ();
+				 cm.dispose(); 
+			} else if (cm.getQ()==1) {
                 cm.sendAcceptDecline("So, what do you say?\r\nI'd also love for you to bring back 5 #i"+shell+"# while you're at it");     
-          } else if (cm.getQ()==5) {
+			} else if (cm.getQ()==5) {
               cm.gainItem(arthritis);
               cm.completeQ();
-              cm.talkGuide("Let's go find Loha! I'm sure she's around here somewhere.");
+              cm.talkGuide("Let's go find Loha! I'm sure she's around here somewhere.", 0);
               cm.dispose();
           }
         } else if (status == 2) {
             if (cm.getQ()==1) {
-                cm.completeQ();
                 cm.sendOk("Good, I'll expect you to be #blevel 2#k and in possession of #b5#k #i"+shell+"# when I see you again.");
+           } else if (cm.getQ()==0) {
+			    cm.completeQ();
+                cm.gainMeso(250);
+                cm.gainExp(100);
+                cm.talkGuide("Let's speak with Perzen again. I think we can offer our assistance to him.", 0);
                 cm.dispose();
-           }
-        }
+		   }
+        } else if (status == 3) {
+			if (cm.getQ()==1) {
+				cm.talkGuide("Let's get 5 snail shells for Perzen!", 0);
+				cm.talkGuide("There are monsters all over the place and #eeven in the tents#n!", 5);
+				cm.completeQ();
+				cm.dispose();
+			}
+		}
+}
+
+function resetStats() {
+	var totAp = cm.getPlayer().getStr() + cm.getPlayer().getDex() + cm.getPlayer().getLuk() + cm.getPlayer().getInt() + cm.getPlayer().getRemainingAp();
+	cm.getPlayer().setStr(4);
+	cm.getPlayer().setDex(4);
+	cm.getPlayer().setLuk(4);
+	cm.getPlayer().setInt(4);
+	cm.getPlayer().setRemainingAp(totAp - 16);
+	cm.getPlayer().updateSingleStat(MapleStat.STR, 4);
+	cm.getPlayer().updateSingleStat(MapleStat.DEX, 4);
+	cm.getPlayer().updateSingleStat(MapleStat.LUK, 4);
+	cm.getPlayer().updateSingleStat(MapleStat.INT, 4);
+	cm.getPlayer().updateSingleStat(MapleStat.AVAILABLEAP, totAp - 16);
 }

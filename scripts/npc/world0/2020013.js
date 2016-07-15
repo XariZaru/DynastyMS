@@ -1,3 +1,8 @@
+function start() {
+	cm.sendOk("Long live the #bDynasty#k!");
+	cm.dispose();
+}
+
 /*
 	This file is part of the OdinMS Maple Story Server
     Copyright (C) 2008 Patrick Huy <patrick.huy@frz.cc>
@@ -20,6 +25,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+/*
 status = -1;
 var job;
 var sel;
@@ -110,3 +116,4 @@ function action(mode, type, selection){
         }
     }
 }
+*/

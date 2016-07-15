@@ -252,7 +252,7 @@ public class BalrogAlone implements IPartyQuest, MobListener {
 	}
 
 	@Override
-	public void registerParty() {
+	public void registerParty(MapleParty party) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -271,6 +271,12 @@ public class BalrogAlone implements IPartyQuest, MobListener {
 
 	@Override
 	public int getPoints() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public long getTimeLeft() {
 		// TODO Auto-generated method stub
 		return 0;
 	}

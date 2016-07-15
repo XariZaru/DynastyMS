@@ -11,8 +11,10 @@ function start() {
 
 function action(m,t,s,status) {
 	if (status == 0) {
+		var blocked = [109040000, 910000000, 970030000];
 		if (cm.getMapId() != 970030000) {
-			cm.getPlayer().saveLocation("WARPER");
+			if (blocked.indexOf(cm.getMapId) == -1)
+				cm.getPlayer().saveLocation("WARPER");
 			cm.warp(970030000);
 			cm.dispose();
 		} else {

@@ -23,6 +23,13 @@
 	Masteria: New Leaf City (600000000)
 	Handles the quiz quest. (4900)
  */
+ 
+ function start() {
+	 cm.sendOk("Welcome to #bNew Leaf City#k, the central hub of the prospering colonies of the Empire!");
+	 cm.dispose();
+ }
+ 
+ /*
 
 var minlevel = 10;
 
@@ -111,4 +118,4 @@ function action(mode, type, selection) {
             }
         }
     }
-}
+}*/

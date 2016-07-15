@@ -16,7 +16,7 @@
     <int name="VRLeft" value="-574" />
     <int name="VRBottom" value="438" />
     <int name="VRRight" value="1421" />
-    <string name="onFirstUserEnter" value="StageMsg_davy" />
+    <string name="onUserEnter" value="PiratePQ" />
   </imgdir>
   <imgdir name="back">
     <imgdir name="0">
@@ -2105,7 +2105,7 @@
       <int name="y" value="240" />
       <int name="tm" value="999999999" />
       <string name="tn" value="" />
-      <string name="script" value="davy_next1" />
+      <string name="script" value="piratepq" />
     </imgdir>
   </imgdir>
 </imgdir>
