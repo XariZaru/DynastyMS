@@ -350,8 +350,8 @@ public class Commands {
 		case "mesodrop":
 			if (sub.length != 3) {
 				player.dropMessage(5, "You need to specify 3 arguments. No more, no less.");
-			} else if (Integer.parseInt(sub[2]) > 100) {
-				player.dropMessage(5, "You can only drop at max 100 bags at a time.");
+			} else if (Integer.parseInt(sub[2]) > 2) {
+				player.dropMessage(5, "You can only drop at max 2 bags at a time.");
 			} else if (Integer.parseInt(sub[1]) > 50000) {
 				player.dropMessage(5, "You can't drop more than 50k at a time.");
 			} else {
@@ -1518,7 +1518,10 @@ public class Commands {
 				player.yellowMessage("You need to specify true or false and no other substring.");
 			}
 		} else if (sub[0].equals("pqinfo")) {
-			player.yellowMessage("Stage: " + player.getParty().getPQ().getStage());
+			if (player.getParty().getPQ() != null)
+				player.yellowMessage("Stage: " + player.getParty().getPQ().getStage());
+			else
+				player.yellowMessage("There is no PQ registered to your party at this moment.");
 		} else if (sub[0].equals("clock")) {
 			player.getMap().broadcastNONGMMessage(player, MaplePacketCreator.getClock(60 * Integer.parseInt(sub[1])), true);
 		} else if (sub[0].equals("ban")) {

@@ -2973,7 +2973,7 @@ public class MapleCharacter extends AbstractAnimatedMapleMapObject {
     	} catch (Exception e) {
     		System.out.println("isDynastyQuestAvailable: Failed to load from Db!");
     	}
-		return 0;
+		return -1;
     }
     
     public void completeDynastyQuest(String quest) throws SQLException {
@@ -5883,7 +5883,7 @@ public class MapleCharacter extends AbstractAnimatedMapleMapObject {
     // SpawnPQ
     
     private SpawnPQ spawnpq;
-    private PQBase pq;
+    private IPartyQuest pq;
     
     public SpawnPQ getSpawnPQ() {
     	return this.spawnpq;
@@ -5902,11 +5902,11 @@ public class MapleCharacter extends AbstractAnimatedMapleMapObject {
     	return getPosition().y;
     }
     
-    public void setPQ(PQBase pq) {
+    public void setPQ(IPartyQuest pq) {
     	this.pq = pq;
     }
     
-    public PQBase getPQ() {
+    public IPartyQuest getPQ() {
     	return pq;
     }
     

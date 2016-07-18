@@ -152,18 +152,15 @@ public class VoteChecker implements Runnable {
         	ps.setString(1, ip);
         	ResultSet rs = ps.executeQuery();
         	rs.next();
-        	
-        	for (Channel ch : Server.getInstance().getAllChannels()) {
-        		Collection<MapleCharacter> players = ch.getPlayerStorage().getAllCharacters();
-        		synchronized (players) {
-	        		for (MapleCharacter chr : players)
-	        			if (chr.getClient().getAccountName().equals(rs.getString("account"))) {
-	        				chr.addVP(2);
-	        				chr.gainNX(10000);
-	        				chr.dropMessage(5, "Your account has received its rewards for voting! Thank you for voting!");
-	        				return true;
-	        			}
-        		}
+        	Collection<MapleCharacter> players = Server.getInstance().getWorld(0).getPlayerStorage().getAllCharacters();
+        	synchronized (players) {
+	    		for (MapleCharacter chr : players)
+	    			if (chr.getClient().getAccountName().equals(rs.getString("account"))) {
+	    				chr.addVP(2);
+	    				chr.gainNX(10000);
+	    				chr.dropMessage(5, "Your account has received its rewards for voting! Thank you for voting!");
+	    				return true;
+	    			}
         	}
         	
         	
@@ -185,17 +182,15 @@ public class VoteChecker implements Runnable {
     public static boolean countVote(String account) {
         Connection con = DatabaseConnection.getConnection();
         try {
-        	for (Channel ch : Server.getInstance().getAllChannels()) {
-        		Collection<MapleCharacter> players = ch.getPlayerStorage().getAllCharacters();
-	    		synchronized (players) {
-	        		for (MapleCharacter chr : players)
-	        			if (chr.getClient().getAccountName().equals(account)) {
-	        				chr.addVP(2);
-	        				chr.gainNX(10000);
-	        				chr.dropMessage(5, "Your account has received its rewards for voting! Thank you for voting!");
-	        				return true;
-	        			}
-	    		}
+        	Collection<MapleCharacter> players = Server.getInstance().getWorld(0).getPlayerStorage().getAllCharacters();
+    		synchronized (players) {
+        		for (MapleCharacter chr : players)
+        			if (chr.getClient().getAccountName().equals(account)) {
+        				chr.addVP(2);
+        				chr.gainNX(10000);
+        				chr.dropMessage(5, "Your account has received its rewards for voting! Thank you for voting!");
+        				return true;
+        			}
         	}
         	
             PreparedStatement ps = con.prepareStatement("UPDATE `accounts` "

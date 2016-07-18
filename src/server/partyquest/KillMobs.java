@@ -162,7 +162,7 @@ public class KillMobs extends PQBase {
 	
 	public void setStatuses() {
 		for (MapleCharacter chr : getParty()) {
-			chr.setPQ(this);
+			//chr.setPQ(this);
 		}
 	}
 	

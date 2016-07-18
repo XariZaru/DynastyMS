@@ -28,13 +28,14 @@ public class PiratePQ implements IPartyQuest, MobListener {
 		time_started = System.currentTimeMillis();
 		this.party = party;
 		timer();
+		for (MaplePartyCharacter chr : party.getMembers())
+			chr.getPlayer().registerPQ(this);
 	}
 	
 	public void timer() {
 		schedule = TimerManager.getInstance().schedule(new Runnable() {
 			public void run() {
-				party.warpParty(exit_map);
-				party.setPQ(null);
+				end();
 			}
 		}, time_limit);
 	}
@@ -70,7 +71,11 @@ public class PiratePQ implements IPartyQuest, MobListener {
 	@Override
 	public void end() {
 		schedule.cancel(true);
-		this.party.warpParty(exit_map);
+		for (MaplePartyCharacter chr : party.getMembers())
+			if (chr.getPlayer().getPQ() == this) {
+				chr.getPlayer().changeMap(exit_map);
+				chr.getPlayer().setPartyQuest(null);
+			}
 	}
 
 	@Override
@@ -83,6 +88,7 @@ public class PiratePQ implements IPartyQuest, MobListener {
 		// Finished the PQ
 		} else {
 			this.time_finished = System.currentTimeMillis();
+			schedule.cancel(true);
 		}
 		stage++;
 	}
