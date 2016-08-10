@@ -397,7 +397,7 @@ public class Commands {
 			player.yellowMessage("Dynasty Server Time: " + dateFormat.format(new Date()));
 			break;
 		case "guide":
-            player.setGuide();
+            player.spawnGuide(player.getGuide() ? false : true);
             break;
 		case "str":
 		case "luk":
@@ -1017,6 +1017,7 @@ public class Commands {
 				player.dropMessage(5, "Character is either a GM or null.");
 			} else {
 				victim.getClient().disconnect(false, false);
+				c.getWorldServer().getPlayerStorage().removePlayer(sub[1]);
 				player.dropMessage(5, "'" + victim.getName() + "' has been disconnected.");
 			}
 		} else if (sub[0].equals("exprate")) {
@@ -1106,6 +1107,12 @@ public class Commands {
 				c.getPlayer().addVP(Integer.parseInt(sub[1]));
 			else {
 				c.getChannelServer().getPlayerStorage().getCharacterByName(sub[1]).addVP(Integer.parseInt(sub[2]));
+			}
+		} else if (sub[0].equals("bp")) {
+			if (sub.length == 2)
+				c.getPlayer().gainBossPoints((Integer.parseInt(sub[1])));
+			else {
+				c.getChannelServer().getPlayerStorage().getCharacterByName(sub[1]).gainBossPoints(Integer.parseInt(sub[2]));
 			}
 		} else if (sub[0].equals("id")) {
 			try {

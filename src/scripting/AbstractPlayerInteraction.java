@@ -673,6 +673,15 @@ public class AbstractPlayerInteraction {
 		c.announce(MaplePacketCreator.sendHint(msg, width, height));
 		c.announce(MaplePacketCreator.enableActions());
 	}
+	
+	public void showInstruction(String msg, int width, int height, int seconds) {
+		showInstruction(msg, width, height);
+		TimerManager.getInstance().schedule(new Runnable() {
+			public void run() {
+				showInstruction("", 0, 0);
+			}
+		}, seconds * 1000); // Convert to milliseconds
+	}
 
 	public void disableMinimap() {
 		c.announce(MaplePacketCreator.disableMinimap());
@@ -768,14 +777,16 @@ public class AbstractPlayerInteraction {
     
     public void talkGuide(final String message, int delay) throws InterruptedException {
         if (!haveGuide()) {
-            c.getPlayer().setGuide();
+            c.getPlayer().spawnGuide(true);
         }
         
         TimerManager.getInstance().schedule(new Runnable() {
             @Override
             public void run() {
-            	c.announce(MaplePacketCreator.talkGuide(message));
-                c.getPlayer().dropMessage(6, "[Guide] " + message);
+            	if (c != null) {
+	            	c.announce(MaplePacketCreator.talkGuide(message));
+	                c.getPlayer().dropMessage(6, "[Guide] " + message);
+            	}
             }
 
         }, delay * 1000);  

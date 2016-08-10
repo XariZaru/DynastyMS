@@ -712,12 +712,18 @@ public class MapleItemInformationProvider {
     }
     
     public Equip addGodlyStats(Equip equip) {
-    	equip.setStr((short) (equip.getStr() + Math.random() * 6)); 
-    	equip.setLuk((short) (equip.getLuk() + Math.random() * 6)); 
-    	equip.setInt((short) (equip.getInt() + Math.random() * 6)); 
-    	equip.setDex((short) (equip.getDex() + Math.random() * 6));
-    	equip.setMatk((short) (equip.getMatk() + Math.random() * 6)); 
-    	equip.setWatk((short) (equip.getWatk() + Math.random() * 6)); 
+    	if (equip.getStr() != 0)
+    		equip.setStr((short) (equip.getStr() + Math.random() * 5 + 1)); 
+    	if (equip.getLuk() != 0)
+    		equip.setLuk((short) (equip.getLuk() + Math.random() * 5 + 1)); 
+    	if (equip.getInt() != 0)
+    		equip.setInt((short) (equip.getInt() + Math.random() * 5 + 1)); 
+    	if (equip.getDex() != 0)
+    		equip.setDex((short) (equip.getDex() + Math.random() * 5 + 1));
+    	if (equip.getMatk() != 0)
+    		equip.setMatk((short) (equip.getMatk() + Math.random() * 5 + 1)); 
+    	if (equip.getWatk() != 0)
+    		equip.setWatk((short) (equip.getWatk() + Math.random() * 5 + 1)); 
     	return equip;
     }
 
@@ -1242,6 +1248,69 @@ public class MapleItemInformationProvider {
 
         return list;
     }
+    
+    public int getETCMonsLvl(int itemid) { 
+        MapleData itemdata = getItemData(itemid); 
+        if (itemdata != null) { 
+            MapleData lvl = itemdata.getChildByPath("info/lv"); 
+            if (lvl == null) 
+                return -1; 
+            return MapleDataTool.getInt(lvl); 
+        } 
+        return -1; 
+    } 
+
+    public int getReqLevel(int itemId) { 
+        return getEquipStats(itemId).get("reqLevel"); 
+    } 
+
+    public Equip addCrystalEffect(Equip equip, int crystalId) { 
+        switch (crystalId) { 
+            case 4250400: 
+            case 4250401: 
+            case 4250402: equip.setSpeed((short) (equip.getSpeed() + (crystalId == 4250402 ? 5 : crystalId - 4250400 + 2))); break; 
+            case 4250500: 
+            case 4250501: 
+            case 4250502: equip.setJump((short) (equip.getJump() + crystalId - 4250500 + 1)); break; 
+            case 4251100: 
+            case 4251101: 
+            case 4251102: equip.setDex((short) (equip.getDex() + (crystalId == 4251102 ? 5 : crystalId - 4251100 + 2))); break; 
+            case 4250000: 
+            case 4250001: 
+            case 4250002: equip.setWatk((short) (equip.getWatk() + crystalId - 4250000 + 1)); break; 
+            case 4250700: 
+            case 4250701: 
+            case 4250702: equip.setMp((short) (equip.getMp() + ((crystalId - 4250702 + 1) * 10))); break; 
+            case 4250200: 
+            case 4250201: 
+            case 4250202: equip.setAcc((short) (equip.getAcc() + (crystalId == 4250202 ? 5 : crystalId - 4250200 + 2))); break; 
+            case 4251000: 
+            case 4251001: 
+            case 4251002: equip.setLuk((short) (equip.getLuk() + (crystalId == 4251002 ? 5 : crystalId - 4251000 + 2))); break; 
+            case 4250300: 
+            case 4250301: 
+            case 4250302: equip.setAvoid((short) (equip.getAvoid() + (crystalId == 4250302 ? 5 : crystalId - 4250302 + 2))); break; 
+            case 4250800: 
+            case 4250801: 
+            case 4250802: equip.setStr((short) (equip.getStr() + (crystalId == 4250802 ? 5 : crystalId - 4250802 + 2))); break; 
+            case 4250100: 
+            case 4250101: 
+            case 4250102: equip.setMatk((short) (equip.getMatk() + crystalId - 4250100 + 1)); break; 
+            case 4250600: 
+            case 4250601: 
+            case 4250602: equip.setHp((short) (equip.getHp() + ((crystalId - 4250600 + 1) * 10))); break; 
+            case 4250900: 
+            case 4250901: 
+            case 4250902: equip.setInt((short) (equip.getInt() + (crystalId == 4250902 ? 5 : crystalId - 4250900 + 2))); break; 
+            case 4251300: 
+            case 4251301: 
+            case 4251302: equip.setWatk(getRandStat(equip.getWatk(),  crystalId - 4251300 + 1)); equip.setMatk(getRandStat(equip.getMatk(),  crystalId - 4251300 + 1)); equip.setJump(getRandStat(equip.getJump(),  crystalId - 4251300 + 1)); equip.setSpeed(getRandStat(equip.getSpeed(),  crystalId - 4251300 + 1)); break; 
+            case 4251400: 
+            case 4251401: 
+            case 4251402: equip.setStr(getRandStat(equip.getStr(), (crystalId == 4251402 ? 5 : crystalId - 4251400 + 2))); equip.setDex(getRandStat(equip.getDex(), (crystalId == 4251402 ? 5 : crystalId - 4251400 + 2))); equip.setInt(getRandStat(equip.getInt(), (crystalId == 4251402 ? 5 : crystalId - 4251400 + 2))); equip.setLuk(getRandStat(equip.getLuk(), (crystalId == 4251402 ? 5 : crystalId - 4251400 + 2))); break; 
+        } 
+        return equip; 
+    }  
 
     public class scriptedItem {
 

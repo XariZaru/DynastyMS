@@ -27,6 +27,7 @@ INSERT monsterdrops (monsterid,itemid,chance) VALUES (9300003,4001008,1);
 */
 
 importPackage(Packages.world);
+importPackage(Packages.java.lang);
 var exitMap;
 var minPlayers = 3;
 
@@ -40,6 +41,7 @@ function init() { // Initial loading.
 
 
 function monsterValue(eim, mobId) { // Killed monster.
+	System.out.println("Killin");
     return 1; // returns an amount to add onto kill count.
 }
 

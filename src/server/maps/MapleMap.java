@@ -432,10 +432,18 @@ public class MapleMap {
                 	iterate = 1;
                     idrop = new Item(de.itemId, (short) 0, (short) (de.Maximum != 1 ? Randomizer.nextInt(de.Maximum - de.Minimum) + de.Minimum : 1));
                 }
+				
+				boolean displayed_godly = false;
+				
                 for (int x = 0; x < iterate; x++) {
                 	if (ItemConstants.getInventoryType(de.itemId) == MapleInventoryType.EQUIP) {
                 		idrop = ii.randomizeStats((Equip) ii.getEquipById(de.itemId));
                 		pos.x = (int) (mobpos + ((d % 2 == 0) ? (25 * (d + 1) / 2) : -(25 * (d / 2))));
+                		if ((int) (Math.random() * 100) == 5 && !displayed_godly) {
+                			idrop = (Equip) ii.addGodlyStats((Equip) idrop);
+                			chr.dropMessage(2, "One of the monsters nearby has dropped a " + ii.getName(idrop.getItemId()) + ", which gleams with fine craftsmanship and irradiates the room with power.");
+                			displayed_godly = true;
+                		}
                 	}
                 	spawnDrop(idrop, calcDropPos(pos, mob.getPosition()), mob, chr, droptype, de.questid);
                 	d++;

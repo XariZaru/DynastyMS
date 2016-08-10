@@ -201,7 +201,7 @@ public class MapleCharacter extends AbstractAnimatedMapleMapObject {
     private int warpToId;
     private int expRate = 1, mesoRate = 1, dropRate = 1;
     private int omokwins, omokties, omoklosses, matchcardwins, matchcardties, matchcardlosses;
-    private int married;
+    private boolean married;
     private long dojoFinish, lastfametime, lastUsedCashItem, lastHealed, lastMesoDrop = -1;
     private transient int localmaxhp, localmaxmp, localstr, localdex, localluk, localint_, magic, watk;
     private boolean hidden, canDoor = true, Berserk, hasMerchant, questing = false, whiteChat = false;
@@ -1492,12 +1492,11 @@ public class MapleCharacter extends AbstractAnimatedMapleMapObject {
             ps.setString(1, getClient().getIP());
             ps.setString(2, getClient().getAccountName());
             ResultSet rs = ps.executeQuery();
-            boolean can_vote = false;
+            boolean can_vote = true;
             
             if (rs.next()) 
                 can_vote = ((System.currentTimeMillis() - (rs.getInt("date") * 1000)) >= 86400000);
-            else 
-            	can_vote = true;
+            
             ps.close();
             rs.close();
             return can_vote;
@@ -1510,20 +1509,20 @@ public class MapleCharacter extends AbstractAnimatedMapleMapObject {
    
     public boolean canVoteUltimate() {
         try {
-            PreparedStatement ps = DatabaseConnection.getConnection().prepareStatement("SELECT * from votingrecords WHERE ip = ? AND siteid = 2");
+            PreparedStatement ps = DatabaseConnection.getConnection().prepareStatement("SELECT * from votingrecords WHERE ip = ? AND account = ? AND siteid = 2");
             ps.setString(1, getClient().getIP());
+            ps.setString(2, getClient().getAccountName());
             ResultSet rs = ps.executeQuery();
-            boolean can_vote = false;
+            boolean can_vote = true;
             
             if (rs.next()) 
                 can_vote = ((System.currentTimeMillis() - (rs.getInt("date") * 1000)) >= 86400000);
-            else 
-            	can_vote = true;
+            
             ps.close();
             rs.close();
             return can_vote;
         } catch (Exception e) {
-            System.out.println("Failed to calculate UltimatePrivateServers vote.");
+            System.out.println("Failed to calculate GTOP vote.");
         } finally {
         }
         return false;
@@ -2145,7 +2144,7 @@ public class MapleCharacter extends AbstractAnimatedMapleMapObject {
         return marriageRing;
     }
 
-    public int getMarried() {
+    public boolean isMarried() {
         return married;
     }
 
@@ -3179,15 +3178,16 @@ public class MapleCharacter extends AbstractAnimatedMapleMapObject {
             ret.dojoStage = rs.getInt("lastDojoStage");
             ret.dataString = rs.getString("dataString");
             ret.quest = rs.getInt("quest");
+            ret.guide = rs.getInt("guide") == 0 ? false : true;
             if (ret.guildid > 0) {
                 ret.mgc = new MapleGuildCharacter(ret);
             }
             int buddyCapacity = rs.getInt("buddyCapacity");
             ret.buddylist = new BuddyList(buddyCapacity);
-            ret.getInventory(MapleInventoryType.EQUIP).setSlotLimit(rs.getByte("equipslots"));
-            ret.getInventory(MapleInventoryType.USE).setSlotLimit(rs.getByte("useslots"));
-            ret.getInventory(MapleInventoryType.SETUP).setSlotLimit(rs.getByte("setupslots"));
-            ret.getInventory(MapleInventoryType.ETC).setSlotLimit(rs.getByte("etcslots"));
+            ret.getInventory(MapleInventoryType.EQUIP).setSlotLimit((byte) 96);
+            ret.getInventory(MapleInventoryType.USE).setSlotLimit((byte) 96);
+            ret.getInventory(MapleInventoryType.SETUP).setSlotLimit((byte) 96);
+            ret.getInventory(MapleInventoryType.ETC).setSlotLimit((byte) 96);
             for (Pair<Item, MapleInventoryType> item : ItemFactory.INVENTORY.loadItems(ret.id, !channelserver)) {
                 ret.getInventory(item.getRight()).addFromDB(item.getLeft());
                 Item itemz = item.getLeft();
@@ -4283,7 +4283,7 @@ public class MapleCharacter extends AbstractAnimatedMapleMapObject {
             con.setTransactionIsolation(Connection.TRANSACTION_READ_UNCOMMITTED);
             con.setAutoCommit(false);
             PreparedStatement ps;
-            ps = con.prepareStatement("UPDATE characters SET level = ?, fame = ?, str = ?, dex = ?, luk = ?, `int` = ?, exp = ?, gachaexp = ?, hp = ?, mp = ?, maxhp = ?, maxmp = ?, sp = ?, ap = ?, gm = ?, skincolor = ?, gender = ?, job = ?, hair = ?, face = ?, map = ?, meso = ?, hpMpUsed = ?, spawnpoint = ?, party = ?, buddyCapacity = ?, messengerid = ?, messengerposition = ?, mountlevel = ?, mountexp = ?, mounttiredness= ?, equipslots = ?, useslots = ?, setupslots = ?, etcslots = ?,  monsterbookcover = ?, vanquisherStage = ?, dojoPoints = ?, lastDojoStage = ?, finishedDojoTutorial = ?, vanquisherKills = ?, matchcardwins = ?, matchcardlosses = ?, matchcardties = ?, omokwins = ?, omoklosses = ?, omokties = ?, dataString = ?, quest = ?, honor = ?, steal = ?, persuasion = ?, jqpoints = ?, bosspoints = ? WHERE id = ?", Statement.RETURN_GENERATED_KEYS);
+            ps = con.prepareStatement("UPDATE characters SET level = ?, fame = ?, str = ?, dex = ?, luk = ?, `int` = ?, exp = ?, gachaexp = ?, hp = ?, mp = ?, maxhp = ?, maxmp = ?, sp = ?, ap = ?, gm = ?, skincolor = ?, gender = ?, job = ?, hair = ?, face = ?, map = ?, meso = ?, hpMpUsed = ?, spawnpoint = ?, party = ?, buddyCapacity = ?, messengerid = ?, messengerposition = ?, mountlevel = ?, mountexp = ?, mounttiredness= ?, equipslots = ?, useslots = ?, setupslots = ?, etcslots = ?,  monsterbookcover = ?, vanquisherStage = ?, dojoPoints = ?, lastDojoStage = ?, finishedDojoTutorial = ?, vanquisherKills = ?, matchcardwins = ?, matchcardlosses = ?, matchcardties = ?, omokwins = ?, omoklosses = ?, omokties = ?, dataString = ?, quest = ?, honor = ?, steal = ?, persuasion = ?, jqpoints = ?, bosspoints = ?, guide = ? WHERE id = ?", Statement.RETURN_GENERATED_KEYS);
             if (gmLevel < 1 && level > 199) {
                 ps.setInt(1, 200);
             } else {
@@ -4382,7 +4382,8 @@ public class MapleCharacter extends AbstractAnimatedMapleMapObject {
             ps.setInt(52, persuasion);
             ps.setInt(53, jqpoints);;
             ps.setInt(54, bosspoints);
-            ps.setInt(55, id);
+            ps.setInt(55, this.guide ? 1 : 0);
+            ps.setInt(56, id);
 
             int updateRows = ps.executeUpdate();
             if (updateRows < 1) {
@@ -4523,10 +4524,11 @@ public class MapleCharacter extends AbstractAnimatedMapleMapObject {
                 }
             }
             psf.close();
-            ps = con.prepareStatement("UPDATE accounts SET gm = ?, votepoints = ? WHERE id = ?");
+            ps = con.prepareStatement("UPDATE accounts SET gm = ?, votepoints = ?, ip = ? WHERE id = ?");
             ps.setInt(1, gmLevel);
             ps.setInt(2, votepoints);
             ps.setInt(3, client.getAccID());
+            ps.setString(4, client.getIP());
             ps.executeUpdate();
             ps.close();
 			
@@ -5761,6 +5763,51 @@ public class MapleCharacter extends AbstractAnimatedMapleMapObject {
             timers = null;
         }
     }
+    
+    public Item gainItem(int id, short quantity) {
+    	return gainItem(id, quantity, false, true, -1);
+    }
+    
+	public Item gainItem(int id, short quantity, boolean randomStats, boolean showMessage, long expires) {
+		Item item = null;
+		if (id >= 5000000 && id <= 5000100) {
+			MapleInventoryManipulator.addById(getClient(), id, (short) 1, null, MaplePet.createPet(id), expires == -1 ? -1 : System.currentTimeMillis() + expires);
+		}
+		if (quantity >= 0) {
+			MapleItemInformationProvider ii = MapleItemInformationProvider.getInstance();
+
+			if (ii.getInventoryType(id).equals(MapleInventoryType.EQUIP)) {
+				item = ii.getEquipById(id);
+			} else {
+				item = new Item(id, (short) 0, quantity);
+			}
+
+			if(expires != -1)
+				item.setExpiration(System.currentTimeMillis() + expires);
+
+			if (!MapleInventoryManipulator.checkSpace(getClient(), id, quantity, "")) {
+				dropMessage(1, "Your inventory is full. Please remove an item from your " + ii.getInventoryType(id).name() + " inventory.");
+				return null;
+			}
+			if (ii.getInventoryType(id).equals(MapleInventoryType.EQUIP) && !ItemConstants.isRechargable(item.getItemId())) {
+				if (randomStats) {
+					item = ii.randomizeStats((Equip) item);
+					MapleInventoryManipulator.addFromDrop(getClient(), ii.randomizeStats((Equip) item), false);
+				} else {
+					MapleInventoryManipulator.addFromDrop(getClient(), (Equip) item, false);
+				}
+			} else {
+				MapleInventoryManipulator.addFromDrop(getClient(), item, false);
+			}
+		} else {
+			MapleInventoryManipulator.removeById(getClient(), MapleItemInformationProvider.getInstance().getInventoryType(id), id, -quantity, true, false);
+		}
+		if (showMessage) {
+			getClient().announce(MaplePacketCreator.getShowItemGain(id, quantity, true));
+		}
+
+		return item;
+	}
 
     public void logOff() {
         this.loggedIn = false;
@@ -6026,12 +6073,8 @@ public class MapleCharacter extends AbstractAnimatedMapleMapObject {
 
     public void spawnGuide(boolean yn) {
         getClient().announce(MaplePacketCreator.spawnGuide(yn));
-    }
-    
-    public void setGuide() {
-    	spawnGuide(!guide);
-    	this.guide = !this.guide;
-    	dropMessage(6, "Your guide has been turned " + (guide ? "on" : "off") + ". "
+        this.guide = yn;
+        dropMessage(6, "Your guide has been turned " + (guide ? "on" : "off") + ". "
     			+ "Use @guide to disable it");
     }
     

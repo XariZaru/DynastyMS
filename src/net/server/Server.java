@@ -176,12 +176,11 @@ public class Server implements Runnable {
         	
         } , 600000, 10000);
         
+        /*
         tMan.register(new Runnable() {
         	@Override
         	public void run() {
         		try {
-        			PreparedStatement ps = null;
-        			ResultSet rs = null;
         			for (Channel ch : Server.getInstance().getAllChannels())
         				for (MapleCharacter player : ch.getPlayerStorage().getAllCharacters()) {
         					if (player.canVoteGTOP())
@@ -194,6 +193,7 @@ public class Server implements Runnable {
         		}
         	}
         }, 3600000, 10000);
+        */
         
         long timeToTake = System.currentTimeMillis();
         SkillFactory.loadAllSkills();

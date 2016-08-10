@@ -121,6 +121,7 @@ public final class SpecialMoveHandler extends AbstractMaplePacketHandler {
             pos = new Point(slea.readShort(), slea.readShort());
         }
         if (skill.getId() == Priest.MYSTIC_DOOR && !chr.isGM()) {
+        	chr.dropMessage(5, "Mystic Door is disabled due to bugs at the moment.");
         	c.announce(MaplePacketCreator.enableActions());
         	return;
         }

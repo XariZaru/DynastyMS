@@ -124,7 +124,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
     	try {
     		String text = "";
  	 	   	Connection con = DatabaseConnection.getConnection();
- 	        PreparedStatement ps = con.prepareStatement("SELECT * FROM available_quests");
+ 	        PreparedStatement ps = con.prepareStatement("SELECT * FROM available_quests ORDER BY requiredLevel");
  	        ResultSet rs = ps.executeQuery();
  	        while (rs.next()) {
  	        	if (getPlayer().getDynastyQuest(rs.getString("questName")) == 0 && getLevel() >= rs.getInt("requiredLevel"))
@@ -183,6 +183,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
     		MapleMonster mob = MapleLifeFactory.getMonster(mobid);
     		StringBuilder sb = new StringBuilder();
     		sb.append("Statistics for ").append("#b" + mob.getName() + "#k ("+mob.getId()+")\r\n\r\n");
+    		sb.append("Level: ").append(mob.getStats().getLevel()).append("\r\n");
     		sb.append("Health: ").append(mob.getMaxHp()).append("\r\n");
     		sb.append("Mana: ").append(mob.getMaxMp()).append("\r\n");
     		sb.append("Exp: ").append(mob.getExp() * getPlayer().getExpRate()).append("\r\n\r\n");
@@ -906,7 +907,9 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
 	}
 	
 	public void removeItem(byte slot) {
+		int itemid = getEquip(slot).getItemId();
 		MapleInventoryManipulator.removeFromSlot(getClient(), MapleInventoryType.EQUIP, slot, (short) 1, false);
+		c.announce(MaplePacketCreator.getShowItemGain(itemid, (short) -1, true));
 	}
 	
 	public Equip gainEpicItem (byte slot, short str, short dex, short Int, short luk, short wa, short ma, int slots) {

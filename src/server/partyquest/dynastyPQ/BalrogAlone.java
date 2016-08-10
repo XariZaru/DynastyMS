@@ -139,12 +139,17 @@ public class BalrogAlone implements IPartyQuest, MobListener {
 	// Destroys the PQ and schedulers
 	@Override
 	public void end() {
-		player.getMap().resetAll();
 		executor.shutdownNow();
-		this.schedule.cancel(true);
-		if (player != null)
-			player.changeMap(lobby);
-		player.setDynastyPQ(null);
+		if (player != null) {
+			player.getMap().resetAll();
+			this.schedule.cancel(true);
+			for (Integer map : maps)
+				if (player.getMapId() == map) {
+					player.changeMap(lobby);
+					break;
+				}
+			player.setDynastyPQ(null);
+		}
 	}
 	
 	public void setStage() {

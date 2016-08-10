@@ -136,7 +136,7 @@ public final class PetLootHandler extends AbstractMaplePacketHandler {
                     chr.getMap().removeMapObject(ob);
 				} else if(mapitem.getItemId() == 4031865 || mapitem.getItemId() == 4031866) {
                     // Add NX to account, show effect and make item disapear
-                    chr.getCashShop().gainCash(1, mapitem.getItemId() == 4031865 ? 100 : 250);
+                    chr.getCashShop().gainCash(4, mapitem.getItemId() == 4031865 ? 100 : 250);
                     chr.getMap().broadcastMessage(MaplePacketCreator.removeItemFromMap(mapitem.getObjectId(), 5, chr.getId(), true, chr.getPetIndex(pet)), mapitem.getPosition());
                     chr.getMap().removeMapObject(ob);
                 } else if (MapleInventoryManipulator.addFromDrop(c, mapitem.getItem(), true)) {

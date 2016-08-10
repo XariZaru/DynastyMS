@@ -152,15 +152,17 @@ public class VoteChecker implements Runnable {
         	ps.setString(1, ip);
         	ResultSet rs = ps.executeQuery();
         	rs.next();
-        	Collection<MapleCharacter> players = Server.getInstance().getWorld(0).getPlayerStorage().getAllCharacters();
-        	synchronized (players) {
-	    		for (MapleCharacter chr : players)
-	    			if (chr.getClient().getAccountName().equals(rs.getString("account"))) {
-	    				chr.addVP(2);
-	    				chr.gainNX(10000);
-	    				chr.dropMessage(5, "Your account has received its rewards for voting! Thank you for voting!");
-	    				return true;
-	    			}
+        	if (rs.getString("account") != null) {
+	        	Collection<MapleCharacter> players = Server.getInstance().getWorld(0).getPlayerStorage().getAllCharacters();
+	        	synchronized (players) {
+		    		for (MapleCharacter chr : players)
+		    			if (chr.getClient().getAccountName().toLowerCase().equals(rs.getString("account").toLowerCase())) {
+		    				chr.addVP(2);
+		    				chr.gainNX(10000);
+		    				chr.dropMessage(5, "Your account has received its rewards for voting GTOP! Thank you for voting!");
+		    				return true;
+		    			}
+	        	}
         	}
         	
         	
@@ -185,10 +187,10 @@ public class VoteChecker implements Runnable {
         	Collection<MapleCharacter> players = Server.getInstance().getWorld(0).getPlayerStorage().getAllCharacters();
     		synchronized (players) {
         		for (MapleCharacter chr : players)
-        			if (chr.getClient().getAccountName().equals(account)) {
+        			if (chr.getClient().getAccountName().toLowerCase().equals(account.toLowerCase())) {
         				chr.addVP(2);
         				chr.gainNX(10000);
-        				chr.dropMessage(5, "Your account has received its rewards for voting! Thank you for voting!");
+        				chr.dropMessage(5, "Your account has received its rewards for voting UltimatePrivateServers! Thank you for voting!");
         				return true;
         			}
         	}

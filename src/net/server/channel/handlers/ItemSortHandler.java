@@ -35,41 +35,32 @@ public final class ItemSortHandler extends AbstractMaplePacketHandler {
 
     @Override
     public final void handlePacket(SeekableLittleEndianAccessor slea, MapleClient c) {
-    	MapleCharacter chr = c.getPlayer();
-		chr.getAutobanManager().setTimestamp(2, slea.readInt(), 3);
-		MapleInventoryType inventoryType = MapleInventoryType.getByType(slea.readByte());
-		if (inventoryType.equals(MapleInventoryType.UNDEFINED) || c.getPlayer().getInventory(inventoryType).isFull()) {
-		    c.getSession().write(MaplePacketCreator.enableActions());
-		    return;
-		}
-		if(!chr.isGM() || !ServerConstants.USE_ITEM_SORT) {
-			c.announce(MaplePacketCreator.enableActions());
-			return;
-		}
-		
-		MapleInventory inventory = c.getPlayer().getInventory(inventoryType);
-		boolean sorted = false;
-		
-		while (!sorted) {
-			short freeSlot = inventory.getNextFreeSlot();
-		    if (freeSlot != -1) {
-		        short itemSlot = -1;
-		        for (short i = (short) (freeSlot + 1); i <= inventory.getSlotLimit(); i = (short) (i + 1)) {
-		            if (inventory.getItem(i) != null) {
-		                itemSlot = i;
-		                break;
-		            }
-		        }
-		        if (itemSlot > 0) {
-		            MapleInventoryManipulator.move(c, inventoryType,  itemSlot, freeSlot);
-		        } else {
-		            sorted = true;
-		        }
-		    } else {
-		        sorted = true;
-		    }
-		}
-		c.getSession().write(MaplePacketCreator.finishedSort(inventoryType.getType()));
-		c.getSession().write(MaplePacketCreator.enableActions());
+    	slea.readInt(); // timestamp
+        byte mode = slea.readByte();
+        boolean sorted = false;
+        MapleInventoryType pInvType = MapleInventoryType.getByType(mode);
+        MapleInventory pInv = c.getPlayer().getInventory(pInvType);
+        if (pInv == null || pInv.isFull()) {
+            return;
+        }
+        while (!sorted) {
+            byte freeSlot = (byte) pInv.getNextFreeSlot();
+            if (freeSlot != -1) {
+                byte itemSlot = -1;
+                for (int i = freeSlot + 1; i <= pInv.getSlotLimit(); i++) {
+                    if (pInv.getItem((byte) i) != null) {
+                        itemSlot = (byte) i;
+                        break;
+                    }
+                }
+                if (itemSlot <= 100 && itemSlot > 0) {
+                    MapleInventoryManipulator.move(c, pInvType, itemSlot, freeSlot);
+                } else {
+                    sorted = true;
+                }
+            }
+        }
+        c.getSession().write(MaplePacketCreator.finishedSort(mode));
+        c.getSession().write(MaplePacketCreator.enableActions());
     }
 }

@@ -135,7 +135,7 @@ public final class ItemPickupHandler extends AbstractMaplePacketHandler {
                         }
 					} else if(mapitem.getItemId() == 4031865 || mapitem.getItemId() == 4031866) {
                         // Add NX to account, show effect and make item disapear
-                        chr.getCashShop().gainCash(1, mapitem.getItemId() == 4031865 ? 100 : 250);
+                        chr.getCashShop().gainCash(4, mapitem.getItemId() == 4031865 ? 100 : 250);
                     } else if (useItem(c, mapitem.getItem().getItemId())) {
                         if (mapitem.getItem().getItemId() / 10000 == 238) {
                             chr.getMonsterBook().addCard(c, mapitem.getItem().getItemId());

@@ -242,7 +242,7 @@ public final class PlayerLoggedinHandler extends AbstractMaplePacketHandler {
         player.checkBerserk();
         player.expirationTask();
         player.setRates();
-        player.setGuide();
+        player.spawnGuide(player.getGuide() ? true : false);
         
         if (player.getLevel() <= 2) {
 	        c.removeClickedNPC();
@@ -262,7 +262,7 @@ public final class PlayerLoggedinHandler extends AbstractMaplePacketHandler {
 //            	player.announce(MaplePacketCreator.earnTitleMessage("You can vote now! Vote and earn a vote point!"));
 //            }
         	if (player.getLevel() < 51)
-            	player.dropMessage(5, "As a player under level 50, your EXP rate has been doubled to " + player.getExpRate() + " for the week because you are under level 50!");
+            	player.dropMessage(5, "As a player under level 50, your EXP rate has been doubled to " + player.getExpRate() + " because you are under level 50!");
             if (player.isGM()){
             	Server.getInstance().broadcastGMMessage(MaplePacketCreator.earnTitleMessage("GM " + player.getName() + " has logged in"));
             }

@@ -688,7 +688,7 @@ public class MaplePacketCreator {
 	 * @param account The account name.
 	 * @return The PIN request packet.
 	 */
-	public static byte[] getAuthSuccess(MapleClient c) {
+    public static byte[] getAuthSuccess(MapleClient c) {
 		final MaplePacketLittleEndianWriter mplew = new MaplePacketLittleEndianWriter();
 		mplew.writeShort(SendOpcode.LOGIN_STATUS.getValue());
 		mplew.writeInt(0);
@@ -710,7 +710,7 @@ public class MaplePacketCreator {
 		mplew.writeShort(2);//PIN
 
 		return mplew.getPacket();
-	}
+    }  
 
 	/**
 	 * Gets a packet detailing a PIN operation.
