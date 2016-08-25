@@ -24,6 +24,7 @@ package net.server.world;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import net.server.Server;
 import server.maps.MapleDoor;
 import client.MapleCharacter;
 import client.MapleJob;
@@ -61,7 +62,7 @@ public class MaplePartyCharacter {
     }
     
     public MapleCharacter getPlayer() {
-    	return character;
+    	return Server.getInstance().getWorld(this.getWorld()).getPlayerStorage().getCharacterByName(this.getName());
     }
 
     public MapleJob getJob() {

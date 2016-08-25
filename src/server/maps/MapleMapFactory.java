@@ -189,6 +189,8 @@ public class MapleMapFactory {
                 for (MapleData life : mapData.getChildByPath("life")) {
                     String id = MapleDataTool.getString(life.getChildByPath("id"));
                     String type = MapleDataTool.getString(life.getChildByPath("type"));
+                    if (id.isEmpty())
+                    	continue;
                     if (id.equals("9001105")) {
                         id = "9001108";//soz
                     }

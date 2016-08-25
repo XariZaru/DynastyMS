@@ -205,7 +205,7 @@ public class MapleMonster extends AbstractLoadedMapleLife {
         return stats.getExp();
     }
 
-    int getLevel() {
+    public int getLevel() {
         return stats.getLevel();
     }
 
@@ -384,16 +384,19 @@ public class MapleMonster extends AbstractLoadedMapleLife {
             return;
         }
         
-    	// Messy and should probably be in a different function, but lazy. Contributing to the colossal mess?
     	// Handle listeners here. Can move to another method if needed.
     	
+        // Boss Points .. calculation and checks if player is in map as killer. Distributes to all party listeners 
         if (this.isBoss() && this.givesBossPoints()) {
 	    	for (MapleParty party : this.party_listeners) {
 	    		for (MaplePartyCharacter chr : party.getMembers()) {
-	    			double rand = Math.random() * (1.1 - .9 + .1) + .9;
 	    			MapleCharacter player = Server.getInstance().getWorld(0).getPlayerStorage().getCharacterByName(chr.getName());
-	    			player.gainBossPoints((int) (.0000625 * rand *  this.getMaxHp()));
-	    			player.titleMessage((int) (.0000625 * rand * this.getMaxHp()) + " boss points");
+	    			if (player.getMap() == killer.getMap()) {
+		    			double rand = (Math.random() * .3) + .9;
+		    			player.gainBossPoints((int) (.0000625 * rand *  this.getMaxHp()));
+		    			player.titleMessage((int) (.0000625 * rand * this.getMaxHp()) + " boss points");
+		    			player.dropMessage(5, (int) (.0000625 * rand * this.getMaxHp()) + " boss points");
+	    			}
 	    		}
 	    	}
         }
@@ -548,6 +551,11 @@ public class MapleMonster extends AbstractLoadedMapleLife {
                         if (dropsDisabled()) {
                             mob.disableDrops();
                         }
+                        
+                        if (givesBossPoints()) {
+	                        mob.givesBossPoints(true);
+	                        mob.setPartyListeners(getPartyListeners());
+                        }
                         reviveMap.spawnMonster(mob);
                     }
                 }
@@ -566,6 +574,14 @@ public class MapleMonster extends AbstractLoadedMapleLife {
         MapleCharacter looter = map.getCharacterById(getHighestDamagerId());
 
         return looter != null ? looter : killer;
+    }
+    
+    public void setPartyListeners(List<MapleParty> listeners) {
+    	this.party_listeners = listeners;
+    }
+    
+    public List<MapleParty> getPartyListeners() {
+    	return this.party_listeners;
     }
 
     // should only really be used to determine drop owner

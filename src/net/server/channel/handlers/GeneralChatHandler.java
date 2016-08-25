@@ -38,12 +38,15 @@ public final class GeneralChatHandler extends net.AbstractMaplePacketHandler {
 		if(chr.getAutobanManager().getLastSpam(7) + 200 > System.currentTimeMillis()) {
 			return;
 		}
+		// People kept being DCed for long messages
+		/*
         if (s.length() > Byte.MAX_VALUE && !chr.isGM()) {
         	AutobanFactory.PACKET_EDIT.alert(c.getPlayer(), c.getPlayer().getName() + " tried to packet edit in General Chat.");
         	FilePrinter.printError(FilePrinter.EXPLOITS + c.getPlayer().getName() + ".txt", c.getPlayer().getName() + " tried to send text with length of " + s.length() + "\r\n");
         	c.disconnect(true, false);
         	return;
         }
+        */
         char heading = s.charAt(0);
         if (heading == '/' || heading == '!' || heading == '@') {
             String[] sp = s.split(" ");

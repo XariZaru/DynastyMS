@@ -50,6 +50,7 @@ import net.MaplePacketHandler;
 import net.PacketProcessor;
 import net.server.Server;
 import net.server.channel.Channel;
+import net.server.world.MaplePartyCharacter;
 import net.server.world.World;
 import provider.MapleData;
 import provider.MapleDataProvider;
@@ -330,6 +331,7 @@ public class Commands {
 			player.message("@str/dex/luk/int <number>: Adds AP into these stats. Adding negative stats will take away from the stat (WIP).");
 //			player.message("@save: Saves character.");
 			player.message("@info: Lists stats on your character. Also disposes your character.");
+			player.message("@roll: Rolls for a number between 1-100 and broadcasts to the map.");
 //			player.message("@dispose: Fixes your character if it is stuck.");
 //			player.message("@online: Displays a list of all online players.");
 			//player.message("@time: Displays the current server time.");
@@ -399,6 +401,15 @@ public class Commands {
 		case "guide":
             player.spawnGuide(player.getGuide() ? false : true);
             break;
+		case "roll":
+			int roll = (int) (Math.random() * 101);
+			if (player.getParty() != null) {
+				for (MaplePartyCharacter chr : player.getParty().getMembers())
+					chr.getPlayer().dropMessage(5, player.getName() + " rolled a " + roll);
+			} else {
+				player.dropMessage(5, "You must be in a party to roll a number.");
+			}
+			break;
 		case "str":
 		case "luk":
 		case "dex":
@@ -732,6 +743,7 @@ public class Commands {
 		return true;
 	}
 
+	@SuppressWarnings("unused")
 	public static boolean executeGMCommand(MapleClient c, String[] sub, char heading) {
 		MapleCharacter player = c.getPlayer();
 		Channel cserv = c.getChannelServer();
@@ -1109,10 +1121,17 @@ public class Commands {
 				c.getChannelServer().getPlayerStorage().getCharacterByName(sub[1]).addVP(Integer.parseInt(sub[2]));
 			}
 		} else if (sub[0].equals("bp")) {
-			if (sub.length == 2)
+			if (sub.length == 2) {
 				c.getPlayer().gainBossPoints((Integer.parseInt(sub[1])));
-			else {
-				c.getChannelServer().getPlayerStorage().getCharacterByName(sub[1]).gainBossPoints(Integer.parseInt(sub[2]));
+			} else {
+				MapleCharacter victim = c.getChannelServer().getPlayerStorage().getCharacterByName(sub[1]);
+				try {
+					victim.gainBossPoints(Integer.parseInt(sub[2]));
+					player.dropMessage(5, victim.getName() + " was awarded " + sub[1] + " boss points.");
+					victim.dropMessage(5, "You have received " + sub[1] + " boss points.");
+				} catch (Exception e) {
+					player.dropMessage(5, "The character you wish to give boss points to doesn't exist.");
+				}
 			}
 		} else if (sub[0].equals("id")) {
 			try {
@@ -1572,13 +1591,34 @@ public class Commands {
 					}
 				}, 5000); //5 Seconds
 				Server.getInstance().broadcastMessage(MaplePacketCreator.serverNotice(6, "[RIP]: " + ign + " has been banned."));
+			} else {
+				try { 
+					PreparedStatement ps = DatabaseConnection.getConnection().prepareStatement("SELECT accountid FROM characters where name = ?");
+					ps.setString(1, sub[1]);
+					ResultSet rs = ps.executeQuery();
+					if (rs.next()) {
+						ps = DatabaseConnection.getConnection().prepareStatement("UPDATE accounts SET banned = 1 AND banreason = ? WHERE id = ?");
+						ps.setString(1, reason);
+						ps.setInt(2, rs.getInt("accountid"));
+						ps.executeUpdate();
+					} else {
+						player.dropMessage(5, "No character exists by that name!");
+					}
+					ps.close();
+					rs.close();
+				} catch (Exception e) {
+					
+				}
+			}
+			/*
 			} else if (MapleCharacter.ban(ign, reason, false)) {
 				c.announce(MaplePacketCreator.getGMEffect(4, (byte) 0));
 				Server.getInstance().broadcastMessage(MaplePacketCreator.serverNotice(6, "[RIP]: " + ign + " has been banned."));
 			} else {
 				c.announce(MaplePacketCreator.getGMEffect(6, (byte) 1));
 			}
-                } else if (sub[0].equalsIgnoreCase("night")) {
+			*/
+            } else if (sub[0].equalsIgnoreCase("night")) {
                     player.getMap().broadcastNightEffect();
                     player.yellowMessage("Done.");
 		} else {

@@ -266,6 +266,10 @@ public final class PlayerLoggedinHandler extends AbstractMaplePacketHandler {
             if (player.isGM()){
             	Server.getInstance().broadcastGMMessage(MaplePacketCreator.earnTitleMessage("GM " + player.getName() + " has logged in"));
             }
+            
+            if (player.getJob().getId() == 511 || player.getJob().getId() == 512) {
+            	player.dropMessage(5, "Your WATK and MATK has been buffed by "+(player.getJob().getId() == 511 ? "20" : "40" )+" since you are a buccaneer.");
+            }
         }
     }
     

@@ -127,9 +127,12 @@ public class Server implements Runnable {
     }
     
     public void saveAll() {
+    	System.out.println("Saving all characters.");
     	for (World world : Server.getInstance().getWorlds())
-			for (MapleCharacter chr : world.getPlayerStorage().getAllCharacters())
-				chr.saveToDB();
+    		synchronized(world.getPlayerStorage().getAllCharacters()) {
+				for (MapleCharacter chr : world.getPlayerStorage().getAllCharacters())
+					chr.saveToDB();
+    		}
     }
 
     @Override
@@ -167,14 +170,6 @@ public class Server implements Runnable {
         tMan.start();
         tMan.register(tMan.purge(), 300000);//Purging ftw...
         tMan.register(new RankingWorker(), ServerConstants.RANKING_INTERVAL);
-        tMan.register(new VoteChecker(), 2 * 60 * 1000);  
-        tMan.register(new Runnable() {
-        	@Override
-        	public void run() { 
-        		Server.getInstance().saveAll();
-        	}
-        	
-        } , 600000, 10000);
         
         /*
         tMan.register(new Runnable() {
@@ -241,6 +236,15 @@ public class Server implements Runnable {
             e.printStackTrace();//For those who get errors
             System.exit(0);
         }
+        
+        tMan.register(new VoteChecker(), 2 * 60 * 1000);  
+        tMan.register(new Runnable() {
+        	@Override
+        	public void run() { 
+        		Server.getInstance().saveAll();
+        	}
+        	
+        } , 600000, 10000);
 
         acceptor.getSessionConfig().setIdleTime(IdleStatus.BOTH_IDLE, 30);
         acceptor.setHandler(new MapleServerHandler());

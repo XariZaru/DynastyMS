@@ -978,21 +978,24 @@ public class MapleCharacter extends AbstractAnimatedMapleMapObject {
     }
 
     public void changeJob(MapleJob newJob) {
-        if (newJob == null) {
+        if (newJob == null) 
             return;//the fuck you doing idiot!
-        }
+        
         this.job = newJob;
         remainingSp[GameConstants.getSkillBook(newJob.getId())] += 1;
-        if (GameConstants.hasSPTable(newJob)) {
+        
+        if (this.getJob().getId() == 511 || this.getJob().getId() == 512) 
+        	this.dropMessage(5, "Your WATK and MATK has been buffed by "+(this.getJob().getId() == 511 ? "20" : "40" )+" since you are a buccaneer.");
+        
+        if (GameConstants.hasSPTable(newJob)) 
             remainingSp[GameConstants.getSkillBook(newJob.getId())] += 2;
-        } else {
-            if (newJob.getId() % 10 == 2) {
+         else 
+            if (newJob.getId() % 10 == 2) 
                 remainingSp[GameConstants.getSkillBook(newJob.getId())] += 2;
-            }
-        }
-        if (newJob.getId() % 10 > 1) {
+        
+        if (newJob.getId() % 10 > 1)
             this.remainingAp += 5;
-        }
+        
         int job_ = job.getId() % 1000; // lame temp "fix"
         if (job_ == 100) {
             maxhp += Randomizer.rand(200, 250);
@@ -2872,10 +2875,24 @@ public class MapleCharacter extends AbstractAnimatedMapleMapObject {
     		
     	}
         
-//        if (level % 5 != 0) { //Performance FTW?
-//            return;
-//        }
-//        if (level == 5) {
+        if (level % 5 != 0) //Performance FTW?
+            return;
+        
+        else if (level == 10)
+        	yellowMessage("In order to job advance you have to do the storyline!");
+        else if (level == 15)
+        	yellowMessage("You can do custom side quests that are available to look at through @helper!");
+        else if (level == 20)
+        	yellowMessage("Haunted Chimney maps were nerfed to encourage grinding at other maps! You should check the forums for updates on mobs!");
+        else if (level == 45)
+        	yellowMessage("Did you know Ludibrium's monsters were revamped? They give a lot more experience now! Check it out at Forgotten Path of Time and Warped Path of Time!");
+        else if (level == 51)
+        	yellowMessage("Have you thought about doing Ludibrium Maze PQ? I heard it's amazing experience for us!");
+        else if (level == 70)
+        	yellowMessage("The Ludibrium maps are still available for you to grind at! They're really suitable for leveling at until the 100s!");
+        else if (level == 80)
+        	yellowMessage("Check out the Boss Manager in @helper! If you kill bosses through him you'll be able to use the points you gain to purchase some godly items!");
+        //        if (level == 5) {
 //            yellowMessage("Aww, you're level 5, how cute!");
 //        } else if (level == 10) {
 //            yellowMessage("Henesys Party Quest is now open to you! Head over to Henesys, find some friends, and try it out!");
@@ -3782,12 +3799,10 @@ public class MapleCharacter extends AbstractAnimatedMapleMapObject {
             jump += equip.getJump();
         }
         
-        if (getJob().getId() == 512) {
-        	this.dropMessage(5, "Your WATK and MATK has been buffed by 40 since you are a buccaneer.");
+        if (getJob().getId() == 512) { // buff 4th job pirate by 40 ma/wa
         	magic += 40;
         	watk += 40;
-        } else if (getJob().getId() == 511) {
-        	this.dropMessage(5, "Your WATK and MATK has been buffed by 20 since you are a marauder.");
+        } else if (getJob().getId() == 511) { // buff 3rd job pirate bucc by 20 ma/wa
         	magic += 20;
         	watk += 20;
         }
@@ -4277,7 +4292,7 @@ public class MapleCharacter extends AbstractAnimatedMapleMapObject {
     // synchronize this call instead of trying to give access all at once (?)
     public synchronized void saveToDB() {
         Calendar c = Calendar.getInstance();
-        FilePrinter.print(FilePrinter.SAVING_CHARACTER, "Attempting to save " + name + " at " + c.getTime().toString());
+        //FilePrinter.print(FilePrinter.SAVING_CHARACTER, "Attempting to save " + name + " at " + c.getTime().toString());
         Connection con = DatabaseConnection.getConnection();
         try {
             con.setTransactionIsolation(Connection.TRANSACTION_READ_UNCOMMITTED);
@@ -4524,11 +4539,12 @@ public class MapleCharacter extends AbstractAnimatedMapleMapObject {
                 }
             }
             psf.close();
-            ps = con.prepareStatement("UPDATE accounts SET gm = ?, votepoints = ?, ip = ? WHERE id = ?");
+            ps = con.prepareStatement("UPDATE accounts SET gm = ?, votepoints = ?, donorpoints = ?, ip = ? WHERE id = ?");
             ps.setInt(1, gmLevel);
             ps.setInt(2, votepoints);
-            ps.setInt(3, client.getAccID());
+            ps.setInt(3, donorpoints);
             ps.setString(4, client.getIP());
+            ps.setInt(5, client.getAccID());
             ps.executeUpdate();
             ps.close();
 			
@@ -5671,6 +5687,37 @@ public class MapleCharacter extends AbstractAnimatedMapleMapObject {
         return autoban;
     }
 
+    /*
+    public void equipPendantOfSpirit() {
+    	
+    	pendantExp = (byte) Math.floor(((System.currentTimeMillis() - 
+    				getInventory(MapleInventoryType.EQUIPPED).findById(1122017).getCreateDate().getTime())/3600000));
+        
+    	if (pendantOfSpirit == null && pendantExp < 3) {
+            pendantOfSpirit = TimerManager.getInstance().register(new Runnable() {
+                @Override
+                public void run() {
+                    if (pendantExp >= 3) {
+                    	pendantOfSpirit.cancel(false);
+                    	return;
+                    }
+                	pendantExp = (byte) Math.floor(((System.currentTimeMillis() - 
+            				getInventory(MapleInventoryType.EQUIPPED).findById(1122017).getCreateDate().getTime())/3600000));
+                    message("Pendant of the Spirit has been in posssession for " + pendantExp + " hour(s), you will now receive " + pendantExp + "0% bonus exp.");
+                }
+            }, 3600000); //1 hour
+        }
+    }
+
+    public void unequipPendantOfSpirit() {
+        if (pendantOfSpirit != null) {
+            pendantOfSpirit.cancel(false);
+            pendantOfSpirit = null;
+        }
+        pendantExp = 0;
+    }
+    */
+    
     public void equipPendantOfSpirit() {
         if (pendantOfSpirit == null) {
             pendantOfSpirit = TimerManager.getInstance().register(new Runnable() {

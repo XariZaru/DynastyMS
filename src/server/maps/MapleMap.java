@@ -433,16 +433,14 @@ public class MapleMap {
                     idrop = new Item(de.itemId, (short) 0, (short) (de.Maximum != 1 ? Randomizer.nextInt(de.Maximum - de.Minimum) + de.Minimum : 1));
                 }
 				
-				boolean displayed_godly = false;
-				
                 for (int x = 0; x < iterate; x++) {
                 	if (ItemConstants.getInventoryType(de.itemId) == MapleInventoryType.EQUIP) {
                 		idrop = ii.randomizeStats((Equip) ii.getEquipById(de.itemId));
                 		pos.x = (int) (mobpos + ((d % 2 == 0) ? (25 * (d + 1) / 2) : -(25 * (d / 2))));
-                		if ((int) (Math.random() * 100) == 5 && !displayed_godly) {
+                		if ((int) (Math.random() * 100) == 5) {
                 			idrop = (Equip) ii.addGodlyStats((Equip) idrop);
-                			chr.dropMessage(2, "One of the monsters nearby has dropped a " + ii.getName(idrop.getItemId()) + ", which gleams with fine craftsmanship and irradiates the room with power.");
-                			displayed_godly = true;
+                			//idrop.setOwner("God");
+                			chr.dropMessage(5, "One of the monsters nearby has dropped a " + ii.getName(idrop.getItemId()) + ", which gleams with fine craftsmanship and irradiates the room with power.");
                 		}
                 	}
                 	spawnDrop(idrop, calcDropPos(pos, mob.getPosition()), mob, chr, droptype, de.questid);
@@ -1622,12 +1620,15 @@ public class MapleMap {
         }
         chr.leaveMap();
         chr.cancelMapTimeLimitTask();
-        for (MapleSummon summon : chr.getSummons().values()) {
-            if (summon.isStationary()) {
-                chr.cancelBuffStats(MapleBuffStat.PUPPET);
-            } else {
-                removeMapObject(summon);
-            }
+        Map<Integer, MapleSummon> summons = chr.getSummons();
+        synchronized (summons) {
+	        for (MapleSummon summon : summons.values()) {
+	            if (summon.isStationary()) {
+	                chr.cancelBuffStats(MapleBuffStat.PUPPET);
+	            } else {
+	                removeMapObject(summon);
+	            }
+	        }
         }
         if (chr.getDragon() != null) {
             removeMapObject(chr.getDragon());
@@ -1654,6 +1655,7 @@ public class MapleMap {
      * @param packet
      * @param repeatToSource
      */
+    
     public void broadcastMessage(MapleCharacter source, final byte[] packet, boolean repeatToSource) {
         broadcastMessage(repeatToSource ? null : source, packet, Double.POSITIVE_INFINITY, source.getPosition());
     }

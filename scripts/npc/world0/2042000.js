@@ -15,9 +15,21 @@ var default_boss_map = 910510000;
 var lobby_map = 910510000;
 var req_party_size = 1;
 var party = null;
+var event_ticket = 4032055;
 
 // Coordinates for the monster to spawn
 var x = 116, y = 154;
+
+function canWarpBack() {
+	if (cm.getMapId() != lobby_map)
+		return false;
+	
+	var members = cm.getParty().getMembers().toArray();
+	for (var x = 0; x < members.length; x++)
+		if ([280030000, 910510000].indexOf(members[x].getPlayer().getMapId()) > -1)
+			return true;
+	return false;
+}
 
 function start() {
 	/*
@@ -31,8 +43,11 @@ function start() {
 	// If in the boss map
 	if (cm.getPlayer().getMapId() == default_boss_map || cm.getPlayer().getMapId() == 280030000) {
 		cm.sendYesNo("Do you wish to be taken out of this map?");
+	} else if (canWarpBack() && cm.haveItem(event_ticket, 1)) {
+		cm.sendYesNo("It seems you were originally part of this fight. Would you like to go back in?");
 	// If in lobby
 	} else {
+		cm.gainItem(event_ticket, -cm.itemQuantity(event_ticket), true, true);
 		var txt = "Which boss do you wish to fight today? You'll need a party of at least 2 people in order to participate!\r\n\r\n";
 		for (var x = 0; x < mobs.length; x++)
 			txt += "#L" + x + "#" + mob_names[x] + "\r\n";
@@ -51,10 +66,23 @@ function action(m,t,s) {
 		// Warp out if in boss map
 		if (cm.getPlayer().getMapId() == default_boss_map || cm.getPlayer().getMapId() == 280030000) {
 			cm.warp(109040000);
+			cm.gainItem(event_ticket, -cm.itemQuantity(event_ticket));
+			cm.dispose();
+		} else if (canWarpBack() && cm.haveItem(event_ticket, 1)) {
+			var members = cm.getParty().getMembers().toArray();
+			for (var x = 0; x < members.length; x++)
+				if ([280030000, 910510000].indexOf(members[x].getPlayer().getMap.getId()) > -1) {
+					cm.warp(members[x].getPlayer().getMap().getId());
+					break;
+				}
+			cm.gainItem(event_ticket, -cm.itemQuantity(event_ticket), true, true);
 			cm.dispose();
 		// No party
 		} else if (party == null) {
 			cm.sendOk("You must be in a party to start the party quest!");
+			cm.dispose();
+		} else if (!cm.isLeader()) {
+			cm.sendOk("You must be a leader.");
 			cm.dispose();
 		// Party size too small
 		} else if (party.getMembers().size() < req_party_size) {
@@ -86,11 +114,15 @@ function action(m,t,s) {
 					return;
 				}
 				
-				// Record stuff and warp + boss
+				// Record stuff and warp + boss + give tickets out
 				var members = cm.getParty().getMembers().toArray();
-				for (var x = 0; x < members.length; x++)
+				for (var x = 0; x < members.length; x++) {
 					if (!members[x].getPlayer().isGM())
 						members[x].getPlayer().addBossAttempt("bossmanager");
+					cm.gainItem(event_ticket, 1);
+				}
+				
+				// warp
 				cm.getPlayer().getClient().getChannelServer().getMapFactory().getMap(maps[s]).resetAll();
 				cm.getPlayer().getClient().getChannelServer().getMapFactory().getMap(maps[s]).warpEveryone(lobby_map);
 				cm.warpParty(maps[s]);

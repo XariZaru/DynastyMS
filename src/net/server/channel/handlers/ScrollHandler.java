@@ -61,12 +61,14 @@ public final class ScrollHandler extends AbstractMaplePacketHandler {
         }
         MapleItemInformationProvider ii = MapleItemInformationProvider.getInstance();
         Equip toScroll = (Equip) c.getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem(dst);
-        Skill LegendarySpirit = SkillFactory.getSkill(1003);
+        Skill LegendarySpirit = SkillFactory.getSkill(c.getPlayer().getJob().getId() < 1000 ? 1003 : c.getPlayer().getJob().getId() < 2000 ? 10001003 : 20001003);
         
+        /*
         // Saves original state
         if (toScroll.isOriginal()) {
         	toScroll.saveEquip();
         }
+        */
     
         if (c.getPlayer().getSkillLevel(LegendarySpirit) > 0 && dst >= 0) {
             legendarySpirit = true;

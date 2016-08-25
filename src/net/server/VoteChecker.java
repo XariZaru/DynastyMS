@@ -42,52 +42,54 @@ public class VoteChecker implements Runnable {
     
     public void run() {
     	log("Updating Vote Logs");
-        Document doc = makeDoc("http://www.gtop100.com/home/report1?siteid=" + details[0] + "&pass=" + details[1]);
-        if (doc != null) {
-            NodeList entries = doc.getElementsByTagName("entry");
-            for (int i = 0; i < entries.getLength(); i++) {
-                Node entryNode = entries.item(i);
-                if (entryNode.getNodeType() == Node.ELEMENT_NODE) {
-                    Element entryElement = (Element) entryNode;
-                    Element ipElement = (Element) entryElement.getElementsByTagName("ip").item(0);
-                    String ip = ((Node) ipElement.getChildNodes().item(0)).getNodeValue().trim();
-                    Element timeElement = (Element) entryElement.getElementsByTagName("time").item(0);
-                    SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-DD hh:mm:ss");
-                    formatter.setLenient(false);
-                    long time = 0;
-                    Date date = null;
-                    String str = ((Node) timeElement.getChildNodes().item(0)).getNodeValue().trim();
-                    try {
+    	
+        // UltimatePrivateServers
+        try {
+        	PreparedStatement ps = DatabaseConnection.getConnection().prepareStatement("SELECT * FROM ultimatevotes");
+        	ResultSet rs = ps.executeQuery();
+        	while (rs.next()) {
+        		countVote(rs.getString("name"));
+        		log("Account: " + rs.getString("name") + " voted at UltimatePrivateServers");
+        	}
+        	ps = DatabaseConnection.getConnection().prepareStatement("DELETE FROM ultimatevotes");
+        	ps.executeUpdate();
+        	ps.close();
+        	rs.close();
+        } catch (Exception e) {
+        	e.printStackTrace();
+        	//log("Logging UltimatePrivateServer votes failed.");
+        }
+        
+        try {
+	        Document doc = makeDoc("http://www.gtop100.com/home/report1?siteid=" + details[0] + "&pass=" + details[1]);
+	        NodeList entries = doc.getElementsByTagName("entry");
+	        for (int i = 0; i < entries.getLength(); i++) {
+	            Node entryNode = entries.item(i);
+	            if (entryNode.getNodeType() == Node.ELEMENT_NODE) {
+	                Element entryElement = (Element) entryNode;
+	                Element ipElement = (Element) entryElement.getElementsByTagName("ip").item(0);
+	                String ip = ((Node) ipElement.getChildNodes().item(0)).getNodeValue().trim();
+	                Element timeElement = (Element) entryElement.getElementsByTagName("time").item(0);
+	                SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-DD hh:mm:ss");
+	                formatter.setLenient(false);
+	                long time = 0;
+	                Date date = null;
+	                String str = ((Node) timeElement.getChildNodes().item(0)).getNodeValue().trim();
+	                try {
 						date = (Date) formatter.parse(str);
 						time = date.getTime();
 					} catch (DOMException e) {
-						e.printStackTrace();
+						//e.printStackTrace();
 					} catch (ParseException e) {
 						// e.printStackTrace();
 					}
-                    countVoteByIp(ip);
-                    SimpleDateFormat sdf = new SimpleDateFormat("hh:mm dd/MM");
-                    log("IP: " + ip + " voted at: " + sdf.format(new Date(time)));
-                }
-            }
-            
-            // UltimatePrivateServers
-            try {
-            	PreparedStatement ps = DatabaseConnection.getConnection().prepareStatement("SELECT * FROM ultimatevotes");
-            	ResultSet rs = ps.executeQuery();
-            	while (rs.next()) {
-            		countVote(rs.getString("name"));
-            		log("Account: " + rs.getString("name") + " voted at UltimatePrivateServers");
-            	}
-            	ps = DatabaseConnection.getConnection().prepareStatement("DELETE FROM ultimatevotes");
-            	ps.executeUpdate();
-            	ps.close();
-            	rs.close();
-            } catch (Exception e) {
-            	e.printStackTrace();
-            }
-        } else {
-            log("Your GTOP details are wrong");
+	                countVoteByIp(ip);
+	                SimpleDateFormat sdf = new SimpleDateFormat("hh:mm dd/MM");
+	                log("IP: " + ip + " voted at: " + sdf.format(new Date(time)));
+	            }
+	        }
+        } catch (Exception e) {
+            log("Your GTOP details are wrong or GTOP is messing up.");
         }
     }
 
@@ -102,14 +104,19 @@ public class VoteChecker implements Runnable {
             d.getDocumentElement().normalize();
             return d;
         } catch (ParserConfigurationException pce) {
-            pce.printStackTrace();
+        	System.out.println("ParserConfigurationException: VoteChecker");
+            //pce.printStackTrace();
             return null;
         } catch (SAXException saxe) {
-            saxe.printStackTrace();
+        	System.out.println("SAXException: VoteChecker");
+            //saxe.printStackTrace();
             return null;
         } catch (IOException ioe) {
-            ioe.printStackTrace();
+        	System.out.println("IOException: VoteChecker");
+            //ioe.printStackTrace();
             return null;
+        } catch (Exception e) {
+        	return null;
         }
     }
 
@@ -158,8 +165,8 @@ public class VoteChecker implements Runnable {
 		    		for (MapleCharacter chr : players)
 		    			if (chr.getClient().getAccountName().toLowerCase().equals(rs.getString("account").toLowerCase())) {
 		    				chr.addVP(2);
-		    				chr.gainNX(10000);
-		    				chr.dropMessage(5, "Your account has received its rewards for voting GTOP! Thank you for voting!");
+		    				chr.gainNX(5000);
+		    				chr.dropMessage(5, "Your account has received 5000 NX and 2 VP for voting GTOP! Thank you for voting!");
 		    				return true;
 		    			}
 	        	}
@@ -168,7 +175,7 @@ public class VoteChecker implements Runnable {
         	
             ps = con.prepareStatement("UPDATE `accounts` "
 	                  + "SET `votepoints` = `votepoints` + 2, "
-	                  + "`nxCredit` = `nxCredit` + 10000 "
+	                  + "`nxCredit` = `nxCredit` + 5000 "
 	                  + "WHERE `name`= ?");
             ps.setString(1, rs.getString("account"));
             ps.executeUpdate();
@@ -189,15 +196,15 @@ public class VoteChecker implements Runnable {
         		for (MapleCharacter chr : players)
         			if (chr.getClient().getAccountName().toLowerCase().equals(account.toLowerCase())) {
         				chr.addVP(2);
-        				chr.gainNX(10000);
-        				chr.dropMessage(5, "Your account has received its rewards for voting UltimatePrivateServers! Thank you for voting!");
+        				chr.gainNX(5000);
+        				chr.dropMessage(5, "Your account has received 5000 NX and 2 VP for voting UltimatePrivateServers! Thank you for voting!");
         				return true;
         			}
         	}
         	
             PreparedStatement ps = con.prepareStatement("UPDATE `accounts` "
                                                       + "SET `votepoints` = `votepoints` + 2,"
-                                                      + "`nxCredit` = `nxCredit` + 10000 "
+                                                      + "`nxCredit` = `nxCredit` + 5000 "
                                                       + "WHERE `name`= ?");
             ps.setString(1, account);
             ps.execute();

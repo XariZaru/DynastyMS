@@ -97,6 +97,7 @@ public enum ItemFactory {
                     equip.setMatk((short) rs.getInt("matk"));
                     equip.setMdef((short) rs.getInt("mdef"));
                     equip.setMp((short) rs.getInt("mp"));
+                    //equip.setCreateDate(rs.getDate("create_date"));
                     equip.setSpeed((short) rs.getInt("speed"));
                     equip.setStr((short) rs.getInt("str"));
                     equip.setWatk((short) rs.getInt("watk"));
@@ -116,6 +117,7 @@ public enum ItemFactory {
                     Item item = new Item(rs.getInt("itemid"), (byte) rs.getInt("position"), (short) rs.getInt("quantity"), rs.getInt("petid"));
                     item.setOwner(rs.getString("owner"));
                     item.setExpiration(rs.getLong("expiration"));
+                    //item.setCreateDate(rs.getDate("create_date"));
                     item.setGiftFrom(rs.getString("giftFrom"));
                     item.setFlag((byte) rs.getInt("flag"));
                     item.setOriginalId(rs.getInt("originalid"));
@@ -170,6 +172,7 @@ public enum ItemFactory {
                     ps.setLong(11, item.getExpiration());
                     ps.setString(12, item.getGiftFrom());
                     ps.setInt(13, item.getOriginalId());
+                    //ps.setDate(14, item.getCreateDate());
                     ps.executeUpdate();
 
                     pse = con.prepareStatement("INSERT INTO `inventoryequipment` VALUES (DEFAULT, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");

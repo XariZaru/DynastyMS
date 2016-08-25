@@ -1,0 +1,29 @@
+Xari used: /search npc lakelis 
+Xari used: /npc 9020000 
+Xari used: !search npc nella 
+Xari used: !cloc k10 
+Xari used: !clock 10 
+Xari used: !clock 5 
+Xari used: !clock 5 
+Xari used: /reloadevents 
+Xari used: !killall 
+Xari used: !search item ticket 
+Xari used: !item 5220001 
+Xari used: !search item ticket 
+Xari used: !item 4031592 
+Xari used: !search item ticket 
+Xari used: !item 4032055 
+Xari used: !search item ticket 
+Xari used: !search item ticket 
+Xari used: !item 4032055 
+Xari used: !item 4032055 
+Xari used: !item 4031592 
+Xari used: !item 4031592 
+Xari used: !item 4031592 
+Xari used: !item 4031592 
+Xari used: !item 4031592 
+Xari used: !item 4031592 
+Xari used: !item 4031592 
+Xari used: !search item event ticket 
+Xari used: !search item 4032055 
+Xari used: !item 4032055 

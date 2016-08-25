@@ -41,7 +41,6 @@ function init() { // Initial loading.
 
 
 function monsterValue(eim, mobId) { // Killed monster.
-	System.out.println("Killin");
     return 1; // returns an amount to add onto kill count.
 }
 

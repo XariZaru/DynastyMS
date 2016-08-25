@@ -21,6 +21,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 package client.inventory;
 
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Collections;
@@ -36,6 +37,7 @@ public class Item implements Comparable<Item> {
     private int originalid;
     private short position;
     private short quantity;
+    private Date create_date = null;
     private int petid = -1;
     private MaplePet pet = null;
     private String owner = "";
@@ -74,6 +76,16 @@ public class Item implements Comparable<Item> {
     
     public void setOriginalId(int id) {
     	this.originalid = id;
+    }
+    
+    public Date getCreateDate() {
+    	if (create_date == null)
+    		create_date = new Date(System.currentTimeMillis());
+    	return create_date;
+    }
+    
+    public void setCreateDate(Date p_create) {
+    	this.create_date = p_create;
     }
     
     public int getOriginalId() {

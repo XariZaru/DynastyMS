@@ -55,6 +55,7 @@ public final class CashOperationHandler extends AbstractMaplePacketHandler {
         CashShop cs = chr.getCashShop();
         if (!cs.isOpened()) {
             c.announce(MaplePacketCreator.enableActions());
+            c.disconnect(false, true);
             return;
         }
         final int action = slea.readByte();
