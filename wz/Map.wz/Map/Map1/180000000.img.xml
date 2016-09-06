@@ -4,8 +4,8 @@
     <int name="version" value="10" />
     <int name="cloud" value="0" />
     <int name="town" value="1" />
-    <int name="returnMap" value="100000000" />
-    <int name="forcedReturn" value="100000000" />
+    <int name="returnMap" value="180000000" />
+    <int name="forcedReturn" value="180000000" />
     <float name="mobRate" value="1.5" />
     <string name="bgm" value="Bgm02/AboveTheTreetops" />
     <string name="mapMark" value="None" />

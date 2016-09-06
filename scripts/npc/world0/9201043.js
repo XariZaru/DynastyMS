@@ -45,7 +45,7 @@ function action(mode, type, selection) {
         else
             status--;
         if (status == 1 && selection == 0) {
-            if (cm.haveItem(4031592, 1) && cm.isMarried()==1) {
+            if (cm.haveItem(4031592, 1) /*&& cm.isMarried()==1*/) {
                 cm.sendYesNo("So you would like to enter the #bEntrance#k?");
                 MySelection = selection;
             } else {

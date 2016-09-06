@@ -464,7 +464,7 @@
       <int name="y" value="202" />
       <int name="tm" value="260000200" />
       <string name="tn" value="in06" />
-      <string name="script" value="" />
+      <string name="script" value="aran_start" />
       <int name="hideTooltip" value="0" />
       <int name="delay" value="0" />
     </imgdir>

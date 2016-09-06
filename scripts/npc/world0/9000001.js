@@ -1,29 +1,32 @@
+var pq_selections = {2094000: "Pirate", 9020000: "Kerning", 9103001: "Ludibrium Maze", 9000001: "2nd Monster Carnival", 9201048: "Amoria"};
+var level_range = {2094000: [65, 100], 9020000: [21, 30], 9103001: [51,70], 9000001: [51, 80], 9201048: [40,200]};
+
+function start() {
+	if (cm.getMapId() == 109040000) {
+		var number = 1;
+		var text = "These are the PQs you can participate in at the moment!\r\n";
+		for (npc in pq_selections)
+			text += "\r\n#L" + npc + "##e"+ number++ +". #n" + pq_selections[npc] + " ("+ level_range[npc][0] + " to " + level_range[npc][1] +")";
+		cm.sendSimple(text + "\r\n#L999#Exit");
+	} else {
+		if (cm.getParty() == null) {
+			cm.sendNext("This second version of Monster Carnival is #ecustom#n made just for the #bDynasty#k!");
+		}
+		cm.dispose();
+	}
+}
+
+function action(m,t,s) {
+	if (m == -1 || s == 999) {
+		cm.sendOk("It's a shame, but maybe I'll see you next time!");
+		cm.dispose();
+		return;
+	}
+	cm.openNpc(s);
+}
+
+
 /*
-    This file is part of the OdinMS Maple Story Server
-    Copyright (C) 2008 Patrick Huy <patrick.huy@frz.cc>
-               Matthias Butz <matze@odinms.de>
-               Jan Christian Meyer <vimes@odinms.de>
-
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU Affero General Public License as
-    published by the Free Software Foundation version 3 as published by
-    the Free Software Foundation. You may not use, modify or distribute
-    this program under any other version of the GNU Affero General Public
-    License.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU Affero General Public License for more details.
-
-    You should have received a copy of the GNU Affero General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
-/* Edited by: kevintjuh93
-    NPC Name:         Jean
-    Map(s):         Victoria Road : Lith Harbour (104000000)
-    Description:         Event Assistant
-*/
 var status = 0;
 
 function start() {
@@ -88,4 +91,4 @@ function action(mode, type, selection) {
             }
         }   
     }
-}  
+}  */

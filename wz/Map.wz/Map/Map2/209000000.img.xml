@@ -188,6 +188,19 @@
     </imgdir>
   </imgdir>
   <imgdir name="life">
+	<!--
+    <imgdir name="1">
+      <string name="type" value="n" />
+      <string name="id" value="2001001" />
+      <int name="x" value="183" />
+      <int name="y" value="150" />
+      <int name="mobTime" value="0" />
+      <int name="f" value="0" />
+      <int name="fh" value="18" />
+      <int name="cy" value="154" />
+      <int name="rx0" value="133" />
+      <int name="rx1" value="233" />
+    </imgdir>
     <imgdir name="2">
       <string name="type" value="n" />
       <string name="id" value="2001002" />
@@ -200,6 +213,7 @@
       <int name="rx0" value="824" />
       <int name="rx1" value="924" />
     </imgdir>
+	-->
     <imgdir name="3">
       <string name="type" value="n" />
       <string name="id" value="2002000" />
@@ -212,44 +226,85 @@
       <int name="rx0" value="-699" />
       <int name="rx1" value="-647" />
     </imgdir>
+	<!--
+    <imgdir name="4">
+      <string name="type" value="n" />
+      <string name="id" value="2002001" />
+      <int name="x" value="721" />
+      <int name="y" value="149" />
+      <int name="mobTime" value="0" />
+      <int name="f" value="0" />
+      <int name="fh" value="26" />
+      <int name="cy" value="154" />
+      <int name="rx0" value="671" />
+      <int name="rx1" value="771" />
+    </imgdir>
+    <imgdir name="5">
+      <string name="type" value="n" />
+      <string name="id" value="2001003" />
+      <int name="x" value="1784" />
+      <int name="y" value="148" />
+      <int name="mobTime" value="0" />
+      <int name="f" value="0" />
+      <int name="fh" value="34" />
+      <int name="cy" value="154" />
+      <int name="rx0" value="1734" />
+      <int name="rx1" value="1834" />
+    </imgdir>
+	-->
     <imgdir name="6">
       <string name="type" value="n" />
       <string name="id" value="2001000" />
-      <int name="x" value="2448" />
-      <int name="y" value="147" />
+      <int name="x" value="656" />
+      <int name="y" value="154" />
       <int name="mobTime" value="0" />
       <int name="f" value="0" />
       <int name="hide" value="0" />
-      <int name="fh" value="42" />
+      <int name="fh" value="21" />
       <int name="cy" value="154" />
       <int name="rx0" value="2398" />
       <int name="rx1" value="2498" />
     </imgdir>
+	<!--
+    <imgdir name="7">
+      <string name="type" value="n" />
+      <string name="id" value="2002002" />
+      <int name="x" value="2540" />
+      <int name="y" value="151" />
+      <int name="mobTime" value="0" />
+      <int name="f" value="1" />
+      <int name="hide" value="0" />
+      <int name="fh" value="41" />
+      <int name="cy" value="154" />
+      <int name="rx0" value="2490" />
+      <int name="rx1" value="2590" />
+    </imgdir>
+	-->
     <imgdir name="8">
       <string name="type" value="n" />
       <string name="id" value="9209100" />
-      <int name="x" value="-13" />
-      <int name="y" value="154" />
+      <int name="x" value="271" />
+      <int name="y" value="-427" />
       <int name="mobTime" value="0" />
       <int name="f" value="0" />
       <int name="hide" value="1" />
-      <int name="fh" value="14" />
-      <int name="cy" value="154" />
-      <int name="rx0" value="-63" />
-      <int name="rx1" value="43" />
+      <int name="fh" value="2" />
+      <int name="cy" value="-390" />
+      <int name="rx0" value="251" />
+      <int name="rx1" value="289" />
     </imgdir>
     <imgdir name="0">
       <string name="type" value="n" />
       <string name="id" value="9310058" />
-      <int name="x" value="-13" />
+      <int name="x" value="-8" />
       <int name="y" value="154" />
       <int name="mobTime" value="0" />
       <int name="f" value="0" />
       <int name="hide" value="0" />
       <int name="fh" value="14" />
       <int name="cy" value="154" />
-      <int name="rx0" value="-63" />
-      <int name="rx1" value="43" />
+      <int name="rx0" value="963" />
+      <int name="rx1" value="1063" />
     </imgdir>
     <imgdir name="9">
       <string name="type" value="n" />
@@ -265,6 +320,37 @@
       <int name="rx0" value="-184" />
       <int name="rx1" value="-84" />
     </imgdir>
+	<!--
+    <imgdir name="10">
+      <string name="type" value="n" />
+      <string name="id" value="9250053" />
+      <int name="x" value="2714" />
+      <int name="y" value="145" />
+      <int name="mobTime" value="0" />
+      <int name="f" value="0" />
+      <int name="hide" value="0" />
+      <int name="fh" value="49" />
+      <int name="cy" value="154" />
+      <int name="rx0" value="2664" />
+      <int name="rx1" value="2764" />
+      <string name="limitedname" value="xmasvillage" />
+    </imgdir>
+    <imgdir name="11">
+      <string name="type" value="n" />
+      <string name="id" value="9250054" />
+      <int name="x" value="2959" />
+      <int name="y" value="139" />
+      <int name="mobTime" value="0" />
+      <int name="f" value="0" />
+      <int name="hide" value="0" />
+      <int name="fh" value="47" />
+      <int name="cy" value="154" />
+      <int name="rx0" value="2909" />
+      <int name="rx1" value="3009" />
+      <string name="limitedname" value="xmasvillage" />
+    </imgdir>
+	-->
+	<!--
     <imgdir name="12">
       <string name="type" value="n" />
       <string name="id" value="9220005" />
@@ -279,6 +365,23 @@
       <int name="rx1" value="1512" />
       <string name="limitedname" value="xmasvillage" />
     </imgdir>
+	-->
+	<!--
+    <imgdir name="13">
+      <string name="type" value="n" />
+      <string name="id" value="9250051" />
+      <int name="x" value="507" />
+      <int name="y" value="142" />
+      <int name="mobTime" value="0" />
+      <string name="limitedname" value="xmasvillage" />
+      <int name="f" value="0" />
+      <int name="hide" value="0" />
+      <int name="fh" value="19" />
+      <int name="cy" value="154" />
+      <int name="rx0" value="457" />
+      <int name="rx1" value="557" />
+    </imgdir>
+	-->
     <imgdir name="14">
       <string name="type" value="n" />
       <string name="id" value="9201030" />

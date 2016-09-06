@@ -1,0 +1,16 @@
+Error saving Xari Level: 157 Job: 312
+java.lang.NullPointerException
+	at client.MapleClient.getIP(MapleClient.java:239)
+	at client.MapleCharacter.saveToDB(MapleCharacter.java:4543)
+	at net.server.Server.saveAll(Server.java:134)
+	at net.server.Server$1.run(Server.java:244)
+	at server.TimerManager$LoggingSaveRunnable.run(TimerManager.java:143)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------

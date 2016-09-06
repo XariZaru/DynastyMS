@@ -23,6 +23,6 @@ function start() {
 	if (cm.isLeader())
 		cm.getParty().setPQ(null);
     cm.gainExp(650000);
-	cm.warp(251010404);
+	cm.warp(109040000);
 	cm.dispose();
 }

@@ -12,13 +12,16 @@ var info = [//<editor-fold defaultstate="collapsed" desc="Information on the Net
 var intel,who,how, sel;
 var food = 4031580;
 var cm = null;
+var bamboo = 4032309;
+var kimono = 4000225;
+var armor = 4000558;
 
 importPackage(Packages.tools);
 importPackage(Packages.java.sql);
 
 function questDetails(level, title) {
 	var ps = DatabaseConnection.getConnection().prepareStatement("SELECT information from aran_info WHERE id = ?");
-	ps.setInt(1, cm.getQ());
+	ps.setInt(1, cm.getQ() + 1);
 	var rs = ps.executeQuery();
 	var details = "NO DETAILS";
 	if (rs.next())
@@ -26,6 +29,10 @@ function questDetails(level, title) {
 	ps.close();
 	rs.close();
 	return "#e#r[Level "+level+"] : " + title + "#n#k\r\n_____________________________________________\r\n\r\n" + details;
+}
+
+function rewardDetails(exp, meso) {
+	return "#fUI/UIWindow.img/QuestIcon/8/0# " + exp + "\r\n#fUI/UIWindow.img/QuestIcon/7/0# " + meso;
 }
 
 function start() {
@@ -60,55 +67,183 @@ function action(m,t,s) {
         status++;
     }
     if (status == 0) {
-        switch(cm.getQ()) {
-			case 32:
-			case 33:
-			case 34:
-				cm.sendOk("Well? Did you get the #i"+food+"# I asked you to get? Check #eHenesys Market#n to see if there are any heavy lifters you can snatch from.");
-				cm.dispose();
-				break;
-			case 30:
-				if (cm.getLevel() < 30) {
-					cm.sendOk(questDetails(30, "A Quick Checkup"));
+		if (s == 0) {
+			if (cm.getPlayerCount((train)) < 1) {
+				cm.getPlayer().saveLocation("WORLDTOUR");
+				cm.warp(train); 
+			} else {
+				cm.sendOk("There is currently a person in the training map. Please change channels or try again at another time.");                          
+			}
+			cm.dispose();
+		} else if (s == 1) {
+			text = "Here are the following maps our network branches out to:\r\n#b";
+			for (var i = 0; i < maps.length; i++) {
+				text += "\r\n#L"+i+"##m"+maps[i]+"#";
+			}
+			cm.sendSimple(text);
+		} else {
+			switch(cm.getQ()) {
+				case 45:
+					if (cm.getLevel() < 120) {
+						cm.sendOk(questDetails(120, "The Biggest Gift"));
+						cm.dispose();
+					} else {
+						var skills = [21121000];
+						cm.sendOk("Fantastic work so far. Keep it up.");
+						cm.changeJobById(2112);
+						for (var x = 0; x < skills.length; x++)
+							cm.teachSkill(skills[x], 0, 10, -1);
+						cm.completeQ();
+						cm.dispose();
+					}
+					break;
+				case 44:
+					if (!cm.haveItem(armor, 150)) {
+						cm.sendOk("Please gather 150 pieces of #i" + armor + "# so that I can start work.");
+						cm.dispose();
+					} else {
+						cm.sendOk("Fantastic work. I'll need your help soon enough.\r\n\r\n#fUI/UIWindow.img/QuestIcon/4/0#\r\n#fUI/UIWindow.img/QuestIcon/8/0# 9000000 exp");
+						cm.gainExp(9000000);
+						cm.gainItem(armor, -150);
+						cm.completeQ();
+						cm.dispose();						
+					}
+					break;
+				case 43:
+					if (cm.getLevel() < 110) {
+						cm.sendOk(questDetails(110, "A Heavy Task Ahead 2"));
+						cm.dispose();
+						return;
+					} else {
+						cm.sendNext("I was able to discern something from the materials you got for me.");
+					}
+					break;
+				case 42:
+					if (!cm.haveItem(kimono, 50) || !cm.haveItem(bamboo, 10)) {
+						cm.sendOk("Bring me 50 #i"+kimono+"# and 10 #i"+bamboo+"# so that I can inspect what has been happening in our world.");
+						cm.dispose();
+					} else {
+						cm.gainItem(kimono, -50);
+						cm.gainItem(bamboo, -10);
+						cm.sendOk("I see ... this will take some time to decipher. Come back later when I have answers.\r\n\r\n#fUI/UIWindow.img/QuestIcon/4/0#\r\n#fUI/UIWindow.img/QuestIcon/8/0# 3000000 exp");
+						cm.gainExp(3000000);
+						cm.completeQ();
+						cm.dispose();
+					}
+					break;
+				case 41:
+					if (cm.getLevel() < 90) {
+						cm.sendOk(questDetails(95, "A Heavy Task Ahead"));
+						cm.dispose();
+						return;
+					} else {
+						cm.sendNext("It's good you're here. I need you to do something for me. While the empire has been fighting the rebels I've recently learned from faraway lands that something big is amassing in the shadows.");
+					}
+					break;
+				case 40:
+					if (cm.getLevel() < 70) {
+						cm.sendOk(questDetails(70, "Understanding Power"));
+						cm.dispose();
+					} else {
+						cm.sendOk("Hey, you've been doing a pretty good job. Take this as a reward for your well-earned services.");
+						cm.changeJobById(2111);
+						cm.teachSkill(21110002, 0, 20, -1);
+						cm.completeQ();
+						cm.dispose();
+					}
+					break;
+				case 39:
+					if (cm.getPlayer().getDynastyQuest("AranFaHai") < 2 || cm.getPlayer().getDynastyQuest("WuYuanAran") < 3 || cm.getPlayer().getDynastyQuest("ChefAran") < 2) {
+						cm.sendOk("You still need to visit all three of the following cities and take what supplies you can get from them. The following cities are:\r\n\r\nKerning City\r\nLith Harbor\r\nHenesys");
+						cm.dispose();
+					} else {
+						cm.sendOk("Nice job. The supplies are flowing in quite nicely to our secure location. This should help out our cause.\r\n\r\n#fUI/UIWindow.img/QuestIcon/4/0#\r\n#fUI/UIWindow.img/QuestIcon/8/0# 400000 exp");
+						cm.completeQ();
+						cm.gainExp(400000);
+						cm.dispose();
+					}
+					break;
+				case 38:
+					if (cm.getLevel() < 45) {
+						cm.sendOk(questDetails(45, "Another Task [Chain Quest: 0/3]"));
+						cm.dispose();
+					} else {
+						cm.sendNext("I'm happy to see that you're progressing along just fine. I hope you're ready for some work. We have a lot to do today. I'm sure you have a lot of questions, but those will be answered in time. You're progressing so quickly that we're unsure where to place you for our covert operations. I'm thinking you're ready for your first #eraid#n! How does that sound?");
+					}
+					break;
+				case 37:
+					cm.sendOk("Is this the food you got? This is a lot! Let me send this shipment off to #bSejan#k. Give me a moment.\r\n\r\n" + rewardDetails(100000, 50000));
+					break;
+				case 36:
+				case 35:
+				case 32:
+				case 33:
+				case 34:
+					cm.sendOk("Well? Did you get the #i"+food+"# I asked you to get? Check #eHenesys Market#n to see if there are any heavy lifters you can snatch from.");
 					cm.dispose();
-				} else {
-					cm.sendOk("Good, good! I'm happy to see you work so hard for your rewards. Here, take this power that has been entrusted from younglings to younglings for generations.");
-				}
-				break;
-			case 31:
-				cm.sendYesNo("Look, I see you what to make a difference in this cold world. So do many of the people in our organization. But look at this place. It is a pinnacle of disaster, of poverty. People are poor. Look at them come in droves from around the world, hoping to find solace in a desolate place such as this. Do you want to make a change to this world?");
-				break;
-            case 28:
-                cm.sendNext("#b(The statue's eyes suddenly shine brightly and then fade away evanescently)#k",2);
-                break;
-            case 29:
-            	cm.sendNext("You, having been trained in our ways for quite a long time, understand how important it is that we feed " +
-            			"the needy. Without our services many can go hungry. It is of utmost importance then to maintain updated information " +
-            			"about various prominent figures so that we can make our raids accordingly.\r\n\r\nFor now, I'll take you to our network on " +
-            			"the mainland, #bVictoria Island#k, where you'll grow stronger and work to become a more important asset to our underground group.");
-            	break;
-            default:
-                if (s == 0) {
-                    if (cm.getPlayerCount((train)) < 1) {
-                        cm.getPlayer().saveLocation("WORLDTOUR");
-                        cm.warp(train); 
-                    } else {
-                        cm.sendOk("There is currently a person in the training map. Please change channels or try again at another time.");                          
-                    }
-                    cm.dispose();
-                } else {
-                    text = "Here are the following maps our network branches out to:\r\n#b";
-                    for (var i = 0; i < maps.length; i++) {
-                        text += "\r\n#L"+i+"##m"+maps[i]+"#";
-                    }
-                    cm.sendSimple(text);
-                }
-                break;
+					break;
+				case 30:
+					if (cm.getLevel() < 30) {
+						cm.sendOk(questDetails(30, "A Quick Checkup"));
+						cm.dispose();
+					} else {
+						cm.sendOk("Good, good! I'm happy to see you work so hard for your rewards. Here, take this power that has been entrusted from younglings to younglings for generations.");
+					}
+					break;
+				case 31:
+					cm.sendYesNo("Look, I see you what to make a difference in this cold world. So do many of the people in our organization. But look at this place. It is a pinnacle of disaster, of poverty. People are poor. Look at them come in droves from around the world, hoping to find solace in a desolate place such as this. Do you want to make a change to this world?");
+					break;
+				case 28:
+					cm.sendNext("#b(The statue's eyes suddenly shine brightly and then fade away evanescently)#k",2);
+					break;
+				case 29:
+					cm.sendNext("You, having been trained in our ways for quite a long time, understand how important it is that we feed " +
+							"the needy. Without our services many can go hungry. It is of utmost importance then to maintain updated information " +
+							"about various prominent figures so that we can make our raids accordingly.\r\n\r\nFor now, I'll take you to our network on " +
+							"the mainland, #bVictoria Island#k, where you'll grow stronger and work to become a more important asset to our underground group.");
+					break;
+				default:
+					if (s == 0) {
+						if (cm.getPlayerCount((train)) < 1) {
+							cm.getPlayer().saveLocation("WORLDTOUR");
+							cm.warp(train); 
+						} else {
+							cm.sendOk("There is currently a person in the training map. Please change channels or try again at another time.");                          
+						}
+						cm.dispose();
+					} else {
+						text = "Here are the following maps our network branches out to:\r\n#b";
+						for (var i = 0; i < maps.length; i++) {
+							text += "\r\n#L"+i+"##m"+maps[i]+"#";
+						}
+						cm.sendSimple(text);
+					}
+					break;
+			}
         }
     } else if (status == 1) {
         switch(cm.getQ()) {
+			case 43:
+				cm.sendNext("The fact that you were able to bring me so many #i"+kimono+"# in such a short period of time in combination with the amount of bamboo that dropped ... the ratio tells us that there is an imbalance in the world. I did some calculations and if they're correct we're looking at a 800% increase in danger in just the last year alone.");
+				break;
+			case 41:
+				cm.sendAcceptDecline("I need you to travel to an area called #bZipangu#k and retrieve 50 #i" + kimono + "# and 10 #i" + bamboo + "#.");
+				break;
+			case 38:
+				cm.sendNext("There's a few convoys around here that the Empire has transporting goods to their army. What's important is that these convoys don't bring supplies to any of the commonwealth. So while the army is kept happy and nutritious, there's a total disregard for the lower classes and backbone of their industry. We have to change that by re-routing food into the people so that they can continue to prosper. How does that sound?");
+				break;
+			case 37:
+				cm.gainExp(100000);
+				cm.gainMeso(50000);
+				cm.completeQ();
+				cm.talkGuide("How nice it feels to help out the needy! Let's check back in at another time!", 0);
+				cm.gainItem(food, -1);
+				break;
 			case 30:
 				cm.changeJobById(2110);
+				var skills = {21100000: 20, 21100002: 30, 21100004: 20, 21100005: 20};
+				for (var skill in skills)
+					cm.teachSkill(skill, 0, skills[skill], -1);
 				cm.completeQ();
 				cm.talkGuide("Let's see what the Master Thief has to say! It seems he has a quest for us.", 0);
 				cm.dispose();
@@ -136,6 +271,16 @@ function action(m,t,s) {
     } else if (status == 2) {
         if (cm.getJobId() >= 2100) {
             switch(cm.getQ()) {
+				case 43:
+					cm.sendAcceptDecline("I'll need something else to process this material. If you can head into an area called #bNeo City#k and grab 150 #i" + armor + "#, which I can convert to a device that will allow us to track where the next threats are coming from.");
+					break;
+				case 41:
+					cm.sendOk("Good. Come back with 50 #i"+kimono+"# and 10 #i"+bamboo+"#");
+					cm.completeQ();
+					break;
+				case 38:
+					cm.sendNext("There's a few spots I need you to check out; more specifically places where the food is distributed. If we can target these places, then they're sure to fall. We can start here, in Henesys, but there are other areas as well, such as Kerning City, Lith Harbor, and Nautilus Harbor. You can choose to start anywhere you wish, but at the end of the day you must bring back supplies from each of these locations.");
+					break;
 				case 31: 
 					cm.talkGuide("The organization is depending on us to make a difference in people's lives!", 0);
 					cm.talkGuide("Let's go to the Henesys Market and see who is despicable enough for us to thieve from!", 5);
@@ -176,7 +321,19 @@ function action(m,t,s) {
                 	break;
             }
         }  
-    }
+    } else if (status == 3) {
+		switch(cm.getQ()) {
+			case 43:
+				cm.sendOk("Grab me 200 #i"+armor+"# and we'll be able to prepare for the worst.");
+				cm.completeQ();
+				break;
+			case 38:
+				cm.sendOk("Check out these following locations:\r\n\r\n#eHenesys\r\nKerning City\r\nLith Harbor\r\nNautilus Harbor");
+				cm.completeQ();
+				cm.dispose();
+				break;
+		}
+	}
 }
 
 function resetInfo() {

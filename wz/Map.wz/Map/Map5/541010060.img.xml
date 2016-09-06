@@ -1953,6 +1953,7 @@
       <int name="y" value="332" />
       <int name="tm" value="541010100" />
       <string name="tn" value="" />
+      <string name="script" value="" />
     </imgdir>
   </imgdir>
 </imgdir>

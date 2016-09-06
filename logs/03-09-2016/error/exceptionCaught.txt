@@ -1,0 +1,13 @@
+java.lang.NullPointerException
+	at server.MapleInventoryManipulator.removeById(MapleInventoryManipulator.java:273)
+	at client.MapleCharacter$15.run(MapleCharacter.java:5325)
+	at server.TimerManager$LoggingSaveRunnable.run(TimerManager.java:143)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+---------------------------------

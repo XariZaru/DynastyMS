@@ -36,6 +36,7 @@ function action(m,t,s) {
 			cm.completeQ();
 			cm.gainExp(50);
 			cm.talkGuide("That's what Santa wanted. We should probably go see him now.", 0);
+			cm.showInstruction("Go back to #eSanta#n for more instructions.", 200, 50);
 			cm.gainItem(supply, -cm.itemQuantity(supply));
 			cm.dispose();
 		}
@@ -78,6 +79,7 @@ function action(m,t,s) {
                 }
                 } else {
                     cm.talkGuide("How wonderful! Let's celebrate by talking with your #bMom and Dad#k!");
+					cm.showInstruction("Go talk to Mom and Dad!", 200, 50);
                     cm.dispose();
                 }
             }

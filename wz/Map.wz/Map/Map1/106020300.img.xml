@@ -3116,11 +3116,11 @@
       <int name="pt" value="9" />
       <int name="x" value="1113" />
       <int name="y" value="-11" />
-      <int name="tm" value="999999999" />
-      <string name="tn" value="" />
+      <int name="tm" value="106020400" />
+      <string name="tn" value="left00" />
       <int name="delay" value="500" />
       <int name="horizontalImpact" value="0" />
-      <string name="script" value="investigate1" />
+      <string name="script" value="" />
       <int name="hideTooltip" value="0" />
       <int name="onlyOnce" value="1" />
     </imgdir>

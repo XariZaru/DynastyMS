@@ -46,17 +46,20 @@ function action(mode, type, selection) {
 	}
 	status++;
 	if (status == 0) {
-		var maps = [925100000, 925100100, 925100200, 925100300, 925100400, 925100500];
-		for (var x in maps) {
-			if (cm.getPlayerCount(maps[x]) > 0) {
-				cm.sendOk("There is currently another party contesting the #bLord Pirate's#k ship at the moment.");
-				cm.dispose();
-				return;
-			}
-			cm.getClient().getChannelServer().getMapFactory().getMap(maps[x]).resetAll();
+		var em = cm.getEventManager("PiratePQ");
+		if (em == null) {
+			cm.sendOk("This PQ is currently unavailable.");
+		} else if ((cm.getPlayerCount(925100000) && cm.getPlayerCount(925100100) && cm.getPlayerCount(925100200) && cm.getPlayerCount(925100300) && cm.getPlayerCount(925100400) && cm.getPlayerCount(925100500)) < 1) {
+			// Begin the PQ.
+			em.startInstance(cm.getParty(), cm.getPlayer().getMap());
+			//em.setProperty("KPQOpen" , "false");
+			// Remove Passes and Coupons GMS DOESNT DO THIS!!!
+			//party = cm.getPlayer().getEventInstance().getPlayers();
+			//cm.removeFromParty(4001008, party);
+			//cm.removeFromParty(4001007, party);
+		} else {
+			cm.sendOk("There is already another party inside. Please wait !");
 		}
-		cm.getParty().setPQ(new PiratePQ(cm.getParty()));
-		cm.warpParty(925100000);
 		cm.dispose();
 	}
 }

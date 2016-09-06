@@ -31,18 +31,19 @@
 ---------------------------------------------------------------------------------------------------
 **/
 
-var toMap = new Array(211040200,220050300,240030000);
+var player_map = new Array(211000000,220000000,240000000);
+var to_map = new Array(211040200,220050300,240030000);
 var cost = new Array(10000,25000,55000);
-var location;
+var location = 0;
 var status = 0;
 
 function start() {
-    switch(cm.getPlayer().getMapId()) {
-        case toMap[0]: location = 0; break;
-        case toMap[1]: location = 1; break;
-        case toMap[2]: location = 2; break;
-    }
-    cm.sendNext("Hello there! This Bullet Taxi will take you to any danger zone from #m"+cm.getPlayer().getMap().getId()+"# to #b#m"+toMap[location]+"##k on this Ossyria Continent! The transportation fee of #b"+cost+" meso#k may seem expensive, but not that much when you want to easily transport through danger zones!");
+	for (var x = 0; x < player_map.length; x++)
+		if (cm.getMapId() == player_map[x]) {
+			location = x;
+			break;
+		}
+    cm.sendNext("Hello there! This Bullet Taxi will take you to any danger zone from #m"+cm.getPlayer().getMap().getId()+"# to #b#m"+to_map[location]+"##k on this Ossyria Continent! The transportation fee of #b"+cost[location]+" meso#k may seem expensive, but not that much when you want to easily transport through danger zones!");
 }
 
 function action(mode, type, selection) {
@@ -53,12 +54,12 @@ function action(mode, type, selection) {
     else
         status++;
     if (status == 1)
-        cm.sendYesNo("#bDo you want to pay meso#k and transport to #b#m"+toMap[location]+"##k?");
+        cm.sendYesNo("#bDo you want to pay meso#k and transport to #b#m"+to_map[location]+"##k?");
     else if (status == 2) {
-        if (cm.getMeso() < cost) {
+        if (cm.getMeso() < cost[location]) {
             cm.sendNext("You don't seem to have enough mesos. I am terribly sorry, but I cannot help you unless you pay up. Bring in the mesos by hunting more and come back when you have enough.");
         } else {
-            cm.warp(toMap[location]);
+            cm.warp(to_map[location]);
             cm.gainMeso(-cost[location]);
         }
         cm.dispose();

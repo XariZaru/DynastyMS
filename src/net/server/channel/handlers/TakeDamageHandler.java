@@ -67,6 +67,7 @@ public final class TakeDamageHandler extends AbstractMaplePacketHandler {
         int mpattack = 0;
         MapleMonster attacker = null;
         final MapleMap map = player.getMap();
+        
         if (damagefrom != -3 && damagefrom != -4) {
         	monsteridfrom = slea.readInt();
 	        oid = slea.readInt();

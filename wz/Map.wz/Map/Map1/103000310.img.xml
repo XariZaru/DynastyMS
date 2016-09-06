@@ -284,10 +284,10 @@
       <int name="pt" value="7" />
       <int name="x" value="465" />
       <int name="y" value="26" />
-      <int name="tm" value="999999999" />
+      <int name="tm" value="103000100" />
       <string name="tn" value="" />
       <int name="horizontalImpact" value="0" />
-      <string name="script" value="Depart_ToKerning" />
+      <string name="script" value="" />
     </imgdir>
   </imgdir>
 </imgdir>

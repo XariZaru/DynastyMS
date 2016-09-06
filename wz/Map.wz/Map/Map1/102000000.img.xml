@@ -583,6 +583,7 @@
       <int name="rx1" value="2184" />
       <string name="limitedname" value="Valentine" />
     </imgdir>
+	<!--
     <imgdir name="22">
       <string name="type" value="n" />
       <string name="id" value="9010022" />
@@ -596,6 +597,7 @@
       <int name="rx0" value="1944" />
       <int name="rx1" value="2044" />
     </imgdir>
+	-->
     <imgdir name="15">
       <string name="type" value="n" />
       <string name="id" value="2041017" />

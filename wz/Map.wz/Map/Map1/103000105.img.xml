@@ -17,12 +17,14 @@
     <int name="VRRight" value="3240" />
     <string name="mapMark" value="KerningCity" />
     <int name="fieldLimit" value="0" />
+	<!--
     <imgdir name="timeMob">
       <int name="id" value="5090000" />
       <int name="startHour" value="22" />
       <int name="endHour" value="14" />
       <string name="message" value="Shade has appeared from the shadow of the subway. You must light the street lamp on Shade to weaken its power." />
     </imgdir>
+	-->
   </imgdir>
   <imgdir name="back">
     <imgdir name="0">
@@ -1190,6 +1192,7 @@
       <int name="rx0" value="908" />
       <int name="rx1" value="1008" />
     </imgdir>
+	<!--
     <imgdir name="15">
       <string name="type" value="m" />
       <string name="id" value="5090000" />
@@ -1203,6 +1206,7 @@
       <int name="rx0" value="-575" />
       <int name="rx1" value="3275" />
     </imgdir>
+	-->
     <imgdir name="16">
       <string name="type" value="m" />
       <string name="id" value="4230102" />

@@ -23,10 +23,37 @@
  *9201025 - Nana(O)
  *@author Jvlaple
  */
+ var status = -1;
  
 function start() {
-    cm.sendOk("Hi, I'm Nana the love fairy... Hows it going?");
-    cm.dispose();
+    if (cm.getLevel() < 50) {
+		cm.sendOk("Boy, making things is a bit hard nowadays!");
+		cm.dispose();
+	} else if (cm.getPlayer().getDynastyQuest("Learning a New Craft") == 0) {
+		cm.sendNext("Did you know that you can make things when you're strong enough, such as cool weapons, or you can disassemble them into really cool things, like #bmonster crystals#k?");
+	} else {
+		cm.sendOk("I hope you like what you've learned! The #eMaker Skill#n truly is a wonderful thing to take ahold of!");
+		cm.dispose();
+	}
+}
+
+function action(m,t,s) {
+	if (m != 1) {
+		cm.dispose();
+		return;
+	}
+	status++;
+	if (status == 0) {
+		cm.sendNext("Well, you're in luck because this power can only be ascertained by strong, strong people! Without the proper power to wield this, you might find yourself being overwhelmed by its properties! Just take a step back, breathe, and I'll transfer the knowledge I have of this skill to you!");
+	} else if (status == 1) {
+		cm.sendNext("You let Nana(O) put her hand on you and channel the knowledge from herself to you. You feel memories of an ancient deity flow into your mind, and all of a sudden a newfound knowledge becomes evident.", 2);
+	} else if (status == 2) {
+		cm.sendOk("All done! You should check your #eskills#n tab for the #bMaker Skill#k! I hope you like what you've learned today!");
+		cm.getPlayer().completeDynastyQuest("Learning a New Craft");
+		cm.teachSkill(10001007, 3, 3, -1);
+		cm.teachSkill(1007, 3, 3, -1);
+		cm.teachSkill(20001007, 3, 3, -1);
+	}
 }
 //
 //function action(mode, type, selection) {

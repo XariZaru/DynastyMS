@@ -17,12 +17,18 @@ var cost64 = [1250,1000];
 var shields = [[1092030,1092045,1092046,1092047],[1000,2000]];
 var throwing = [2070011,500];
 
+importPackage(Packages.client.inventory);
+importPackage(Packages.provider);
+importPackage(Packages.tools);
+importPackage(Packages.server);
+
+
 var x, i, t, fag, dog;
 
 function start() {
     status = -1;
     cm.sendSimple("What options would you like to view?\r\n\r\n#b#L0#Level 35 Maple Weapons\r\n#L1#Level 43 Maple Weapons\r\n#L2#Level 64 Maple Weapons\r\n#L3#Maple"+
-        " Shields\r\n#L4#Maple Throwing-Stars");
+        " Shields\r\n#L4#Maple Throwing-Stars\r\n#L5#Trade a Maple Weapon for Leaves");
 }
 
 function action(mode, type, selection) {
@@ -43,17 +49,24 @@ function action(mode, type, selection) {
             cm.sendSimple(text);
         } else if (selection == 2) {
             for (var i = 0; i < maple64.length; i++) {
-                text += "#L"+i+"##i"+maple64[i]+"# #t"+maple64[i]+"##l\r\n";
+                text += "#L"+i+"##i"+maple64[i]+"# #z"+maple64[i]+"##l\r\n";
         }
             cm.sendSimple(text);
         } else if (selection == 3) {
             for (var i = 0; i < shields[0].length; i++) {
-               text += "#L"+i+"##i"+shields[0][i]+"# #t"+shields[0][i]+"##l\r\n";
+               text += "#L"+i+"##i"+shields[0][i]+"# #z"+shields[0][i]+"##l\r\n";
             }
             cm.sendSimple(text);
         } else if (selection == 4) {
             cm.sendYesNo("Maple Throwing-Stars cost #b500#k #i"+leaf+"# to purchase. Would you still like to purchase these?");
-        }
+        } else if (selection == 5) {
+			var txt = "You get #b200#k #i4001126# when you trade in a Maple equip. These are your following Maple equips:\r\n";
+			var equips = cm.getPlayer().getInventory(MapleInventoryType.EQUIP).getItems().entrySet().toArray();
+			for (var x = 0; x < equips.length; x++) 
+				if (MapleItemInformationProvider.getInstance().getName(equips[x].value.getItemId()).toLowerCase().contains("maple") && equips[x].value.getItemId() < 2000000)
+					txt += "\r\n#L" + equips[x].value.getPosition() + "##i" + equips[x].value.getItemId() + "#";
+			cm.sendSimple(txt + "\r\n#L999#Exit");
+		}
     } else if (status == 1) {
         sel2 = selection;
         if (sel == 0 || sel == 1) {
@@ -64,6 +77,11 @@ function action(mode, type, selection) {
             } else {
                 cm.sendYesNo("Are you sure you want to purchase this item: #i"+(sel == 0 ? maple35[selection] : maple43[selection]));          
              }
+		} else if (sel == 5) {
+			if (selection != 999) {
+				cm.sendSimple("These are the #i"+cm.getEquip(selection).getItemId()+"# information. Are you sure you want to trade your Maple equipment for #b200#k leaves?\r\n\r\n" + cm.getEquipInfo(cm.getEquip(selection)));
+				sel2 = selection;
+			}
         } else if (sel == 4) {
             if (cm.haveItem(leaf, throwing[1])) {
                 cm.sendOk("You have purchased #i"+throwing+"# for 500 #i"+leaf+"#.");
@@ -96,15 +114,19 @@ function action(mode, type, selection) {
                 cm.dispose();
             } else {
                 cm.sendOk("You have gained #i"+shields[0][sel2]+"# as a result of your choice.");
-                cm.gainItem(shields[0][sel2],1, true, true);
+                gainItem(shields[0][sel2]);
                 cm.gainItem(leaf,-shields[1][(sel2 == 0 ? 0 : 1)]);
                 (sel2 != 0 ? cm.gainItem(shields[0][0], -1) : status);
                 cm.dispose();
             }
+		} else if (sel == 5) {
+			cm.gainItem(4001126, 200);
+			cm.removeItem(sel2);
+			cm.dispose();
         } else if (sel == 0 || sel == 1){
                 cm.sendOk("You have purchased a #i"+(sel == 0 ? maple35[sel2] : maple43[sel2])+"# for"+
                     " #b"+items3543[sel]+"#k leaves.");
-                cm.gainItem((sel == 0 ? maple35[sel2] : maple43[sel2]), 1, true, true);
+                gainItem((sel == 0 ? maple35[sel2] : maple43[sel2]));
                 cm.gainItem(leaf, -items3543[sel]);
                 cm.dispose();
         } else {
@@ -114,10 +136,23 @@ function action(mode, type, selection) {
             } else {
                 cm.sendOk("You have received a #i"+maple64[sel2]+"# in exchange for #b"+cost64[selection]+"#k #i"+leaf+"#.");
                 cm.gainItem(leaf, -cost64[selection]);
-                cm.gainItem(maple64[sel2],1, true, true);
+                gainItem(maple64[sel2]);
                 cm.gainItem(req64[fag][selection],-1);
                 cm.dispose();
             }
         }
     }
+}
+
+importPackage(Packages.client.inventory);
+importPackage(Packages.server);
+
+function gainItem(itemid) {
+	var eq = MapleItemInformationProvider.getInstance().randomizeStats(MapleItemInformationProvider.getInstance().getEquipById(itemid));
+	if (Math.floor(Math.random() * 10) <= 1) {
+		eq = MapleItemInformationProvider.getInstance().addGodlyStats(eq);
+		eq.setOwner("God");
+		cm.getPlayer().dropMessage(5,"The item you purchased gleams brightly ... and almost seems godly? Congratulations!");
+	}
+	cm.gainEquip(eq);
 }

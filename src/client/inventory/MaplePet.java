@@ -22,12 +22,17 @@
 package client.inventory;
 
 import client.inventory.Item;
+
 import com.mysql.jdbc.Statement;
+
 import java.awt.Point;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.List;
+
 import tools.DatabaseConnection;
 import server.MapleItemInformationProvider;
 import server.movement.AbsoluteLifeMovement;
@@ -48,6 +53,8 @@ public class MaplePet extends Item {
     private Point pos;
     private int stance;
     private boolean summoned;
+    private DonorPetFeature petfeature;
+	public int donortype = 1;
 
     private MaplePet(int id, short position, int uniqueid) {
         super(id, position, (short) 1);
@@ -57,7 +64,7 @@ public class MaplePet extends Item {
     public static MaplePet loadFromDb(int itemid, short position, int petid) {
         try {
             MaplePet ret = new MaplePet(itemid, position, petid);
-            PreparedStatement ps = DatabaseConnection.getConnection().prepareStatement("SELECT name, level, closeness, fullness, summoned FROM pets WHERE petid = ?"); // Get pet details..
+            PreparedStatement ps = DatabaseConnection.getConnection().prepareStatement("SELECT name, level, closeness, fullness, summoned, type FROM pets WHERE petid = ?"); // Get pet details..
             ps.setInt(1, petid);
             ResultSet rs = ps.executeQuery();
             rs.next();
@@ -66,6 +73,7 @@ public class MaplePet extends Item {
             ret.setLevel((byte) Math.min(rs.getByte("level"), 30));
             ret.setFullness(Math.min(rs.getInt("fullness"), 100));
             ret.setSummoned(rs.getInt("summoned") == 1);
+            ret.setDonorType(rs.getInt("type"));
             rs.close();
             ps.close();
             return ret;
@@ -76,13 +84,14 @@ public class MaplePet extends Item {
 
     public void saveToDb() {
         try {
-            PreparedStatement ps = DatabaseConnection.getConnection().prepareStatement("UPDATE pets SET name = ?, level = ?, closeness = ?, fullness = ?, summoned = ? WHERE petid = ?");
+            PreparedStatement ps = DatabaseConnection.getConnection().prepareStatement("UPDATE pets SET name = ?, level = ?, closeness = ?, fullness = ?, summoned = ?, type = ? WHERE petid = ?");
             ps.setString(1, getName());
             ps.setInt(2, getLevel());
             ps.setInt(3, getCloseness());
             ps.setInt(4, getFullness());
             ps.setInt(5, isSummoned() ? 1 : 0);
-            ps.setInt(6, getUniqueId());
+            ps.setInt(6, getDonorType());
+            ps.setInt(7, getUniqueId());
             ps.executeUpdate();
             ps.close();
         } catch (SQLException e) {
@@ -93,7 +102,7 @@ public class MaplePet extends Item {
         try {
             PreparedStatement ps = DatabaseConnection.getConnection().prepareStatement("INSERT INTO pets (name, level, closeness, fullness, summoned) VALUES (?, 1, 0, 100, 0)", Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, MapleItemInformationProvider.getInstance().getName(itemid));
-            ps.executeUpdate();
+            ps.executeUpdate();        
             ResultSet rs = ps.getGeneratedKeys();
             int ret = -1;
             if (rs.next()) {
@@ -105,6 +114,14 @@ public class MaplePet extends Item {
         } catch (SQLException e) {
             return -1;
         }
+    }
+    
+    public void setDonorType(int type) {
+    	this.donortype = type;
+    }
+    
+    public int getDonorType() {
+    	return donortype;
     }
 
     public static int createPet(int itemid, byte level, int closeness, int fullness) {
@@ -126,6 +143,14 @@ public class MaplePet extends Item {
         } catch (SQLException e) {
             return -1;
         }
+    }
+    
+    public void setDonorFeature(DonorPetFeature feature) {
+    	this.petfeature = feature;
+    }
+    
+    public DonorPetFeature getDonorFeature() {
+    	return this.petfeature;
     }
 
     public String getName() {

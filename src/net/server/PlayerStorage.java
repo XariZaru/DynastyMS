@@ -39,6 +39,8 @@ public class PlayerStorage {
         wlock.lock();
         try {
             storage.put(chr.getId(), chr);
+        } catch (Exception e) {
+        	e.printStackTrace();
         } finally {
 	    wlock.unlock();
 	}

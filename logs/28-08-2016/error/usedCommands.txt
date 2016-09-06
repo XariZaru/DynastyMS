@@ -1,0 +1,29 @@
+Xari used: !search npc board 
+Xari used: !npc 9050009 
+Xari used: !search npc board 
+Xari used: !npc 9040011 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: /go gmmap 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !reloadevents 
+Xari used: !reloadevents 
+Xari used: !seach mob tauro 
+Xari used: !search mob tauro 
+Xari used: !pos 
+Xari used: !reloadevents 
+Xari used: !reloadevents 
+Xari used: !search npc nana(o) 

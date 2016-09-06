@@ -75,11 +75,11 @@ function action(mode, type, selection) {
                 } else if (em.getProperty("KPQOpen").equals("true") || (cm.getPlayerCount(103000800) && cm.getPlayerCount(103000801) && cm.getPlayerCount(103000802) && cm.getPlayerCount(103000803) && cm.getPlayerCount(103000804)) < 1) {
                     // Begin the PQ.
                     em.startInstance(cm.getParty(), cm.getPlayer().getMap());
+                    em.setProperty("KPQOpen" , "false");
                     // Remove Passes and Coupons GMS DOESNT DO THIS!!!
                     //party = cm.getPlayer().getEventInstance().getPlayers();
                     //cm.removeFromParty(4001008, party);
                     //cm.removeFromParty(4001007, party);
-                    em.setProperty("KPQOpen" , "false");
                 } else {
                     cm.sendNext("There is already another party inside. Please wait !");
                 }

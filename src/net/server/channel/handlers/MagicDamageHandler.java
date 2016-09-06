@@ -49,6 +49,20 @@ public final class MagicDamageHandler extends AbstractDealDamageHandler {
 
 		AttackInfo attack = parseDamage(slea, player, false, true);
 
+		int[] pirateTransformationSkills = {5001001, 5001002, 5101002, 5101003, 5101004, 5101006, 5111002, 5111004, 5111006, 5121001, 5121007, 5121002, 5121004, 5121005, 5001004, 13001002, 13001003, 13001004, 13101001, 13101002, 13101003, 13101005, 13101006, 13111000, 13111001, 13111002, 13111004, 13111005, 13111006, 13111007};
+        boolean skillAllowed = false;
+        if (player.getBuffedValue(MapleBuffStat.MORPH) != null) {
+            for (int id = 0; id <= 29; id++) {
+                if (pirateTransformationSkills[id] == attack.skill) {
+                    skillAllowed = true;
+                    break;
+                }
+            }
+            if (!skillAllowed) {
+                return;
+            }
+        }
+		
 		if (player.getBuffEffect(MapleBuffStat.MORPH) != null) {
 			if(player.getBuffEffect(MapleBuffStat.MORPH).isMorphWithoutAttack()) {
 				// How are they attacking when the client won't let them?

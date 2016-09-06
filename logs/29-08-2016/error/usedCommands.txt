@@ -1,0 +1,276 @@
+Xari used: !job 232 
+Xari used: !maxskills 
+Xari used: !heal 
+Xari used: !search mob bodyguard 
+Xari used: !spawn 9400112 
+Xari used: !heal 
+Xari used: !maxstat 
+Xari used: !heal 
+Xari used: !job 332 
+Xari used: !job 322 
+Xari used: !heal 
+Xari used: !heal 
+Xari used: !job 0 
+Xari used: !job 322 
+Xari used: !heal 
+Xari used: !pos 
+Xari used: !reloadevents 
+Xari used: !killall 
+Xari used: !reloadevents 
+Xari used: !killall 
+Xari used: !spawn 100100 
+Xari used: !killall 
+Xari used: !spawn 100100 100 
+Xari used: !killall 
+Xari used: !reloadevents 
+Xari used: !killall 
+Xari used: !spawn 100100 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !reloadevents 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !pos 
+Xari used: !search item balrog claw 
+Xari used: !reloadevents 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !reloadevents 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !reloadevents 
+Xari used: !reloadevents 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !reloadevents 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !reloadevents 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !reloadevents 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !reloadevents 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !reloadevents 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !reloadevents 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !reloadevents 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !reloadevents 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !search mob taurospear 
+Xari used: !pmob 9300250 5 
+Xari used: !pmob 9300250 5 
+Xari used: !pmob 9300250 5 
+Xari used: !pmob 9300250 5 
+Xari used: !pmob 9300250 5 
+Xari used: !pmob 9300250 5 
+Xari used: !pmob 9300250 5 
+Xari used: !pmob 9300250 5 
+Xari used: !pmob 9300250 5 
+Xari used: !pmob 9300250 5 
+Xari used: !pmob 9300250 5 
+Xari used: !pmob 9300250 5 
+Xari used: !pmob 9300250 5 
+Xari used: !pmob 9300250 5 
+Xari used: !pmob 9300250 5 
+Xari used: !pmob 9300250 5 
+Xari used: !pmob 9300250 5 
+Xari used: !pmob 9300250 5 
+Xari used: !heal 
+Xari used: !killall 
+Xari used: !pos 
+Xari used: !reloadevents 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !search mob taurospear 
+Xari used: !pmob 9500129 5 
+Xari used: !pmob 9500129 5 
+Xari used: !pmob 9500129 5 
+Xari used: !pmob 9500129 5 
+Xari used: !pmob 9500129 5 
+Xari used: !pmob 9500129 5 
+Xari used: !pmob 9500129 5 
+Xari used: !pmob 9500129 5 
+Xari used: !pmob 9500129 5 
+Xari used: !killall 
+Xari used: !pmob 9500129 5 
+Xari used: !pmob 9500129 5 
+Xari used: !pmob 9500129 5 
+Xari used: !pmob 9500129 5 
+Xari used: !pmob 9500129 5 
+Xari used: !pmob 9500129 5 
+Xari used: !pmob 9500129 5 
+Xari used: !pmob 9500129 5 
+Xari used: !pmob 9500129 5 
+Xari used: !killall 
+Xari used: !search item balrog claw 
+Xari used: !item 4031906 
+Xari used: !search npc mu young 
+Xari used: !pnpc 1061018 
+Xari used: !warp 105100300 
+Xari used: !warp 105100300 
+Xari used: !search mob balrog 
+Xari used: !spawn 8830002 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !pos 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !item 4031906 
+Xari used: !killall 
+Xari used: !search item proof 
+Xari used: !search item balrog 
+Xari used: !item 4001261 
+Xari used: !search item piece of balrog 
+Xari used: !search npc king pepe 
+Xari used: !search npc king pepe 
+Xari used: !search npc sergeant 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !item 4031906 
+Xari used: !reloaddrops 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !item 4001261 
+Xari used: !search skill holy symbol 
+Xari used: !search skill bahamut 
+Xari used: !maxskills 
+Xari used: !job 112 
+Xari used: !search skill soul rush 
+Xari used: !search skill power stance 
+Xari used: !job 132 
+Xari used: !search skill power stance 
+Xari used: !search skill elemental reset 
+Xari used: !search skill paralyze 
+Xari used: !search skill flash jump 
+Xari used: !search skill smoke shell 
+Xari used: !search skill smoke bomb 
+Xari used: !search skill smok 
+Xari used: !search skill flash jump 
+Xari used: !job 412 
+Xari used: !search skill shadow shifter 
+Xari used: !search skill shadow shifter 
+Xari used: !maxskills 
+Xari used: !job 422 
+Xari used: !job 112 
+Xari used: !job 212 
+Xari used: !job 312 
+Xari used: !job 322 
+Xari used: !job 512 
+Xari used: !job 522 
+Xari used: !job 1111 
+Xari used: !job 1211 
+Xari used: !job 1311 
+Xari used: !search skill flash jump 
+Xari used: !job 1411 
+Xari used: !spawn 100100 15 
+Xari used: !job 412 
+Xari used: !maxskills 
+Xari used: !job 1411 
+Xari used: !search skill flash jump 
+Xari used: !search skill shadow shifter 
+Xari used: !job 112 
+Xari used: !search skill claw booster 
+Xari used: !job 412 
+Xari used: !search skill shadow shifter 
+Xari used: !job 1411 
+Xari used: !search mob bodyguard 
+Xari used: !spawn 9400112 
+Xari used: !job 1411 
+Xari used: !spawn 9400112 
+Xari used: !saveall 
+Xari used: !spawn 9400112 
+Xari used: !heal 
+Xari used: !heal 
+Xari used: !heal 
+Xari used: !heal 
+Xari used: !heal 
+Xari used: !heal 
+Xari used: !heal 
+Xari used: !search skill stance 
+Xari used: !heal 
+Xari used: !heal 
+Xari used: !spawn 9400112 
+Xari used: !heal 
+Xari used: !heal 
+Xari used: !spawn 9400112 
+Xari used: !heal 
+Xari used: !heal 
+Xari used: !heal 
+Xari used: !heal 

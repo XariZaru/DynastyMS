@@ -5,32 +5,47 @@ var steel_ore = 4010001;
 var food = 4031580;
 
 function start() {
-	switch (cm.getQ()) {
-		case 36:
-			if (cm.itemQuantity(steel_ore) < 3) {
-				cm.sendOk("Look, how many times do I have to tell you? Go get 3 #i"+steel_ore+"#!");
-				cm.dispose();
-			} else {
-				cm.sendOk("Very good! Very good, this makes me happy. We'll be able to repair the armor and weapons and sell them now. I'm indebted to your services. Oh, and here, take this!\r\n\r\n#fUI/UIWindow.img/QuestIcon/4/0#\r\n#fUI/UIWindow.img/QuestIcon/8/0# 100000\r\n#fUI/UIWindow.img/QuestIcon/7/0# 100000\r\n#i" + food + "#");
-			}
-			break;
-		case 35:
-			cm.sendNext("That was some good work you did for me earlier. Now, in order to repair these materials I'll have to have some mineral to patch them up. They're in a horrid state of condition, but if we can manage to get a material that they were made of we'll be able to repair the armor to its original condition. Sounds pretty easy right?\r\n\r\n#eWrong!#n");
-			break;
-		case 32:
-			cm.sendNext("Come look at my fine wares! Come, come, come! Come look at how they #esparkle#n. Look at how they #eglimmer#n! Yes, yes, #byou#k, young adventurer. Come here!");
-			break;
-		case 33:
-			cm.sendAcceptDecline("Glad to see you could make it. Now, I've got my eye on some tattered weapons over at a place called #bMushroom Kingdom#k. If you can grab me some materials from those areas, then I'm sure we'll be able to make them into fine wares indeed. One man's junk is another man's treasure, and I spy treasures all around me that people discard. They are so wasteful, really. What do you say? There is a little something for you at the end if you can help me out a little!");
-			break;
-		case 34:
-			if (!cm.haveItem(helmet, 60) || !cm.haveItem(spear, 60)) {
-				cm.sendOk("Did you even bring me 60 of each #i"+spear+"# and #i"+helmet+"#? I'm going to need a lot of those wares to make this time investment profitable!");
-				cm.dispose();
-			} else {
-				cm.sendOk("Great job on this! Here is a little something as a reward for your efforts; however, if you still want what you were looking for earlier, you're going to have to do one more task for me.\r\n\r\n#fUI/UIWindow.img/QuestIcon/4/0#\r\n#fUI/UIWindow.img/QuestIcon/8/0# 60000\r\n#fUI/UIWindow.img/QuestIcon/7/0# 100000");
-			}
-			break;
+	if (cm.getJobId() >= 2000 && cm.getJobId() < 3000) {
+		switch (cm.getQ()) {
+			case 39:
+				if (cm.getPlayer().getDynastyQuest("WuYuanAran") == 1) {
+					cm.sendOk("Ohohoh! Give your permission? Well boy, after all you've done for me I'm sure I can open up a new route just temporarily for you. Not sure what you need it for, but of course!");
+					cm.getPlayer().completeDynastyQuest("WuYuanAran");
+					cm.dispose();
+				} else {
+					cm.sendOk("Do you need something?");
+					cm.dispose();
+				}
+				break;
+			case 36:
+				if (cm.itemQuantity(steel_ore) < 3) {
+					cm.sendOk("Look, how many times do I have to tell you? Go get 3 #i"+steel_ore+"#!");
+					cm.dispose();
+				} else {
+					cm.sendOk("Very good! Very good, this makes me happy. We'll be able to repair the armor and weapons and sell them now. I'm indebted to your services. Oh, and here, take this!\r\n\r\n#fUI/UIWindow.img/QuestIcon/4/0#\r\n#fUI/UIWindow.img/QuestIcon/8/0# 100000\r\n#fUI/UIWindow.img/QuestIcon/7/0# 100000\r\n#i" + food + "#");
+				}
+				break;
+			case 35:
+				cm.sendNext("That was some good work you did for me earlier. Now, in order to repair these materials I'll have to have some mineral to patch them up. They're in a horrid state of condition, but if we can manage to get a material that they were made of we'll be able to repair the armor to its original condition. Sounds pretty easy right?\r\n\r\n#eWrong!#n");
+				break;
+			case 32:
+				cm.sendNext("Come look at my fine wares! Come, come, come! Come look at how they #esparkle#n. Look at how they #eglimmer#n! Yes, yes, #byou#k, young adventurer. Come here!");
+				break;
+			case 33:
+				cm.sendAcceptDecline("Glad to see you could make it. Now, I've got my eye on some tattered weapons over at a place called #bMushroom Kingdom#k. If you can grab me some materials from those areas, then I'm sure we'll be able to make them into fine wares indeed. One man's junk is another man's treasure, and I spy treasures all around me that people discard. They are so wasteful, really. What do you say? There is a little something for you at the end if you can help me out a little!");
+				break;
+			case 34:
+				if (!cm.haveItem(helmet, 60) || !cm.haveItem(spear, 60)) {
+					cm.sendOk("Did you even bring me 60 of each #i"+spear+"# and #i"+helmet+"#? I'm going to need a lot of those wares to make this time investment profitable!");
+					cm.dispose();
+				} else {
+					cm.sendOk("Great job on this! Here is a little something as a reward for your efforts; however, if you still want what you were looking for earlier, you're going to have to do one more task for me.\r\n\r\n#fUI/UIWindow.img/QuestIcon/4/0#\r\n#fUI/UIWindow.img/QuestIcon/8/0# 60000\r\n#fUI/UIWindow.img/QuestIcon/7/0# 100000");
+				}
+				break;
+		}
+	} else {
+		cm.sendOk("There is profit in everything as long as you look carefully enough.");
+		cm.dispose();
 	}
 }
 
@@ -71,7 +86,6 @@ function action(m,t,s) {
 				break;
 			case 33:
 				cm.sendOk("Great, then I need you to collect 60 #i"+helmet+"# and 60 #i"+spear+"#. Can you do that? I'm sure you can find these wares somewhere in the Skyscraper maps of Mushroom Kingdom.");
-				cm.dispose();
 				break;
 		}
 	} else if (status == 1) {

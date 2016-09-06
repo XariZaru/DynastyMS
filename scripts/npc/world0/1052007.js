@@ -5,6 +5,7 @@ var ticketSelection = -1;
 var text = "Here's the ticket reader.";
 var hasTicket = false;
 var NLC = false;
+var maps = [103000900, 103000903, 103000906];
 
 function start() {
 	cm.sendSimple("Pick your destination.\n\r\n#L0##bKerning City Subway#l\r\n#L1##bKerning square Shopping Center (Get on the subway)#l\n\n\r\n#L2#Enter Contruction Site#l\r\n#L3#New Leaf City#l");
@@ -33,20 +34,8 @@ function action(mode, type, selection) {
         	cm.dispose();
         	return;
         } else if (selection == 2) {
-            if (cm.haveItem(4031036) || cm.haveItem(4031037) || cm.haveItem(4031038)) {
-                text += " You will be brought in immediately. Which ticket you would like to use?#b";
-                for (var i = 0; i < 3; i++) {
-	                if (cm.haveItem(4031036 + i)) {
-	                    text += "\r\n#b#L" + (i + 1) + "##t" + (4031036 + i) +"#";
-	        		}
-	            }
-                cm.sendSimple(text);  
-                hasTicket = true;
-            } else { 
-            	cm.sendOk("It seems as though you don't have a ticket!");
-            	cm.dispose();
-            	return;
-            }
+			cm.sendSimple("Which map would you like to go to?", "#m"+maps[0]+"#", "#m"+maps[1]+"#", "#m"+[2]+"#");  
+			hasTicket = true;
         } else if (selection == 3) {
         	if (!cm.haveItem(4031711) && cm.getPlayer().getMapId() == 103000100) {
 	    		cm.sendOk("It seems you don't have a ticket! You can buy one from Bell.");
@@ -60,9 +49,8 @@ function action(mode, type, selection) {
     	if (hasTicket) {
     		ticketSelection = selection;
             if (ticketSelection > -1) {
-                cm.gainItem(4031035 + ticketSelection, -1);
-                cm.warp(103000897 + (ticketSelection * 3));
-                hasTicket = false;
+                //cm.gainItem(4031035 + ticketSelection, -1);
+                cm.warp(maps[selection]);
                 cm.dispose();
                 return;
             }

@@ -1,9 +1,10 @@
 
 // Drop message ...
-// 1 - Popup, 2 - white text, 3-4 dc, Pink message 
+// 1 - Popup, 2 - white text, 3-4 dc, 5 - Pink message 
 
 /*UI Codes for Maplestory
-#fUI/UIWindow.img/QuestIcon/#/0#
+
+#fUI/UIWindow.img/QuestIcon/4/0#\r\n#fUI/UIWindow.img/QuestIcon/#/0#
 9 = closeness
 8 = EXP
 7 = Meso

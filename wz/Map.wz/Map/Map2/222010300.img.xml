@@ -16,12 +16,14 @@
     <int name="VRLeft" value="-360" />
     <int name="VRBottom" value="340" />
     <int name="VRRight" value="2880" />
+	<!--
     <imgdir name="timeMob">
       <int name="id" value="6090003" />
       <int name="startHour" value="22" />
       <int name="endHour" value="14" />
       <string name="message" value="A cry of a ghost is echoing throughout the hills. The Scholar Ghost has appeared. Offer the tail of a Three-Tailed-Fox on the Stone Tower to appease the grieving Scholar Ghost." />
     </imgdir>
+	-->
   </imgdir>
   <imgdir name="back">
     <imgdir name="0">
@@ -5953,6 +5955,7 @@
       <int name="rx0" value="2240" />
       <int name="rx1" value="2860" />
     </imgdir>
+	<!--
     <imgdir name="19">
       <string name="type" value="m" />
       <string name="id" value="6090003" />
@@ -5966,6 +5969,7 @@
       <int name="rx0" value="710" />
       <int name="rx1" value="1904" />
     </imgdir>
+	-->
     <imgdir name="20">
       <string name="type" value="m" />
       <string name="id" value="5100004" />

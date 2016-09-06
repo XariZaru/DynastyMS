@@ -17,19 +17,24 @@ var req_party_size = 1;
 var party = null;
 var event_ticket = 4032055;
 
+importPackage(Packages.server);
+importPackage(Packages.client.inventory);
+
 // Coordinates for the monster to spawn
 var x = 116, y = 154;
 
 function canWarpBack() {
-	if (cm.getMapId() != lobby_map)
+	if (cm.getMapId() != 109040000 || cm.getParty() == null)
 		return false;
-	
 	var members = cm.getParty().getMembers().toArray();
-	for (var x = 0; x < members.length; x++)
-		if ([280030000, 910510000].indexOf(members[x].getPlayer().getMapId()) > -1)
+	for (var x = 0; x < members.length; x++) {
+		if ([280030000, 910510000].indexOf(members[x].getPlayer().getMap().getId()) > -1 && (cm.getClient().getChannelServer().getId() == members[x].getPlayer().getClient().getChannelServer().getId())) 
 			return true;
+	}
 	return false;
 }
+
+importPackage(Packages.net.server);
 
 function start() {
 	/*
@@ -49,8 +54,10 @@ function start() {
 	} else {
 		cm.gainItem(event_ticket, -cm.itemQuantity(event_ticket), true, true);
 		var txt = "Which boss do you wish to fight today? You'll need a party of at least 2 people in order to participate!\r\n\r\n";
-		for (var x = 0; x < mobs.length; x++)
-			txt += "#L" + x + "#" + mob_names[x] + "\r\n";
+		for (var x = 0; x < mobs.length; x++) {
+			var mob = MapleLifeFactory.getMonster(mobs[x]);
+			txt += "#L" + x + "##e"+(x + 1)+". #n#b" + mob_names[x] + "#k #r("+ mob.getHp()/1000000 +"m hp)#k\r\n";
+		}
 		cm.sendSimple(txt);
 	}
 }
@@ -71,18 +78,18 @@ function action(m,t,s) {
 		} else if (canWarpBack() && cm.haveItem(event_ticket, 1)) {
 			var members = cm.getParty().getMembers().toArray();
 			for (var x = 0; x < members.length; x++)
-				if ([280030000, 910510000].indexOf(members[x].getPlayer().getMap.getId()) > -1) {
+				if ([280030000, 910510000].indexOf(members[x].getPlayer().getMap().getId()) > -1) {
 					cm.warp(members[x].getPlayer().getMap().getId());
 					break;
 				}
-			cm.gainItem(event_ticket, -cm.itemQuantity(event_ticket), true, true);
+			//cm.gainItem(event_ticket, -cm.itemQuantity(event_ticket), true, true);
 			cm.dispose();
 		// No party
 		} else if (party == null) {
 			cm.sendOk("You must be in a party to start the party quest!");
 			cm.dispose();
 		} else if (!cm.isLeader()) {
-			cm.sendOk("You must be a leader.");
+			cm.sendOk("You must be a leader of the party to do this.");
 			cm.dispose();
 		// Party size too small
 		} else if (party.getMembers().size() < req_party_size) {
@@ -117,9 +124,8 @@ function action(m,t,s) {
 				// Record stuff and warp + boss + give tickets out
 				var members = cm.getParty().getMembers().toArray();
 				for (var x = 0; x < members.length; x++) {
-					if (!members[x].getPlayer().isGM())
-						members[x].getPlayer().addBossAttempt("bossmanager");
-					cm.gainItem(event_ticket, 1);
+					MapleInventoryManipulator.addFromDrop(members[x].getPlayer().getClient(), new Item(event_ticket, 0, 1), true);
+					addBossAttempt(members[x].getPlayer());
 				}
 				
 				// warp
@@ -155,12 +161,40 @@ function action(m,t,s) {
 	}
 }
 
+importPackage(Packages.java.sql);
+importPackage(Packages.tools);
+importPackage(Packages.java.lang);
+importPackage(Packages.java.text);
+
+function getBossAttempt(player) {
+	var ps = DatabaseConnection.getConnection().prepareStatement("SELECT * FROM boss_attempts WHERE characterid = '"+player.getId()+"' AND boss = 'bossmanager'");
+	var rs = ps.executeQuery();
+	var return_result = rs.next() ? rs.getInt("attempt") : 0;
+	
+	if (Math.floor((new java.sql.Date(System.currentTimeMillis()).getTime() - rs.getDate("attempt_time").getTime())/(1000*60*60*24)) > 1) {
+		var update_time = DatabaseConnection.getConnection().prepareStatement("UPDATE boss_attempts SET attempt_time = CURRENT_TIMESTAMP, attempt = 0 WHERE characterid = '"+player.getId()+"' AND boss = 'bossmanager'");
+		update_time.executeUpdate();
+		update_time.close();
+		return_result = 0;
+	}
+		
+	ps.close();
+	rs.close();
+	return return_result;
+}
+
+function addBossAttempt(player) {
+	var ps = DatabaseConnection.getConnection().prepareStatement("INSERT INTO boss_attempts VALUES (DEFAULT, '" + player.getId() + "', 'bossmanager', 1, CURRENT_TIMESTAMP) ON DUPLICATE KEY UPDATE attempt = attempt + 1");
+	ps.executeUpdate();
+	ps.close();
+}
+
 // If players still have boss attempts
 function cannotBoss(party, boss) {
 	var members = party.getMembers().toArray();
 	var cannot_boss = [];
 	for (var x = 0; x < members.length; x++)
-		if (members[x].getPlayer().getBossAttempt("bossmanager") >= 2)
+		if (getBossAttempt(members[x].getPlayer()) >= 2)
 			cannot_boss.push(members[x].getPlayer().getName());
 	return cannot_boss;
 }

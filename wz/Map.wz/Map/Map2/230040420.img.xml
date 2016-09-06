@@ -371,7 +371,7 @@
       <string name="id" value="8510000" />
       <int name="x" value="568" />
       <int name="y" value="133" />
-      <int name="mobTime" value="86400" />
+      <int name="mobTime" value="28800" />
       <int name="f" value="0" />
       <int name="hide" value="0" />
       <int name="fh" value="10" />
@@ -384,7 +384,7 @@
       <string name="id" value="8520000" />
       <int name="x" value="-459" />
       <int name="y" value="133" />
-      <int name="mobTime" value="129600" />
+      <int name="mobTime" value="28800" />
       <int name="f" value="0" />
       <int name="hide" value="0" />
       <int name="fh" value="6" />

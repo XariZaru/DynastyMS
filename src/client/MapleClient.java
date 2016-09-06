@@ -237,7 +237,9 @@ public class MapleClient {
 	
 	public String getIP() {
 		String[] address = getSession().getRemoteAddress().toString().split(":");
-		return address[0].substring(1, address[0].length());
+		if (address != null)
+			return address[0].substring(1, address[0].length());
+		return "0";
 	}
 	
 	public boolean hasBannedHWID() {
@@ -761,6 +763,7 @@ public class MapleClient {
 		disconnecting = true;
 		if (player != null && player.isLoggedin() && player.getClient() != null) {
 			//player.getClient().getChannelServer().getPlayerStorage().removePlayer(player.getId());
+			player.stopPetTasks();
 			MapleMap map = player.getMap();
 			final MapleParty party = player.getParty();
 			final int idz = player.getId();
@@ -771,7 +774,6 @@ public class MapleClient {
 			final MapleMessengerCharacter chrm = new MapleMessengerCharacter(player, 0);
 			final MapleGuildCharacter chrg = player.getMGC();
 			final MapleGuild guild = player.getGuild();
-			removePlayer();
 			player.saveCooldowns();
 			player.saveToDB();
 			if (channel == -1 || shutdown) {
@@ -782,6 +784,7 @@ public class MapleClient {
 			try {
 				if (!cashshop) {
 					if (!this.serverTransition) { // meaning not changing channels
+						removePlayer();
 						if (messengerid > 0) {
 							worlda.leaveMessenger(messengerid, chrm);
 						}
@@ -846,15 +849,19 @@ public class MapleClient {
 			} catch (final Exception e) {
 				FilePrinter.printError(FilePrinter.ACCOUNT_STUCK, e);
 			} finally {
-				getChannelServer().removePlayer(player);
-				if (!this.serverTransition) {
-					worlda.removePlayer(player);
-					if (player != null) {//no idea, occur :(
-						player.empty(false);
+				if (!cashshop) {
+					getChannelServer().removePlayer(player);
+					if (!this.serverTransition) {
+						worlda.removePlayer(player);
+						if (player != null) {//no idea, occur :(
+							player.empty(false);
+						}
+						player.logOff();
 					}
-					player.logOff();
+					player = null;
+				} else {
+					player.getCashShop().open(false);
 				}
-				player = null;
 			}
 		}
 		if (!serverTransition && isLoggedIn()) {
@@ -1217,6 +1224,7 @@ public class MapleClient {
 			}
 		}
 		server.getPlayerBuffStorage().addBuffsToStorage(player.getId(), player.getAllBuffs());
+		player.stopPetTasks();
 		player.cancelBuffEffects();
 		player.cancelMagicDoor();
 		//Canceling mounts? Noty

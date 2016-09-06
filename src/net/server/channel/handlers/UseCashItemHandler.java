@@ -386,7 +386,6 @@ public final class UseCashItemHandler extends AbstractMaplePacketHandler {
             Item item = player.getInventory(MapleInventoryType.CASH).getItem(pet.getPosition());
             String newName = slea.readMapleAsciiString();
             pet.setName(newName);
-            pet.saveToDb();
             player.forceUpdateItem(item);
             player.getMap().broadcastMessage(player, MaplePacketCreator.changePetName(player, newName, 1), true);
             c.announce(MaplePacketCreator.enableActions());

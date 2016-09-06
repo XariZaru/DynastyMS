@@ -106,7 +106,7 @@
     </imgdir>
     <imgdir name="3">
       <string name="type" value="n" />
-      <string name="id" value="9000069" />
+      <string name="id" value="1022101" />
       <int name="x" value="97" />
       <int name="y" value="-332" />
       <int name="mobTime" value="0" />
@@ -117,6 +117,19 @@
       <int name="cy" value="-326" />
       <int name="rx0" value="72" />
       <int name="rx1" value="147" />
+    </imgdir>
+    <imgdir name="4">
+      <string name="type" value="n" />
+      <string name="id" value="9250052" />
+      <int name="x" value="247" />
+      <int name="y" value="-378" />
+      <int name="mobTime" value="0" />
+      <int name="f" value="0" />
+      <int name="hide" value="0" />
+      <int name="fh" value="109" />
+      <int name="cy" value="-176" />
+      <int name="rx0" value="238" />
+      <int name="rx1" value="333" />
     </imgdir>
   </imgdir>
   <imgdir name="0">

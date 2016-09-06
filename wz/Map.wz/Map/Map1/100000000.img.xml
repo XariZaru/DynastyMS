@@ -326,6 +326,7 @@
       <int name="rx0" value="-544" />
       <int name="rx1" value="-444" />
     </imgdir>
+	<!--
     <imgdir name="21">
       <string name="type" value="n" />
       <string name="id" value="9201088" />
@@ -381,6 +382,7 @@
       <int name="rx0" value="2599" />
       <int name="rx1" value="2699" />
     </imgdir>
+	-->
     <imgdir name="15">
       <string name="type" value="n" />
       <string name="id" value="9010010" />
@@ -449,6 +451,7 @@
       <int name="rx0" value="1361" />
       <int name="rx1" value="1461" />
     </imgdir>
+	<!--
     <imgdir name="25">
       <string name="type" value="n" />
       <string name="id" value="9201118" />
@@ -462,6 +465,7 @@
       <int name="rx0" value="4347" />
       <int name="rx1" value="4417" />
     </imgdir>
+	-->
     <imgdir name="27">
       <string name="type" value="n" />
       <string name="id" value="9250052" />
@@ -490,6 +494,7 @@
       <int name="rx1" value="4015" />
       <string name="limitedname" value="Valentine" />
     </imgdir>
+	<!--
     <imgdir name="24">
       <string name="type" value="n" />
       <string name="id" value="9010022" />
@@ -503,6 +508,7 @@
       <int name="rx0" value="5489" />
       <int name="rx1" value="5589" />
     </imgdir>
+	-->
     <imgdir name="22">
       <string name="type" value="n" />
       <string name="id" value="9000017" />
@@ -517,6 +523,7 @@
       <int name="rx1" value="4136" />
       <string name="limitedname" value="Valentine" />
     </imgdir>
+	<!--
     <imgdir name="29">
       <string name="type" value="n" />
       <string name="id" value="9000069" />
@@ -531,6 +538,7 @@
       <int name="rx0" value="3482" />
       <int name="rx1" value="3582" />
     </imgdir>
+	-->
   </imgdir>
   <imgdir name="0">
     <imgdir name="info">

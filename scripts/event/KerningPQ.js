@@ -27,7 +27,6 @@ INSERT monsterdrops (monsterid,itemid,chance) VALUES (9300003,4001008,1);
 */
 
 importPackage(Packages.world);
-importPackage(Packages.java.lang);
 var exitMap;
 var minPlayers = 3;
 

@@ -874,7 +874,7 @@
       <int name="y" value="151" />
       <int name="tm" value="260000300" />
       <string name="tn" value="in00" />
-      <string name="script" value="" />
+      <string name="script" value="ariant_castle" />
       <int name="hideTooltip" value="0" />
       <int name="delay" value="0" />
     </imgdir>

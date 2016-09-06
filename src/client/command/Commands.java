@@ -40,6 +40,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -348,6 +349,19 @@ public class Commands {
 			//player.message("@up	: Shows how long Dynasty has been online.");
 			//player.message("@bosshp: Displays the remaining HP of the bosses on your map.");
 			player.message("@mesodrop [amount] [# of bags]: Drops X amount of mesos dropped between # of bags for meso explosion.");
+			player.message("(Donor only) @togglepets: turns on your pet features");
+			break;
+		case "togglepets":
+			if (player.hasDonorFeatures()) {
+				if (player.getPetTasks()) {
+					player.stopPetTasks();
+				} else {
+					player.startPetTasks();
+				}
+				player.dropMessage(5, "Your pet features have now been turned " + (player.getPetTasks() ? "on" : "off" + "."));
+			} else {
+				player.dropMessage(5, "You currently aren't subscribed to donor features.");
+			}
 			break;
 		case "mesodrop":
 			if (sub.length != 3) {
@@ -697,8 +711,9 @@ public class Commands {
 			}
 			break;
 		case "bosshp":
+			final List<Integer> excluded_mobs = Arrays.asList(8170000, 8160000, 8500003, 8500004, 8820007, 6230101, 6300003, 6400003, 6400004);
 			for(MapleMonster monster : player.getMap().getMonsters()) {
-				if(monster != null && monster.isBoss() && monster.getHp() > 0) {
+				if(monster != null && monster.isBoss() && monster.getHp() > 0 && !excluded_mobs.contains(monster.getId())) {
 					long percent = monster.getHp() * 100L / monster.getMaxHp();
 					String bar = "[";
 					for (int i = 0; i < 100; i++){

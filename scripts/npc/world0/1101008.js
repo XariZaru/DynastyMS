@@ -18,11 +18,8 @@ var reqArray, reqDetails, reqNames, jobType, sel, available, progress, completed
 
 function start() {
     status = -1;
-        if (cm.getLevel() <= 5) {
-        	cm.sendNext("Hi! Welcome to #e#bDynastyMS#k#n. As a beginner, there'll be a lot of things that seem unfamiliar here compared to other" +
-        			" Maplestory environments. Most notably, to be able to job advance you must complete the storyline. Everything on the server is" +
-        			" geared towards customization. Everything from certain mob placements, transportation, PQs, and non-playable characters" +
-        			" are made specially as a new form of interaction with the player.");
+        if (cm.getLevel() <= 2) {
+        	cm.sendNext("Hi! Welcome to #e#bDynastyMS#k#n. As a beginner, you'll need to do the #bstoryline quests#k in order to #rjob advance#k!");
         } else {
             cm.sendNext("Hey, #b#h ##k! Let me retrieve a log of your current and past quests ...");
         }
@@ -35,7 +32,7 @@ function action(mode, type, selection) {
     } else {
         status++;
     }
-    if (cm.getLevel() <= 5) {
+    if (cm.getLevel() <= 2) {
     	beginnerMessage();
     } else {
     	normalOptions(selection);
@@ -45,14 +42,11 @@ function action(mode, type, selection) {
 
 function beginnerMessage() {
 	if (status == 0) {
-	cm.sendOk("Use #e@helper#n! It's an important command! Pay close attention to non-playable characters when they speak to you is imperative" +
-			" to understanding the game. If you're lost you can always speak to me for information on your quests. " +
-			"I can also tell you the unique non-playable characters that are specific to each major map if you want!\r\n\r\nAll these features" +
-			" are available starting at #elevel 6#n.\r\n\r\n#eImportant commands:#n\r\n@helper\r\n@gm\r\n@str, luk, dex, int\r\n\r\n#eImportant Features:#n\r\nNo stat requirements on items\r\nStoryline\r\nGreat community boss area\r\nSome revamping of monster maps and mobs");
+	cm.sendOk("There are important commands you can access by typing #e@help#n. In order to #ejob advance#n as a noblesse you must talk with #bAgent E#k, who comes later on in your storyline.");
 	} else if (status == 1) {
 		if (cm.getMapId() != 300000010)
 			cm.warp(300000010);
-		cm.talkGuide("Let's go find #bPerzen#k. He's the storyline NPC for Cygnus Knights.", 0);
+		cm.talkGuide("Let's go find #bPerzen#k. He's the beginner storyline NPC for Cygnus Knights.", 0);
 		cm.talkGuide("I'm your guide for Cygnus Knights. If you ever need to catch up on your storyline, double click me.", 5);
 		cm.dispose();
 	}

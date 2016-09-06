@@ -978,6 +978,9 @@ public class MapleStatEffect {
                 mbuff = MaplePacketCreator.giveForeignBuff(applyto.getId(), stat);
             }
             long starttime = System.currentTimeMillis();
+
+            if (applyto.getJob().getId() == 1411 && applyto.getDynastyQuest("Unlocking a Hidden Power") == 8 && sourceid == 1121002)
+            	localDuration = 180000;
             CancelEffectAction cancelAction = new CancelEffectAction(applyto, this, starttime);
             ScheduledFuture<?> schedule = TimerManager.getInstance().schedule(cancelAction, localDuration);
             applyto.registerEffect(this, starttime, schedule);

@@ -93,7 +93,7 @@ function action(mode, type, selection) {
 			" take a gambit and send a caravan to Orbis.\r\n\r\n#L0##bWhat can I do to help?");
 			} else if (cm.getQ()!=18 && cm.getQ() > 22 && cm.getQ()!=33) {
 				choice = selection;
-				cm.sendYesNo("Are you sure you want to go to #b#m"+place[selection]+"##k? It will cost you #b"+place[(selection + 2)]+"#k mesos.");        
+				cm.sendYesNo("Are you sure you want to go to #b#m"+place[selection]+"##k? It will cost you #b"+place[(selection + 3)]+"#k mesos.");        
 			} else {
 				if (cm.getQ()!= 22) {
 				cm.sendNext("Wait! Okay, I know why you're here. It's about that guy who's been snooping around and causing trouble. Treason, your"+
@@ -106,7 +106,7 @@ function action(mode, type, selection) {
 			}
          } else /*if (cm.getQ()!=18 && cm.getQ() > 22 && cm.getQ()!=33)*/ {
             choice = selection;
-            cm.sendYesNo("Are you sure you want to go to #b#m"+place[selection]+"##k? It will cost you #b"+place[(selection + 2)]+"#k mesos.");
+            cm.sendYesNo("Are you sure you want to go to #b#m"+place[selection]+"##k? It will cost you #b"+place[(selection + 3)]+"#k mesos.");
          }
     } else if (status == 1) {
         if (cm.getJobId() > 999 && cm.getJobId() < 2000) {       
@@ -119,12 +119,12 @@ function action(mode, type, selection) {
                 " extremely exaggerated and metaphorical. You should gather some information from the nearby residents to get an overall picture of what you"+
             " are up against. You go up against some of the toughest foes Aquarium has yet to seen show face.");            
          } else if (cm.getQ()!=18 && cm.getQ() > 22 && cm.getQ()!=33) {
-            if (cm.getMeso() < place[choice + 2]) {
+            if (cm.getMeso() < place[choice + 3]) {
                 cm.sendOk("You are lacking the funds to go to this area.");
                 cm.dispose();
             } else {
                 cm.warp(place[choice]);
-                cm.gainMeso(-place[choice + 2]);
+                cm.gainMeso(-place[choice + 3]);
                 cm.sendOk("Enjoy your time over there! I hope you come back safe and sound."), cm.dispose();;
             }
         } else {
@@ -136,12 +136,12 @@ function action(mode, type, selection) {
             }
         }
     } else /*if (cm.getQ()!=18 && cm.getQ() > 22 && cm.getQ()!=33)*/ {
-            if (cm.getMeso() < place[choice + 2]) {
+            if (cm.getMeso() < place[choice + 3]) {
                 cm.sendOk("You are lacking the funds to go to this area.");
                 cm.dispose();
             } else {
                 cm.warp(place[choice]);
-                cm.gainMeso(-place[choice + 2]);
+                cm.gainMeso(-place[choice + 3]);
                 cm.sendOk("Enjoy your time over there! I hope you come back safe and sound."), cm.dispose();;
             }
     }

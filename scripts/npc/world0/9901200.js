@@ -30,10 +30,46 @@ var inventory;
 
 importPackage(Packages.org.w3c.dom);
 importPackage(Packages.client.inventory);
+importPackage(Packages.server);
+importPackage(Packages.net.server);
+importPackage(Packages.provider);
+importPackage(Packages.java.io);
+importPackage(Packages.java.sql);
+importPackage(Packages.tools);
+importPackage(Packages.server.life);
 var target = null;
+var itemid = null;
+var mobid = null;
+var chance = -1;
+
+function searchItem(item) {
+	var text = "";
+	var items = MapleItemInformationProvider.getInstance().getAllItems().toArray();
+	for (var x = 0; x < items.length; x++) {
+		if (items[x].getRight().toLowerCase().contains(item.toLowerCase()))
+			text += "#L"+items[x].getLeft()+"##b" + items[x].getLeft() + "#k - #r#z" + items[x].getLeft() + "#\r\n";
+	}
+	return text;
+}
+
+function searchMob(mob) {
+	var text = "";
+	var data = MapleDataProviderFactory.getDataProvider(new File("wz/String.wz")).getData("Mob.img");
+	if (data != null) {
+		var data = data.getChildren().toArray();
+		for (var x = 0; x < data.length; x++) {
+			var name = MapleDataTool.getString(data[x].getChildByPath("name"), "NO-NAME");
+			if (name.toLowerCase().contains(mob.toLowerCase()) && MapleLifeFactory.getMonster(data[x].getName()) != null) {
+				text += "#L" + data[x].getName() + "##b"+ data[x].getName() +"#k - #r" + name + ""+(MapleLifeFactory.getMonster(data[x].getName()).isBoss() ?" (boss) " : "")+"#k\r\n";
+			}
+		}
+	}
+	return text + "#L999#Exit";
+}
 
 function start() {
-	cm.sendOk(cm.getPlayer().getPets());
+	if (cm.getPlayer().isGM())
+		cm.sendGetText("What item do you wish to add to the database?\r\n");
 	//cm.getPlayer().addVP(8);
 	//cm.getPlayer().gainNX(20000);
 	//cm.warp(250000000);
@@ -44,6 +80,62 @@ function start() {
 	//cm.sendSimple("These are "+target.getName()+"'s items.\r\n#L0#Equips\r\n#L1#Use\r\n#L2#Setup\r\n#L999#Exit");
 }
 
+function action(m,t,s) {
+	if (m != 1) {
+		MapleMonsterInformationProvider.getInstance().clearDrops();
+		cm.dispose();
+		return;
+	}
+	status++;
+	if (status == 0) {
+		cm.sendSimple(searchItem(cm.getText()) + "\r\n");
+	} else if (status == 1) {
+		if (cm.getText() != "") {
+			itemid = itemid == null ? s : itemid;
+			cm.sendGetText("What monster do you wish to drop this item?\r\n");
+		} else {
+			cm.sendNext("You have to specify an item name at least.");
+			cm.dispose();
+		}
+	} else if (status == 2) {
+		if (cm.getText() != "")
+			cm.sendSimple(searchMob(cm.getText()) + "\r\n");
+		else {
+			cm.sendNext("Please enter a mob at least.");
+			status = 0;
+		}
+	} else if (status == 3) {
+		//var ps = Database.getConnection().prepareStatement("INSERT INTO drop_data VALUES (DEFAULT, ?, ?, 1, 1, 0, ?)");
+		if (chance != -1) {
+			cm.sendNext("Your drop has been inserted");
+			var ps = DatabaseConnection.getConnection().prepareStatement("INSERT INTO drop_data VALUES (DEFAULT, ?, ?, 1, 1, 0, ?)");
+			ps.setInt(1, s);
+			ps.setInt(2, itemid);
+			ps.setInt(3, chance);
+			ps.executeUpdate();
+			ps.close();
+			status = 0;
+		} else if (s != 999) {
+			mobid = s;
+			cm.sendGetNumber("What chance do you want this item to drop at? (200 is .04% and 25000 is 5%)",0,0,999999);
+		} else {
+			cm.sendNext("Drop not found");
+			status = 1;
+		}
+	} else if (status == 4) {
+		chance = s;
+		cm.sendNext("Your drop has been inserted");
+		var ps = DatabaseConnection.getConnection().prepareStatement("INSERT INTO drop_data VALUES (DEFAULT, ?, ?, 1, 1, 0, ?)");
+		ps.setInt(1, mobid);
+		ps.setInt(2, itemid);
+		ps.setInt(3, s);
+		ps.executeUpdate();
+		ps.close();
+		status = 0;
+	}
+}
+
+/*
 function action(mode, type, selection) {
     status++;
     if (mode != 1) {
@@ -82,4 +174,4 @@ function resetStats() {
 	cm.getPlayer().updateSingleStat(MapleStat.LUK, 4);
 	cm.getPlayer().updateSingleStat(MapleStat.INT, 4);
 	cm.getPlayer().updateSingleStat(MapleStat.AVAILABLEAP, totAp - 16);
-}
+}*/

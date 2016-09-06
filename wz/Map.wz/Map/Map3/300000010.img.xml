@@ -37,7 +37,7 @@
   <imgdir name="life">
     <imgdir name="0">
       <string name="type" value="n" />
-      <string name="id" value="2131000" />
+      <string name="id" value="2131001" />
       <int name="x" value="327" />
       <int name="y" value="232" />
       <int name="mobTime" value="0" />
@@ -991,7 +991,7 @@
       <int name="pt" value="1" />
       <int name="x" value="-142" />
       <int name="y" value="240" />
-      <int name="tm" value="300000000" />
+      <int name="tm" value="999999999" />
       <string name="tn" value="in00" />
     </imgdir>
     <imgdir name="2">
@@ -999,10 +999,10 @@
       <int name="pt" value="7" />
       <int name="x" value="334" />
       <int name="y" value="-159" />
-      <int name="tm" value="999999999" />
-      <string name="tn" value="" />
+      <int name="tm" value="300000011" />
+      <string name="tn" value="out00" />
       <int name="horizontalImpact" value="0" />
-      <string name="script" value="enterWarehouse" />
+      <string name="script" value="" />
     </imgdir>
     <imgdir name="3">
       <string name="pn" value="in01" />
@@ -1010,8 +1010,8 @@
       <int name="x" value="429" />
       <int name="y" value="238" />
       <int name="tm" value="999999999" />
-      <string name="tn" value="" />
-      <string name="script" value="cellar" />
+      <string name="tn" value="sp" />
+      <string name="script" value="" />
     </imgdir>
   </imgdir>
 </imgdir>

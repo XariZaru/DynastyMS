@@ -22,10 +22,7 @@ function start() {
 			//cm.sendNext("Hey, Arans are currently disabled at the moment. You should go make a #bCygnus Knight#k or #bExplorer#k!");
 //		} else
 		if (cm.getLevel() <= 2) {
-        	cm.sendNext("Hi! Welcome to #e#bDynastyMS#k#n. As a beginner, there'll be a lot of things that seem unfamiliar here compared to other" +
-        			" Maplestory environments. Most notably, to be able to job advance you must complete the storyline. Everything on the server is" +
-        			" geared towards customization. Everything from certain mob placements, transportation, PQs, and non-playable characters" +
-        			" are made specially as a new form of interaction with the player.");
+        	cm.sendNext("Hi! Welcome to #e#bDynastyMS#k#n. As a beginner, you'll need to do the #bstoryline quests#k in order to #rjob advance#k!");
         } else {
             cm.sendNext("Hey, #b#h ##k! Let me retrieve a log of your current and past quests ...");
         }
@@ -33,7 +30,7 @@ function start() {
 
 function action(mode, type, selection) {
     if (mode == -1 || mode == 0) {
-		if (cm.getJobId()==2000 && cm.getQ() == 1) {
+		if (cm.getJobId()==2000 && cm.getQ() == 0) {
 			cm.talkGuide("Let's go find a man called #eSejan#k, he should start us off in this world!", 0);
 			cm.talkGuide("Sometimes if you miss the hints I give you, I'll say them again! Let's go find Sejan!", 5);
 			//cm.getClient().disconnect(false, false);
@@ -41,17 +38,14 @@ function action(mode, type, selection) {
 		} else if (cm.getPlayer().getJob().getId()==0 && cm.getLevel() < 2) {
 			if (cm.getMapId() != 209000001)
 				cm.warp(209000001);
-			cm.talkGuide("I think it's best if we find Mom and Dad. They should be able to"+
-				" help us get started in this world.", 0);
-			cm.talkGuide("I think if we walk around a little we'll find them!",5);
-			cm.talkGuide("They should be nearby a man named Santa. That's the last I heard of them!",10);
-			cm.talkGuide("Job advancing is done through the storyline! So don't forget to do your quests!",15);
+			cm.talkGuide("Let's talk to our Mom and Dad.", 0);
+			cm.talkGuide("Job advancing is done through the storyline! So don't forget to do your quests!",3);
 			cm.dispose();
 		}
     } else {
         status++;
     }
-    if (cm.getLevel() <= 2 || cm.getJobId()==2000 && cm.getQ()==1)
+    if (cm.getLevel() <= 2 || cm.getJobId()==2000 && cm.getQ()==0)
     	beginnerMessage();
     else	
 		normalOptions(selection);
@@ -60,29 +54,29 @@ function action(mode, type, selection) {
 
 function beginnerMessage() {
 	if (status == 0) {
-		if (cm.getJobId() == 2000 && cm.getQ() == 1) {
+		if (cm.getJobId() == 2000 && cm.getQ() == 0) {
 			if (cm.getMapId() != 260000206)
 				cm.warp(260000206);
 			//cm.getClient().disconnect(false, false);
-			cm.talkGuide("Let's go find a man called #eSejan#n, he should start us off in this world!", 0);
+			cm.sendOk("There are important commands you can access by typing #e@help#n. In order to #ejob advance#n as a legend you must talk with #bMaster Thief Statue or Sejan#k, who comes later on in your storyline.");
+			cm.talkGuide("Let's go find a man called #eSejan#n. He'll help us job advance!", 0);
 			cm.talkGuide("Sometimes if you miss the hints I give you, I'll say them again! Let's go find Sejan!", 5);
 			cm.talkGuide("You can double click me for more options.", 9);
 			cm.dispose();
 			return;
 		}
+		cm.sendOk("There are important commands you can access by typing #e@help#n. In order to #ejob advance#n as a beginner you must talk with #bTaeng the Explorer#k, who comes later on in your storyline.");
+		/*
 		cm.sendOk("Use #e@helper#n! It's an important command! Pay close attention to non-playable characters when they speak to you is imperative" +
 				" to understanding the game. If you're lost you can always speak to me for information on your quests. " +
 				"I can also tell you the unique non-playable characters that are specific to each major map if you want!\r\n\r\nAll these features" +
 				" are available starting at #elevel 6#n.\r\n\r\n#eImportant commands:#n\r\n@helper\r\n@gm\r\n@str, luk, dex, int");
+				*/
 	} else if (status == 1) {
-		if (cm.getMapId() != 209000001 && cm.getQ() < 4)
+		if (cm.getMapId() != 209000001 && cm.getQ() < 4 && cm.getJobId() < 2000)
 			cm.warp(209000001);
-		cm.talkGuide("I think it's best if we find Mom and Dad. They should be able to"+
-			" help us get started in this world.", 0);
-		cm.talkGuide("I think if we walk around a little we'll find them!",5);
-		cm.talkGuide("They should be nearby a man named Santa. That's the last I heard of them!",10);
-		cm.talkGuide("Job advancing is done through the storyline! So don't forget to do your quests!",15);
-		cm.talkGuide("You can double click me for more options!", 20);
+		cm.talkGuide("You can job advance through doing storyline quests!", 0);
+		cm.showInstruction("Talk to "+ (cm.getJobId() == 0 ? "your #eMom and Dad#n" : "#eSejan#n") +". Only click on NPCs once, not twice!", 200, 50);
 		cm.dispose();
 	}
 }

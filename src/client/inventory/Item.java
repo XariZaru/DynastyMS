@@ -37,7 +37,6 @@ public class Item implements Comparable<Item> {
     private int originalid;
     private short position;
     private short quantity;
-    private Date create_date = null;
     private int petid = -1;
     private MaplePet pet = null;
     private String owner = "";
@@ -76,16 +75,6 @@ public class Item implements Comparable<Item> {
     
     public void setOriginalId(int id) {
     	this.originalid = id;
-    }
-    
-    public Date getCreateDate() {
-    	if (create_date == null)
-    		create_date = new Date(System.currentTimeMillis());
-    	return create_date;
-    }
-    
-    public void setCreateDate(Date p_create) {
-    	this.create_date = p_create;
     }
     
     public int getOriginalId() {

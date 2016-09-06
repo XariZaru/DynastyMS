@@ -111,8 +111,8 @@ function action(mode, type, selection) {
                     cm.sendAcceptDecline("Oh, no. Actually, I think your Mother and I would love to spend the night, though. Can you make reservations with Simon?");
 				} else if (cm.getQ() == 0) {
 					cm.completeQ();
-					cm.talkGuide("Speak with #bSanta#k nearby! I'm your guide for #rDynastyMS#k. I'll be helping you throughout your adventures. Just click on me and you can see some quest details!", 0);
-					cm.talkGuide("By speaking with Santa, you further your storyline. This lets you job advance when you can!", 5);
+					cm.talkGuide("Speak with #bSanta#k nearby!", 0);
+					cm.showInstruction("Talk with #eSanta#n to continue the storyline", 200, 50);
 					cm.dispose();
                 } else if (cm.getQ()==14) {
                     cm.sendOk("We're going to take you to a new place where you'll be able to train and get stronger for the good of our people. And don't you worry about about funding. Your mother and I will provide all the money you need.\r\n\r\n#eSpeak with Taeng the Explorer#n when you arrive at your new location.");
@@ -133,9 +133,10 @@ function action(mode, type, selection) {
 				cm.gainMeso(75000);
                 cm.dispose();
             } else {
-                    cm.completeQ();                  
-                    cm.talkGuide("Simon should be around here. Perhaps we should browse around town.", 0);
-                    cm.dispose();
+				cm.completeQ();                  
+				cm.talkGuide("Simon should be around here!", 0);
+				cm.showInstruction("Let's find Simon!", 250, 50);
+				cm.dispose();
             }
 	}
 }

@@ -141,7 +141,7 @@ function action(mode, type, selection) {
 	        }
         }
     } else if (status == 1) {
-        if (cm.getJobId()>=2000 && cm.getJobId()<=2999 && cm.getMapId()==200000000 && cm.getQ() > 13) {
+        if (cm.getJobId()>=2000 && cm.getJobId()<=2999 && cm.getMapId()==200000000 && cm.getQ() >= 12) {
             if (cm.getPlayerCount(train) == 0) {
                 cm.getPlayer().saveLocation("FREE_MARKET");
                 cm.warp(train);

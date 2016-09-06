@@ -35,6 +35,6 @@ function action(mode, type, selection){
     if (eim != null) {
         eim.unregisterPlayer(cm.getPlayer());
     }
-    cm.warp(220000000, 0);
+    cm.warp(109040000, 0);
     cm.dispose();
 }

@@ -23,11 +23,15 @@ package client.inventory;
 
 import client.MapleClient;
 
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Time;
+import java.sql.Timestamp;
 import java.util.LinkedList;
 import java.util.List;
+
 import server.MapleItemInformationProvider;
 import tools.DatabaseConnection;
 import tools.MaplePacketCreator;
@@ -55,6 +59,7 @@ public class Equip extends Item {
     private int ringid = -1;
     private boolean wear = false;
     private boolean is_original = true;
+	private Timestamp create_date = null;
 
     public Equip(int id, short position) {
         super(id, position, (short) 1);
@@ -67,6 +72,16 @@ public class Equip extends Item {
         this.upgradeSlots = (byte) slots;
         this.itemExp = 0;
         this.itemLevel = 1;
+    }
+    
+    public Timestamp getCreateDate() {
+    	if (create_date == null)
+    		create_date = new Timestamp(System.currentTimeMillis());
+    	return create_date;
+    }
+    
+    public void setCreateDate(Timestamp p_create) {
+    	this.create_date = p_create;
     }
 
     @Override

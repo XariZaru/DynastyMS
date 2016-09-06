@@ -140,6 +140,7 @@
     </imgdir>
   </imgdir>
   <imgdir name="life">
+	<!--
     <imgdir name="0">
       <string name="type" value="n" />
       <string name="id" value="1090000" />
@@ -153,6 +154,7 @@
       <int name="rx0" value="124" />
       <int name="rx1" value="198" />
     </imgdir>
+	-->
   </imgdir>
   <imgdir name="reactor" />
   <imgdir name="0">

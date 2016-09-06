@@ -3965,6 +3965,16 @@
       <int name="tm" value="109040001" />
       <string name="tn" value="start00" />
     </imgdir>
+	<imgdir name="28">
+      <string name="pn" value="join00" />
+      <int name="pt" value="4" />
+      <int name="x" value="139" />
+      <int name="y" value="105" />
+      <int name="tm" value="999999999" />
+      <string name="tn" value="" />
+	  <string name="script" value="exitBossManager" />
+    </imgdir>
+	<!--
     <imgdir name="28">
       <string name="pn" value="join00" />
       <int name="pt" value="4" />
@@ -3973,5 +3983,6 @@
       <int name="tm" value="109040000" />
       <string name="tn" value="join01" />
     </imgdir>
+	-->
   </imgdir>
 </imgdir>

@@ -4,8 +4,8 @@
     <int name="version" value="10" />
     <int name="cloud" value="0" />
     <int name="town" value="1" />
-    <int name="returnMap" value="209000000" />
-    <int name="forcedReturn" value="209000000" />
+    <int name="returnMap" value="209000001" />
+    <int name="forcedReturn" value="209000001" />
     <float name="mobRate" value="1.0" />
     <string name="bgm" value="Bgm04/WhiteChristmas" />
     <int name="everlast" value="1" />
@@ -184,7 +184,7 @@
   <imgdir name="life">
     <imgdir name="0">
       <string name="type" value="n" />
-      <string name="id" value="2001004" />
+      <string name="id" value="9201003" />
       <int name="x" value="126" />
       <int name="y" value="153" />
       <int name="mobTime" value="0" />

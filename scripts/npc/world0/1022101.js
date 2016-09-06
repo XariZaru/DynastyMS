@@ -29,14 +29,14 @@ var items = [
 1332009,1322014,2070004,2070010],
     [],
     [1012076,1012077,1012078,1012079,1122001,1122002,
-        1122003,1122004,1122005,1122006,2070006,2070005],
+        1122003,1122004,1122005,1122006,2070006,2070005,2040001,2040101, 2040201, 2040301, 2040311, 2040321, 2040401,2040421,2040501,2040601,2040621,2040701,2040801,2040931,2041001,2043001,2043101,2043201, 2043301,2043701,2043801,2044001,2044101,2044201,2044301,2044401,2044501,2044601,2044701,2044801,2044901,2048001,2048011,2041101,2041301,],
     [1082149,1082230,1022082,1102206,1102149,1040138,1041139,
 1082225,1060121,1061142,1072328,1102148,1040137,1041138,1082224,1060120,1061141,1072327,
 1000030,1001045,1102096,1052091,1072281,1702119,1000032,1001047,1102097,1052093,
 1072283,1702118,2070007],
-    [1142012,1142064,1132016,1082223,2070016,1122000,1122058,1112401,1112402,1112414,
+    [1132016,1122000,1112401,1112402,1112414,
     1382052,1372042,1092049,1002858,1002859,1002860,1002861,4032119,1102084,1102086,
-1102041,1102042,2070018,1072344]]; 
+1102041,1102042, 1032031, 1122011, 1122012, 1002776, 1002777, 1002778, 1002779, 1002780, 1102172, 1082234, 1082235, 1082236, 1082237, 1082238, 1052155, 1052156, 1052157, 1052158, 1052159, 1092057, 1092058, 1092059, 1072355, 1072356, 1072357, 1072358, 1072359, 1302081, 1312037, 1322060, 1402046, 1412033, 1422037, 1442063, 1482023, 1332073, 1332074, 1372044, 1382057, 1432047, 1452057, 1462050, 1472068, 1492023]]; 
 var sel;
 var names = ["Common", "Common", "NX", "Rare", "Super Rare", "Unique"];
 var type;
@@ -54,7 +54,7 @@ function start() {
         }
     }
     if (unfinished.length >= 0) {
-        cm.sendSimple("What option would you like to select?\r\n\r\n#b#L0#Daily Gift ("+(cm.getGiftLog('daily') >= 1 ? "UNAVAILABLE" : "AVAILABLE")+")\r\n#L1#One-Time Gift\r\n#L2#Buy Smegas");
+        cm.sendSimple("What option would you like to select?\r\n\r\n#b#L0#Daily Gift ("+(cm.getGiftLog('daily') >= 1 ? "UNAVAILABLE" : "AVAILABLE")+")\r\n#L1#One-Time Gift");
     }
 }
 
@@ -78,6 +78,9 @@ function action(mode, type, selection) {
         } else if (selection == 2) {
             cm.sendGetNumber("How many smegas will you buy? They are #b1,000,000#k mesos each.",1,1,100);
         } else {
+			cm.sendOk("Disabled for rework.");
+			cm.dispose();
+			return;
             cm.sendSimple("Here are the percentages so far ...\r\n#eUnique - .5%\r\nSuper Rare - 2%\r\nRare - 10%\r\nNX - 12%\r\nCommon - 75.5%"+
                 "#n\r\n#b#L6#Claim daily gift\r\n#L0#Common/Equips\r\n#L2#NX\r\n#L3#Rare\r\n#L4#Super Rare\r\n#L5#Unique");
 //            cm.sendOk("You have received your free daily gift! Please come back tomorrow to claim another.");
@@ -85,7 +88,7 @@ function action(mode, type, selection) {
     } else if (status == 1) {
         if (sel == 0) {
             if (selection != 6) {
-            text = "Here are the winnable items from #e"+names[selection]+"#n category. ("+(items[selection].length + (selection == 0 ? items[1].length : 0))+")\r\n";
+            text = "Here are the winnable items from #e"+names[selection]+"#n category. ("+(items[selection].length + (selection == 0 ? items[1].length : 0))+")\r\n\r\n";
             for (var i = 0; i < (selection == 2 ? nx.length : items[selection].length); i++) {
                 text += ""+(selection == 2 ? "#b\r\n"+nx[i]+" NX" : "#i"+items[selection][i]+"#")+"";
             }
@@ -115,9 +118,9 @@ function action(mode, type, selection) {
                         }
                         if (type != 2 ? cm.canHold(items[type][randTwo]) : type) {
                             cm.sendOk("You have received your daily item!");
-                            (type == 2 ? (cm.getPlayer().getCashShop().gainCash(4, nx[randTwo]), cm.playerMessage(6, "You have gained "+nx[randTwo]+" papypal NX.")) : type != 0 ? cm.gainItem(items[type][randTwo],1) :
-                                    cm.gainItem(items[type][randTwo], 1 + (randThree * (commonItem ==
-                                1 ? 0 : 1))));
+                            (type == 2 ? (cm.getPlayer().getCashShop().gainCash(4, nx[randTwo]), cm.playerMessage(6, "You have gained "+nx[randTwo]+" paypal NX.")) : type != 0 ? cm.gainItem(items[type][randTwo],1) :
+                                    cm.gainItem(items[type][randTwo], 1 + (Math.floor(items[type][randTwo] / 10000) != 204 ? (randThree * (commonItem ==
+                                1 ? 0 : 1)) : 0)));
                             cm.setBossLog('daily');
                             cm.dispose();
                         } else {

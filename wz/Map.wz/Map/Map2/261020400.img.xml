@@ -16,12 +16,14 @@
     <int name="VRLeft" value="-714" />
     <int name="VRBottom" value="321" />
     <int name="VRRight" value="1695" />
+	<!--
     <imgdir name="timeMob">
       <int name="id" value="6090004" />
       <int name="startHour" value="3" />
       <int name="endHour" value="7" />
       <string name="message" value="With undecipherable whispers, Rurumo has appeared. Use the poison spray to weaken Rurumo." />
     </imgdir>
+	-->
   </imgdir>
   <imgdir name="back">
     <imgdir name="0">
@@ -1243,6 +1245,7 @@
       <int name="rx0" value="110" />
       <int name="rx1" value="1274" />
     </imgdir>
+	<!--
     <imgdir name="27">
       <string name="type" value="m" />
       <string name="id" value="6090004" />
@@ -1256,6 +1259,7 @@
       <int name="rx0" value="110" />
       <int name="rx1" value="1274" />
     </imgdir>
+	-->
   </imgdir>
   <imgdir name="reactor">
     <imgdir name="0">

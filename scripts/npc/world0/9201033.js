@@ -44,7 +44,8 @@ function action(mode, type, selection) {
         if (cm.getQ()==7) {
             cm.gainItem(item, 3);
             cm.talkGuide("Room 403! Cool, what luck! We should rush these to your parents so they can rest as soon as possible!", 0);
-            cm.completeQ();
+            cm.showInstruction("Let's get back to your parents!", 200, 50);
+			cm.completeQ();
             cm.dispose();
       }
    }

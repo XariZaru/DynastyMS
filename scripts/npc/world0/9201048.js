@@ -49,7 +49,7 @@ function start() {
             for (var i = 0; i < party.size() && next; i++) {
                 if ((party.get(i).getLevel() >= minLevel) && (party.get(i).getLevel() <= maxLevel))
                     levelValid++;
-                if (party.get(i).getMapid() == cm.getPlayer().getMapId())
+                if (party.get(i).getMapId() == cm.getPlayer().getMapId())
                     inMap++;
             }
             if (levelValid < minPlayers || inMap < minPlayers)

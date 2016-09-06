@@ -14,7 +14,7 @@ var pq_map = 109040000;
 var currency_id = 4031229;
 
 // Array values are price and expiration
-var etc 	  =	{5220000:[1000,-1],5510000:[1000,-1],5130000:[1000, -1]};
+var etc 	  =	{5220000:[5000,-1],5510000:[1000,-1],5130000:[1000, -1]};
 var usables   =	{5050000:[100,-1],5570000:[10000,-1],5450000:[1000, 86400000]};
 var currency  =	{4031229:[10000,-1]};
 var equipment = {1112408:[5000, -1], 1122012: [250000,-1], /*1112401: [2000000, -1]*/};
@@ -88,7 +88,7 @@ function action(m,t,s) {
 		}
 	} else if (status == 2) {
 		if (to_buy == 3) {
-			cm.getPlayer().gainNX(-amount);
+			cm.getPlayer().gainNX(amount);
 			cm.getPlayer().dropMessage(5, "You have gained " + amount + " NX cash in this transaction.");
 			losePoints(cm.getPlayer(), -amount);
 			cm.dispose();

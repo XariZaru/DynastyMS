@@ -64,6 +64,7 @@ import tools.Pair;
 import client.MapleCharacter;
 import client.SkillFactory;
 import constants.ServerConstants;
+import server.life.MapleNPCFactory;
 import server.quest.MapleQuest;
 
 public class Server implements Runnable {
@@ -171,25 +172,6 @@ public class Server implements Runnable {
         tMan.register(tMan.purge(), 300000);//Purging ftw...
         tMan.register(new RankingWorker(), ServerConstants.RANKING_INTERVAL);
         
-        /*
-        tMan.register(new Runnable() {
-        	@Override
-        	public void run() {
-        		try {
-        			for (Channel ch : Server.getInstance().getAllChannels())
-        				for (MapleCharacter player : ch.getPlayerStorage().getAllCharacters()) {
-        					if (player.canVoteGTOP())
-        						player.dropMessage("You can vote for GTOP100!");
-        					if (player.canVoteUltimate())
-        						player.dropMessage("You can vote for UltimatePrivateServers!");
-        				}
-        		} catch (Exception e) {
-        			e.printStackTrace();
-        		}
-        	}
-        }, 3600000, 10000);
-        */
-        
         long timeToTake = System.currentTimeMillis();
         SkillFactory.loadAllSkills();
         System.out.println("Skills loaded in " + ((System.currentTimeMillis() - timeToTake) / 1000.0) + " seconds");
@@ -202,6 +184,7 @@ public class Server implements Runnable {
         
 		timeToTake = System.currentTimeMillis();
 		MapleQuest.loadAllQuest();
+		MapleNPCFactory.reloadNPC();
 		System.out.println("Quest loaded in " + ((System.currentTimeMillis() - timeToTake) / 1000.0) + " seconds\r\n");
 		
 		

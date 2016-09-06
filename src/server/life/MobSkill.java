@@ -302,7 +302,8 @@ public class MobSkill {
                     }
                 }
             } else {
-                player.giveDebuff(disease, this);
+            	if (!player.isActiveBuffedValue(2321005))
+            		player.giveDebuff(disease, this);
             }
         }
         monster.usedSkill(skillId, skillLevel, cooltime);

@@ -1,0 +1,14 @@
+Xari used: /go gmmap 
+Xari used: /go gmmap 
+Xari used: /go gmmap 
+Xari used: /go gmmap 
+Xari used: /go gmmap 
+Xari used: !bp Xari 100000 
+Xari used: !vp Xari 4000 
+Xari used: !snail 100100 
+Xari used: !level 10 
+Xari used: !spawn 100100 
+Xari used: !killall 
+Xari used: /go gmmap 
+Xari used: !saveall 
+Xari used: !saveall 

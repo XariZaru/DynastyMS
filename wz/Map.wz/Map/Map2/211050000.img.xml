@@ -15,12 +15,14 @@
     <int name="decHP" value="10" />
     <int name="swim" value="0" />
     <int name="protectItem" value="1102109" />
+	<!--
     <imgdir name="timeMob">
       <int name="id" value="6090001" />
       <int name="startHour" value="22" />
       <int name="endHour" value="14" />
       <string name="message" value="The Snow Witch has appeared in the midst of a snowstorm. Offer drop items on the Altar of the Hunter to appease the angry Snow Witch." />
     </imgdir>
+	-->
   </imgdir>
   <imgdir name="back">
     <imgdir name="0">
@@ -429,6 +431,7 @@
       <int name="rx0" value="662" />
       <int name="rx1" value="1311" />
     </imgdir>
+	<!--
     <imgdir name="26">
       <string name="type" value="m" />
       <string name="id" value="6090001" />
@@ -442,6 +445,7 @@
       <int name="rx0" value="-1010" />
       <int name="rx1" value="1820" />
     </imgdir>
+	-->
     <imgdir name="6">
       <string name="type" value="m" />
       <string name="id" value="5140000" />
@@ -4891,10 +4895,10 @@
       <int name="pt" value="7" />
       <int name="x" value="984" />
       <int name="y" value="-640" />
-      <int name="tm" value="999999999" />
-      <string name="tn" value="" />
+      <int name="tm" value="921110000" />
+      <string name="tn" value="out00" />
       <int name="horizontalImpact" value="0" />
-      <string name="script" value="enterRider" />
+      <string name="script" value="" />
     </imgdir>
   </imgdir>
 </imgdir>

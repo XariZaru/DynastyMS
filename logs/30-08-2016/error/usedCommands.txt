@@ -1,0 +1,71 @@
+Xari used: /go gmmap 
+Xari used: !search item snail shell 
+Xari used: !search item snail shell 
+Xari used: !spawn 100100 
+Xari used: !spawn 100100 
+Xari used: !spawn 100100 
+Xari used: !killall 
+Xari used: !spawn 100100 100 
+Xari used: !killall 
+Xari used: !search item snail shell 
+Xari used: !search item snail shell 
+Xari used: !search item snail shell 
+Xari used: !search item snail shell 
+Xari used: !search item maple leaf 
+Xari used: !search item snail shell 
+Xari used: !spawn 100100 
+Xari used: !spawn 100100 
+Xari used: !killall 
+Xari used: !spawn 100100 10 
+Xari used: !killall 
+Xari used: !spawn 100100 100 
+Xari used: !killall 
+Xari used: !spawn 100100 100 
+Xari used: !cleardrops 
+Xari used: !killall 
+Xari used: !spawn 100100 
+Xari used: !spawn 100100 
+Xari used: !killall 
+Xari used: !spawn 100100 
+Xari used: !killall 
+Xari used: !spawn 100100 
+Xari used: !spawn 100100 
+Xari used: !spawn 100100 
+Xari used: !killall 
+Xari used: !spawn 100100 100 
+Xari used: !killall 
+Xari used: !spawn 100100 100 
+Xari used: !killall 
+Xari used: !spawn 100100 
+Xari used: !killall 
+Xari used: !cleardrops 
+Xari used: !spawn 100100 10 
+Xari used: !killall 
+Xari used: !spawn 100100 10 
+Xari used: !killall 
+Xari used: !spawn 100100 100 
+Xari used: !killall 
+Xari used: !spawn 100101 100 
+Xari used: !killall 
+Xari used: !cleardrops 
+Xari used: !search mob 
+Xari used: !search mob dreamy 
+Xari used: !spawn 9400013 100 
+Xari used: !killall 
+Xari used: !cleardrops 
+Xari used: !search mob headless 
+Xari used: !spawn 9400549 
+Xari used: !spawn 9400549 
+Xari used: !spawn 9400549 
+Xari used: !spawn 9400549 
+Xari used: !spawn 9400549 
+Xari used: !spawn 9400549 
+Xari used: !spawn 9400549 
+Xari used: !spawn 9400549 
+Xari used: !spawn 9400549 
+Xari used: !spawn 9400549 
+Xari used: !spawn 9400549 
+Xari used: !spawn 9400549 
+Xari used: !spawn 9400549 
+Xari used: !search mob bigfoot 
+Xari used: !spawn 9400575 

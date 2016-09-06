@@ -51,7 +51,7 @@ function action(mode, type, selection){
             if (eim != null) {
                 eim.unregisterPlayer(cm.getPlayer());
             }
-            cm.warp(220000000, 0);
+            cm.warp(109040000, 0);
 			if (Math.floor(Math.random() * 10) == 0)
 				cm.gainItem(rare_rewards[Math.floor(Math.random() * rare_rewards.length)], 1, true, true);
 			else

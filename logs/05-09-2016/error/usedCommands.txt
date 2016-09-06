@@ -1,0 +1,92 @@
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !reloadmap 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !cleardrops 
+Xari used: !killall 
+Xari used: !cleardrops 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !cleardrops 
+Xari used: !spawn 8800002 
+Xari used: !killall 
+Xari used: !spawn 8800002 
+Xari used: !killall 
+Xari used: !spawn 8800002 
+Xari used: !killall 
+Xari used: !spawn 8800002 
+Xari used: !killall 
+Xari used: !cleardrops 
+Xari used: !spawn 8800002 
+Xari used: !killall 
+Xari used: !spawn 8800002 
+Xari used: !killall 
+Xari used: !npc 9900001 
+Xari used: !npc 9900001 
+Xari used: !item 3010117 
+Xari used: !item 3010118 
+Xari used: !item 3010119 
+Xari used: !item 3010116 
+Xari used: !item 3010116 
+Xari used: !item 3010119 
+Xari used: !item 3010120 
+Xari used: !item 3010018 
+Xari used: !item 3010117 
+Xari used: !item 3010123 
+Xari used: !search item chair 
+Xari used: !search item chair 
+Xari used: !item 3015164 
+Xari used: !search item chair 
+Xari used: !item 3015129 
+Xari used: !item 3015122 
+Xari used: !search item ch air 
+Xari used: !search item chair 
+Xari used: !item 3010585 
+Xari used: !search item chair 
+Xari used: !item 3010836 
+Xari used: !search item froen 
+Xari used: !search item frozen 
+Xari used: !item 3010138 
+Xari used: !search item frozen 
+Xari used: !item 3010838 
+Xari used: !search item chair 
+Xari used: !item 3010891 
+Xari used: !search item chair 
+Xari used: !item 3010984 
+Xari used: !item 3010984 
+Xari used: !search item chair 
+Xari used: !item 3015165 
+Xari used: !item 3015164 
+Xari used: !item 3015163 
+Xari used: !item 3010979 
+Xari used: !killall 
+Xari used: !search item chair 
+Xari used: !item 3010446 
+Xari used: !item 3010447 
+Xari used: !item 3010450 
+Xari used: !item 3010451 
+Xari used: !item 3010452 
+Xari used: !item 3010453 
+Xari used: !item 3010454 
+Xari used: !item 3010455 
+Xari used: !search npc refugee 

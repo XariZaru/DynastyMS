@@ -1,0 +1,17 @@
+Xari used: !job 1411 
+Xari used: !job 112 
+Xari used: /go gmmap 
+Xari used: !killall 
+Xari used: !online2 
+Xari used: /go gmmap 
+Xari used: /go gmmap 
+Xari used: /go gmmap 
+Xari used: /reloadmap 
+Xari used: !reloadmap 
+Xari used: /go gmmap 
+Xari used: /go gmmap 
+Xari used: /go gmmap 
+Xari used: /reloadmap 
+Xari used: /go gmmap 
+Xari used: /reloadmap 
+Xari used: /reloadmap 

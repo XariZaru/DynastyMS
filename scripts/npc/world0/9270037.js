@@ -39,11 +39,15 @@ function action(mode, type, selection) {
     else {
         status++;
         if (selection == 1) {
+			cm.sendOk("Disabled.");
+			cm.dispose();
+			/*
             beauty = 1;
             hairnew = Array();
             for (var id = 0; id < cm.getPlayer().getGender() == 0 ? mhair.length : fhair.length; id++)
                 hairnew.push(cm.getPlayer().getGender == 0 ? mhair[i] : fhair[i] +  parseInt(cm.getPlayer().getHair() % 10));
             cm.sendYesNo("If you use the REG coupon your hair will change RANDOMLY with a chance to obtain a new experimental style that I came up with. Are you going to use #b#t5150032##k and really change your hairstyle?");
+			*/
         } else if (selection == 2) {
             beauty = 2;
             haircolor = Array();

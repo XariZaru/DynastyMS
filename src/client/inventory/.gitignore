@@ -9,3 +9,7 @@
 /ModifyInventory.class
 /PetCommand.class
 /PetDataFactory.class
+/DonorPetFeatures.class
+/IDonorPetFeature.class
+/DonorPetFeature.class
+/DonorPetFeature$1.class

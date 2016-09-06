@@ -25,6 +25,7 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 
 import net.AbstractMaplePacketHandler;
+import net.server.Server;
 import server.MapleInventoryManipulator;
 import server.MaplePortal;
 import server.MapleTrade;
@@ -48,19 +49,24 @@ public final class ChangeMapHandler extends AbstractMaplePacketHandler {
 			MapleTrade.cancelTrade(chr);
 		}
 		if (slea.available() == 0) { //Cash Shop :)
-			if(!chr.getCashShop().isOpened()) {                 
+			if(!chr.getCashShop().isOpened()) {   
 				c.disconnect(false, false);               
 				return;           
 			}
-			String[] socket = c.getChannelServer().getIP().split(":");
-			chr.getCashShop().open(false);
+			String[] socket = Server.getInstance().getIP(c.getWorld(), c.getChannel()).split(":");
 			c.updateLoginState(MapleClient.LOGIN_SERVER_TRANSITION);
 			try {
 				c.announce(MaplePacketCreator.getChannelChange(InetAddress.getByName(socket[0]), Integer.parseInt(socket[1])));
-			} catch (UnknownHostException ex) {
+			} catch (NumberFormatException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (UnknownHostException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
+			//chr.getCashShop().open(false);
 		} else {
-			if(chr.getCashShop().isOpened()) {                 
+			if(chr.getCashShop().isOpened()) {     
 				c.disconnect(false, false);               
 				return;           
 			}

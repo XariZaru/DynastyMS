@@ -3326,10 +3326,10 @@
       <int name="pt" value="8" />
       <int name="x" value="1388" />
       <int name="y" value="-24" />
-      <int name="tm" value="999999999" />
+      <int name="tm" value="106020600" />
       <string name="tn" value="" />
       <int name="horizontalImpact" value="0" />
-      <string name="script" value="gotocastle" />
+      <string name="script" value="" />
     </imgdir>
   </imgdir>
 </imgdir>

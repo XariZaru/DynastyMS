@@ -768,7 +768,7 @@
       <int name="y" value="1599" />
       <int name="tm" value="999999999" />
       <string name="tn" value="" />
-      <string name="script" value="balrogTemple" />
+      <string name="script" value="balogTemple" />
     </imgdir>
   </imgdir>
 </imgdir>

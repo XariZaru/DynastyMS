@@ -48,7 +48,7 @@ function action(mode, type, selection){
         if (status == 0) {
             cm.sendNext("See you next time.");
         } else {
-            cm.warp(103000000);
+            cm.warp(109040000);
             cm.removeAll(4001007);
             cm.removeAll(4001008);
             cm.dispose();

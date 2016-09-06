@@ -109,6 +109,7 @@ public class MapleServerHandler extends IoHandlerAdapter {
                 if (client.getPlayer() != null) {
                     inCashShop = client.getPlayer().getCashShop().isOpened();                  
                 }
+                //System.out.println("CS " + client.getPlayer().getCashShop().isOpened());
                 client.disconnect(false, inCashShop);
             } catch (Throwable t) {
                 FilePrinter.printError(FilePrinter.ACCOUNT_STUCK, t);

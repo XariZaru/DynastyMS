@@ -28,7 +28,10 @@ function start() {
 				cm.sendOk("Move on to the next area! Quick!");
 				cm.dispose();
 			} else if (cm.getParty().getPQ().getStage() > 5) {
-				cm.warpParty(925100600);
+				var participants = cm.getParty().getMembers().toArray();
+				for (var x = 0; x < participants.length; x++)
+					if (participants[x].getPlayer().getPQ() != null)
+						participants[x].getPlayer().changeMap(925100600);
 				cm.dispose();
 			} else {
 				cm.sendSimple("Hey there, what do you want?\r\n\r\n#L0#Task\r\n#L1#Leave");
@@ -45,7 +48,12 @@ function action(m,t,s) {
 	status++;
 	if (status == 0) {
 		if (s == 1 || index == -1) {
-			cm.warp(251010404);
+			if (cm.getMapId() != 925100700) {
+				cm.warp(925100700);
+				cm.getPlayer().setPQ(null);
+			} else {
+				cm.warp(109040000);
+			}
 		} else {
 			var text = index == 0 || index == 2 || index == 3 ? "You just have to kill all the monsters for me here!" : index == 1 ? "Collect 20 of each mark of the pirate for me!" : index == 4 ? "Collect 4 pirate keys for me so I can lock these guys back up!" : "Kill #bLord Pirate#k and free us from him!";
 			cm.sendOk(text);

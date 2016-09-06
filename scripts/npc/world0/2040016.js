@@ -223,31 +223,15 @@ function action(mode, type, selection) {
     else if (status == 4 && mode == 1) {
         var complete = true;
 				
-        if (cm.getMeso() < cost * qty)
-        {
+        if (cm.getMeso() < cost * qty) {
             cm.sendOk("I'm afraid you cannot afford my services.")
-        }
-        else
-        {
+        } else {
             if (mats instanceof Array) {
                 for(var i = 0; complete && i < mats.length; i++)
-                {
-                    if (matQty[i] * qty == 1)	{
-                        if (!cm.haveItem(mats[i]))
-                        {
-                            complete = false;
-                        }
-                    }
-                    else {
-
-                        if (cm.haveItem(mats[i],matQty[i]*qty))complete=false;
-                    }
-                }
-            }
-            else {
-                if (cm.haveItem(matsmatQty*qty))complete=false;
-
-            }
+					if (!cm.haveItem(mats[i],matQty[i]*qty))
+						complete=false;
+			} else if (!cm.haveItem(mats, matQty*qty))
+					complete=false;
         }
 			
         if (!complete)

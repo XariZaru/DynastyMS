@@ -3421,10 +3421,10 @@
       <int name="pt" value="8" />
       <int name="x" value="-1094" />
       <int name="y" value="214" />
-      <int name="tm" value="999999999" />
-      <string name="tn" value="" />
+      <int name="tm" value="106020000" />
+      <string name="tn" value="left00" />
       <int name="horizontalImpact" value="0" />
-      <string name="script" value="TD_MC_first" />
+      <string name="script" value="" />
     </imgdir>
     <imgdir name="5">
       <string name="pn" value="in00" />

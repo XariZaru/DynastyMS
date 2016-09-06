@@ -7,11 +7,20 @@ var selection;
 var item = 4021010; 
 var cost = 1;
 
+var forbidden_maps = [109040000, 910510000, 280030000, 970030000];
+
 function start() {
 	mapId = cm.getPlayer().getMapId();
-	if (cm.getLevel() <= 10) {
-		cm.sendOk("You can't use my transportation services until you're at least level 1.");
+	if (cm.getLevel() < 10) {
+		cm.sendOk("You can't use my transportation services until you're at least level 10.");
+	} else if (cm.getPlayer().getEventInstance() != null) {
+		cm.sendOk("You cannot warp from an event instance to any other area.");
 	} else {
+		if (forbidden_maps.indexOf(cm.getMapId()) > -1) {
+			cm.sendOk("You cannot travel from this map using the travel utility.");
+			cm.dispose();
+			return;
+		}
 		text = "Where would you like to go? The availability of areas change depending on what" +
 				" continent you're currently on.\r\n\r\n#eFee is " + cost + "#n #i"+item+"#\r\n" +
 				"#r#eCurrent Available Areas:#n\r\n#b#L100#Talk with Yue Lao (Helper)\r\n#L0##m910000000# (Free)\r\n";

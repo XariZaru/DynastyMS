@@ -38,7 +38,7 @@
   <imgdir name="life">
     <imgdir name="0">
       <string name="type" value="n" />
-      <string name="id" value="1032001" />
+      <string name="id" value="9000025" />
       <int name="x" value="-7" />
       <int name="y" value="-77" />
       <int name="fh" value="17" />
@@ -273,6 +273,7 @@
     <imgdir name="obj" />
   </imgdir>
   <imgdir name="reactor">
+  <!--
     <imgdir name="0">
       <string name="id" value="9102001" />
       <int name="x" value="227" />
@@ -281,6 +282,7 @@
       <int name="f" value="1" />
       <string name="name" value="" />
     </imgdir>
+	-->
   </imgdir>
   <imgdir name="foothold">
     <imgdir name="0">
@@ -569,7 +571,9 @@
       <int name="tm" value="999999999" />
       <string name="tn" value="" />
       <int name="delay" value="1000" />
+	  <!--
       <string name="script" value="tutorialNPC" />
+	  -->
       <int name="hideTooltip" value="0" />
       <int name="onlyOnce" value="1" />
     </imgdir>

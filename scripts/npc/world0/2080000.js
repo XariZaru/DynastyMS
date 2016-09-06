@@ -33,7 +33,7 @@ var cost = 120000;
 function start() {
     var selStr = "A dragon's power is not to be underestimated. If you like, I can add its power to one of your weapons. However, the weapon must be powerful enough to hold its potential...#b"
     var options = new Array("What's a stimulator?","Create a Warrior weapon","Create a Bowman weapon","Create a Magician weapon","Create a Thief weapon",
-        "Create a Warrior weapon with a Stimulator","Create a Bowman weapon with a Stimulator","Create a Magician weapon with a Stimulator","Create a Thief weapon with a Stimulator");
+        "Create a Pirate weapon", "Create a Warrior weapon with a Stimulator","Create a Bowman weapon with a Stimulator","Create a Magician weapon with a Stimulator","Create a Thief weapon with a Stimulator", "Create a Pirate weapon with a Stimulator");
     for (var i = 0; i < options.length; i++)
         selStr += "\r\n#L" + i + "# " + options[i] + "#l";
     cm.sendSimple(selStr);
@@ -52,11 +52,12 @@ function action(mode, type, selection) {
 		var mage_selections = ["Dragon Wand#k - Lv. 108 Wand#b","Dragon Staff#k - Lv. 110 Staff#b"];
 		var bow_selections = ["Dragon Shiner Bow#k - Lv. 110 Bow#b","Dragon Shiner Cross#k - Lv. 110 Crossbow#b"];
 		var thief_selections = ["Dragon Kanzir#k - Lv. 110 STR Dagger#b","Dragon Kreda#k - Lv. 110 LUK Dagger#b","Dragon Green Sleve#k - Lv. 110 Claw#b"];
+		var pirate_selections = ["Dragon Slash Claw - Lv. 110 Knuckle", "Dragon Revolver - Lv. 110 Gun"];
 		// Combine all array selections into one big array for looping
-		var weapons = ["", warrior_selections, bow_selections, mage_selections, thief_selections];
+		var weapons = ["", warrior_selections, bow_selections, mage_selections, thief_selections, pirate_selections];
         selectedType = selection;
-        if (stimulator = selectedType > 4) { // If they choose to use a stimulator
-            selection = selectedType -= 4;
+        if (stimulator = selectedType > weapons.length - 1) { // If they choose to use a stimulator
+            selection = selectedType -= weapons.length - 1;
 		} else if (selectedType == 0) { //What's a stim?
             cm.sendNext("A stimulator is a special potion that I can add into the process of creating certain items. It gives it stats as though it had dropped from a monster. However, it is possible to have no change, and it is also possible for the item to be below average. There's also a 10% chance of not getting any item when using a stimulator, so please choose wisely.")
             cm.dispose();
@@ -88,7 +89,11 @@ function action(mode, type, selection) {
             itemSet = new Array(1332049,1332050,1472051);
             matSet = new Array(new Array(1332051,4000244,4000245,4005000,4005002),new Array(1332052,4000244,4000245,4005002,4005003),new Array(1472053,4000244,4000245,4005002,4005003));
             matQtySet = new Array(new Array(1,20,25,5,3),new Array(1,20,25,3,5),new Array(1,20,25,2,6));
-        }
+        } else if (selectedType == 5) {
+			itemSet = new Array(1482013, 1492013);
+			matSet = new Array(new Array(4011003, 4004000, 4000244, 4000245), new Array(4011003, 4004000, 4000244, 4000245));
+			matQtySet = new Array(new Array(5, 8, 20, 20), new Array(5, 8, 20, 20));
+		}
 		
 		item = itemSet[selectedItem];
 		mats = matSet[selectedItem];

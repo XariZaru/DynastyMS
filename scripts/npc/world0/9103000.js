@@ -49,7 +49,7 @@ function action(mode, type, selection){
         } else if (status == 1) {
             var members = cm.getPlayer().getEventInstance().getPlayers().toArray();
 			for (var x = 0; x < members.length; x++) {
-				members[x].gainExp((250 * cm.itemQuantity(4001106)), true, true);
+				members[x].gainExp((400 * cm.itemQuantity(4001106)), true, true);
 				if (cm.itemQuantity(4001106) >= 200)
 					members[x].changeMap(809050016);
 				else

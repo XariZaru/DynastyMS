@@ -222,7 +222,7 @@ function action(mode, type, selection) {
                     " first letter in all names.#n");
             } else if (cm.getQ()==17) {
                 cm.sendAcceptDecline("I'll need you to go down there and talk to each and every person. Find out who's the traitor and bring me their name."+
-                    " After you are done, you're to tell #bAgent M#k of this as well.\r\n\r\n#bTell Agent M, and then me.#k By law he is required"+
+                    " After you are done, you're to tell #bAgent M#k of this as well.\r\n\r\n#bTell Agent M, who is in the #k#eOrbis Guild Headquarters#n#b, and then me.#k By law he is required"+
                 " to have knowledge of treason before I do. If this law collapses, then certain judiciary steps have to be taken in order for our"+
             " military to remain in structure.");
             } else if (cm.getQ()==15) {

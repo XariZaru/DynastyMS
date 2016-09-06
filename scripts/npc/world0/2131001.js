@@ -84,7 +84,7 @@ function action(mode, type, selection) {
 			cm.gainItem(bpot, 100);
 			cm.gainItem(rpot, 100);
             cm.completeQ();
-            cm.talkGuide("Remember to talk to your trainer after the completion of each quest to see what else he has in store. He is your storyline NPC.", 0);       
+            cm.showInstruction("Remember to talk to the NPC after the completion of each quest to see what else he has in store.", 250, 150);       
             cm.dispose();
           } else if (cm.getQ()==8) {
               cm.warp(100000000);
@@ -125,10 +125,11 @@ function action(mode, type, selection) {
                 cm.talkGuide("I don't think that's your real name, and I don't think Perzen would appreciate you lying to him about your actual name.");
                 cm.dispose();
             } else {
-                cm.sendOk("#b"+cm.getText()+"#k you say? A fine name.\r\n\r\n#fUI/UIWindow.img/QuestIcon/4/0#\r\n#fUI/UIWindow.img/QuestIcon/8/0# 15 exp\r\n#fUI/UIWindow.img/QuestIcon/7/0# 250 meso")
+                cm.sendOk("#b"+cm.getText()+"#k you say? A fine name.\r\n\r\n#fUI/UIWindow.img/QuestIcon/4/0#\r\n#fUI/UIWindow.img/QuestIcon/8/0# 15 exp\r\n#fUI/UIWindow.img/QuestIcon/7/0# 250 meso");
             }
 			} else if (cm.getQ() == 3) {
 				 cm.talkGuide("Let's take that portal up top and kill some slimes!", 0);
+				 cm.showInstruction("Take the portal to the top left!", 250, 150);
 				 cm.completeQ();
 				 cm.dispose(); 
 			} else if (cm.getQ()==1) {
@@ -146,13 +147,13 @@ function action(mode, type, selection) {
 			    cm.completeQ();
                 cm.gainMeso(250);
                 cm.gainExp(100);
-                cm.talkGuide("Let's speak with Perzen again. I think we can offer our assistance to him.", 0);
+                cm.showInstruction("Let's speak with Perzen again. I think we can offer our assistance to him.", 200, 150);
                 cm.dispose();
 		   }
         } else if (status == 3) {
 			if (cm.getQ()==1) {
 				cm.talkGuide("Let's get 5 snail shells for Perzen!", 0);
-				cm.talkGuide("There are monsters all over the place and #eeven in the tents#n!", 5);
+				cm.showInstruction("There are monsters all over the place and #eeven in the tents#n!", 400, 350);
 				cm.completeQ();
 				cm.dispose();
 			}

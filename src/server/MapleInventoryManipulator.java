@@ -390,9 +390,6 @@ public class MapleInventoryManipulator {
                 c.getPlayer().getMount().setItemId(source.getItemId());
             }
         }
-        if (source.getItemId() == 1122017) {
-            c.getPlayer().equipPendantOfSpirit();
-        }
         //1112413, 1112414, 1112405 (Lilin's Ring)
         source = (Equip) c.getPlayer().getInventory(MapleInventoryType.EQUIP).getItem(src);
         Equip target = (Equip) c.getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem(dst);
@@ -420,6 +417,9 @@ public class MapleInventoryManipulator {
         mods.add(new ModifyInventory(2, source, src));
         c.announce(MaplePacketCreator.modifyInventory(true, mods));
         c.getPlayer().equipChanged();
+        if (source.getItemId() == 1122017) {
+            c.getPlayer().equipPendantOfSpirit();
+        }
     }
 
     public static void unequip(MapleClient c, short src, short dst) {

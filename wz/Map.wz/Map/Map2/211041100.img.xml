@@ -251,12 +251,14 @@
     <float name="fs" value="0.2" />
     <int name="swim" value="0" />
     <int name="protectItem" value="1102109" />
+	<!--
     <imgdir name="timeMob">
       <int name="id" value="6090000" />
       <int name="startHour" value="0" />
       <int name="endHour" value="4" />
       <string name="message" value="Riche has appeared." />
     </imgdir>
+	-->
   </imgdir>
   <imgdir name="life">
     <imgdir name="0">
@@ -584,6 +586,7 @@
       <int name="rx0" value="1420" />
       <int name="rx1" value="3080" />
     </imgdir>
+	<!--
     <imgdir name="26">
       <string name="type" value="m" />
       <string name="id" value="6090000" />
@@ -597,6 +600,7 @@
       <int name="rx0" value="1006" />
       <int name="rx1" value="1381" />
     </imgdir>
+	-->
   </imgdir>
   <imgdir name="0">
     <imgdir name="info" />

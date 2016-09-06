@@ -27,6 +27,8 @@ import client.MapleClient;
 import client.MapleJob;
 import client.Skill;
 import client.SkillFactory;
+import client.inventory.DonorPetFeature;
+import client.inventory.MaplePet;
 import client.status.MonsterStatus;
 import client.status.MonsterStatusEffect;
 import constants.ServerConstants;
@@ -41,6 +43,8 @@ import custom.dynasty.TestDamage;
 
 import java.awt.Point;
 import java.lang.ref.WeakReference;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -65,6 +69,7 @@ import server.maps.MapleMapObjectType;
 import server.partyquest.SpawnPQ;
 import server.partyquest.dynasty.CustomCPQ;
 import server.partyquest.dynasty.MobListener;
+import tools.DatabaseConnection;
 import tools.MaplePacketCreator;
 import tools.Pair;
 import tools.Randomizer;
@@ -271,6 +276,11 @@ public class MapleMonster extends AbstractLoadedMapleLife {
         int trueDamage = Math.min(hp, damage); // since magic happens otherwise B^)
 
         hp -= damage;
+        
+        for (MaplePet pet : from.getPets())
+        	if (pet != null && pet.getDonorFeature() != null && (pet.getDonorFeature().getType() == DonorPetFeature.DPS || pet.getDonorFeature().getType() == DonorPetFeature.BOSSHP))
+        		pet.getDonorFeature().addDamage(damage, this.getId());
+        			
         if (isDummy()) {
         	damageTaken += damage;
         }
@@ -395,7 +405,20 @@ public class MapleMonster extends AbstractLoadedMapleLife {
 		    			double rand = (Math.random() * .3) + .9;
 		    			player.gainBossPoints((int) (.0000625 * rand *  this.getMaxHp()));
 		    			player.titleMessage((int) (.0000625 * rand * this.getMaxHp()) + " boss points");
-		    			player.dropMessage(5, (int) (.0000625 * rand * this.getMaxHp()) + " boss points");
+		    			player.dropMessage(5, "You gained " + (int) (.0000625 * rand * this.getMaxHp()) + " boss points");
+		    			try {
+		    				PreparedStatement ps = DatabaseConnection.getConnection().prepareStatement("INSERT INTO boss_kills (characterid, mobid, amount) VALUES (?, ?, 1) ON DUPLICATE KEY UPDATE amount = amount + 1");
+		    				ps.setInt(1, player.getId());
+		    				ps.setInt(2, this.getId());
+		    				ps.executeUpdate();
+		    				
+		    				ps = DatabaseConnection.getConnection().prepareStatement("INSERT INTO boss_kills (characterid, mobid, amount) VALUES (?, 0, 1) ON DUPLICATE KEY UPDATE amount = amount + 1");
+		    				ps.setInt(1, player.getId());
+		    				ps.executeUpdate();
+		    				ps.close();
+		    			} catch (Exception e) {
+		    				e.printStackTrace();
+		    			}
 	    			}
 	    		}
 	    	}

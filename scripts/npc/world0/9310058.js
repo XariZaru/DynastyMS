@@ -54,13 +54,13 @@ function action(mode, type, selection) {
 				cm.gainExp(50);
 				cm.gainMeso(2500);
 				cm.talkGuide("Let's go see your Mom and Dad again.", 0);
+				cm.showInstruction("Let's talk to your Mom and Dad", 200, 50);
 				cm.dispose();
 			//10003
         } else if (cm.getQ() == 1) {
 			cm.sendOk("You must be someone who wants to help! Talk to me again and I'll have something for you to do!");
 			cm.gainExp(15);
-			cm.talkGuide("I think Santa wants to say something else. Why don't you talk to him?",3);
-			cm.talkGuide("A lot of NPCs will need you to talk to them again to begin the next quest, so never just walk away!", 6);
+			cm.showInstruction("Talk with #eSanta#n again!", 200, 50);
 			cm.completeQ();
 			cm.dispose();
 		} else if (cm.getQ()==4) {
@@ -83,8 +83,7 @@ function action(mode, type, selection) {
 			" regulations.");
         } else if (cm.getQ() == 4) {
 			cm.gainItem(firework);
-			cm.talkGuide("Let's set these off right now! Go into your #einventory (I)#n and double click on those fireworks!", 0);
-			cm.talkGuide("The fireworks should be in your use inventory. Just use them for a nice boost in holidy cheer!", 4);
+			cm.showInstruction("Go into your #einventory (I)#n and double click on those fireworks!", 200, 50);
 			cm.completeQ();
 			cm.dispose();                
 		}
@@ -109,6 +108,7 @@ function action(mode, type, selection) {
 	} else if (status == 6) {
 		if (cm.getQ() == 2) {
 			cm.talkGuide("Let's talk to Cliff to deliver these supplies!", 0);
+			cm.showInstruction("Find #eCliff#n and deliver Santa's supplies to him.", 200, 50);
 			cm.completeQ();
 			cm.gainItem(supply);
 			cm.gainItem(4031474);

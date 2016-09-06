@@ -25,6 +25,7 @@ import client.MapleBuffStat;
 import client.MapleCharacter;
 import client.MapleClient;
 import client.autoban.AutobanFactory;
+import client.inventory.DonorPetFeature;
 import client.inventory.Equip;
 import client.inventory.Item;
 import client.inventory.MapleInventoryType;
@@ -35,6 +36,9 @@ import constants.ItemConstants;
 
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.sql.Date;
+import java.sql.Time;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
@@ -435,14 +439,21 @@ public class MapleMap {
 				
                 for (int x = 0; x < iterate; x++) {
                 	if (ItemConstants.getInventoryType(de.itemId) == MapleInventoryType.EQUIP) {
-                		idrop = ii.randomizeStats((Equip) ii.getEquipById(de.itemId));
+                		Equip drop = (Equip) ii.randomizeStats((Equip) ii.getEquipById(de.itemId));
                 		pos.x = (int) (mobpos + ((d % 2 == 0) ? (25 * (d + 1) / 2) : -(25 * (d / 2))));
                 		if ((int) (Math.random() * 100) == 5) {
-                			idrop = (Equip) ii.addGodlyStats((Equip) idrop);
+                			drop = (Equip) ii.addGodlyStats((Equip) drop);
                 			//idrop.setOwner("God");
-                			chr.dropMessage(5, "One of the monsters nearby has dropped a " + ii.getName(idrop.getItemId()) + ", which gleams with fine craftsmanship and irradiates the room with power.");
+                			chr.dropMessage(5, "One of the monsters nearby has dropped a " + ii.getName(drop.getItemId()) + ", which gleams with fine craftsmanship and irradiates the room with power.");
                 		}
+                		drop.setCreateDate(new Timestamp(System.currentTimeMillis()));
+                		idrop = drop;
                 	}
+                	
+                	for (MaplePet pet : chr.getPets())
+                		if (pet != null && pet.getDonorFeature() != null && pet.getDonorFeature().getType() == DonorPetFeature.DROP && idrop.getItemId() == pet.getDonorFeature().getWatchedItem())
+                			pet.getDonorFeature().displayResults(chr);
+                	
                 	spawnDrop(idrop, calcDropPos(pos, mob.getPosition()), mob, chr, droptype, de.questid);
                 	d++;
                 }
@@ -2216,7 +2227,7 @@ public class MapleMap {
     }
     
     public void broadcastTitleMessage(String msg) {
-    	Server.getInstance().broadcastGMMessage(MaplePacketCreator.earnTitleMessage(msg));
+    	this.broadcastGMMessage(MaplePacketCreator.earnTitleMessage(msg));
     }
 
     public MapleOxQuiz getOx() {
