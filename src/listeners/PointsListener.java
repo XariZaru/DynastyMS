@@ -1,4 +1,4 @@
-package server.partyquest.dynastyPQ;
+package listeners;
 
 import client.MapleCharacter;
 import server.life.MapleMonster;

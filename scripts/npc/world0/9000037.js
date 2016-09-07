@@ -1,4 +1,5 @@
 function start() {
+	cm.getPlayer().dropMessage(cm.getPlayer().getMap().getMonsters().toArray().length);
 	if (cm.getMapId() != 970030000) {
 		cm.sendAcceptDecline("Do you wish to test your damage at the DPS map?");
 	} else if (cm.getPlayer().getMap().countMobs() < 1) {

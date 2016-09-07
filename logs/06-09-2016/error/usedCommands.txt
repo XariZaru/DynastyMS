@@ -34,3 +34,17 @@ Xari used: !item 3080006
 Xari used: !item 3010285 
 Xari used: !item 3010490 
 Xari used: !search item alien 
+Xari used: !search npc agent meow 
+Xari used: !search npc agent meow 
+Xari used: !killall 
+Xari used: !cleardrops 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !killall 
+Xari used: !reloadmap 

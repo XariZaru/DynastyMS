@@ -9,6 +9,7 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
+import listeners.MobListener;
 import client.MapleCharacter;
 import client.inventory.Item;
 import net.server.world.MapleParty;
@@ -16,7 +17,6 @@ import scripting.event.EventInstanceManager;
 import server.TimerManager;
 import server.life.MapleLifeFactory;
 import server.life.MapleMonster;
-import server.partyquest.dynasty.MobListener;
 import tools.MaplePacketCreator;
 
 public class BalrogAlone implements IPartyQuest, MobListener {
@@ -237,13 +237,6 @@ public class BalrogAlone implements IPartyQuest, MobListener {
 		
 	}
 
-
-	@Override
-	public void spawnMobs() {
-		// TODO Auto-generated method stub
-		
-	}
-
 	@Override
 	public int numMobsKilled() {
 		// TODO Auto-generated method stub
@@ -284,6 +277,12 @@ public class BalrogAlone implements IPartyQuest, MobListener {
 	public long getTimeLeft() {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public void spawnMobs() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

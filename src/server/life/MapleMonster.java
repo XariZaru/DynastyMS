@@ -57,6 +57,8 @@ import java.util.Map.Entry;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.ReentrantLock;
 
+import listeners.DamageListener;
+import listeners.MobListener;
 import net.server.Server;
 import net.server.world.MapleParty;
 import net.server.world.MaplePartyCharacter;
@@ -68,7 +70,6 @@ import server.maps.MapleMapObject;
 import server.maps.MapleMapObjectType;
 import server.partyquest.SpawnPQ;
 import server.partyquest.dynasty.CustomCPQ;
-import server.partyquest.dynasty.MobListener;
 import tools.DatabaseConnection;
 import tools.MaplePacketCreator;
 import tools.Pair;
@@ -99,6 +100,7 @@ public class MapleMonster extends AbstractLoadedMapleLife {
     private int damageTaken = 0;
     private MapleCharacter belongsToChar = null;
     private List<MapleParty> party_listeners = new ArrayList<MapleParty>();
+    private List<DamageListener> damage_listeners = new ArrayList<DamageListener>();
     
     private List<MobListener> mob_listeners = new ArrayList<MobListener>();
     
@@ -127,6 +129,14 @@ public class MapleMonster extends AbstractLoadedMapleLife {
     
     public void givesBossPoints(boolean set) {
     	bossPoints = set;
+    }
+    
+    public void addDamageListener(DamageListener listener) {
+    	damage_listeners.add(listener);
+    }
+    
+    public List<DamageListener> getDamageListeners() {
+    	return damage_listeners;
     }
     
     public void addPartyListener(MapleParty party) {
@@ -257,6 +267,14 @@ public class MapleMonster extends AbstractLoadedMapleLife {
     private byte getTagBgColor() {
         return stats.getTagBgColor();
     }
+    
+    public void updateDamageListeners(MapleCharacter from, int damage) {
+    	for (MaplePet pet : from.getPets())
+        	if (pet != null && pet.getDonorFeature() != null && (pet.getDonorFeature().getType() == DonorPetFeature.DPS || pet.getDonorFeature().getType() == DonorPetFeature.BOSSHP))
+        		pet.getDonorFeature().addDamage(from, this, damage);
+    	for (DamageListener listener : this.damage_listeners)
+    		listener.addDamage(from, this, damage);
+    }
 
     /**
      *
@@ -277,9 +295,7 @@ public class MapleMonster extends AbstractLoadedMapleLife {
 
         hp -= damage;
         
-        for (MaplePet pet : from.getPets())
-        	if (pet != null && pet.getDonorFeature() != null && (pet.getDonorFeature().getType() == DonorPetFeature.DPS || pet.getDonorFeature().getType() == DonorPetFeature.BOSSHP))
-        		pet.getDonorFeature().addDamage(damage, this.getId());
+        updateDamageListeners(from, damage);
         			
         if (isDummy()) {
         	damageTaken += damage;
@@ -512,8 +528,10 @@ public class MapleMonster extends AbstractLoadedMapleLife {
     	
     	// Listeners
     	
-    	for (MobListener listener : mob_listeners)
+    	for (MobListener listener : mob_listeners) {
     		listener.mobKilled(this); 
+    		listener.mobKilled();
+    	}
     	
     	// End of Listeners
     	

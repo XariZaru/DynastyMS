@@ -639,9 +639,9 @@ public class MapleMap {
 
     public List<MapleMonster> getMonsters() {
         List<MapleMonster> mobs = new ArrayList<MapleMonster>();
-        for (MapleMapObject object : this.getMapObjects()) {
-            mobs.add(this.getMonsterByOid(object.getObjectId()));
-        }
+        for (MapleMapObject object : this.getMapObjects()) 
+            if (this.getMonsterByOid(object.getObjectId()) != null)
+            	mobs.add((MapleMonster) object);
         return mobs;
     }
     

@@ -7,12 +7,14 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
+import listeners.DamageListener;
+import listeners.DonorPetListener;
 import server.MapleItemInformationProvider;
 import server.life.MapleMonster;
 import tools.MaplePacketCreator;
 import client.MapleCharacter;
 
-public class DonorPetFeature implements IDonorPetFeature {
+public class DonorPetFeature implements DonorPetListener, DamageListener {
 	
 	/*
 	 * 0 - Watches boss hp
@@ -72,14 +74,16 @@ public class DonorPetFeature implements IDonorPetFeature {
 		damage_done = dmg;
 	}
 	
-	public void addDamage(int dmg, int mobid) {
+	@Override
+	public void addDamage(MapleCharacter from, MapleMonster mob, int dmg) {
 		if (dmg > 0) {
 			damage_done += dmg;
-			mob_last_damaged = mobid;
+			mob_last_damaged = mob.getId();
 		}
 	}
 	
-	public int getDamage() {
+	@Override
+	public int getDamageDone() {
 		return this.damage_done;
 	}
 

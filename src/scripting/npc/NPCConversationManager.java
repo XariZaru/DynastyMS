@@ -61,7 +61,6 @@ import server.partyquest.Pyramid.PyramidMode;
 import server.partyquest.SpawnPQ;
 import server.partyquest.dynasty.CustomCPQ;
 import server.partyquest.dynasty.CustomCPQParty;
-import server.partyquest.dynasty.DynastyPyramidPQ;
 import server.quest.MapleQuest;
 import tools.LogHelper;
 import tools.DatabaseConnection;
@@ -105,13 +104,6 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
 	
 	public void fadeMessage(String msg) {
 		getPlayer().fadeMessage(msg);
-	}
-	
-	public void startDynastyPyramid(int returnMap) {
-		if (getParty() == null)
-			print("Player tried to start PQ without a party and this somehow got through.");
-		else
-			new DynastyPyramidPQ(getParty(), returnMap);
 	}
 
 	public void spawnDiff(int mapid, int mobid, int amount, int x, int y) {
@@ -158,128 +150,6 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
     		
     	}
 		return "No quest selection available.";
-    }
-    
-    public String searchMobs(String mob_name) {
-    	StringBuilder sb = new StringBuilder();
-    	MapleDataProvider dataProvider = MapleDataProviderFactory.getDataProvider(new File("wz/String.wz"));
-    	MapleData data = dataProvider.getData("Mob.img");
-    	if (data != null) {
-			String name;
-			for (MapleData searchData : data.getChildren()) {
-				name = MapleDataTool.getString(searchData.getChildByPath("name"), "NO-NAME");
-				if (name.toLowerCase().contains(mob_name.toLowerCase())) {
-					sb.append("#L"+ searchData.getName() +"##b").append(Integer.parseInt(searchData.getName())).append("#k - #r").append(name).append("\r\n");
-				}
-			}
-		}
-    	if (sb.length() == 0)
-    		sb.append("No mobs were found with that name.");
-    	return sb.toString();
-    }
-    
-    public String getMobInfo(int mobid) {
-    	try {
-    		MapleMonster mob = MapleLifeFactory.getMonster(mobid);
-    		StringBuilder sb = new StringBuilder();
-    		sb.append("Statistics for ").append("#b" + mob.getName() + "#k ("+mob.getId()+")\r\n\r\n");
-    		sb.append("Level: ").append(mob.getStats().getLevel()).append("\r\n");
-    		sb.append("Health: ").append(mob.getMaxHp()).append("\r\n");
-    		sb.append("Mana: ").append(mob.getMaxMp()).append("\r\n");
-    		sb.append("Exp: ").append(mob.getExp() * getPlayer().getExpRate()).append("\r\n\r\n");
-    		sb.append("#eDrops List#n\r\n");
-    		Connection con1 = DatabaseConnection.getConnection();
-    		PreparedStatement ps = con1.prepareStatement("SELECT * FROM drop_data WHERE dropperid = ? ORDER BY chance, itemid");
-    		ps.setInt(1, mobid);
-    		ResultSet rs = ps.executeQuery();
-    		
-    		while (rs.next())
-    			if (Integer.parseInt(rs.getString("itemid")) != 0)
-	    			sb.append("#i "+ rs.getString("itemid") +"# #z"+rs.getString("itemid")+"#").append("(" + rs.getString("itemid") + ")").append(" - ").append((double)Math.round(Double.parseDouble(
-	    					rs.getString("chance")) / 1000000 * 100 * getPlayer().getDropRate() * 1000d) / 1000d).append("%\r\n");
-    		ps.close();
-    		rs.close();
-    		return sb.toString();
-    	} catch (Exception e) {
-    		
-    	}
-    	return "NPCConversationManager.getMobInfo - error retrieving monster stats";
-    }
-    
-    public String getHarmlessMobInfo(int mobid) {
-    	try {
-    		MapleMonster mob = MapleLifeFactory.getMonster(mobid);
-    		StringBuilder sb = new StringBuilder();
-    		sb.append("Statistics for ").append("#b" + mob.getName() + "#k\r\n\r\n");
-    		sb.append("Level: ").append(mob.getStats().getLevel()).append("\r\n");
-    		sb.append("Health: ").append(mob.getMaxHp()).append("\r\n");
-    		sb.append("Mana: ").append(mob.getMaxMp()).append("\r\n");
-    		sb.append("Exp: ").append(mob.getExp() * getPlayer().getExpRate()).append("\r\n\r\n");
-    		sb.append("#eDrops List#n\r\n");
-    		Connection con1 = DatabaseConnection.getConnection();
-    		PreparedStatement ps = con1.prepareStatement("SELECT * FROM drop_data WHERE dropperid = ? ORDER BY chance, itemid");
-    		ps.setInt(1, mobid);
-    		ResultSet rs = ps.executeQuery();
-    		
-    		while (rs.next())
-    			if (Integer.parseInt(rs.getString("itemid")) != 0)
-	    			sb.append(" "+ rs.getString("itemid") +" #t"+rs.getString("itemid")+"#").append("(" + rs.getString("itemid") + ")").append(" - ").append((double)Math.round(Double.parseDouble(
-	    					rs.getString("chance")) / 1000000 * 100 * getPlayer().getDropRate() * 1000d) / 1000d).append("%\r\n");
-    		ps.close();
-    		rs.close();
-    		return sb.toString();
-    	} catch (Exception e) {
-    		
-    	}
-    	return "NPCConversationManager.getMobInfo - error retrieving monster stats";
-    }
-    
-    // What mob drops given item ID
-    public String mobsThatDrop(int item_id) {
-    	try {
-    		StringBuilder sb = new StringBuilder();
-    		Connection con = DatabaseConnection.getConnection();
-    		PreparedStatement ps = con.prepareStatement("SELECT * FROM drop_data WHERE itemid = ? ORDER BY chance");
-    		ps.setInt(1, item_id);
-    		ResultSet rs = ps.executeQuery();
-    		
-    		while (rs.next())
-    			sb.append("#b#o").append(rs.getString("dropperid")).append("##k ("+ rs.getString("dropperid") +") - #r").append(Double.parseDouble(rs.getString("chance")) / 1000000 * 100 * getPlayer().getDropRate()).append("%#k\r\n");
-    		ps.close();
-    		rs.close();
-    		if (sb.length() == 0)
-    			sb.append("Could not find any mobs that drop that item.");
-    		return sb.toString();
-    	} catch (Exception e) {
-    		
-    	}
-    	return "NPCConversationManager.getMobList - mNo results found!";
-    }
-    
-    // Get items list
-    public String searchItem(String item_name) {
-    	try {
-    		StringBuilder sb = new StringBuilder();
-			for (Pair<Integer, String> itemPair : MapleItemInformationProvider.getInstance().getAllItems()) {
-				if (sb.length() < 32000) {//ohlol
-					// item id is left, name is right
-					if (itemPair.getRight().toLowerCase().contains(item_name.toLowerCase())) {
-						//#v").append(id).append("# #k- 
-						sb.append("#L "+ itemPair.getLeft() +"##b").append(itemPair.getLeft()).append("#k - #r").append(itemPair.getRight()).append("#l\r\n");
-					}
-				} else {
-					sb.append("#bCouldn't load all items, there are too many results.\r\n");
-					break;
-				}
-			}
-			if (sb.length() == 0)
-				sb.append("Could not find item with that name.");
-			return sb.toString();
-		
-    	} catch (Exception e) {
-    		System.out.println("NPCConversationManager.getItemList - failed search");
-    	}
-    	return "NPCConversationManager.getItemList - Exited out of function.";
     }
 	
 	public String getScriptableNpcs() {

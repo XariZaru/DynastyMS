@@ -1,8 +1,8 @@
-package client.inventory;
+package listeners;
 
 import client.MapleCharacter;
 
-public interface IDonorPetFeature {
+public interface DonorPetListener {
 
 	void setType(int type);
 	void displayResults(MapleCharacter chr);

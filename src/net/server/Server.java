@@ -220,7 +220,8 @@ public class Server implements Runnable {
             System.exit(0);
         }
         
-        tMan.register(new VoteChecker(), 2 * 60 * 1000);  
+        if (ServerConstants.VOTECHECK)
+        	tMan.register(new VoteChecker(), 2 * 60 * 1000);  
         tMan.register(new Runnable() {
         	@Override
         	public void run() { 
