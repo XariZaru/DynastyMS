@@ -76,3 +76,16 @@ java.lang.NullPointerException
 	at java.lang.Thread.run(Thread.java:745)
 
 ---------------------------------
+java.lang.NullPointerException
+	at server.MapleInventoryManipulator.removeById(MapleInventoryManipulator.java:270)
+	at client.MapleCharacter$15.run(MapleCharacter.java:5325)
+	at server.TimerManager$LoggingSaveRunnable.run(TimerManager.java:145)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:471)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:304)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:178)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:745)
+
+---------------------------------

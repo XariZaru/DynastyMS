@@ -238,9 +238,13 @@ public class MapleClient {
 //	}
 	
 	public String getIP() {
-		String[] address = getSession().getRemoteAddress().toString().split(":");
-		if (address != null)
-			return address[0].substring(1, address[0].length());
+		try {
+			String[] address = getSession().getRemoteAddress().toString().split(":");
+			if (address != null)
+				return address[0].substring(1, address[0].length());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return "0";
 	}
 	
