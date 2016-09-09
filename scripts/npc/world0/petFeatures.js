@@ -2,7 +2,7 @@ var status = -1;
 var selected_pet;
 var petid;
 
-var BOSSHP = 0, DROP = 1, DPS = 2;
+var BOSSHP = 2, DROP = 0, DPS = 1;
 
 importPackage(Packages.client.inventory);
 importPackage(Packages.server);
@@ -38,7 +38,7 @@ function start() {
 		
 		for (var x = 0; x < pets.length; x++)
 			if (pets[x] != null)
-				text += "#L"+x+"##z"+pets[x].getItemId()+"# ("+ (pets[x].getDonorType() == 0 ? "boss hp" : pets[x].getDonorType() == 1 ? (pets[x].getDonorFeature() != null && pets[x].getDonorFeature().getWatchedItem() != 0 ? "#z"+pets[x].getDonorFeature().getWatchedItem()+"#" : "a drop") : pets[x].getDonorType() == 2 ? "DPS" : "") +")\r\n";
+				text += "#L"+x+"##z"+pets[x].getItemId()+"# ("+ (pets[x].getDonorType().getType() == BOSSHP ? "boss hp" : pets[x].getDonorType().getType() == DROP ? (pets[x].getDonorFeature() != null && pets[x].getDonorFeature().getWatchedItem() != 0 ? "#z"+pets[x].getDonorFeature().getWatchedItem()+"#" : "a drop") : pets[x].getDonorType().getType() == DPS ? "DPS" : "idle") +")\r\n";
 		cm.sendSimple(text + "#L999#Toggle pet features "+(!cm.getPlayer().getPetTasks() ? "on" : "off")+"");
 	}
 }
@@ -70,16 +70,16 @@ function action(m,t,s) {
 		} else if (s != 999) {
 			selected_pet = cm.getPlayer().getPet(s);
 			petid = selected_pet.getUniqueId();
-			cm.sendSimple("Your selected pet is #z" + selected_pet.getItemId() + "#. It's currently looking out for #e" + (selected_pet.getDonorType() == 0 ? "boss hp" : selected_pet.getDonorType() == 1 ? (selected_pet.getDonorFeature() != null && selected_pet.getDonorFeature().getWatchedItem() != 0 ? "#z"+selected_pet.getDonorFeature().getWatchedItem()+"#" : "a drop") : selected_pet.getDonorType() == DPS ? "DPS" : "") + "#n. What do you wish to do?\r\n",
-					"1. Make it watch boss health", "2. Make it watch for a drop", "3. Make it display your damage per second");
+			cm.sendSimple("Your selected pet is #z" + selected_pet.getItemId() + "#. It's currently looking out for #e" + (selected_pet.getDonorType().getType() == BOSSHP ? "boss hp" : selected_pet.getDonorType().getType() == DPS ? (selected_pet.getDonorFeature() != null && selected_pet.getDonorFeature().getWatchedItem() != 0 ? "#z"+selected_pet.getDonorFeature().getWatchedItem()+"#" : "a drop") : selected_pet.getDonorType().getType() == DPS ? "DPS" : "nothing") + "#n. What do you wish to do?\r\n",
+					"1. Make it watch for a drop", "2. Make it display your damage per second", "3. Make it watch boss health", "4. Make it do nothing");
 		}
 	} else if (status == 1) {
-		selected_pet.setDonorFeature(new DonorPetFeature(s, petid));
-		selected_pet.setDonorType(s);
+		selected_pet.setDonorFeature(new DonorPetFeature(DonorPetFeatureType.getByType(s), petid));
+		selected_pet.setDonorType(DonorPetFeatureType.getByType(s));
 		if (s == DROP) {
 			cm.sendGetText("What item do you wish your pet to search for?");
 		} else {
-			cm.sendNext("Your pet is now " + (s == BOSSHP ? "keeping track of boss health" : s == DPS ? "displaying your damage per second" : "") + "");
+			cm.sendNext(s + "Your pet is now #e" + (s == BOSSHP ? "keeping track of boss health" : s == DPS ? "displaying your damage per second" : "doing nothing") + "#n.");
 			status = -2;
 		}
 	} else if (status == 2) {

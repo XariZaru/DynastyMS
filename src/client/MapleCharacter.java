@@ -120,6 +120,7 @@ import tools.Pair;
 import tools.Randomizer;
 import client.autoban.AutobanManager;
 import client.inventory.DonorPetFeature;
+import client.inventory.DonorPetFeatureType;
 import client.inventory.Equip;
 import client.inventory.Item;
 import client.inventory.ItemFactory;
@@ -128,6 +129,10 @@ import client.inventory.MapleInventoryType;
 import client.inventory.MaplePet;
 import client.inventory.MapleWeaponType;
 import client.inventory.ModifyInventory;
+import client.listeners.DamageEvent;
+import client.listeners.DamageListener;
+import client.listeners.DropEvent;
+import client.listeners.DropListener;
 import constants.ExpTable;
 import constants.GameConstants;
 import constants.ItemConstants;
@@ -294,6 +299,8 @@ public class MapleCharacter extends AbstractAnimatedMapleMapObject {
 	private IPartyQuest partylistener;
 	private boolean petTaskStarted;
 	private Channel lastchannel = null;
+	private List<DamageListener> damage_listeners;
+	private List<DropListener> drop_listeners;
 
     private MapleCharacter() {
         setStance(0);
@@ -352,13 +359,68 @@ public class MapleCharacter extends AbstractAnimatedMapleMapObject {
         return ret;
     }
     
-    public void setLastChannel(Channel channel) {
-    	this.lastchannel = channel;
+  //=====================================================================================================================================
+    // Listeners
+    //=====================================================================================================================================
+    
+    /*
+     * Adds damage listener to the character
+     * @param	listener	methods for total damage done and amount of damage from this single evnet 
+     */
+    public void addDamageListener(DamageListener listener) {
+    	damage_listeners.add(listener);
     }
     
-    public int getLastChannel() {
-    	return this.lastChannel;
+    /*
+     * Returns all damage listeners on the character
+     */
+    public List<DamageListener> getDamageListeners() {
+    	return damage_listeners;
     }
+    
+    /*
+     * Adds a drop listener to the character
+     * @param	listener	contains methods dealing with handling a DropEvent
+     */
+    public void addDropListener(DropListener listener) {
+    	this.drop_listeners.add(listener);
+    }
+    
+    /*
+     * Returns list of DropListeners
+     */
+    public List<DropListener> getDropListeners() {
+    	return this.drop_listeners;
+    }
+    
+    /* 
+     * DamageEvents are sent here to be broadcasted to listeners
+     * @param	event	that contains information about damage done during an event or to a monster 
+     */
+    public void updateDamageListeners(DamageEvent event) {
+    	for (MaplePet pet : getPets())
+    		if (pet != null && pet.getDonorFeature() != null && pet.getDonorFeature().getType() != DonorPetFeatureType.DROP)
+    			pet.getDonorFeature().addDamage(event);
+    	if (getDamageListeners() != null)
+	    	for (DamageListener listener : getDamageListeners())
+	    		listener.addDamage(event);
+    }
+    
+    /* DropEvents sent here are broadcasted to all listeners
+     * @param	event	contains information about the drop
+     */
+    public void updateDropListeners(DropEvent event) {
+    	for (MaplePet pet : getPets())
+    		if (pet != null && pet.getDonorFeature() != null && pet.getDonorFeature().getType() == DonorPetFeatureType.DROP)
+    			pet.getDonorFeature().drop(event);
+    	if (getDropListeners() != null)
+	    	for (DropListener listener : getDropListeners())
+	    		listener.drop(event);
+    }
+    
+    //==================================================================================================================================
+    // End of listeners
+    //==================================================================================================================================
 
     public void addCooldown(int skillId, long startTime, long length, ScheduledFuture<?> timer) {
         if (this.coolDowns.containsKey(Integer.valueOf(skillId))) {
@@ -4036,18 +4098,18 @@ public class MapleCharacter extends AbstractAnimatedMapleMapObject {
     	petTaskStarted = true;
     }
     
-    public void updatePets() {
-    	for (MaplePet pet : getPets())
-    		if (pet != null && pet.getDonorFeature() != null && pet.getDonorFeature().getType() != DonorPetFeature.DROP)
-    			pet.getDonorFeature().displayResults(getPlayer());
-    }
-    
     public void stopPetTasks() {
     	if (executor != null && !executor.isShutdown()) {
     		executor.shutdown();
     		executor = null;
     		petTaskStarted = false;
     	}
+    }
+    
+    public void updatePets() {
+    	for (MaplePet pet : getPets())
+    		if (pet != null && pet.getDonorFeature() != null && pet.getDonorFeature().getType() != DonorPetFeatureType.DROP)
+    			pet.getDonorFeature().displayResults(getPlayer());
     }
     
     public boolean getPetTasks() {
@@ -5263,6 +5325,7 @@ public class MapleCharacter extends AbstractAnimatedMapleMapObject {
         return coolDowns.containsKey(Integer.valueOf(skillId));
     }
 
+    //FIXME: nullpointer thrown here. Not sure what causes it just yet
     public void startFullnessSchedule(final int decrease, final MaplePet pet, int petSlot) {
         ScheduledFuture<?> schedule;
         schedule = TimerManager.getInstance().register(new Runnable() {
@@ -5342,6 +5405,7 @@ public class MapleCharacter extends AbstractAnimatedMapleMapObject {
         unequipPet(pet, shift_left, false);
     }
 
+    //FIXME: Issue with pet's index being out of bounds -1 ... must be because the pet is removed or something
     public void unequipPet(MaplePet pet, boolean shift_left, boolean hunger) {
     	
     	byte index = getPetIndex(pet);
@@ -6042,7 +6106,7 @@ public class MapleCharacter extends AbstractAnimatedMapleMapObject {
     
     // Gift Log
     
-    public int getBossLog(String bossid) {
+    public int getDailyGiftLog(String bossid) {
         Connection con1 = DatabaseConnection.getConnection();
         try {
             int ret_count = 0;

@@ -54,7 +54,7 @@ public class MaplePet extends Item {
     private int stance;
     private boolean summoned;
     private DonorPetFeature petfeature;
-	public int donortype = 1;
+	public DonorPetFeatureType donortype = DonorPetFeatureType.DROP;
 
     private MaplePet(int id, short position, int uniqueid) {
         super(id, position, (short) 1);
@@ -73,7 +73,7 @@ public class MaplePet extends Item {
             ret.setLevel((byte) Math.min(rs.getByte("level"), 30));
             ret.setFullness(Math.min(rs.getInt("fullness"), 100));
             ret.setSummoned(rs.getInt("summoned") == 1);
-            ret.setDonorType(rs.getInt("type"));
+            ret.setDonorType(DonorPetFeatureType.getByType((byte) rs.getInt("type")));
             rs.close();
             ps.close();
             return ret;
@@ -90,7 +90,7 @@ public class MaplePet extends Item {
             ps.setInt(3, getCloseness());
             ps.setInt(4, getFullness());
             ps.setInt(5, isSummoned() ? 1 : 0);
-            ps.setInt(6, getDonorType());
+            ps.setInt(6, getDonorType().getType());
             ps.setInt(7, getUniqueId());
             ps.executeUpdate();
             ps.close();
@@ -116,11 +116,11 @@ public class MaplePet extends Item {
         }
     }
     
-    public void setDonorType(int type) {
+    public void setDonorType(DonorPetFeatureType type) {
     	this.donortype = type;
     }
     
-    public int getDonorType() {
+    public DonorPetFeatureType getDonorType() {
     	return donortype;
     }
 

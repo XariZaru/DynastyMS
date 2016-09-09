@@ -30,6 +30,7 @@ import client.inventory.Equip;
 import client.inventory.Item;
 import client.inventory.MapleInventoryType;
 import client.inventory.MaplePet;
+import client.listeners.DropEvent;
 import client.status.MonsterStatus;
 import client.status.MonsterStatusEffect;
 import constants.ItemConstants;
@@ -414,7 +415,7 @@ public class MapleMap {
             	
             	if (!mesos_dropped) {
 	                // Mesos drops
-	            	int mesos = (int) ((int) ((Math.random() * (1.1 - .6) + .6) * Math.log(mob.getMaxHp()) * 10.497 * (mob.getStats().getLevel())/8) * .75);
+	            	int mesos = (int) ((int) ((Math.random() * (.5) + .6) * Math.log(mob.getMaxHp()) * 10.497 * (mob.getStats().getLevel())/8) * .75);
 	                if (mesos > 0) {
 	                    if (chr.getBuffedValue(MapleBuffStat.MESOUP) != null) {
 	                        mesos = (int) (mesos * chr.getBuffedValue(MapleBuffStat.MESOUP).doubleValue() / 100.0);
@@ -443,17 +444,12 @@ public class MapleMap {
                 		pos.x = (int) (mobpos + ((d % 2 == 0) ? (25 * (d + 1) / 2) : -(25 * (d / 2))));
                 		if ((int) (Math.random() * 100) == 5) {
                 			drop = (Equip) ii.addGodlyStats((Equip) drop);
-                			//idrop.setOwner("God");
                 			chr.dropMessage(5, "One of the monsters nearby has dropped a " + ii.getName(drop.getItemId()) + ", which gleams with fine craftsmanship and irradiates the room with power.");
                 		}
                 		drop.setCreateDate(new Timestamp(System.currentTimeMillis()));
                 		idrop = drop;
                 	}
-                	
-                	for (MaplePet pet : chr.getPets())
-                		if (pet != null && pet.getDonorFeature() != null && pet.getDonorFeature().getType() == DonorPetFeature.DROP && idrop.getItemId() == pet.getDonorFeature().getWatchedItem())
-                			pet.getDonorFeature().displayResults(chr);
-                	
+                	updateDropListeners(idrop, chr);
                 	spawnDrop(idrop, calcDropPos(pos, mob.getPosition()), mob, chr, droptype, de.questid);
                 	d++;
                 }
@@ -481,6 +477,10 @@ public class MapleMap {
                 }
             }
         }
+    }
+    
+    private void updateDropListeners(Item item, MapleCharacter owner) {
+    	owner.updateDropListeners(new DropEvent(this, item, owner));
     }
 
     private void spawnDrop(final Item idrop, final Point dropPos, final MapleMonster mob, final MapleCharacter chr, final byte droptype, final short questid) {
@@ -645,13 +645,12 @@ public class MapleMap {
         return mobs;
     }
     
-    public List<Integer> getUniqueMonsters() {
-    	List<Integer> mobs = new ArrayList<Integer>();
+    public Set<Integer> getMonstersSet() {
+    	Set<Integer> mobs = new HashSet<Integer>();
     	for (MapleMapObject obj : this.getMapObjects()) {
     		MapleMonster mob = this.getMonsterByOid(obj.getObjectId());
     		if (mob != null)
-    			if (!mobs.contains(mob.getId()))
-    				mobs.add(mob.getId());
+    			mobs.add(mob.getId());
     	}
     	return mobs;
     }

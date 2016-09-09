@@ -29,6 +29,7 @@ import client.Skill;
 import client.SkillFactory;
 import client.inventory.DonorPetFeature;
 import client.inventory.MaplePet;
+import client.listeners.DamageEvent;
 import client.status.MonsterStatus;
 import client.status.MonsterStatusEffect;
 import constants.ServerConstants;
@@ -269,11 +270,11 @@ public class MapleMonster extends AbstractLoadedMapleLife {
     }
     
     public void updateDamageListeners(MapleCharacter from, int damage) {
-    	for (MaplePet pet : from.getPets())
-        	if (pet != null && pet.getDonorFeature() != null && (pet.getDonorFeature().getType() == DonorPetFeature.DPS || pet.getDonorFeature().getType() == DonorPetFeature.BOSSHP))
-        		pet.getDonorFeature().addDamage(from, this, damage);
+    	from.updateDamageListeners(new DamageEvent(this, this, from, damage));
+    	/* Need to update this code to current damage listeners
     	for (DamageListener listener : this.damage_listeners)
     		listener.addDamage(from, this, damage);
+    	*/
     }
 
     /**

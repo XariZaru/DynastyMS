@@ -34,7 +34,7 @@ function action(m,t,s) {
 		if (category == selections.ITEM) {
 			cm.sendSimple(searchItem(cm.getText()));
 		} else if (category == selections.MOB) {
-			cm.sendSimple("These are the monsters that currently fit your description\r\n" + cm.searchMobs(cm.getText()) + "\r\n#L999#Exit");
+			cm.sendSimple("These are the monsters that currently fit your description\r\n" + searchMobs(cm.getText()) + "\r\n#L999#Exit");
 		} else if (category == selections.MAP) {
 			cm.sendNext(getMobInfo(s));
 		}
@@ -139,4 +139,23 @@ function mobsThatDrop(itemid) {
 	rs.close();
 	ps.close();
 	return text;
+}
+
+function searchMobs(mob_name) {
+	var sb = new StringBuilder();
+	var dataProvider = MapleDataProviderFactory.getDataProvider(new File("wz/String.wz"));
+	var data = dataProvider.getData("Mob.img");
+	if (data != null) {
+		var name;
+		var data = data.getChildren().toArray();
+		for (var x = 0; x < data.length; x++) {
+			name = MapleDataTool.getString(searchData.getChildByPath("name"), "NO-NAME");
+			if (name.toLowerCase().contains(mob_name.toLowerCase())) {
+				sb.append("#L"+ searchData.getName() +"##b").append(Integer.parseInt(searchData.getName())).append("#k - #r").append(name).append("\r\n");
+			}
+		}
+	}
+	if (sb.length() == 0)
+		sb.append("No mobs were found with that name.");
+	return sb.toString();
 }

@@ -79,9 +79,9 @@ public class VoteChecker implements Runnable {
 						date = (Date) formatter.parse(str);
 						time = date.getTime();
 					} catch (DOMException e) {
-						//e.printStackTrace();
+						e.printStackTrace();
 					} catch (ParseException e) {
-						// e.printStackTrace();
+						e.printStackTrace();
 					}
 	                countVoteByIp(ip);
 	                SimpleDateFormat sdf = new SimpleDateFormat("hh:mm dd/MM");

@@ -2,19 +2,17 @@ package client.inventory;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.ScheduledFuture;
-import java.util.concurrent.TimeUnit;
 
-import listeners.DamageListener;
-import listeners.DonorPetListener;
 import server.MapleItemInformationProvider;
 import server.life.MapleMonster;
 import tools.MaplePacketCreator;
 import client.MapleCharacter;
+import client.listeners.DamageEvent;
+import client.listeners.DamageListener;
+import client.listeners.DropEvent;
+import client.listeners.DropListener;
 
-public class DonorPetFeature implements DonorPetListener, DamageListener {
+public class DonorPetFeature implements DamageListener, DropListener {
 	
 	/*
 	 * 0 - Watches boss hp
@@ -22,19 +20,18 @@ public class DonorPetFeature implements DonorPetListener, DamageListener {
 	 * 2 - Displays DPS
 	 */
 	
-	public static final int BOSSHP = 0, DROP = 1, DPS = 2;
 	private final List<Integer> excluded_mobs = Arrays.asList(8170000, 8160000, 8500003, 8500004, 8820007, 6230101, 6300003, 6400003, 6400004);
-	private int type, watched_item = 0;
+	private int watched_item = 0;
 	private int damage_done = 0, time_elapsed = 5; // time_elapsed in seconds
 	private int uniquepetid;
 	private int mob_last_damaged;
+	private DonorPetFeatureType type;
 	
-	public DonorPetFeature(int type, int uniquepetid) {
+	public DonorPetFeature(DonorPetFeatureType type, int uniquepetid) {
 		this.type = type;
 		this.uniquepetid = uniquepetid;
 	}
 	
-	@Override
 	public void displayResults(MapleCharacter player) {
 		StringBuilder str = new StringBuilder();
 		try {
@@ -74,31 +71,19 @@ public class DonorPetFeature implements DonorPetListener, DamageListener {
 		damage_done = dmg;
 	}
 	
-	@Override
-	public void addDamage(MapleCharacter from, MapleMonster mob, int dmg) {
-		if (dmg > 0) {
-			damage_done += dmg;
-			mob_last_damaged = mob.getId();
-		}
-	}
-	
-	@Override
 	public int getDamageDone() {
 		return this.damage_done;
 	}
 
-	@Override
 	public void setWatchedItem(int item) {
 		this.watched_item = item;
 	}
 	
-	@Override
-	public void setType(int type) {
+	public void setType(DonorPetFeatureType type) {
 		this.type = type;
 	}
 
-	@Override
-	public int getType() {
+	public DonorPetFeatureType getType() {
 		return this.type;
 	}
 	
@@ -106,9 +91,24 @@ public class DonorPetFeature implements DonorPetListener, DamageListener {
 		return this.uniquepetid;
 	}
 
-	@Override
 	public int getWatchedItem() {
 		return watched_item;
+	}
+
+	@Override
+	public void addDamage(DamageEvent event) {
+		if (event.getDamage() > 0) {
+			damage_done += event.getDamage();
+			mob_last_damaged = event.getMonster().getId();
+		}
+	}
+
+	@Override
+	public void drop(DropEvent event) {
+		if (getWatchedItem() <= 0)
+			return;
+		if (event.getItem().getItemId() == getWatchedItem())
+			displayResults(event.getOwner());
 	}
 
 }

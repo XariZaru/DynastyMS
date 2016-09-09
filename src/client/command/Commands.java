@@ -74,6 +74,7 @@ import server.life.MapleLifeFactory;
 import server.life.MapleMonster;
 import server.life.MapleMonsterInformationProvider;
 import server.life.MapleNPC;
+import server.life.MapleNPCFactory;
 import server.life.MonsterDropEntry;
 import server.maps.MapleMap;
 import server.maps.MapleMapItem;
@@ -897,10 +898,14 @@ public class Commands {
 			MapleMonsterInformationProvider.getInstance().getDrops().remove(Integer.parseInt(sub[1]));
 			player.dropMessage(MapleMonsterInformationProvider.getMobNameFromID(Integer.parseInt(sub[1])) + " was reloaded from the database.");
 		} else if (sub[0].equals("mobs")) {
-			for (Integer obj : player.getMap().getUniqueMonsters()) {
+			for (Integer obj : player.getMap().getMonstersSet()) {
 				MapleMonster mob = MapleLifeFactory.getMonster(obj);
 				player.dropMessage(mob.getName() + " (" + mob.getId() + ")");
 			}
+		} else if (sub[0].equals("reloadnpcs")) {
+			MapleNPCFactory.clearNPC();
+			MapleNPCFactory.reloadNPC();
+			player.dropMessage("NPCs reloaded so they can be scriptable.");
 		} else if (sub[0].equals("reloadmobs")) {
 			MapleLifeFactory.getMonsterStats().clear();
 			player.dropMessage("All mobs have been reloaded.");

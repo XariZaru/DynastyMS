@@ -1,4 +1,5 @@
 /*
+
 This file is part of the OdinMS Maple Story Server
 Copyright (C) 2008 Patrick Huy <patrick.huy@frz.cc>
 Matthias Butz <matze@odinms.de>
@@ -51,6 +52,9 @@ import server.gachapon.MapleGachapon;
 import server.gachapon.MapleGachapon.MapleGachaponItem;
 import server.life.MapleLifeFactory;
 import server.life.MapleMonster;
+import server.life.MapleMonsterInformationProvider;
+import server.life.MonsterDropEntry;
+import server.life.MonsterGlobalDropEntry;
 import server.maps.MapleMap;
 import server.maps.MapleMapFactory;
 import server.partyquest.ClearMap;
@@ -132,6 +136,122 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
  		return "";
      }
     
+//=========================================================================================================================================
+// Mob searching and item searching utilities
+//=========================================================================================================================================
+    
+    /*
+     * int mobid               = monster id
+     * boolean show_item_image = choose to display the item's image (useful if a drop is crashing users)
+     */
+    public String getMobInfo(int mobid, boolean show_item_image) {
+    	// Retrieve Monster and player's actual drop rate
+    	MapleMonster mob = MapleLifeFactory.getMonster(mobid); 
+    	double player_drop_rate = 1000000 / getPlayer().getDropRate();
+    	
+    	// Retrieve and list monster's stats
+    	String text =  "Statistics for #b#o"+mobid+"##k ("+mobid+")\r\n\r\n";
+    		text += "Level: " + mob.getStats().getLevel() + "\r\n";
+    		text += "Health: " + mob.getMaxHp() + "\r\n";
+    		text += "Mana: " + mob.getMaxMp() + "\r\n";
+    		text += "Exp: " + mob.getExp() + "\r\n";
+    		text += "Health/Exp Ratio: " + (Math.round((mob.getMaxHp() / mob.getExp() * 10)))/10 + "\r\n";
+    		text += "\r\n";
+    		text += "#eDrops List#n";
+    	
+    	// Retrieve and list monster's drops
+    	for (MonsterDropEntry drop : MapleMonsterInformationProvider.getInstance().retrieveDrop(mobid))
+    		if (show_item_image)
+    			text += "\r\n#i" + drop.itemId + "# #z"+drop.itemId+"# ("+drop.itemId+") - " + (100 * drop.chance/player_drop_rate) + "%";
+    		else
+    			text += "#t"+drop.itemId+"# ("+drop.itemId+") - " + (100 * drop.chance/player_drop_rate) + "%";
+    	
+    	// Retrieve and list global drops
+    	text += "\r\n\r\b#eGlobal Drops List#n";
+    	for (MonsterGlobalDropEntry drop : MapleMonsterInformationProvider.getInstance().getGlobalDrop())
+    		if (show_item_image)
+    			text += "\r\n#i" + drop.itemId + "# #z"+drop.itemId+"# ("+drop.itemId+") - " + (100 * drop.chance/player_drop_rate) + "%";
+    		else
+    			text += "\r\n#t"+drop.itemId+"# ("+drop.itemId+") - " + (100 * drop.chance/player_drop_rate) + "%";
+    	
+    	return text;
+    }
+    
+    // Retrieves list of monsters that drop searched item
+    public String mobsThatDrop(int itemid) {
+		long start_time = System.currentTimeMillis();
+		StringBuilder text = new StringBuilder("Here are a list of monsters that drop #e#z"+itemid+"##n ("+itemid+")\r\n");
+		
+		try (PreparedStatement ps = DatabaseConnection.getConnection().prepareStatement("SELECT dropperid, chance FROM drop_data WHERE itemid = '"+itemid+"'")) {
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				// End if over 150 instances were recorded
+				if (text.length() > 150)
+					break;
+				
+				// Get monsters and convert to percentage based on player's drop rate
+				int mobid = rs.getInt("dropperid");
+				double chance = rs.getInt("chance")/(1000000/getPlayer().getDropRate()) * 100;
+				text.append("\r\n#L" + mobid + "##b#o" + mobid + "##k (" + mobid + ") - #r" + chance + "%#k");
+			}
+			
+			text.append("#b\r\n#L999#Exit#k#l");
+			text.append("#e\r\n\r\nLoaded in " + (System.currentTimeMillis() - start_time)/1000 + " seconds#n");
+			
+			if (rs != null)
+				rs.close();
+		} catch (Exception e) {
+			
+		}
+		return "";
+    }
+    
+    public String searchMobs(String mob_name) {
+	    StringBuilder sb = new StringBuilder();
+	    MapleDataProvider dataProvider = MapleDataProviderFactory.getDataProvider(new File("wz/String.wz"));
+	    MapleData data = dataProvider.getData("Mob.img");
+	    if (data != null) {
+	        String name;
+	        for (MapleData searchData : data.getChildren()) {
+	            name = MapleDataTool.getString(searchData.getChildByPath("name"), "NO-NAME");
+	            if (name.toLowerCase().contains(mob_name.toLowerCase())) {
+	                sb.append("#L"+ searchData.getName() +"##b").append(Integer.parseInt(searchData.getName())).append("#k - #r").append(name).append("\r\n");
+	            }
+	        }
+	    }
+	    if (sb.length() == 0)
+	        sb.append("No mobs were found with that name.");
+	    return sb.toString();
+    }
+    
+    /*
+     *  Is there a better way than searching through all the items? :/ Perhaps can add to a 2d array of integer and string with 26 indices 
+     *  and add there but might take up a lot of space
+     */
+    public String searchItem(String item_name) {
+    	StringBuilder text = new StringBuilder("These are items that come up under your search description:\r\n");
+    	for (Pair<Integer, String> entry : MapleItemInformationProvider.getInstance().getAllItems()) {
+    		if (text.length() > 999) {
+    			text.append("#L999##eTOO MANY ITEMS TO BE LISTED#n#l");
+    			break;
+    		}
+    		if (entry.getRight().toLowerCase().contains(item_name.toLowerCase())) {
+    			text.append("#L"+entry.getLeft()+"##b" + entry.getLeft() + "#k - #r#z" + entry.getLeft() + "##l\r\n");
+    		}
+    	}
+    	return text.append("\r\n#L999##bExit#k" + "\r\n#L1000##bBack#k").toString();
+    }
+    
+    // Retrieves unique set of monsters from map. Can probably just be moved to an NPC script
+    public String getMobsInMap() {
+    	String text = "You are currently in #m "+ getPlayer().getMapId() +"#. What mob would you" +
+    			" like to inspect?\r\n";
+    	for (Integer mobid : getPlayer().getMap().getMonstersSet())
+    		text += "\r\n#b#L" + mobid + "##o"+ mobid +"# ("+mobid+")";
+    	text += "\r\n#L999##bExit#k\r\n#L1000##bBack#k";
+    	return text;
+    }
+    
     public String getQuestDetails(int questid) {
     	try {
     		Connection con = DatabaseConnection.getConnection();
@@ -151,23 +271,6 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
     	}
 		return "No quest selection available.";
     }
-	
-	public String getScriptableNpcs() {
-		try {
-			String text = "";
-			Connection con1 = DatabaseConnection.getConnection();
-			PreparedStatement ps = con1.prepareStatement("SELECT * FROM npcs_scriptable");
-			ResultSet rs = ps.executeQuery();
-			while (rs.next())
-				text += String.format("#p%s#: %s\r\n", rs.getString("npcid"), rs.getString("description"));
-			ps.close();
-			rs.close();
-			return text;
-		} catch (Exception e ) {
-			
-		}
-		return "No NPCs currently set as scriptable.";
-	}
 	
 	public void spawn(int mobid, int count, int x, int y) {
 		for (int times = 0; times < count; times++) {
@@ -327,13 +430,9 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
 	
 	// Daily Gift
 	
-	public int getBossLog(String bossid) {
-        return getPlayer().getBossLog(bossid);
+	public int getDailyGiftLog(String bossid) {
+        return getPlayer().getGiftLog(bossid);
     }
-	
-	public void setScriptable(int npcid) {
-		c.announce(MaplePacketCreator.setNPCScriptable(npcid));
-	}
 
     public int getGiftLog(String bossid) {
         return getPlayer().getGiftLog(bossid);

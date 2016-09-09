@@ -271,6 +271,7 @@ public class MapleInventoryManipulator {
     public static void removeById(MapleClient c, MapleInventoryType type, int itemId, int quantity, boolean fromDrop, boolean consume) {
     int removeQuantity = quantity;
     MapleInventory inv = c.getPlayer().getInventory(type);
+    System.out.println("Inventory is " + inv);
 	int slotLimit = type == MapleInventoryType.EQUIPPED ? 128 : inv.getSlotLimit();
 	
     for (short i = 0; i <= slotLimit; i++) {
