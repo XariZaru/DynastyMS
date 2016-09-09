@@ -21,11 +21,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 package client.status;
 
-import client.Skill;
 import java.util.Map;
 import java.util.concurrent.ScheduledFuture;
+
 import server.life.MobSkill;
 import tools.ArrayMap;
+import client.Skill;
 
 public class MonsterStatusEffect {
 

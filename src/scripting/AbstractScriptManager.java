@@ -21,8 +21,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 package scripting;
 
-import client.MapleClient;
-
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
@@ -32,8 +30,9 @@ import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
 
-import constants.ServerConstants;
 import tools.FilePrinter;
+import client.MapleClient;
+import constants.ServerConstants;
 
 /**
  *

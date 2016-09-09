@@ -21,8 +21,8 @@
 */
 package net;
 
-import client.MapleClient;
 import tools.data.input.SeekableLittleEndianAccessor;
+import client.MapleClient;
 
 public interface MaplePacketHandler {
     void handlePacket(SeekableLittleEndianAccessor slea, MapleClient c);

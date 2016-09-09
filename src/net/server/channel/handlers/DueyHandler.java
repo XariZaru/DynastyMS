@@ -21,15 +21,6 @@
 */
 package net.server.channel.handlers;
 
-import client.MapleCharacter;
-import client.MapleClient;
-import client.autoban.AutobanFactory;
-import client.inventory.Equip;
-import client.inventory.Item;
-import client.inventory.MapleInventoryType;
-import constants.ItemConstants;
-import constants.ServerConstants;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -39,13 +30,13 @@ import java.util.LinkedList;
 import java.util.List;
 
 import net.AbstractMaplePacketHandler;
-import net.server.channel.Channel;
 import server.DueyPackages;
-import server.MapleInventoryManipulator;
 import tools.DatabaseConnection;
-import tools.FilePrinter;
-import tools.MaplePacketCreator;
 import tools.data.input.SeekableLittleEndianAccessor;
+import client.MapleCharacter;
+import client.MapleClient;
+import client.inventory.Equip;
+import client.inventory.Item;
 
 public final class DueyHandler extends AbstractMaplePacketHandler {
     private enum Actions {

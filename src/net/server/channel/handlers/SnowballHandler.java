@@ -21,12 +21,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 package net.server.channel.handlers;
 
-import client.MapleCharacter;
-import client.MapleClient;
 import net.AbstractMaplePacketHandler;
 import server.events.gm.MapleSnowball;
 import server.maps.MapleMap;
 import tools.data.input.SeekableLittleEndianAccessor;
+import client.MapleCharacter;
+import client.MapleClient;
 
 /**
  *

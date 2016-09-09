@@ -21,7 +21,6 @@
  */
 package server.life;
 
-import client.MapleCharacter;
 import java.awt.Point;
 import java.util.concurrent.atomic.AtomicInteger;
 

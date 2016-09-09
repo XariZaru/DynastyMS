@@ -21,8 +21,6 @@
  */
 package net.server.channel.handlers;
 
-import client.MapleCharacter;
-import client.MapleClient;
 import net.AbstractMaplePacketHandler;
 import net.SendOpcode;
 import net.server.Server;
@@ -30,6 +28,8 @@ import net.server.guild.MapleAlliance;
 import tools.MaplePacketCreator;
 import tools.data.input.SeekableLittleEndianAccessor;
 import tools.data.output.MaplePacketLittleEndianWriter;
+import client.MapleCharacter;
+import client.MapleClient;
 
 /**
  *

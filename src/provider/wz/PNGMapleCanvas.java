@@ -31,6 +31,7 @@ import java.awt.image.SampleModel;
 import java.awt.image.WritableRaster;
 import java.util.zip.DataFormatException;
 import java.util.zip.Inflater;
+
 import provider.MapleCanvas;
 
 public class PNGMapleCanvas implements MapleCanvas {

@@ -21,14 +21,15 @@
  */
 package scripting.portal;
 
-import client.MapleClient;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
 import scripting.AbstractPlayerInteraction;
 import server.MaplePortal;
 import tools.DatabaseConnection;
 import tools.MaplePacketCreator;
+import client.MapleClient;
 
 public class PortalPlayerInteraction extends AbstractPlayerInteraction {
 

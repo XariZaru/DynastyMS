@@ -24,7 +24,9 @@ package provider.wz;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+
 import javax.imageio.ImageIO;
+
 import provider.MapleCanvas;
 
 public class FileStoredPngMapleCanvas implements MapleCanvas {

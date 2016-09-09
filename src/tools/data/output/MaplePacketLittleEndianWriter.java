@@ -22,6 +22,7 @@
 package tools.data.output;
 
 import java.io.ByteArrayOutputStream;
+
 import tools.HexTool;
 
 /**

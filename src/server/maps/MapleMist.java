@@ -21,23 +21,22 @@
 */
 package server.maps;
 
+import java.awt.Point;
+import java.awt.Rectangle;
+
+import server.MapleStatEffect;
+import server.life.MapleMonster;
+import server.life.MobSkill;
+import tools.MaplePacketCreator;
 import client.MapleCharacter;
 import client.MapleClient;
 import client.Skill;
 import client.SkillFactory;
-
-import java.awt.Point;
-import java.awt.Rectangle;
-
 import constants.skills.BlazeWizard;
 import constants.skills.Evan;
 import constants.skills.FPMage;
 import constants.skills.NightWalker;
 import constants.skills.Shadower;
-import server.MapleStatEffect;
-import server.life.MapleMonster;
-import server.life.MobSkill;
-import tools.MaplePacketCreator;
 
 /**
  *

@@ -21,16 +21,17 @@
  */
 package net.server.channel.handlers;
 
-import client.MapleCharacter;
-import client.MapleClient;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
 import net.AbstractMaplePacketHandler;
 import tools.DatabaseConnection;
 import tools.MaplePacketCreator;
 import tools.data.input.SeekableLittleEndianAccessor;
+import client.MapleCharacter;
+import client.MapleClient;
 
 public final class BBSOperationHandler extends AbstractMaplePacketHandler {
 

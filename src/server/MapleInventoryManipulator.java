@@ -21,6 +21,13 @@
  */
 package server;
 
+import java.awt.Point;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+
+import tools.MaplePacketCreator;
 import client.MapleBuffStat;
 import client.MapleClient;
 import client.inventory.Equip;
@@ -29,16 +36,6 @@ import client.inventory.MapleInventory;
 import client.inventory.MapleInventoryType;
 import client.inventory.ModifyInventory;
 import constants.ItemConstants;
-
-import java.awt.Point;
-import java.sql.PreparedStatement;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
-
-import tools.DatabaseConnection;
-import tools.MaplePacketCreator;
 
 /**
  *

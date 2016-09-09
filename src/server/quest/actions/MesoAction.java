@@ -21,11 +21,11 @@
  */
 package server.quest.actions;
 
-import client.MapleCharacter;
 import provider.MapleData;
 import provider.MapleDataTool;
 import server.quest.MapleQuest;
 import server.quest.MapleQuestActionType;
+import client.MapleCharacter;
 
 /**
  *

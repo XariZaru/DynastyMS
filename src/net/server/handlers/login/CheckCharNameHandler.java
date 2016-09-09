@@ -21,11 +21,11 @@
  */
 package net.server.handlers.login;
 
-import client.MapleCharacter;
-import client.MapleClient;
 import net.AbstractMaplePacketHandler;
 import tools.MaplePacketCreator;
 import tools.data.input.SeekableLittleEndianAccessor;
+import client.MapleCharacter;
+import client.MapleClient;
 
 public final class CheckCharNameHandler extends AbstractMaplePacketHandler {
 

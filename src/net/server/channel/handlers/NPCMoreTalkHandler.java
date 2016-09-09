@@ -21,11 +21,11 @@
 */
 package net.server.channel.handlers;
 
-import client.MapleClient;
 import net.AbstractMaplePacketHandler;
 import scripting.npc.NPCScriptManager;
 import scripting.quest.QuestScriptManager;
 import tools.data.input.SeekableLittleEndianAccessor;
+import client.MapleClient;
 
 /**
  *

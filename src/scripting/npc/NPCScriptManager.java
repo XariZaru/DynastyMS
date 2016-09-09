@@ -21,9 +21,6 @@
  */
 package scripting.npc;
 
-import client.MapleCharacter;
-import client.MapleClient;
-
 import java.lang.reflect.UndeclaredThrowableException;
 import java.util.HashMap;
 import java.util.Map;
@@ -35,6 +32,8 @@ import scripting.AbstractScriptManager;
 import server.life.MapleLifeFactory;
 import tools.FilePrinter;
 import tools.MaplePacketCreator;
+import client.MapleCharacter;
+import client.MapleClient;
 
 /**
  *

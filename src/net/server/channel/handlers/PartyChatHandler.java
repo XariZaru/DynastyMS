@@ -21,15 +21,15 @@
 */
 package net.server.channel.handlers;
 
-import client.MapleCharacter;
-import client.MapleClient;
-import client.autoban.AutobanFactory;
 import net.AbstractMaplePacketHandler;
 import net.server.Server;
 import net.server.world.World;
 import tools.FilePrinter;
 import tools.MaplePacketCreator;
 import tools.data.input.SeekableLittleEndianAccessor;
+import client.MapleCharacter;
+import client.MapleClient;
+import client.autoban.AutobanFactory;
 
 public final class PartyChatHandler extends AbstractMaplePacketHandler {
     public final void handlePacket(SeekableLittleEndianAccessor slea, MapleClient c) {

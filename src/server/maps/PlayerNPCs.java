@@ -24,12 +24,13 @@ package server.maps;
 import java.awt.Point;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
-import client.MapleClient;
-import java.sql.SQLException;
+
 import tools.DatabaseConnection;
 import tools.MaplePacketCreator;
+import client.MapleClient;
 
 /**
  *

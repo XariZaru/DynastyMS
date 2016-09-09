@@ -24,6 +24,7 @@ package client.inventory;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
+
 import provider.MapleData;
 import provider.MapleDataProvider;
 import provider.MapleDataProviderFactory;

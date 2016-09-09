@@ -21,23 +21,21 @@
 */
 package client.inventory;
 
-import client.inventory.Item;
-
-import com.mysql.jdbc.Statement;
-
 import java.awt.Point;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Timestamp;
 import java.util.List;
 
-import tools.DatabaseConnection;
 import server.MapleItemInformationProvider;
 import server.movement.AbsoluteLifeMovement;
 import server.movement.LifeMovement;
 import server.movement.LifeMovementFragment;
+import tools.DatabaseConnection;
+import client.pets.DonorPetFeature;
+import client.pets.DonorPetFeatureType;
+
+import com.mysql.jdbc.Statement;
 
 /**
  *

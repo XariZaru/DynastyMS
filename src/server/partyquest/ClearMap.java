@@ -4,13 +4,12 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-import client.MapleCharacter;
-import client.MapleClient;
 import net.server.Server;
 import scripting.npc.NPCScriptManager;
-import server.life.MapleLifeFactory;
 import server.maps.MapleMap;
 import tools.MaplePacketCreator;
+import client.MapleCharacter;
+import client.MapleClient;
 
 public class ClearMap {
 	

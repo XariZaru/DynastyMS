@@ -21,22 +21,20 @@
 */ 
 package net.server.channel.handlers; 
 
-import client.MapleClient; 
+import java.util.Random;
+
+import net.AbstractMaplePacketHandler;
+import server.MakerItemFactory;
+import server.MakerItemFactory.MakerItemCreateEntry;
+import server.MapleInventoryManipulator;
+import server.MapleItemInformationProvider;
+import tools.MaplePacketCreator;
+import tools.Pair;
+import tools.data.input.SeekableLittleEndianAccessor;
+import client.MapleClient;
 import client.inventory.Equip;
-import client.inventory.Equip.ScrollResult;
 import client.inventory.MapleInventoryType;
 import client.inventory.MapleWeaponType;
-
-import java.util.Random; 
-
-import net.AbstractMaplePacketHandler; 
-import server.MapleInventoryManipulator; 
-import server.MapleItemInformationProvider; 
-import server.MakerItemFactory; 
-import server.MakerItemFactory.MakerItemCreateEntry; 
-import tools.MaplePacketCreator; 
-import tools.Pair; 
-import tools.data.input.SeekableLittleEndianAccessor; 
 
 /** 
  * 

@@ -23,6 +23,7 @@ package client;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import server.MapleStatEffect;
 import server.life.Element;
 

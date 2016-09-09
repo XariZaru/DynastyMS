@@ -21,13 +21,14 @@
 */
 package net.server;
 
-import client.MapleCharacter;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
+
+import client.MapleCharacter;
 
 public class PlayerStorage {
     private final ReentrantReadWriteLock locks = new ReentrantReadWriteLock();

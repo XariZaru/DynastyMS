@@ -21,13 +21,15 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 package net.mina;
 
-import client.MapleClient;
 import java.util.concurrent.locks.Lock;
+
 import org.apache.mina.core.buffer.IoBuffer;
 import org.apache.mina.core.session.IoSession;
 import org.apache.mina.filter.codec.ProtocolEncoder;
 import org.apache.mina.filter.codec.ProtocolEncoderOutput;
+
 import tools.MapleAESOFB;
+import client.MapleClient;
 
 public class MaplePacketEncoder implements ProtocolEncoder {
 

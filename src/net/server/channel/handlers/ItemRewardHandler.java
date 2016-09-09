@@ -21,11 +21,8 @@
 */
 package net.server.channel.handlers;
 
-import client.MapleClient;
-import client.inventory.Item;
-import client.inventory.MapleInventoryType;
-import constants.ItemConstants;
 import java.util.List;
+
 import net.AbstractMaplePacketHandler;
 import net.server.Server;
 import server.MapleInventoryManipulator;
@@ -35,6 +32,10 @@ import tools.MaplePacketCreator;
 import tools.Pair;
 import tools.Randomizer;
 import tools.data.input.SeekableLittleEndianAccessor;
+import client.MapleClient;
+import client.inventory.Item;
+import client.inventory.MapleInventoryType;
+import constants.ItemConstants;
 
 /**
  * @author Jay Estrella/ Modified by kevintjuh93

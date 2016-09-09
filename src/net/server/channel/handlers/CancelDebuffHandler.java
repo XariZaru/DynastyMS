@@ -21,9 +21,9 @@
  */
 package net.server.channel.handlers;
 
-import client.MapleClient;
 import net.AbstractMaplePacketHandler;
 import tools.data.input.SeekableLittleEndianAccessor;
+import client.MapleClient;
 
 public final class CancelDebuffHandler extends AbstractMaplePacketHandler {//TIP: BAD STUFF LOL!
 

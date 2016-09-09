@@ -22,14 +22,14 @@
 
 package net.server.channel.handlers;
 
-import client.MapleCharacter;
-import client.MapleClient;
 import net.AbstractMaplePacketHandler;
-import net.server.channel.Channel;
 import net.server.Server;
+import net.server.channel.Channel;
 import server.maps.HiredMerchant;
 import tools.MaplePacketCreator;
 import tools.data.input.SeekableLittleEndianAccessor;
+import client.MapleCharacter;
+import client.MapleClient;
 
 /**
  *

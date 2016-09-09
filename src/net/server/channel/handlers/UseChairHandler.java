@@ -21,11 +21,11 @@
 */
 package net.server.channel.handlers;
 
-import client.MapleClient;
-import client.inventory.MapleInventoryType;
 import net.AbstractMaplePacketHandler;
 import tools.MaplePacketCreator;
 import tools.data.input.SeekableLittleEndianAccessor;
+import client.MapleClient;
+import client.inventory.MapleInventoryType;
 
 public final class UseChairHandler extends AbstractMaplePacketHandler {
     @Override

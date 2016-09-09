@@ -24,7 +24,6 @@ package client;
 import java.awt.Point;
 import java.lang.ref.WeakReference;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -53,8 +52,6 @@ import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.regex.Pattern;
-
-import com.sun.org.apache.bcel.internal.generic.IF_ACMPEQ;
 
 import net.server.PlayerBuffValueHolder;
 import net.server.PlayerCoolDownValueHolder;
@@ -105,10 +102,8 @@ import server.partyquest.ClearMap;
 import server.partyquest.JumpQuest;
 import server.partyquest.MonsterCarnival;
 import server.partyquest.MonsterCarnivalParty;
-import server.partyquest.PQBase;
 import server.partyquest.PartyQuest;
 import server.partyquest.SpawnPQ;
-import server.partyquest.dynasty.CustomCPQ;
 import server.partyquest.dynasty.CustomCPQParty;
 import server.partyquest.dynasty.DynastyPQ;
 import server.partyquest.dynastyPQ.IPartyQuest;
@@ -119,8 +114,6 @@ import tools.MaplePacketCreator;
 import tools.Pair;
 import tools.Randomizer;
 import client.autoban.AutobanManager;
-import client.inventory.DonorPetFeature;
-import client.inventory.DonorPetFeatureType;
 import client.inventory.Equip;
 import client.inventory.Item;
 import client.inventory.ItemFactory;
@@ -133,6 +126,8 @@ import client.listeners.DamageEvent;
 import client.listeners.DamageListener;
 import client.listeners.DropEvent;
 import client.listeners.DropListener;
+import client.pets.DonorPetFeature;
+import client.pets.DonorPetFeatureType;
 import constants.ExpTable;
 import constants.GameConstants;
 import constants.ItemConstants;
@@ -180,7 +175,6 @@ public class MapleCharacter extends AbstractAnimatedMapleMapObject {
     private int rank, rankMove, jobRank, jobRankMove;
     private int level, str, dex, luk, int_, hp, maxhp, mp, maxmp;
     private int hpMpApUsed;
-    private int lastChannel = -1;
     private int hair;
     private int face, mobCount;
     private int remainingAp;
@@ -4323,24 +4317,6 @@ public class MapleCharacter extends AbstractAnimatedMapleMapObject {
         MaplePortal closest = map.findClosestPortal(getPosition());
         savedLocations[SavedLocationType.fromString(type).ordinal()] = new SavedLocation(getMapId(), closest != null ? closest.getId() : 0);
     }
-    
-    public MapleMonster getDummy() {
-    	return dummy;
-    }
-    
-    public void setDummy(MapleMonster dummy) {
-    	this.dummy = dummy;
-    }
-    
-    public void killDummy() {
-    	if (dummy != null) {
-    		dummy.setHp(0);
-    		getMap().killMonster(dummy, this, true);
-    		dummy = null;
-    	} else {
-    		message("You have no DPS testing mob to kill!");
-    	}
-    }
 
     public final boolean insertNewChar() {
         final Connection con = DatabaseConnection.getConnection();
@@ -4729,11 +4705,7 @@ public class MapleCharacter extends AbstractAnimatedMapleMapObject {
             }
         }, duration);
     }
-    
-	public void setLastChannel(int ch) {
-		this.lastChannel = ch;
-	}
-
+ 
     public void sendPolice(String text) {
         String message = getName() + " received this - " + text;
         if (Server.getInstance().isGmOnline()) { //Alert and log if a GM is online

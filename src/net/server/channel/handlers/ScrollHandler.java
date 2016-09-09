@@ -21,6 +21,14 @@
  */
 package net.server.channel.handlers;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import net.AbstractMaplePacketHandler;
+import server.MapleInventoryManipulator;
+import server.MapleItemInformationProvider;
+import tools.MaplePacketCreator;
+import tools.data.input.SeekableLittleEndianAccessor;
 import client.MapleClient;
 import client.Skill;
 import client.SkillFactory;
@@ -30,17 +38,6 @@ import client.inventory.Item;
 import client.inventory.MapleInventory;
 import client.inventory.MapleInventoryType;
 import client.inventory.ModifyInventory;
-
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.util.ArrayList;
-import java.util.List;
-import net.AbstractMaplePacketHandler;
-import server.MapleInventoryManipulator;
-import server.MapleItemInformationProvider;
-import tools.DatabaseConnection;
-import tools.MaplePacketCreator;
-import tools.data.input.SeekableLittleEndianAccessor;
 
 /**
  * @author Matze

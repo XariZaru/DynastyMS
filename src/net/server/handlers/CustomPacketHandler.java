@@ -21,10 +21,10 @@
 */
 package net.server.handlers;
 
-import client.MapleClient;
 import net.MaplePacketHandler;
 import tools.MaplePacketCreator;
 import tools.data.input.SeekableLittleEndianAccessor;
+import client.MapleClient;
 
 public class CustomPacketHandler implements MaplePacketHandler {
     @Override

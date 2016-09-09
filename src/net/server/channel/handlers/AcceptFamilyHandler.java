@@ -21,12 +21,12 @@
  */
 package net.server.channel.handlers;
 
-import constants.ServerConstants;
-import client.MapleCharacter;
-import client.MapleClient;
 import net.AbstractMaplePacketHandler;
 import tools.MaplePacketCreator;
 import tools.data.input.SeekableLittleEndianAccessor;
+import client.MapleCharacter;
+import client.MapleClient;
+import constants.ServerConstants;
 
 /**
  *

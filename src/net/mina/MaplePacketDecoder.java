@@ -21,12 +21,13 @@
 */
 package net.mina;
 
-import client.MapleClient;
 import org.apache.mina.core.buffer.IoBuffer;
 import org.apache.mina.core.session.IoSession;
 import org.apache.mina.filter.codec.CumulativeProtocolDecoder;
 import org.apache.mina.filter.codec.ProtocolDecoderOutput;
+
 import tools.MapleAESOFB;
+import client.MapleClient;
 
 public class MaplePacketDecoder extends CumulativeProtocolDecoder {
     private static final String DECODER_STATE_KEY = MaplePacketDecoder.class.getName() + ".STATE";

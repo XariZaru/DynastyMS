@@ -21,18 +21,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 package net.server.channel.handlers;
 
-import client.MapleBuffStat;
-import client.MapleCharacter;
-import client.MapleClient;
-import client.Skill;
-import client.SkillFactory;
-import client.inventory.Item;
-import client.inventory.MapleInventoryType;
-import client.status.MonsterStatus;
-import client.status.MonsterStatusEffect;
-import constants.skills.Aran;
-import constants.skills.Corsair;
-
 import java.awt.Point;
 import java.util.Collections;
 import java.util.List;
@@ -51,6 +39,17 @@ import server.maps.MapleMap;
 import tools.MaplePacketCreator;
 import tools.Randomizer;
 import tools.data.input.SeekableLittleEndianAccessor;
+import client.MapleBuffStat;
+import client.MapleCharacter;
+import client.MapleClient;
+import client.Skill;
+import client.SkillFactory;
+import client.inventory.Item;
+import client.inventory.MapleInventoryType;
+import client.status.MonsterStatus;
+import client.status.MonsterStatusEffect;
+import constants.skills.Aran;
+import constants.skills.Corsair;
 
 public final class TakeDamageHandler extends AbstractMaplePacketHandler {
 

@@ -1,8 +1,8 @@
 package server.partyquest.dynastyPQ;
 
+import net.server.world.MapleParty;
 import server.life.MapleMonster;
 import client.MapleCharacter;
-import net.server.world.MapleParty;
 
 public interface IPartyQuest {
 	

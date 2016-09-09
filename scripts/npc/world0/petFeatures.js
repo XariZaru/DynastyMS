@@ -5,6 +5,7 @@ var petid;
 var BOSSHP = 2, DROP = 0, DPS = 1;
 
 importPackage(Packages.client.inventory);
+importPackage(Packages.client.pets);
 importPackage(Packages.server);
 importPackage(Packages.tools);
 importPackage(Packages.java.sql);
@@ -79,7 +80,7 @@ function action(m,t,s) {
 		if (s == DROP) {
 			cm.sendGetText("What item do you wish your pet to search for?");
 		} else {
-			cm.sendNext(s + "Your pet is now #e" + (s == BOSSHP ? "keeping track of boss health" : s == DPS ? "displaying your damage per second" : "doing nothing") + "#n.");
+			cm.sendNext("Your pet is now #e" + (s == BOSSHP ? "keeping track of boss health" : s == DPS ? "displaying your damage per second" : "doing nothing") + "#n.");
 			status = -2;
 		}
 	} else if (status == 2) {

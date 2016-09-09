@@ -21,10 +21,6 @@
  */
 package server;
 
-import client.MapleClient;
-import client.inventory.Item;
-import client.inventory.ItemFactory;
-import client.inventory.MapleInventoryType;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -36,9 +32,14 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+
 import tools.DatabaseConnection;
 import tools.MaplePacketCreator;
 import tools.Pair;
+import client.MapleClient;
+import client.inventory.Item;
+import client.inventory.ItemFactory;
+import client.inventory.MapleInventoryType;
 
 /**
  *

@@ -21,10 +21,10 @@
 */
 package server.life;
 
-import client.MapleClient;
 import server.MapleShopFactory;
 import server.maps.MapleMapObjectType;
 import tools.MaplePacketCreator;
+import client.MapleClient;
 
 public class MapleNPC extends AbstractLoadedMapleLife {
     private MapleNPCStats stats;

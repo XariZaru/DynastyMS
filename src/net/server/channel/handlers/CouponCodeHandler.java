@@ -21,16 +21,17 @@
 */
 package net.server.channel.handlers;
 
-import java.sql.SQLException;
-import client.MapleClient;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import net.AbstractMaplePacketHandler;
 import server.MapleInventoryManipulator;
 import tools.DatabaseConnection;
 import tools.MaplePacketCreator;
 import tools.data.input.SeekableLittleEndianAccessor;
+import client.MapleClient;
 
 /**
  *

@@ -2,3 +2,5 @@ Xari used: !item 5220000 100
 Xari used: !search item pet food 
 Xari used: !item 2120000 500 
 Xari used: !spawn 9400549 
+Xari used: @hepler 
+Xari used: !search npc meow 

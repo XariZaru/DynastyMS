@@ -21,11 +21,11 @@
 */
 package net.server.channel.handlers;
 
-import client.MapleClient;
 import net.AbstractMaplePacketHandler;
 import server.life.MapleMonster;
 import tools.MaplePacketCreator;
 import tools.data.input.SeekableLittleEndianAccessor;
+import client.MapleClient;
 
 public final class MonsterBombHandler extends AbstractMaplePacketHandler {
     public final void handlePacket(SeekableLittleEndianAccessor slea, MapleClient c) {

@@ -21,12 +21,12 @@
 */
 package net.server.channel.handlers;
 
-import client.MapleClient;
-import client.autoban.AutobanFactory;
 import net.AbstractMaplePacketHandler;
 import server.MapleItemInformationProvider;
 import tools.FilePrinter;
 import tools.data.input.SeekableLittleEndianAccessor;
+import client.MapleClient;
+import client.autoban.AutobanFactory;
 
 /**
  * 

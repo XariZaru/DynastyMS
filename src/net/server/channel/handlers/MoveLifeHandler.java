@@ -21,9 +21,9 @@
 */
 package net.server.channel.handlers;
 
-import client.MapleClient;
 import java.awt.Point;
 import java.util.List;
+
 import server.life.MapleMonster;
 import server.life.MobSkill;
 import server.life.MobSkillFactory;
@@ -34,6 +34,7 @@ import tools.MaplePacketCreator;
 import tools.Pair;
 import tools.Randomizer;
 import tools.data.input.SeekableLittleEndianAccessor;
+import client.MapleClient;
 
 public final class MoveLifeHandler extends AbstractMovementPacketHandler {
     @Override
@@ -45,9 +46,6 @@ public final class MoveLifeHandler extends AbstractMovementPacketHandler {
             return;
         }
         MapleMonster monster = (MapleMonster) mmo;
-        if (monster.isDummy()) {
-        	return;
-        }
         List<LifeMovementFragment> res;
         byte skillByte = slea.readByte();
         byte skill = slea.readByte();

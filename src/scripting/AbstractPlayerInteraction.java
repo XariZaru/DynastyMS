@@ -23,18 +23,14 @@ package scripting;
 
 import java.awt.Desktop;
 import java.awt.Point;
-import java.net.URISyntaxException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import net.server.Server;
 import net.server.channel.Channel;

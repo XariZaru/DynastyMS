@@ -22,6 +22,7 @@
 package server;
 
 import java.awt.Point;
+
 import client.MapleClient;
 
 public interface MaplePortal {

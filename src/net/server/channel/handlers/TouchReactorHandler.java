@@ -21,11 +21,11 @@
 */
 package net.server.channel.handlers;
 
-import client.MapleClient;
 import net.AbstractMaplePacketHandler;
 import scripting.reactor.ReactorScriptManager;
 import server.maps.MapleReactor;
 import tools.data.input.SeekableLittleEndianAccessor;
+import client.MapleClient;
 
 /**
  *

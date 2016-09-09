@@ -22,6 +22,7 @@
 package server.maps;
 
 import java.awt.Point;
+
 import client.MapleClient;
 
 public interface MapleMapObject {

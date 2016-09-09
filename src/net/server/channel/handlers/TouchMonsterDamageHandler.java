@@ -21,10 +21,9 @@
 */
 package net.server.channel.handlers;
 
-import net.server.channel.handlers.AbstractDealDamageHandler;
+import tools.data.input.SeekableLittleEndianAccessor;
 import client.MapleBuffStat;
 import client.MapleClient;
-import tools.data.input.SeekableLittleEndianAccessor;
 
 public final class TouchMonsterDamageHandler extends AbstractDealDamageHandler {
     @Override

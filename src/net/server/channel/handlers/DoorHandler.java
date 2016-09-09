@@ -21,11 +21,11 @@
 */
 package net.server.channel.handlers;
 
-import client.MapleClient;
 import net.AbstractMaplePacketHandler;
 import server.maps.MapleDoor;
 import server.maps.MapleMapObject;
 import tools.data.input.SeekableLittleEndianAccessor;
+import client.MapleClient;
 
 /**
  *

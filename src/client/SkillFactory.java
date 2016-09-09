@@ -21,6 +21,18 @@
 */
 package client;
 
+import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
+
+import provider.MapleData;
+import provider.MapleDataDirectoryEntry;
+import provider.MapleDataFileEntry;
+import provider.MapleDataProvider;
+import provider.MapleDataProviderFactory;
+import provider.MapleDataTool;
+import server.MapleStatEffect;
+import server.life.Element;
 import constants.skills.Aran;
 import constants.skills.Archer;
 import constants.skills.Assassin;
@@ -72,19 +84,6 @@ import constants.skills.Swordsman;
 import constants.skills.ThunderBreaker;
 import constants.skills.WhiteKnight;
 import constants.skills.WindArcher;
-
-import java.io.File;
-import java.util.HashMap;
-import java.util.Map;
-
-import provider.MapleData;
-import provider.MapleDataDirectoryEntry;
-import provider.MapleDataFileEntry;
-import provider.MapleDataProvider;
-import provider.MapleDataProviderFactory;
-import provider.MapleDataTool;
-import server.MapleStatEffect;
-import server.life.Element;
 
 public class SkillFactory {
     private static Map<Integer, Skill> skills = new HashMap<>();

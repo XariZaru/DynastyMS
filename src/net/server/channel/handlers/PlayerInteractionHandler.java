@@ -21,14 +21,6 @@
 */
 package net.server.channel.handlers;
 
-import client.MapleCharacter;
-import client.MapleClient;
-import client.autoban.AutobanFactory;
-import client.inventory.Item;
-import client.inventory.MapleInventory;
-import client.inventory.MapleInventoryType;
-import constants.ItemConstants;
-
 import java.util.Arrays;
 
 import net.AbstractMaplePacketHandler;
@@ -46,6 +38,13 @@ import tools.FilePrinter;
 import tools.MaplePacketCreator;
 import tools.Pair;
 import tools.data.input.SeekableLittleEndianAccessor;
+import client.MapleCharacter;
+import client.MapleClient;
+import client.autoban.AutobanFactory;
+import client.inventory.Item;
+import client.inventory.MapleInventory;
+import client.inventory.MapleInventoryType;
+import constants.ItemConstants;
 
 /**
  *

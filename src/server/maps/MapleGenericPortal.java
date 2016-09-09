@@ -21,11 +21,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 package server.maps;
 
-import client.MapleClient;
 import java.awt.Point;
+
 import scripting.portal.PortalScriptManager;
 import server.MaplePortal;
 import tools.MaplePacketCreator;
+import client.MapleClient;
 
 public class MapleGenericPortal implements MaplePortal {
 

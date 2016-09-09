@@ -21,17 +21,18 @@
 */
 package net.server.handlers.login;
 
-import client.MapleCharacter;
-import client.MapleClient;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+
 import net.AbstractMaplePacketHandler;
 import tools.DatabaseConnection;
 import tools.MaplePacketCreator;
 import tools.data.input.SeekableLittleEndianAccessor;
+import client.MapleCharacter;
+import client.MapleClient;
 
 public final class ViewCharHandler extends AbstractMaplePacketHandler {
     @Override

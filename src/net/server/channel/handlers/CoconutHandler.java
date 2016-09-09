@@ -22,13 +22,13 @@
 
 package net.server.channel.handlers;
 
-import client.MapleClient;
 import net.AbstractMaplePacketHandler;
 import server.events.gm.MapleCoconut;
 import server.events.gm.MapleCoconuts;
 import server.maps.MapleMap;
 import tools.MaplePacketCreator;
 import tools.data.input.SeekableLittleEndianAccessor;
+import client.MapleClient;
 
 /**
  *

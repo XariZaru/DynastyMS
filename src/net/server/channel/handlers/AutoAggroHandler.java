@@ -21,10 +21,10 @@
  */
 package net.server.channel.handlers;
 
-import client.MapleClient;
 import net.AbstractMaplePacketHandler;
 import server.life.MapleMonster;
 import tools.data.input.SeekableLittleEndianAccessor;
+import client.MapleClient;
 
 public final class AutoAggroHandler extends AbstractMaplePacketHandler {
 

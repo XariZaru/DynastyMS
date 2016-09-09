@@ -21,13 +21,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 package net.server.channel.handlers;
 
-import tools.LogHelper;
 import tools.FilePrinter;
 import tools.MaplePacketCreator;
 import tools.data.input.SeekableLittleEndianAccessor;
 import client.MapleCharacter;
 import client.MapleClient;
-import client.autoban.AutobanFactory;
 import client.command.Commands;
 
 public final class GeneralChatHandler extends net.AbstractMaplePacketHandler {

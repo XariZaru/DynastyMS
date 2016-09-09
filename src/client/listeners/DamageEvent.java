@@ -2,8 +2,8 @@ package client.listeners;
 
 import java.util.EventObject;
 
-import client.MapleCharacter;
 import server.life.MapleMonster;
+import client.MapleCharacter;
 
 public class DamageEvent extends EventObject {
 

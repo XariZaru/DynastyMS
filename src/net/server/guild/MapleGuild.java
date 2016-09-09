@@ -21,9 +21,6 @@
 */
 package net.server.guild;
 
-import client.MapleCharacter;
-import client.MapleClient;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -37,9 +34,10 @@ import java.util.Set;
 
 import net.server.Server;
 import net.server.channel.Channel;
-import tools.LogHelper;
 import tools.DatabaseConnection;
 import tools.MaplePacketCreator;
+import client.MapleCharacter;
+import client.MapleClient;
 
 public class MapleGuild {
     public final static int CREATE_GUILD_COST = 1500000;

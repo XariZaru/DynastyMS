@@ -20,12 +20,13 @@
 */
 package server.maps;
 
+import java.awt.Point;
+import java.util.concurrent.locks.ReentrantLock;
+
+import tools.MaplePacketCreator;
 import client.MapleCharacter;
 import client.MapleClient;
 import client.inventory.Item;
-import java.awt.Point;
-import java.util.concurrent.locks.ReentrantLock;
-import tools.MaplePacketCreator;
 
 public class MapleMapItem extends AbstractMapleMapObject {
 

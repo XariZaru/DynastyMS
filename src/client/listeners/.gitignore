@@ -7,3 +7,5 @@
 /DamageEvent.class
 /DropListener.class
 /DropEvent.class
+/DonorPetFeature.class
+/DonorPetFeatureType.class

@@ -1,6 +1,6 @@
 package listeners;
-import client.MapleCharacter;
 import server.life.MapleMonster;
+import client.MapleCharacter;
 
 public interface DamageListener {
 

@@ -21,9 +21,9 @@
 */
 package net.server.handlers;
 
-import client.MapleClient;
 import net.MaplePacketHandler;
 import tools.data.input.SeekableLittleEndianAccessor;
+import client.MapleClient;
 
 public final class LoginRequiringNoOpHandler implements MaplePacketHandler {
     private static LoginRequiringNoOpHandler instance = new LoginRequiringNoOpHandler();

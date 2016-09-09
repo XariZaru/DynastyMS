@@ -22,10 +22,11 @@
 
 package server.events.gm;
 
-import client.MapleCharacter;
 import java.util.concurrent.ScheduledFuture;
+
 import server.TimerManager;
 import tools.MaplePacketCreator;
+import client.MapleCharacter;
 
 /**
  *

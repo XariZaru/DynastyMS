@@ -21,13 +21,13 @@
 */
 package net.server.handlers.login;
 
-import client.MapleClient;
-import constants.ServerConstants;
 import net.AbstractMaplePacketHandler;
 import net.server.Server;
 import net.server.world.World;
 import tools.MaplePacketCreator;
 import tools.data.input.SeekableLittleEndianAccessor;
+import client.MapleClient;
+import constants.ServerConstants;
 
 public final class ServerlistRequestHandler extends AbstractMaplePacketHandler {
 

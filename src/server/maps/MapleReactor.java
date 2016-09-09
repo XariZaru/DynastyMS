@@ -21,8 +21,6 @@
 */
 package server.maps;
 
-import client.MapleClient;
-
 import java.awt.Rectangle;
 import java.util.List;
 
@@ -30,6 +28,7 @@ import scripting.reactor.ReactorScriptManager;
 import server.TimerManager;
 import tools.MaplePacketCreator;
 import tools.Pair;
+import client.MapleClient;
 
 /**
  *

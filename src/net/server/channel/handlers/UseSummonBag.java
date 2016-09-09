@@ -21,16 +21,16 @@
  */
 package net.server.channel.handlers;
 
-import client.MapleClient;
-import client.inventory.Item;
-import client.inventory.MapleInventoryType;
-import tools.Randomizer;
 import net.AbstractMaplePacketHandler;
 import server.MapleInventoryManipulator;
 import server.MapleItemInformationProvider;
 import server.life.MapleLifeFactory;
 import tools.MaplePacketCreator;
+import tools.Randomizer;
 import tools.data.input.SeekableLittleEndianAccessor;
+import client.MapleClient;
+import client.inventory.Item;
+import client.inventory.MapleInventoryType;
 
 /**
  *

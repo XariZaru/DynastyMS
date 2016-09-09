@@ -21,11 +21,7 @@
  */
 package net.server.channel.handlers;
 
-import java.net.InetAddress;
-import java.net.UnknownHostException;
-import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -51,8 +47,6 @@ import client.MapleClient;
 import client.MapleFamily;
 import client.SkillFactory;
 import client.inventory.MapleInventoryType;
-import client.inventory.MaplePet;
-import client.inventory.PetDataFactory;
 import constants.GameConstants;
 
 public final class PlayerLoggedinHandler extends AbstractMaplePacketHandler {

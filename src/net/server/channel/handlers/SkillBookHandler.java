@@ -21,19 +21,20 @@
 */
 package net.server.channel.handlers;
 
-import client.MapleCharacter;
-import client.MapleClient;
-import client.Skill;
-import client.SkillFactory;
-import client.inventory.Item;
-import client.inventory.MapleInventoryType;
 import java.util.Map;
+
 import net.AbstractMaplePacketHandler;
 import server.MapleInventoryManipulator;
 import server.MapleItemInformationProvider;
 import tools.MaplePacketCreator;
 import tools.Randomizer;
 import tools.data.input.SeekableLittleEndianAccessor;
+import client.MapleCharacter;
+import client.MapleClient;
+import client.Skill;
+import client.SkillFactory;
+import client.inventory.Item;
+import client.inventory.MapleInventoryType;
 
 public final class SkillBookHandler extends AbstractMaplePacketHandler {
     @Override

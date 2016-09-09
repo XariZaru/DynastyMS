@@ -21,12 +21,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 package net.server.channel.handlers;
 
+import net.AbstractMaplePacketHandler;
+import tools.data.input.SeekableLittleEndianAccessor;
 import client.MapleCharacter;
 import client.MapleClient;
 import client.autoban.AutobanFactory;
 import client.autoban.AutobanManager;
-import net.AbstractMaplePacketHandler;
-import tools.data.input.SeekableLittleEndianAccessor;
 
 public final class HealOvertimeHandler extends AbstractMaplePacketHandler {
 

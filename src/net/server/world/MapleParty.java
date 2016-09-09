@@ -28,7 +28,6 @@ import java.util.LinkedList;
 import java.util.List;
 
 import server.partyquest.dynastyPQ.IPartyQuest;
-import client.MapleCharacter;
 
 public class MapleParty {
     private MaplePartyCharacter leader;

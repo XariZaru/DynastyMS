@@ -21,31 +21,9 @@
  */
 package server.life;
 
-import client.MapleBuffStat;
-import client.MapleCharacter;
-import client.MapleClient;
-import client.MapleJob;
-import client.Skill;
-import client.SkillFactory;
-import client.inventory.DonorPetFeature;
-import client.inventory.MaplePet;
-import client.listeners.DamageEvent;
-import client.status.MonsterStatus;
-import client.status.MonsterStatusEffect;
-import constants.ServerConstants;
-import constants.skills.FPMage;
-import constants.skills.Hermit;
-import constants.skills.ILMage;
-import constants.skills.NightLord;
-import constants.skills.NightWalker;
-import constants.skills.Shadower;
-import constants.skills.SuperGM;
-import custom.dynasty.TestDamage;
-
 import java.awt.Point;
 import java.lang.ref.WeakReference;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -58,8 +36,6 @@ import java.util.Map.Entry;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.ReentrantLock;
 
-import listeners.DamageListener;
-import listeners.MobListener;
 import net.server.Server;
 import net.server.world.MapleParty;
 import net.server.world.MaplePartyCharacter;
@@ -75,6 +51,27 @@ import tools.DatabaseConnection;
 import tools.MaplePacketCreator;
 import tools.Pair;
 import tools.Randomizer;
+import client.MapleBuffStat;
+import client.MapleCharacter;
+import client.MapleClient;
+import client.MapleJob;
+import client.Skill;
+import client.SkillFactory;
+import client.listeners.DamageEvent;
+import client.listeners.DamageListener;
+import client.listeners.MobDeadEvent;
+import client.listeners.MobDeadListener;
+import client.status.MonsterStatus;
+import client.status.MonsterStatusEffect;
+import constants.ServerConstants;
+import constants.skills.FPMage;
+import constants.skills.Hermit;
+import constants.skills.ILMage;
+import constants.skills.NightLord;
+import constants.skills.NightWalker;
+import constants.skills.Shadower;
+import constants.skills.SuperGM;
+import custom.dynasty.TestDamage;
 
 public class MapleMonster extends AbstractLoadedMapleLife {
 
@@ -90,7 +87,8 @@ public class MapleMonster extends AbstractLoadedMapleLife {
     private MapleMap map;
     private int VenomMultiplier = 0;
     private boolean fake = false;
-    private boolean dropsDisabled = false, dummy = false;
+    private boolean dropsDisabled = false;
+	TestDamage dummy;
     private List<Pair<Integer, Integer>> usedSkills = new ArrayList<>();
     private Map<Pair<Integer, Integer>, Integer> skillsUsed = new HashMap<>();
     private List<Integer> stolenItems = new ArrayList<>();
@@ -101,14 +99,14 @@ public class MapleMonster extends AbstractLoadedMapleLife {
     private int damageTaken = 0;
     private MapleCharacter belongsToChar = null;
     private List<MapleParty> party_listeners = new ArrayList<MapleParty>();
-    private List<DamageListener> damage_listeners = new ArrayList<DamageListener>();
-    
-    private List<MobListener> mob_listeners = new ArrayList<MobListener>();
     
     // Custom Dynasty Stuff
     private boolean bossPoints = false;
-    
     public ReentrantLock monsterLock = new ReentrantLock();
+    
+    // Listeners
+	private List<MobDeadListener> mobDeadListeners = new ArrayList<MobDeadListener>();
+	private List<DamageListener> damage_listeners = new ArrayList<DamageListener>();
 
     public MapleMonster(int id, MapleMonsterStats stats) {
         super(id);
@@ -120,7 +118,7 @@ public class MapleMonster extends AbstractLoadedMapleLife {
         initWithStats(monster.stats);
     }
     
-    public boolean isDummy() {
+    public TestDamage getDummy() {
     	return dummy;
     }
     
@@ -140,11 +138,15 @@ public class MapleMonster extends AbstractLoadedMapleLife {
     	return damage_listeners;
     }
     
+    public List<MobDeadListener> getMobDeadListeners() {
+    	return mobDeadListeners;
+    }
+    
     public void addPartyListener(MapleParty party) {
     	party_listeners.add(party);
     }
     
-    public void setDummy(TestDamage test, MapleCharacter chr, int hp) {
+    public void setDummy(TestDamage test, int hp) {
     	setHp(hp);
     	stats.setHp(hp);
     	stats.setPADamage(0);
@@ -153,10 +155,8 @@ public class MapleMonster extends AbstractLoadedMapleLife {
     	stats.setPDDamage(0);
     	stats.setLevel(1);
     	stats.setExp(0);
-    	dummy = true;
+    	dummy = test;
     	disableDrops();
-    	belongsToChar = chr;
-    	belongsToChar.setDummy(this);
     }
     
     public void setCPQ(CustomCPQ party) {
@@ -271,10 +271,8 @@ public class MapleMonster extends AbstractLoadedMapleLife {
     
     public void updateDamageListeners(MapleCharacter from, int damage) {
     	from.updateDamageListeners(new DamageEvent(this, this, from, damage));
-    	/* Need to update this code to current damage listeners
     	for (DamageListener listener : this.damage_listeners)
-    		listener.addDamage(from, this, damage);
-    	*/
+    		listener.addDamage(new DamageEvent(this, this, from, damage));
     }
 
     /**
@@ -287,7 +285,7 @@ public class MapleMonster extends AbstractLoadedMapleLife {
             return;
         }
         
-        if (isDummy() && from != belongsToChar) {
+        if (getDummy() != null && from != getDummy().getOwner()) {
         	from.message("You cannot attack a test dummy that belongs to another person.");
         	return;
         }
@@ -297,10 +295,7 @@ public class MapleMonster extends AbstractLoadedMapleLife {
         hp -= damage;
         
         updateDamageListeners(from, damage);
-        			
-        if (isDummy()) {
-        	damageTaken += damage;
-        }
+        
         if (takenDamage.containsKey(from.getId())) {
             takenDamage.get(from.getId()).addAndGet(trueDamage);
         } else {
@@ -411,36 +406,6 @@ public class MapleMonster extends AbstractLoadedMapleLife {
             return;
         }
         
-    	// Handle listeners here. Can move to another method if needed.
-    	
-        // Boss Points .. calculation and checks if player is in map as killer. Distributes to all party listeners 
-        if (this.isBoss() && this.givesBossPoints()) {
-	    	for (MapleParty party : this.party_listeners) {
-	    		for (MaplePartyCharacter chr : party.getMembers()) {
-	    			MapleCharacter player = Server.getInstance().getWorld(0).getPlayerStorage().getCharacterByName(chr.getName());
-	    			if (player.getMap() == killer.getMap()) {
-		    			double rand = (Math.random() * .3) + .9;
-		    			player.gainBossPoints((int) (.0000625 * rand *  this.getMaxHp()));
-		    			player.titleMessage((int) (.0000625 * rand * this.getMaxHp()) + " boss points");
-		    			player.dropMessage(5, "You gained " + (int) (.0000625 * rand * this.getMaxHp()) + " boss points");
-		    			try {
-		    				PreparedStatement ps = DatabaseConnection.getConnection().prepareStatement("INSERT INTO boss_kills (characterid, mobid, amount) VALUES (?, ?, 1) ON DUPLICATE KEY UPDATE amount = amount + 1");
-		    				ps.setInt(1, player.getId());
-		    				ps.setInt(2, this.getId());
-		    				ps.executeUpdate();
-		    				
-		    				ps = DatabaseConnection.getConnection().prepareStatement("INSERT INTO boss_kills (characterid, mobid, amount) VALUES (?, 0, 1) ON DUPLICATE KEY UPDATE amount = amount + 1");
-		    				ps.setInt(1, player.getId());
-		    				ps.executeUpdate();
-		    				ps.close();
-		    			} catch (Exception e) {
-		    				e.printStackTrace();
-		    			}
-	    			}
-	    		}
-	    	}
-        }
-    	
         if (getSpawnPQ() != null) {
     		getSpawnPQ().addMonsterKilled(this);
     		System.out.println("Mob with SpawnPQ properties killed.");
@@ -527,23 +492,7 @@ public class MapleMonster extends AbstractLoadedMapleLife {
 
     public MapleCharacter killBy(MapleCharacter killer) {
     	
-    	// Listeners
-    	
-    	for (MobListener listener : mob_listeners) {
-    		listener.mobKilled(this); 
-    		listener.mobKilled();
-    	}
-    	
-    	// End of Listeners
-    	
-    	if (killer.getCPQParty() != null) {
-    		if (killer.getCPQParty().getCPQ() != null) {
-	    		killer.getCPQParty().addPoints(getId());
-	    		if (getCPQ() != null) {
-	    			killer.getCPQParty().addSpawn(this.getId());
-	    		}
-    		}
-    	}
+    	updateMobDeadListeners(killer);
     	
     	if (killer.isQuesting()) {
     		killer.mobKilled();
@@ -618,6 +567,41 @@ public class MapleMonster extends AbstractLoadedMapleLife {
         return looter != null ? looter : killer;
     }
     
+    public void updateMobDeadListeners(MapleCharacter from) {
+    	
+        // Boss Points .. calculation and checks if player is in map as killer. Distributes to all party listeners 
+        if (this.isBoss() && this.givesBossPoints()) {
+	    	for (MapleParty party : this.party_listeners) {
+	    		for (MaplePartyCharacter chr : party.getMembers()) {
+	    			MapleCharacter player = Server.getInstance().getWorld(0).getPlayerStorage().getCharacterByName(chr.getName());
+	    			if (player.getMap() == from.getMap()) {
+		    			double rand = (Math.random() * .3) + .9;
+		    			player.gainBossPoints((int) (.0000625 * rand *  this.getMaxHp()));
+		    			player.titleMessage((int) (.0000625 * rand * this.getMaxHp()) + " boss points");
+		    			player.dropMessage(5, "You gained " + (int) (.0000625 * rand * this.getMaxHp()) + " boss points");
+		    			try {
+		    				PreparedStatement ps = DatabaseConnection.getConnection().prepareStatement("INSERT INTO boss_kills (characterid, mobid, amount) VALUES (?, ?, 1) ON DUPLICATE KEY UPDATE amount = amount + 1");
+		    				ps.setInt(1, player.getId());
+		    				ps.setInt(2, this.getId());
+		    				ps.executeUpdate();
+		    				
+		    				ps = DatabaseConnection.getConnection().prepareStatement("INSERT INTO boss_kills (characterid, mobid, amount) VALUES (?, 0, 1) ON DUPLICATE KEY UPDATE amount = amount + 1");
+		    				ps.setInt(1, player.getId());
+		    				ps.executeUpdate();
+		    				ps.close();
+		    			} catch (Exception e) {
+		    				e.printStackTrace();
+		    			}
+	    			}
+	    		}
+	    	}
+        }
+        
+        // Update listeners
+    	for (MobDeadListener listener : getMobDeadListeners())
+    		listener.mobKilled(new MobDeadEvent(this, this, from));
+    }
+    
     public void setPartyListeners(List<MapleParty> listeners) {
     	this.party_listeners = listeners;
     }
@@ -667,13 +651,13 @@ public class MapleMonster extends AbstractLoadedMapleLife {
         }
         setControllerKnowsAboutAggro(false);
     }
+    
+    public void addMobDeadListener(MobDeadListener listener) {
+    	this.mobDeadListeners.add(listener);
+    }
 
     public void addListener(MonsterListener listener) {
         listeners.add(listener);
-    }
-    
-    public void addListener(MobListener listener) {
-    	mob_listeners.add(listener);
     }
 
     public boolean isControllerHasAggro() {

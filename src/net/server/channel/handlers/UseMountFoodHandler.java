@@ -21,13 +21,13 @@
 */
 package net.server.channel.handlers;
 
-import client.MapleClient;
-import client.inventory.MapleInventoryType;
-import constants.ExpTable;
 import net.AbstractMaplePacketHandler;
 import server.MapleInventoryManipulator;
 import tools.MaplePacketCreator;
 import tools.data.input.SeekableLittleEndianAccessor;
+import client.MapleClient;
+import client.inventory.MapleInventoryType;
+import constants.ExpTable;
 
 /**
  * @author PurpleMadness

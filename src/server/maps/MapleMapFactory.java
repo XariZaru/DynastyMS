@@ -23,6 +23,7 @@ package server.maps;
 
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -40,8 +41,6 @@ import server.life.MapleLifeFactory;
 import server.life.MapleMonster;
 import tools.DatabaseConnection;
 import tools.StringUtil;
-
-import java.sql.Connection;
 
 
 public class MapleMapFactory {

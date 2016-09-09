@@ -21,23 +21,25 @@
 */
 package net.server.channel.handlers;
 
-import client.BuddyList;
-import client.BuddyList.BuddyAddResult;
-import client.BuddyList.BuddyOperation;
 import static client.BuddyList.BuddyOperation.ADDED;
-import client.BuddylistEntry;
-import client.CharacterNameAndId;
-import client.MapleCharacter;
-import client.MapleClient;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
 import net.AbstractMaplePacketHandler;
 import net.server.world.World;
 import tools.DatabaseConnection;
 import tools.MaplePacketCreator;
 import tools.data.input.SeekableLittleEndianAccessor;
+import client.BuddyList;
+import client.BuddyList.BuddyAddResult;
+import client.BuddyList.BuddyOperation;
+import client.BuddylistEntry;
+import client.CharacterNameAndId;
+import client.MapleCharacter;
+import client.MapleClient;
 
 public class BuddylistModifyHandler extends AbstractMaplePacketHandler {
     private static class CharacterIdNameBuddyCapacity extends CharacterNameAndId {

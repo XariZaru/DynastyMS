@@ -21,13 +21,14 @@
  */
 package net.server.handlers.login;
 
-import client.MapleClient;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+
 import net.AbstractMaplePacketHandler;
 import net.server.Server;
 import tools.MaplePacketCreator;
 import tools.data.input.SeekableLittleEndianAccessor;
+import client.MapleClient;
 
 public final class CharSelectedHandler extends AbstractMaplePacketHandler {
 

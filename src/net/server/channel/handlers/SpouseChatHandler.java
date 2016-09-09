@@ -22,11 +22,11 @@
 package net.server.channel.handlers;
 
 //import client.MapleCharacter;
-import client.MapleClient;
 //import client.command.CommandProcessor;
 import net.AbstractMaplePacketHandler;
 //import tools.MaplePacketCreator;
 import tools.data.input.SeekableLittleEndianAccessor;
+import client.MapleClient;
 
 public final class SpouseChatHandler extends AbstractMaplePacketHandler {
     public final void handlePacket(SeekableLittleEndianAccessor slea, MapleClient c) {

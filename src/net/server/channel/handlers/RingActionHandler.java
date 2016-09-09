@@ -23,13 +23,13 @@ package net.server.channel.handlers;
 
 //import java.sql.Connection;
 //import java.sql.PreparedStatement;
-import client.MapleClient;
-import client.MapleCharacter;
 //import tools.DatabaseConnection;
 import net.AbstractMaplePacketHandler;
-import tools.data.input.SeekableLittleEndianAccessor;
 //import scripting.npc.NPCScriptManager;
 import tools.MaplePacketCreator;
+import tools.data.input.SeekableLittleEndianAccessor;
+import client.MapleCharacter;
+import client.MapleClient;
 
 /**
  * @author Jvlaple

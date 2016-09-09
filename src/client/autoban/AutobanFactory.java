@@ -22,11 +22,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 package client.autoban;
 
-import client.MapleCharacter;
 import net.server.Server;
 import tools.FilePrinter;
 import tools.MapleLogger;
 import tools.MaplePacketCreator;
+import client.MapleCharacter;
 
 /**
  *

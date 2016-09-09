@@ -21,8 +21,6 @@
 */
 package net.server.channel.handlers;
 
-import net.server.channel.handlers.DueyHandler;
-import client.MapleClient;
 import net.AbstractMaplePacketHandler;
 import scripting.npc.NPCScriptManager;
 import server.life.MapleNPC;
@@ -30,6 +28,7 @@ import server.maps.MapleMapObject;
 import server.maps.PlayerNPCs;
 import tools.MaplePacketCreator;
 import tools.data.input.SeekableLittleEndianAccessor;
+import client.MapleClient;
 
 public final class NPCTalkHandler extends AbstractMaplePacketHandler {
     public final void handlePacket(SeekableLittleEndianAccessor slea, MapleClient c) {

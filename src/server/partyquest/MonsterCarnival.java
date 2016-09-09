@@ -22,15 +22,16 @@
 
 package server.partyquest;
 
-import client.MapleCharacter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.concurrent.ScheduledFuture;
+
 import server.TimerManager;
 import server.maps.MapleMap;
 import tools.DatabaseConnection;
 import tools.MaplePacketCreator;
+import client.MapleCharacter;
 
 /**
  *

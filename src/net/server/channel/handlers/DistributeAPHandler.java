@@ -21,6 +21,9 @@
 */
 package net.server.channel.handlers;
 
+import net.AbstractMaplePacketHandler;
+import tools.MaplePacketCreator;
+import tools.data.input.SeekableLittleEndianAccessor;
 import client.MapleCharacter;
 import client.MapleClient;
 import client.MapleJob;
@@ -32,9 +35,6 @@ import constants.skills.Brawler;
 import constants.skills.DawnWarrior;
 import constants.skills.Magician;
 import constants.skills.Warrior;
-import net.AbstractMaplePacketHandler;
-import tools.MaplePacketCreator;
-import tools.data.input.SeekableLittleEndianAccessor;
 
 public final class DistributeAPHandler extends AbstractMaplePacketHandler {
     private static final int max = 999;

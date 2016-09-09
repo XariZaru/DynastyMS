@@ -21,6 +21,9 @@
 */
 package net.server.channel.handlers;
 
+import net.AbstractMaplePacketHandler;
+import tools.MaplePacketCreator;
+import tools.data.input.SeekableLittleEndianAccessor;
 import client.MapleClient;
 import constants.skills.Bishop;
 import constants.skills.Bowmaster;
@@ -39,9 +42,6 @@ import constants.skills.NightWalker;
 import constants.skills.Paladin;
 import constants.skills.ThunderBreaker;
 import constants.skills.WindArcher;
-import net.AbstractMaplePacketHandler;
-import tools.MaplePacketCreator;
-import tools.data.input.SeekableLittleEndianAccessor;
 
 public final class SkillEffectHandler extends AbstractMaplePacketHandler {
     public final void handlePacket(SeekableLittleEndianAccessor slea, MapleClient c) {

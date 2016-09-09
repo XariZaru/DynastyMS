@@ -21,7 +21,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 package client;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.net.InetAddress;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -33,7 +34,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Collections;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -59,7 +59,6 @@ import net.server.world.World;
 
 import org.apache.mina.core.session.IoSession;
 
-import client.inventory.MapleInventoryType;
 import scripting.npc.NPCConversationManager;
 import scripting.npc.NPCScriptManager;
 import scripting.quest.QuestActionManager;
@@ -68,14 +67,17 @@ import server.MapleMiniGame;
 import server.MaplePlayerShop;
 import server.MapleTrade;
 import server.TimerManager;
-import server.maps.*;
+import server.maps.FieldLimit;
+import server.maps.HiredMerchant;
+import server.maps.MapleMap;
 import server.quest.MapleQuest;
-import tools.LogHelper;
 import tools.DatabaseConnection;
 import tools.FilePrinter;
 import tools.HexTool;
+import tools.LogHelper;
 import tools.MapleAESOFB;
 import tools.MaplePacketCreator;
+import client.inventory.MapleInventoryType;
 
 public class MapleClient {
 

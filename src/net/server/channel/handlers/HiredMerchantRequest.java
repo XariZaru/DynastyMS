@@ -21,15 +21,16 @@
 */
 package net.server.channel.handlers;
 
-import client.inventory.ItemFactory;
-import client.MapleCharacter;
 import java.sql.SQLException;
 import java.util.Arrays;
-import client.MapleClient;
+
 import net.AbstractMaplePacketHandler;
 import server.maps.MapleMapObjectType;
 import tools.MaplePacketCreator;
 import tools.data.input.SeekableLittleEndianAccessor;
+import client.MapleCharacter;
+import client.MapleClient;
+import client.inventory.ItemFactory;
 
 /**
  *

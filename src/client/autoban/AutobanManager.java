@@ -5,10 +5,11 @@
 
 package client.autoban;
 
-import client.MapleCharacter;
 import java.util.HashMap;
 import java.util.Map;
+
 import tools.FilePrinter;
+import client.MapleCharacter;
 
 /**
  *

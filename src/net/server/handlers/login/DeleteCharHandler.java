@@ -24,12 +24,12 @@ package net.server.handlers.login;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import client.MapleClient;
 import net.AbstractMaplePacketHandler;
 import tools.DatabaseConnection;
 import tools.FilePrinter;
 import tools.MaplePacketCreator;
 import tools.data.input.SeekableLittleEndianAccessor;
+import client.MapleClient;
 
 public final class DeleteCharHandler extends AbstractMaplePacketHandler {
 

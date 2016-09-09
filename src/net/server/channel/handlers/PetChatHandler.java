@@ -21,12 +21,12 @@
 */
 package net.server.channel.handlers;
 
-import client.MapleClient;
-import client.autoban.AutobanFactory;
 import net.AbstractMaplePacketHandler;
 import tools.FilePrinter;
 import tools.MaplePacketCreator;
 import tools.data.input.SeekableLittleEndianAccessor;
+import client.MapleClient;
+import client.autoban.AutobanFactory;
 
 public final class PetChatHandler extends AbstractMaplePacketHandler {
     public final void handlePacket(SeekableLittleEndianAccessor slea, MapleClient c) {

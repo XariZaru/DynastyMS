@@ -21,8 +21,8 @@
 */
 package scripting.item;
 
-import client.MapleClient;
 import scripting.AbstractPlayerInteraction;
+import client.MapleClient;
 
 /**
  *

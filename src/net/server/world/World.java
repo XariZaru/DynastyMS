@@ -21,13 +21,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 package net.server.world;
 
-import client.BuddyList;
-import client.BuddyList.BuddyAddResult;
-import client.BuddyList.BuddyOperation;
-import client.BuddylistEntry;
-import client.MapleCharacter;
-import client.MapleFamily;
-
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -44,9 +37,14 @@ import net.server.channel.CharacterIdChannelPair;
 import net.server.guild.MapleGuild;
 import net.server.guild.MapleGuildCharacter;
 import net.server.guild.MapleGuildSummary;
-import tools.LogHelper;
 import tools.DatabaseConnection;
 import tools.MaplePacketCreator;
+import client.BuddyList;
+import client.BuddyList.BuddyAddResult;
+import client.BuddyList.BuddyOperation;
+import client.BuddylistEntry;
+import client.MapleCharacter;
+import client.MapleFamily;
 
 /**
  *

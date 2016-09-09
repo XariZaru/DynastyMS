@@ -34,9 +34,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import com.sun.org.apache.bcel.internal.Constants;
-
-import net.MaplePacket;
 import net.SendOpcode;
 import net.server.PlayerCoolDownValueHolder;
 import net.server.Server;

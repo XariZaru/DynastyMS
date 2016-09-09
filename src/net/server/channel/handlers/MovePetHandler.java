@@ -21,13 +21,13 @@
 */
 package net.server.channel.handlers;
 
-import net.server.channel.handlers.AbstractMovementPacketHandler;
 import java.util.List;
-import client.MapleCharacter;
-import client.MapleClient;
+
 import server.movement.LifeMovementFragment;
 import tools.MaplePacketCreator;
 import tools.data.input.SeekableLittleEndianAccessor;
+import client.MapleCharacter;
+import client.MapleClient;
 
 public final class MovePetHandler extends AbstractMovementPacketHandler {
     public final void handlePacket(SeekableLittleEndianAccessor slea, MapleClient c) {

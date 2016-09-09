@@ -21,12 +21,12 @@
 */
 package net.server.channel.handlers;
 
-import client.MapleClient;
-import client.inventory.MapleInventoryType;
 import net.AbstractMaplePacketHandler;
 import server.MapleInventoryManipulator;
 import tools.MaplePacketCreator;
 import tools.data.input.SeekableLittleEndianAccessor;
+import client.MapleClient;
+import client.inventory.MapleInventoryType;
 
 /**
  *

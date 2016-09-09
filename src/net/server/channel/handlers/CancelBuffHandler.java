@@ -21,6 +21,10 @@
 */
 package net.server.channel.handlers;
 
+import net.AbstractMaplePacketHandler;
+import net.MaplePacketHandler;
+import tools.MaplePacketCreator;
+import tools.data.input.SeekableLittleEndianAccessor;
 import client.MapleClient;
 import client.SkillFactory;
 import constants.skills.Bishop;
@@ -31,10 +35,6 @@ import constants.skills.FPArchMage;
 import constants.skills.ILArchMage;
 import constants.skills.Marksman;
 import constants.skills.WindArcher;
-import net.AbstractMaplePacketHandler;
-import net.MaplePacketHandler;
-import tools.MaplePacketCreator;
-import tools.data.input.SeekableLittleEndianAccessor;
 
 public final class CancelBuffHandler extends AbstractMaplePacketHandler implements MaplePacketHandler {
     

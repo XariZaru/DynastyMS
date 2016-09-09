@@ -4,8 +4,8 @@
  */
 package dropspider;
 
-import client.inventory.MapleInventoryType;
 import server.MapleItemInformationProvider;
+import client.inventory.MapleInventoryType;
 
 /**
  *

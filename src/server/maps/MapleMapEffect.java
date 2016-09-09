@@ -21,8 +21,8 @@
 */
 package server.maps;
 
-import client.MapleClient;
 import tools.MaplePacketCreator;
+import client.MapleClient;
 
 public class MapleMapEffect {
     private String msg;

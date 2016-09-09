@@ -1,4 +1,4 @@
-package client.inventory;
+package client.pets;
 
 public enum DonorPetFeatureType {
 	DROP(0), DPS(1), BOSSHP(2);

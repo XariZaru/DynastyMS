@@ -22,11 +22,11 @@
 
 package net.server.handlers.login;
 
-import client.MapleClient;
 import net.AbstractMaplePacketHandler;
 import server.TimerManager;
 import tools.MaplePacketCreator;
 import tools.data.input.SeekableLittleEndianAccessor;
+import client.MapleClient;
 
 /**
  *

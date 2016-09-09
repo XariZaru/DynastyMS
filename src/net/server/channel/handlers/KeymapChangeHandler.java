@@ -21,16 +21,16 @@
  */
 package net.server.channel.handlers;
 
-import constants.GameConstants;
+import net.AbstractMaplePacketHandler;
+import tools.FilePrinter;
+import tools.data.input.SeekableLittleEndianAccessor;
 import client.MapleClient;
 import client.MapleKeyBinding;
 import client.Skill;
 import client.SkillFactory;
 import client.autoban.AutobanFactory;
 import client.inventory.MapleInventoryType;
-import net.AbstractMaplePacketHandler;
-import tools.FilePrinter;
-import tools.data.input.SeekableLittleEndianAccessor;
+import constants.GameConstants;
 
 public final class KeymapChangeHandler extends AbstractMaplePacketHandler {
 	@Override

@@ -21,10 +21,10 @@
 */
 package net.server.channel.handlers;
 
+import net.AbstractMaplePacketHandler;
+import tools.data.input.SeekableLittleEndianAccessor;
 import client.MapleClient;
 import client.SkillMacro;
-import tools.data.input.SeekableLittleEndianAccessor;
-import net.AbstractMaplePacketHandler;
 
 public final class SkillMacroHandler extends AbstractMaplePacketHandler {
     public final void handlePacket(SeekableLittleEndianAccessor slea, MapleClient c) {
