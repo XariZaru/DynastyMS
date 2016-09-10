@@ -5291,12 +5291,17 @@ public class MapleCharacter extends AbstractAnimatedMapleMapObject {
 
     //FIXME: nullpointer thrown here. Not sure what causes it just yet
     public void startFullnessSchedule(final int decrease, final MaplePet pet, int petSlot) {
-        ScheduledFuture<?> schedule;
+    	// when assigning a fullness task make sure the current one doesn't exist
+    	if (fullnessSchedule[petSlot] != null)
+    		this.cancelFullnessSchedule(petSlot);
+    	
+        ScheduledFuture<?> schedule = null;
+        fullnessSchedule[petSlot] = schedule;
         schedule = TimerManager.getInstance().register(new Runnable() {
             @Override
             public void run() {
                 int newFullness = pet.getFullness() - decrease;
-                if (hasDonorFeatures()) {
+                if (hasDonorFeatures() && (int) (Math.random() * 10) < 5) {
                 	boolean gainCloseness = false;
                 	boolean fed = false;
                 	while (haveItem(2120000) && newFullness <= 70) {
@@ -5334,8 +5339,6 @@ public class MapleCharacter extends AbstractAnimatedMapleMapObject {
             }
             }
         }, 180000, 18000);
-        fullnessSchedule[petSlot] = schedule;
-
     }
 
     public void startMapEffect(String msg, int itemId) {
