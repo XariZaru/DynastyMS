@@ -64,6 +64,10 @@ public class DonorPetFeature implements DamageListener, DropListener {
 						time_started = -1;
 					}
 					break;
+			case IDLE:
+				break;
+			default:
+				break;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -102,8 +102,9 @@ public final class MTSHandler extends AbstractMaplePacketHandler {
                 Item i = c.getPlayer().getInventory(type).getItem(slot).copy();
                 if (i != null && c.getPlayer().getMeso() >= 5000) {
                     Connection con = DatabaseConnection.getConnection();
+                    PreparedStatement ps = null;
                     try {
-                        PreparedStatement ps = con.prepareStatement("SELECT COUNT(*) FROM mts_items WHERE seller = ?");
+                    	ps = con.prepareStatement("SELECT COUNT(*) FROM mts_items WHERE seller = ?");
                         ps.setInt(1, c.getPlayer().getId());
                         ResultSet rs = ps.executeQuery();
                         if (rs.next()) {
@@ -202,6 +203,13 @@ public final class MTSHandler extends AbstractMaplePacketHandler {
                         ps.close();
                         MapleInventoryManipulator.removeFromSlot(c, type, slot, quantity, false);
                     } catch (SQLException e) {
+                    } finally {
+						try {
+							ps.close();
+						} catch (SQLException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
                     }
                     c.getPlayer().gainMeso(-5000, false);
                     c.announce(MaplePacketCreator.MTSConfirmSell());

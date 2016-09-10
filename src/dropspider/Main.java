@@ -40,16 +40,19 @@ public class Main {
         for (String s : pages) {
             crawlPage("http://bbb.hidden-street.net/monster/" + s);
         }
+        /*
         if (VERSION > 92) { // big bang
             for (String s : additionalPagesBB) {
                 crawlPage("http://bbb.hidden-street.net/monster/" + s);
             }
             crawlPage("http://bbb.hidden-street.net/monster/101-120?page=1"); //page 1's bugged
-        } else {
-            for (String s : additionalPages88) {
-                crawlPage("http://bbb.hidden-street.net/monster/" + s);
-            }
+        } else {*/
+        
+        for (String s : additionalPages88) {
+            crawlPage("http://bbb.hidden-street.net/monster/" + s);
         }
+            
+        //}
         dumpQuery();
         dumpErrors();
     }

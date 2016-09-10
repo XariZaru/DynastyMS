@@ -23,7 +23,6 @@ package server.life;
 
 import java.awt.Point;
 import java.lang.ref.WeakReference;
-import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -36,7 +35,6 @@ import java.util.Map.Entry;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.ReentrantLock;
 
-import net.server.Server;
 import net.server.world.MapleParty;
 import net.server.world.MaplePartyCharacter;
 import scripting.event.EventInstanceManager;
@@ -46,8 +44,6 @@ import server.maps.MapleMap;
 import server.maps.MapleMapObject;
 import server.maps.MapleMapObjectType;
 import server.partyquest.SpawnPQ;
-import server.partyquest.dynasty.CustomCPQ;
-import tools.DatabaseConnection;
 import tools.MaplePacketCreator;
 import tools.Pair;
 import tools.Randomizer;
@@ -71,13 +67,12 @@ import constants.skills.NightLord;
 import constants.skills.NightWalker;
 import constants.skills.Shadower;
 import constants.skills.SuperGM;
-import custom.dynasty.TestDamage;
+import custom.dynasty.TestDamagePQ;
 
 public class MapleMonster extends AbstractLoadedMapleLife {
 
     private MapleMonsterStats stats;
     private int hp, mp;
-    private CustomCPQ cpq;
     private WeakReference<MapleCharacter> controller = new WeakReference<>(null);
     private boolean controllerHasAggro, controllerKnowsAboutAggro;
     private EventInstanceManager eventInstance = null;
@@ -88,7 +83,7 @@ public class MapleMonster extends AbstractLoadedMapleLife {
     private int VenomMultiplier = 0;
     private boolean fake = false;
     private boolean dropsDisabled = false;
-	TestDamage dummy;
+	TestDamagePQ dummy;
     private List<Pair<Integer, Integer>> usedSkills = new ArrayList<>();
     private Map<Pair<Integer, Integer>, Integer> skillsUsed = new HashMap<>();
     private List<Integer> stolenItems = new ArrayList<>();
@@ -100,7 +95,6 @@ public class MapleMonster extends AbstractLoadedMapleLife {
     private List<MapleParty> party_listeners = new ArrayList<MapleParty>();
     
     // Custom Dynasty Stuff
-    private boolean bossPoints = false;
     public ReentrantLock monsterLock = new ReentrantLock();
     
     // Listeners
@@ -117,16 +111,8 @@ public class MapleMonster extends AbstractLoadedMapleLife {
         initWithStats(monster.stats);
     }
     
-    public TestDamage getDummy() {
+    public TestDamagePQ getDummy() {
     	return dummy;
-    }
-    
-    public boolean givesBossPoints() {
-    	return bossPoints;
-    }
-    
-    public void givesBossPoints(boolean set) {
-    	bossPoints = set;
     }
     
     public void addDamageListener(DamageListener listener) {
@@ -145,7 +131,7 @@ public class MapleMonster extends AbstractLoadedMapleLife {
     	party_listeners.add(party);
     }
     
-    public void setDummy(TestDamage test, int hp) {
+    public void setDummy(TestDamagePQ test, int hp) {
     	setHp(hp);
     	stats.setHp(hp);
     	stats.setPADamage(0);
@@ -156,14 +142,6 @@ public class MapleMonster extends AbstractLoadedMapleLife {
     	stats.setExp(0);
     	dummy = test;
     	disableDrops();
-    }
-    
-    public void setCPQ(CustomCPQ party) {
-    	cpq = party;
-    }
-    
-    private CustomCPQ getCPQ() {
-    	return cpq;
     }
 
     private void initWithStats(MapleMonsterStats stats) {
@@ -411,9 +389,6 @@ public class MapleMonster extends AbstractLoadedMapleLife {
     	}
         
         int multiplier = 1;
-        if (killer.getCPQParty() != null) {
-        	multiplier = (killer.getCPQParty().inFever() ? 2 : 1);
-        }
         int exp = getExp() * multiplier;
         int totalHealth = getMaxHp();
         Map<Integer, Integer> expDist = new HashMap<>();
@@ -539,12 +514,8 @@ public class MapleMonster extends AbstractLoadedMapleLife {
                         if (dropsDisabled()) {
                             mob.disableDrops();
                         }
-                        
-                        if (givesBossPoints()) {
-	                        mob.givesBossPoints(true);
-	                        mob.setMobDeadListeners(mobDeadListeners);
-	                        mob.setPartyListeners(MapleMonster.this.party_listeners);
-                        }
+                        mob.setMobDeadListeners(mobDeadListeners);
+                        mob.setPartyListeners(MapleMonster.this.party_listeners);
                         reviveMap.spawnMonster(mob);
                     }
                 }

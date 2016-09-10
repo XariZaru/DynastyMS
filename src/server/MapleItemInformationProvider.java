@@ -1073,6 +1073,8 @@ public class MapleItemInformationProvider {
          }
          } catch (SQLException ex) {
          }*/
+        int fame = chr.getFame();
+        /*
         int tdex = chr.getDex(), tstr = chr.getStr(), tint = chr.getInt(), tluk = chr.getLuk(), fame = chr.getFame();
         if (chr.getJob() != MapleJob.SUPERGM || chr.getJob() != MapleJob.GM) {
             for (Item item : inv.list()) {
@@ -1083,6 +1085,7 @@ public class MapleItemInformationProvider {
                 tint += equip.getInt();
             }
         }
+        */
         for (Item item : items) {
             Equip equip = (Equip) item;
             int reqLevel = getEquipStats(equip.getItemId()).get("reqLevel");

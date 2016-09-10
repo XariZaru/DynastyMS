@@ -4,7 +4,6 @@ import java.sql.PreparedStatement;
 
 import server.life.MapleMonster;
 import tools.DatabaseConnection;
-import tools.Pair;
 import net.server.Server;
 import net.server.world.MapleParty;
 import net.server.world.MaplePartyCharacter;
@@ -25,9 +24,8 @@ public class BossPQ implements MobDeadListener {
 	@Override
 	public void mobKilled(MobDeadEvent event) {
 		try {
-	        if (event.getMonster().givesBossPoints()) 
-	    		for (MaplePartyCharacter chr : Server.getInstance().getWorld(world).getParty(partyid).getMembers()) 
-	    			giveBossPoints(chr.getPlayer(), event.getMonster());
+    		for (MaplePartyCharacter chr : Server.getInstance().getWorld(world).getParty(partyid).getMembers()) 
+    			giveBossPoints(chr.getPlayer(), event.getMonster());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

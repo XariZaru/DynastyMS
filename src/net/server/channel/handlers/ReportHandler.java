@@ -25,7 +25,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.text.DateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 import net.AbstractMaplePacketHandler;
 import net.server.Server;
@@ -87,7 +89,7 @@ public final class ReportHandler extends AbstractMaplePacketHandler {
 		Connection con = DatabaseConnection.getConnection();
 		try {
 			PreparedStatement ps = con.prepareStatement("INSERT INTO reports (`reporttime`, `reporterid`, `victimid`, `reason`, `chatlog`, `description`) VALUES (?, ?, ?, ?, ?, ?)");
-			ps.setString(1, currentTimestamp.toGMTString().toString());
+			ps.setString(1, DateFormat.getDateInstance().format(new Date(currentTimestamp.getTime())));
 			ps.setInt(2, reporterid);
 			ps.setInt(3, victimid);
 			ps.setInt(4, reason);

@@ -39,10 +39,8 @@ public class MaplePartyCharacter {
 	private ArrayList<MapleDoor> door = new ArrayList<MapleDoor>();
     private boolean online;
     private MapleJob job;
-    private MapleCharacter character;
     
     public MaplePartyCharacter(MapleCharacter maplechar) {
-        this.character = maplechar;
     	this.name = maplechar.getName();
         this.level = maplechar.getLevel();
         this.channel = maplechar.getClient().getChannel();

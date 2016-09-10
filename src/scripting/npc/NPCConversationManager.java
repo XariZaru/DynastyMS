@@ -57,11 +57,9 @@ import server.maps.MapleMap;
 import server.maps.MapleMapFactory;
 import server.partyquest.ClearMap;
 import server.partyquest.JumpQuest;
-import server.partyquest.KillMobs;
 import server.partyquest.Pyramid;
 import server.partyquest.Pyramid.PyramidMode;
 import server.partyquest.SpawnPQ;
-import server.partyquest.dynasty.CustomCPQParty;
 import server.quest.MapleQuest;
 import tools.DatabaseConnection;
 import tools.FilePrinter;
@@ -82,7 +80,7 @@ import client.inventory.MapleInventory;
 import client.inventory.MapleInventoryType;
 import client.inventory.MaplePet;
 import constants.ExpTable;
-import custom.dynasty.TestDamage;
+import custom.dynasty.TestDamagePQ;
 
 /**
  *
@@ -293,7 +291,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
 	}
 	
 	public void startDamageTest(int mobid, int hp, int x, int y) {
-		new TestDamage(mobid, hp, x, y, getPlayer());
+		new TestDamagePQ(mobid, hp, x, y, getPlayer());
 	}
 	
 	public void openNpcForPlayer(String name, int npcid) {
@@ -364,12 +362,6 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
 		} 
 		
 		return text == "" ? "There are currently no ranked plays for this JQ. Be the first to set a score!" : text;
-	}
-	
-	// CPQ
-	
-	public CustomCPQParty createCPQParty() {
-		return new CustomCPQParty(getParty());
 	}
 	
 	// JumpQuest
@@ -493,12 +485,6 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
 	}
 	
 	// DynastyMS PQ Stuff
-
-	// Starts the PQ
-	
-	public void startKillMobsPQ(List<Integer> positions, List<Integer> exp, List<Integer> mobs, int time, List<Integer> mapids) {
-		new KillMobs(getPartyMembers(), getPlayer().getMap(), positions, exp, mobs, time, this.npc, mapids);
-	}
 	
 	public void startSpawnPQ() {
 		if (getPlayer().getParty() != null) {

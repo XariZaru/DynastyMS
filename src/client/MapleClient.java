@@ -47,6 +47,9 @@ import java.util.concurrent.locks.ReentrantLock;
 
 import javax.script.ScriptEngine;
 
+import org.apache.mina.core.session.IoSession;
+
+import client.inventory.MapleInventoryType;
 import net.server.Server;
 import net.server.channel.Channel;
 import net.server.guild.MapleGuild;
@@ -56,9 +59,6 @@ import net.server.world.MapleParty;
 import net.server.world.MaplePartyCharacter;
 import net.server.world.PartyOperation;
 import net.server.world.World;
-
-import org.apache.mina.core.session.IoSession;
-
 import scripting.npc.NPCConversationManager;
 import scripting.npc.NPCScriptManager;
 import scripting.quest.QuestActionManager;
@@ -77,7 +77,6 @@ import tools.HexTool;
 import tools.LogHelper;
 import tools.MapleAESOFB;
 import tools.MaplePacketCreator;
-import client.inventory.MapleInventoryType;
 
 public class MapleClient {
 
@@ -112,7 +111,6 @@ public class MapleClient {
 	private boolean disconnecting = false;
 	private final Lock mutex = new ReentrantLock(true);
 	private int votePoints;
-	private int voteTime = -1;
 	private long lastNpcClick;
 	private long sessionId;
 
@@ -873,7 +871,7 @@ public class MapleClient {
 		if (!serverTransition && isLoggedIn()) {
 			updateLoginState(MapleClient.LOGIN_NOTLOGGEDIN);
 			session.removeAttribute(MapleClient.CLIENT_KEY); // prevents double dcing during login
-			session.close();
+			session.close(true);
 		}
 		engines.clear();
 	}

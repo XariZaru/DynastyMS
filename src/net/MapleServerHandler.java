@@ -114,7 +114,7 @@ public class MapleServerHandler extends IoHandlerAdapter {
             } catch (Throwable t) {
                 FilePrinter.printError(FilePrinter.ACCOUNT_STUCK, t);
             } finally {
-                session.close();
+                session.close(true);
                 session.removeAttribute(MapleClient.CLIENT_KEY);      
                 //client.empty();
             }

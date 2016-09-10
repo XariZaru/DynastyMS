@@ -99,7 +99,7 @@ public class MakerItemFactory {
         } 
 
         public void addRandomReward(int itemid, int prob, short amount) { 
-            randomRewards.add(new Pair(prob, new Pair(itemid,  amount))); 
+            randomRewards.add(new Pair<Integer, Pair<Integer, Short>>(prob, new Pair<Integer, Short>(itemid,  amount))); 
         } 
 
         public Pair<Integer, Short> getRandomReward() { 

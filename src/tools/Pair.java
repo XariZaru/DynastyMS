@@ -101,7 +101,7 @@ public class Pair<E, F> {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Pair other = (Pair) obj;
+        final Pair<E,F> other = (Pair<E,F>) obj;
         if (left == null) {
             if (other.left != null) {
                 return false;

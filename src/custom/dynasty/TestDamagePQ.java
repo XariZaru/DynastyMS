@@ -11,14 +11,14 @@ import client.listeners.DamageListener;
 import client.listeners.MobDeadEvent;
 import client.listeners.MobDeadListener;
 
-public class TestDamage implements DamageListener, MobDeadListener {
+public class TestDamagePQ implements DamageListener, MobDeadListener {
 
 	private long timeStarted = 0;
 	private MapleMonster mob;
 	private int damage_taken;
 	private Pair<Integer, Integer> owner; // Contains character id and world
 	
-	public TestDamage(int mobid, int hp, int x, int y, MapleCharacter chr) {
+	public TestDamagePQ(int mobid, int hp, int x, int y, MapleCharacter chr) {
 		if (chr == null)
 			return;
 		this.mob = MapleLifeFactory.getMonster(mobid);
