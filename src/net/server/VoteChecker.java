@@ -68,23 +68,8 @@ public class VoteChecker implements Runnable {
 	                Element entryElement = (Element) entryNode;
 	                Element ipElement = (Element) entryElement.getElementsByTagName("ip").item(0);
 	                String ip = ((Node) ipElement.getChildNodes().item(0)).getNodeValue().trim();
-	                Element timeElement = (Element) entryElement.getElementsByTagName("time").item(0);
-	                SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-DD hh:mm:ss");
-	                formatter.setLenient(false);
-	                long time = 0;
-	                Date date = null;
-	                String str = ((Node) timeElement.getChildNodes().item(0)).getNodeValue().trim();
-	                try {
-						date = (Date) formatter.parse(str);
-						time = date.getTime();
-					} catch (DOMException e) {
-						e.printStackTrace();
-					} catch (ParseException e) {
-						e.printStackTrace();
-					}
 	                countVoteByIp(ip);
-	                SimpleDateFormat sdf = new SimpleDateFormat("hh:mm dd/MM");
-	                log("IP: " + ip + " voted at: " + sdf.format(new Date(time)));
+	                log("IP: " + ip + " voted.");
 	            }
 	        }
         } catch (Exception e) {
