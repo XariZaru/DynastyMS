@@ -1,7 +1,7 @@
 package client.pets;
 
 public enum DonorPetFeatureType {
-	DROP(0), DPS(1), BOSSHP(2);
+	DROP(0), DPS(1), BOSSHP(2), IDLE(3);
 	private byte type;
 	
 	private DonorPetFeatureType(int type) {

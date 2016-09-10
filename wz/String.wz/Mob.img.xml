@@ -748,7 +748,7 @@
         <string name="name" value="Opachu"/>
     </imgdir>
     <imgdir name="6400005">
-        <string name="name" value="Jr. Balrog"/>
+        <string name="name" value="주니어 발록"/>
     </imgdir>
     <imgdir name="6400100">
         <string name="name" value="Deep Buffoon"/>
@@ -1954,10 +1954,10 @@
         <string name="name" value="Poisoned Stone Bug"/>
     </imgdir>
     <imgdir name="9300174">
-        <string name="name" value="Poison Flower"/>
+        <string name="name" value="Poisoned Spright"/>
     </imgdir>
     <imgdir name="9300175">
-        <string name="name" value="Poisoned Spright"/>
+        <string name="name" value="Poison Flower"/>
     </imgdir>
     <imgdir name="9300176">
         <string name="name" value="Poison Golem"/>
@@ -2257,31 +2257,31 @@
         <string name="name" value="Cynical Orange Mushroom"/>
     </imgdir>
     <imgdir name="9300275">
-        <string name="name" value="Shammos"/>
+        <string name="name" value="Yellow Snail of the Maze"/>
     </imgdir>
     <imgdir name="9300276">
-        <string name="name" value="Hoblin Hector"/>
+        <string name="name" value="Green Snail of the Maze"/>
     </imgdir>
     <imgdir name="9300277">
-        <string name="name" value="Elite Hoblin"/>
+        <string name="name" value="Blue Snail of the Maze"/>
     </imgdir>
     <imgdir name="9300278">
-        <string name="name" value="Elite Green Hoblin"/>
+        <string name="name" value="Red Snail of the Maze"/>
     </imgdir>
     <imgdir name="9300279">
-        <string name="name" value="Combat Hoblin"/>
+        <string name="name" value="Purple Snail of the Maze"/>
     </imgdir>
     <imgdir name="9300280">
-        <string name="name" value="Ferocious Hoblin"/>
+        <string name="name" value="Transforming Yellow Snail of the Maze"/>
     </imgdir>
     <imgdir name="9300281">
-        <string name="name" value="Rex"/>
+        <string name="name" value="Transforming Green Snail of the Maze"/>
     </imgdir>
     <imgdir name="9300282">
-        <string name="name" value="Shammos"/>
+        <string name="name" value="Blue Transforming Snail of the Maze"/>
     </imgdir>
     <imgdir name="9300283">
-        <string name="name" value="Rex Summoned Invisible Mob"/>
+        <string name="name" value="Transforming Yellow Snail of the Maze"/>
     </imgdir>
     <imgdir name="9300284">
         <string name="name" value="Transforming Yellow Snail of the Maze"/>
@@ -3159,24 +3159,6 @@
     <imgdir name="9400704">
         <string name="name" value="Beef Eater"/>
     </imgdir>
-    <imgdir name="9400750">
-        <string name="name" value="Pie monster"/>
-    </imgdir>
-    <imgdir name="9400751">
-        <string name="name" value="Cake Boss"/>
-    </imgdir>
-    <imgdir name="9400752">
-        <string name="name" value="Pie Boss"/>
-    </imgdir>
-    <imgdir name="9400753">
-        <string name="name" value="Giant Pie"/>
-    </imgdir>
-    <imgdir name="9400754">
-        <string name="name" value="Giant Cake"/>
-    </imgdir>
-    <imgdir name="9400755">
-        <string name="name" value="Little Pie monster"/>
-    </imgdir>
     <imgdir name="9400706">
         <string name="name" value="Jr. MV"/>
     </imgdir>
@@ -4050,6 +4032,9 @@
     <imgdir name="9600066">
         <string name="name" value="New Year&apos;s Party Pouch"/>
     </imgdir>
+    <imgdir name="9999998">
+        <string name="name" value="Star Monster"/>
+    </imgdir>
     <imgdir name="9999999">
         <string name="name" value="???"/>
     </imgdir>
@@ -4567,7 +4552,7 @@
         <string name="name" value="Scarred Bear"/>
     </imgdir>
     <imgdir name="9101003">
-        <string name="name" value="Lord Balrog"/>
+        <string name="name" value="마왕발록"/>
     </imgdir>
     <imgdir name="1210111">
         <string name="name" value="Strange Pig"/>
@@ -4780,858 +4765,33 @@
         <string name="name" value="Gentleman"/>
     </imgdir>
     <imgdir name="9700030">
-        <string name="name" value="Seaman Recruit Ghost"/>
+        <string name="name" value="해군 이등병 유령"/>
     </imgdir>
     <imgdir name="9700031">
-        <string name="name" value="Seaman Apprentice Ghost"/>
+        <string name="name" value="해군 일등병 유령"/>
     </imgdir>
     <imgdir name="9700032">
-        <string name="name" value="Lieutenant Ghost"/>
+        <string name="name" value="해군 상병 유령"/>
     </imgdir>
     <imgdir name="9700033">
-        <string name="name" value="1st Lieutenant Ghost"/>
+        <string name="name" value="해군 병장 유령"/>
     </imgdir>
     <imgdir name="9700034">
-        <string name="name" value="Lieutenant Commander Ghost"/>
+        <string name="name" value="해군 하사 유령"/>
     </imgdir>
     <imgdir name="9700035">
-        <string name="name" value="First Officer"/>
+        <string name="name" value="일등 항해사"/>
     </imgdir>
     <imgdir name="9700036">
-        <string name="name" value="Wooden Box"/>
+        <string name="name" value="나무 상자"/>
     </imgdir>
     <imgdir name="9700037">
-        <string name="name" value="Ghost Ship Captain"/>
+        <string name="name" value="유령선 함장"/>
     </imgdir>
     <imgdir name="9700038">
-        <string name="name" value="Ghost Ship Captain Spirit"/>
+        <string name="name" value="유령선 함장의 영혼"/>
     </imgdir>
     <imgdir name="2100108">
         <string name="name" value="Meerkat"/>
-    </imgdir>
-    <imgdir name="8300000">
-        <string name="name" value="Soaring Hawk "/>
-    </imgdir>
-    <imgdir name="8300001">
-        <string name="name" value="Soaring Eagle"/>
-    </imgdir>
-    <imgdir name="8300002">
-        <string name="name" value="Soaring Red Wyvern "/>
-    </imgdir>
-    <imgdir name="8300003">
-        <string name="name" value="Soaring Blue Wyvern "/>
-    </imgdir>
-    <imgdir name="8300004">
-        <string name="name" value="Soaring Black Wyvern "/>
-    </imgdir>
-    <imgdir name="8300005">
-        <string name="name" value="Soaring Griffey"/>
-    </imgdir>
-    <imgdir name="8300006">
-        <string name="name" value="Dragonoir"/>
-    </imgdir>
-    <imgdir name="8300007">
-        <string name="name" value="Dragon Rider"/>
-    </imgdir>
-    <imgdir name="9101004">
-        <string name="name" value="Blue Mushroom"/>
-    </imgdir>
-    <imgdir name="9300394">
-        <string name="name" value="Delinquent Rudolph"/>
-    </imgdir>
-    <imgdir name="9300395">
-        <string name="name" value="Watchmen Crew"/>
-    </imgdir>
-    <imgdir name="9300396">
-        <string name="name" value="Watchmen Captain"/>
-    </imgdir>
-    <imgdir name="9500374">
-        <string name="name" value="Green Cornian"/>
-    </imgdir>
-    <imgdir name="9500375">
-        <string name="name" value="Dark Cornian"/>
-    </imgdir>
-    <imgdir name="9500376">
-        <string name="name" value="Jr. Newtie"/>
-    </imgdir>
-    <imgdir name="9500377">
-        <string name="name" value="Nest Golem"/>
-    </imgdir>
-    <imgdir name="9500378">
-        <string name="name" value="Blue Dragon Turtle"/>
-    </imgdir>
-    <imgdir name="9500379">
-        <string name="name" value="Red Dragon Turtle "/>
-    </imgdir>
-    <imgdir name="9500380">
-        <string name="name" value="Skelegon"/>
-    </imgdir>
-    <imgdir name="9500381">
-        <string name="name" value="Skelosaurus"/>
-    </imgdir>
-    <imgdir name="9500382">
-        <string name="name" value="Leviathan"/>
-    </imgdir>
-    <imgdir name="9990000">
-        <string name="name" value="No Element"/>
-    </imgdir>
-    <imgdir name="9990001">
-        <string name="name" value="Mammal"/>
-    </imgdir>
-    <imgdir name="9990002">
-        <string name="name" value="Plant"/>
-    </imgdir>
-    <imgdir name="9990003">
-        <string name="name" value="Fish"/>
-    </imgdir>
-    <imgdir name="9990004">
-        <string name="name" value="Reptile"/>
-    </imgdir>
-    <imgdir name="9990005">
-        <string name="name" value="Spirit"/>
-    </imgdir>
-    <imgdir name="9990006">
-        <string name="name" value="Devil"/>
-    </imgdir>
-    <imgdir name="9990007">
-        <string name="name" value="Immortal"/>
-    </imgdir>
-    <imgdir name="9990008">
-        <string name="name" value="Enchanted"/>
-    </imgdir>
-    <imgdir name="9990009">
-        <string name="name" value="Boss"/>
-    </imgdir>
-    <imgdir name="9990010">
-        <string name="name" value="Fireball"/>
-    </imgdir>
-    <imgdir name="9990011">
-        <string name="name" value="Blizzard"/>
-    </imgdir>
-    <imgdir name="9990012">
-        <string name="name" value="Lightning"/>
-    </imgdir>
-    <imgdir name="9990013">
-        <string name="name" value="Poison"/>
-    </imgdir>
-    <imgdir name="9990014">
-        <string name="name" value="Holy"/>
-    </imgdir>
-    <imgdir name="9990015">
-        <string name="name" value="Darkness"/>
-    </imgdir>
-    <imgdir name="9400658">
-        <string name="name" value="Imperial Guard Type A"/>
-    </imgdir>
-    <imgdir name="9400659">
-        <string name="name" value="Dunas Type D"/>
-    </imgdir>
-    <imgdir name="9400660">
-        <string name="name" value="Royal Guard Type S"/>
-    </imgdir>
-    <imgdir name="9400661">
-        <string name="name" value="Afterlord Type A"/>
-    </imgdir>
-    <imgdir name="9409011">
-        <string name="name" value="Wild Monkey"/>
-    </imgdir>
-    <imgdir name="9409012">
-        <string name="name" value="Mama Monkey"/>
-    </imgdir>
-    <imgdir name="9409013">
-        <string name="name" value="White Baby Monkey"/>
-    </imgdir>
-    <imgdir name="9409014">
-        <string name="name" value="White Mama Monkey"/>
-    </imgdir>
-    <imgdir name="9409015">
-        <string name="name" value="Blue Goblin"/>
-    </imgdir>
-    <imgdir name="9409016">
-        <string name="name" value="Red Goblin"/>
-    </imgdir>
-    <imgdir name="9409017">
-        <string name="name" value="Strong Stone Goblin"/>
-    </imgdir>
-    <imgdir name="9409018">
-        <string name="name" value="Ravana"/>
-    </imgdir>
-    <imgdir name="9101005">
-        <string name="name" value="Ravana"/>
-    </imgdir>
-    <imgdir name="9500383">
-        <string name="name" value="Wild Monkey"/>
-    </imgdir>
-    <imgdir name="9500384">
-        <string name="name" value="Mama Monkey"/>
-    </imgdir>
-    <imgdir name="9500385">
-        <string name="name" value="White Baby Monkey"/>
-    </imgdir>
-    <imgdir name="9500386">
-        <string name="name" value="White Mama Monkey"/>
-    </imgdir>
-    <imgdir name="9500387">
-        <string name="name" value="Blue Goblin"/>
-    </imgdir>
-    <imgdir name="9500388">
-        <string name="name" value="Red Goblin"/>
-    </imgdir>
-    <imgdir name="9500389">
-        <string name="name" value="Strong Stone Goblin"/>
-    </imgdir>
-    <imgdir name="9500390">
-        <string name="name" value="Ravana"/>
-    </imgdir>
-    <imgdir name="9500391">
-        <string name="name" value="Ravana"/>
-    </imgdir>
-    <imgdir name="9500392">
-        <string name="name" value="Ravana"/>
-    </imgdir>
-    <imgdir name="9500393">
-        <string name="name" value="Blue Goblin"/>
-    </imgdir>
-    <imgdir name="9500394">
-        <string name="name" value="Red Goblin"/>
-    </imgdir>
-    <imgdir name="9500395">
-        <string name="name" value="Strong Stone Goblin"/>
-    </imgdir>
-    <imgdir name="9500396">
-        <string name="name" value="Hodori"/>
-    </imgdir>
-    <imgdir name="9500397">
-        <string name="name" value="Hogul"/>
-    </imgdir>
-    <imgdir name="9500398">
-        <string name="name" value="Growlie"/>
-    </imgdir>
-    <imgdir name="9500399">
-        <string name="name" value="Tiger Actually"/>
-    </imgdir>
-    <imgdir name="8800100">
-        <string name="name" value="Chaos Zakum"/>
-    </imgdir>
-    <imgdir name="8800101">
-        <string name="name" value="Chaos Zakum"/>
-    </imgdir>
-    <imgdir name="8800102">
-        <string name="name" value="Chaos Zakum"/>
-    </imgdir>
-    <imgdir name="8800103">
-        <string name="name" value="Chaos Zakum Arm 1"/>
-    </imgdir>
-    <imgdir name="8800104">
-        <string name="name" value="Chaos Zakum Arm 2"/>
-    </imgdir>
-    <imgdir name="8800105">
-        <string name="name" value="Chaos Zakum Arm 3"/>
-    </imgdir>
-    <imgdir name="8800106">
-        <string name="name" value="Chaos Zakum Arm 4"/>
-    </imgdir>
-    <imgdir name="8800107">
-        <string name="name" value="Chaos Zakum Arm 5"/>
-    </imgdir>
-    <imgdir name="8800108">
-        <string name="name" value="Chaos Zakum Arm 6"/>
-    </imgdir>
-    <imgdir name="8800109">
-        <string name="name" value="Chaos Zakum Arm 7"/>
-    </imgdir>
-    <imgdir name="8800110">
-        <string name="name" value="Chaos Zakum Arm 8"/>
-    </imgdir>
-    <imgdir name="8800111">
-        <string name="name" value="Chaos Boogie"/>
-    </imgdir>
-    <imgdir name="8800112">
-        <string name="name" value="Chaos Puko"/>
-    </imgdir>
-    <imgdir name="8800113">
-        <string name="name" value="Chaos Poonko"/>
-    </imgdir>
-    <imgdir name="8800114">
-        <string name="name" value="Chaos Kusko"/>
-    </imgdir>
-    <imgdir name="8800115">
-        <string name="name" value="Chaos Ooparts"/>
-    </imgdir>
-    <imgdir name="8800116">
-        <string name="name" value="Chaos Patz"/>
-    </imgdir>
-    <imgdir name="8810100">
-        <string name="name" value="Chaos Horntail&apos;s Left Head"/>
-    </imgdir>
-    <imgdir name="8810101">
-        <string name="name" value="Chaos Horntail&apos;s Right Head"/>
-    </imgdir>
-    <imgdir name="8810102">
-        <string name="name" value="Chaos Horntail&apos;s Head A"/>
-    </imgdir>
-    <imgdir name="8810103">
-        <string name="name" value="Chaos Horntail&apos;s Head B"/>
-    </imgdir>
-    <imgdir name="8810104">
-        <string name="name" value="Chaos Horntail&apos;s Head C "/>
-    </imgdir>
-    <imgdir name="8810105">
-        <string name="name" value="Chaos Horntail&apos;s Left Hand"/>
-    </imgdir>
-    <imgdir name="8810106">
-        <string name="name" value="Chaos Horntail&apos;s Right Hand"/>
-    </imgdir>
-    <imgdir name="8810107">
-        <string name="name" value="Chaos Horntail&apos;s Wings"/>
-    </imgdir>
-    <imgdir name="8810108">
-        <string name="name" value="Chaos Horntail&apos;s Legs"/>
-    </imgdir>
-    <imgdir name="8810109">
-        <string name="name" value="Chaos Horntail&apos;s Tail"/>
-    </imgdir>
-    <imgdir name="8810118">
-        <string name="name" value="Chaos Horntail"/>
-    </imgdir>
-    <imgdir name="8810119">
-        <string name="name" value="Chaos Horntail"/>
-    </imgdir>
-    <imgdir name="8810120">
-        <string name="name" value="Chaos Horntail"/>
-    </imgdir>
-    <imgdir name="8810121">
-        <string name="name" value="Chaos Horntail"/>
-    </imgdir>
-    <imgdir name="8810122">
-        <string name="name" value="Chaos Horntail"/>
-    </imgdir>
-    <imgdir name="8810123">
-        <string name="name" value="Chaos Red Wyvern"/>
-    </imgdir>
-    <imgdir name="8810124">
-        <string name="name" value="Chaos Blue Wyvern"/>
-    </imgdir>
-    <imgdir name="8810125">
-        <string name="name" value="Chaos Dark Wyvern"/>
-    </imgdir>
-    <imgdir name="8810126">
-        <string name="name" value="Chaos Green Cornian"/>
-    </imgdir>
-    <imgdir name="8810127">
-        <string name="name" value="Chaos Dark Cornian"/>
-    </imgdir>
-    <imgdir name="8810128">
-        <string name="name" value="Summon Chaos Horntail&apos;s Left Head"/>
-    </imgdir>
-    <imgdir name="8810129">
-        <string name="name" value="Summon Chaos Horntail&apos;s Right Head"/>
-    </imgdir>
-    <imgdir name="8810130">
-        <string name="name" value="Summon Chaos Horntail"/>
-    </imgdir>
-    <imgdir name="8890000">
-        <string name="name" value="Black Mage&apos;s Henchman A"/>
-    </imgdir>
-    <imgdir name="8890001">
-        <string name="name" value="Black Mage&apos;s Henchman A"/>
-    </imgdir>
-    <imgdir name="8890002">
-        <string name="name" value="Black Mage&apos;s Henchman B"/>
-    </imgdir>
-    <imgdir name="9001015">
-        <string name="name" value="Shadow Dual Blade"/>
-    </imgdir>
-    <imgdir name="9001016">
-        <string name="name" value="Giant Shadow Blade"/>
-    </imgdir>
-    <imgdir name="9001017">
-        <string name="name" value="Shadow Blade Lord"/>
-    </imgdir>
-    <imgdir name="9001018">
-        <string name="name" value="Giant Blade Master"/>
-    </imgdir>
-    <imgdir name="9001019">
-        <string name="name" value="Secret Room Guardian Doll"/>
-    </imgdir>
-    <imgdir name="9300397">
-        <string name="name" value="Fake Sand Bandit"/>
-    </imgdir>
-    <imgdir name="9300398">
-        <string name="name" value="Clever So Gong"/>
-    </imgdir>
-    <imgdir name="9300399">
-        <string name="name" value="Noisy Sentinel"/>
-    </imgdir>
-    <imgdir name="9300400">
-        <string name="name" value="Assailant Crimson Balrog"/>
-    </imgdir>
-    <imgdir name="9300401">
-        <string name="name" value="Awakened White Fang"/>
-    </imgdir>
-    <imgdir name="9300402">
-        <string name="name" value="Awakened Yeti"/>
-    </imgdir>
-    <imgdir name="9500401">
-        <string name="name" value="7주년 애드 벌룬"/>
-    </imgdir>
-    <imgdir name="9500402">
-        <string name="name" value="짓궂은 주황버섯"/>
-    </imgdir>
-    <imgdir name="9500403">
-        <string name="name" value="짓궂은 리본돼지"/>
-    </imgdir>
-    <imgdir name="9500404">
-        <string name="name" value="애드벌룬 Die"/>
-    </imgdir>
-    <imgdir name="9500405">
-        <string name="name" value="애드벌룬 공격"/>
-    </imgdir>
-    <imgdir name="9900000">
-        <string name="name" value="Visitor Test"/>
-    </imgdir>
-    <imgdir name="9900100">
-        <string name="name" value="Visitor Test: Equipment Damage"/>
-    </imgdir>
-    <imgdir name="9900110">
-        <string name="name" value="Visitor Test: Buff Mob"/>
-    </imgdir>
-    <imgdir name="9900200">
-        <string name="name" value="Visitor Test: Self Destruct when Dying + Heal"/>
-    </imgdir>
-    <imgdir name="9900201">
-        <string name="name" value="Visitor Test: Self Destruct when Left Alone + Heal"/>
-    </imgdir>
-    <imgdir name="9900050">
-        <string name="name" value="Dumdum Visitor"/>
-    </imgdir>
-    <imgdir name="9420065">
-        <string name="name" value="Ultimate Visitor"/>
-    </imgdir>
-    <imgdir name="9420066">
-        <string name="name" value="Ultimate Visitor"/>
-    </imgdir>
-    <imgdir name="9420067">
-        <string name="name" value="Ultimate Visitor"/>
-    </imgdir>
-    <imgdir name="9420068">
-        <string name="name" value="Ultimate Visitor"/>
-    </imgdir>
-    <imgdir name="9420069">
-        <string name="name" value="OS3D Diver"/>
-    </imgdir>
-    <imgdir name="9420070">
-        <string name="name" value="OS3M Miner"/>
-    </imgdir>
-    <imgdir name="9420071">
-        <string name="name" value="OS3A Machine"/>
-    </imgdir>
-    <imgdir name="9420072">
-        <string name="name" value="OS4 Shuttle"/>
-    </imgdir>
-    <imgdir name="9420073">
-        <string name="name" value="OS4 Delivery Ship"/>
-    </imgdir>
-    <imgdir name="9420074">
-        <string name="name" value="Randall Machine"/>
-    </imgdir>
-    <imgdir name="9420075">
-        <string name="name" value="Researcher H"/>
-    </imgdir>
-    <imgdir name="9420076">
-        <string name="name" value="OS4 Delivery Ship"/>
-    </imgdir>
-    <imgdir name="9420077">
-        <string name="name" value="Randall Machine"/>
-    </imgdir>
-    <imgdir name="9420078">
-        <string name="name" value="Scientist Who Could Be Abducted"/>
-    </imgdir>
-    <imgdir name="9420079">
-        <string name="name" value="Scientist Who Could Be Abducted"/>
-    </imgdir>
-    <imgdir name="9420080">
-        <string name="name" value="Scientist Who Could Be Abducted"/>
-    </imgdir>
-    <imgdir name="9420081">
-        <string name="name" value="Present Fake Scientist Abductor Alien"/>
-    </imgdir>
-    <imgdir name="9420082">
-        <string name="name" value="Present Fake Scientist Abductor Alien"/>
-    </imgdir>
-    <imgdir name="9420083">
-        <string name="name" value="Present Fake Scientist Abductor Alien"/>
-    </imgdir>
-    <imgdir name="9999998">
-        <string name="name" value="Alien from the Future"/>
-    </imgdir>
-    <imgdir name="9420018">
-        <string name="name" value="Unidentified Alien"/>
-    </imgdir>
-    <imgdir name="9420019">
-        <string name="name" value="Unidentified Alien"/>
-    </imgdir>
-    <imgdir name="9420020">
-        <string name="name" value="Unidentified Alien"/>
-    </imgdir>
-    <imgdir name="9420021">
-        <string name="name" value="Unidentified Alien"/>
-    </imgdir>
-    <imgdir name="9420022">
-        <string name="name" value="Unidentified Alien"/>
-    </imgdir>
-    <imgdir name="9420023">
-        <string name="name" value="Unidentified Alien"/>
-    </imgdir>
-    <imgdir name="9420024">
-        <string name="name" value="Axe Visitor"/>
-    </imgdir>
-    <imgdir name="9420025">
-        <string name="name" value="Cleric Visitor"/>
-    </imgdir>
-    <imgdir name="9420026">
-        <string name="name" value="Sniper Visitor"/>
-    </imgdir>
-    <imgdir name="9420027">
-        <string name="name" value="Gunner Visitor"/>
-    </imgdir>
-    <imgdir name="9420028">
-        <string name="name" value="Assassin Visitor"/>
-    </imgdir>
-    <imgdir name="9420029">
-        <string name="name" value="Spirit Visitor"/>
-    </imgdir>
-    <imgdir name="9420030">
-        <string name="name" value="Axe Visitor"/>
-    </imgdir>
-    <imgdir name="9420031">
-        <string name="name" value="Cleric Visitor"/>
-    </imgdir>
-    <imgdir name="9420032">
-        <string name="name" value="Sniper Visitor"/>
-    </imgdir>
-    <imgdir name="9420033">
-        <string name="name" value="Gunner Visitor"/>
-    </imgdir>
-    <imgdir name="9420034">
-        <string name="name" value="Assassin Visitor"/>
-    </imgdir>
-    <imgdir name="9420035">
-        <string name="name" value="Spirit Visitor"/>
-    </imgdir>
-    <imgdir name="9420036">
-        <string name="name" value="Axe Visitor"/>
-    </imgdir>
-    <imgdir name="9420037">
-        <string name="name" value="Cleric Visitor"/>
-    </imgdir>
-    <imgdir name="9420038">
-        <string name="name" value="Sniper Visitor"/>
-    </imgdir>
-    <imgdir name="9420039">
-        <string name="name" value="Gunner Visitor"/>
-    </imgdir>
-    <imgdir name="9420040">
-        <string name="name" value="Assassin Visitor"/>
-    </imgdir>
-    <imgdir name="9420041">
-        <string name="name" value="Spirit Visitor"/>
-    </imgdir>
-    <imgdir name="9420042">
-        <string name="name" value="Bully Visitor"/>
-    </imgdir>
-    <imgdir name="9420043">
-        <string name="name" value="Bully Visitor"/>
-    </imgdir>
-    <imgdir name="9420044">
-        <string name="name" value="Bully Visitor"/>
-    </imgdir>
-    <imgdir name="9420045">
-        <string name="name" value="Bully Visitor"/>
-    </imgdir>
-    <imgdir name="9420046">
-        <string name="name" value="Bully Visitor"/>
-    </imgdir>
-    <imgdir name="9420047">
-        <string name="name" value="Bully Visitor"/>
-    </imgdir>
-    <imgdir name="9420048">
-        <string name="name" value="Bully Visitor"/>
-    </imgdir>
-    <imgdir name="9420049">
-        <string name="name" value="Bully Visitor"/>
-    </imgdir>
-    <imgdir name="9420050">
-        <string name="name" value="Bully Visitor"/>
-    </imgdir>
-    <imgdir name="9420051">
-        <string name="name" value="Unjust Visitor"/>
-    </imgdir>
-    <imgdir name="9420052">
-        <string name="name" value="Unjust Visitor"/>
-    </imgdir>
-    <imgdir name="9420053">
-        <string name="name" value="Unjust Visitor"/>
-    </imgdir>
-    <imgdir name="9420054">
-        <string name="name" value="Speedy Visitor"/>
-    </imgdir>
-    <imgdir name="9420055">
-        <string name="name" value="Speedy Visitor"/>
-    </imgdir>
-    <imgdir name="9420056">
-        <string name="name" value="Speedy Visitor"/>
-    </imgdir>
-    <imgdir name="9420057">
-        <string name="name" value="Destroyer"/>
-    </imgdir>
-    <imgdir name="9420058">
-        <string name="name" value="Destroyer"/>
-    </imgdir>
-    <imgdir name="9420059">
-        <string name="name" value="Destroyer"/>
-    </imgdir>
-    <imgdir name="9420060">
-        <string name="name" value="Commander"/>
-    </imgdir>
-    <imgdir name="9420061">
-        <string name="name" value="Commander"/>
-    </imgdir>
-    <imgdir name="9420062">
-        <string name="name" value="Commander"/>
-    </imgdir>
-    <imgdir name="9420063">
-        <string name="name" value="Visitor Bomb"/>
-    </imgdir>
-    <imgdir name="9420064">
-        <string name="name" value="Unwelcome Guest Bomb"/>
-    </imgdir>
-    <imgdir name="9420084">
-        <string name="name" value="Scientist Abductor Alien"/>
-    </imgdir>
-    <imgdir name="9420085">
-        <string name="name" value="Unidentified Powerful Alien"/>
-    </imgdir>
-    <imgdir name="9420086">
-        <string name="name" value="Powerful Alien Summoning Cube"/>
-    </imgdir>
-    <imgdir name="9420087">
-        <string name="name" value="Powerful Alien Soldier"/>
-    </imgdir>
-    <imgdir name="9420088">
-        <string name="name" value="Alien That Appeared"/>
-    </imgdir>
-    <imgdir name="9420089">
-        <string name="name" value="Alien That Appeared Summoner"/>
-    </imgdir>
-    <imgdir name="9420090">
-        <string name="name" value="Axe Visitor"/>
-    </imgdir>
-    <imgdir name="9420091">
-        <string name="name" value="Visitor Time Bomb"/>
-    </imgdir>
-    <imgdir name="9420092">
-        <string name="name" value="Sniper Visitor"/>
-    </imgdir>
-    <imgdir name="9420093">
-        <string name="name" value="Assassin Visitor"/>
-    </imgdir>
-    <imgdir name="9420094">
-        <string name="name" value="Gunner Visitor"/>
-    </imgdir>
-    <imgdir name="9420095">
-        <string name="name" value="Gunner Visitor"/>
-    </imgdir>
-    <imgdir name="9420096">
-        <string name="name" value="Unseen Visitor"/>
-    </imgdir>
-    <imgdir name="9420097">
-        <string name="name" value="Lighting Cube Clear Check Fake Mob"/>
-    </imgdir>
-    <imgdir name="9420098">
-        <string name="name" value="Energy Core"/>
-    </imgdir>
-    <imgdir name="9420099">
-        <string name="name" value="Alien That&apos;s Taken Over The Future"/>
-    </imgdir>
-    <imgdir name="9420100">
-        <string name="name" value="Alien That&apos;s Taken Over The Future"/>
-    </imgdir>
-    <imgdir name="9420101">
-        <string name="name" value="Alien That&apos;s Taken Over The Future"/>
-    </imgdir>
-    <imgdir name="9420102">
-        <string name="name" value="Alien That&apos;s Taken Over The Future"/>
-    </imgdir>
-    <imgdir name="9420103">
-        <string name="name" value="Visitor Time Bomb"/>
-    </imgdir>
-    <imgdir name="9420104">
-        <string name="name" value="Axe Visitor"/>
-    </imgdir>
-    <imgdir name="9420105">
-        <string name="name" value="Axe Visitor"/>
-    </imgdir>
-    <imgdir name="9420106">
-        <string name="name" value="Assassin Visitor"/>
-    </imgdir>
-    <imgdir name="9420107">
-        <string name="name" value="Assassin Visitor"/>
-    </imgdir>
-    <imgdir name="9420108">
-        <string name="name" value="Gunner Visitor"/>
-    </imgdir>
-    <imgdir name="9420109">
-        <string name="name" value="Gunner Visitor"/>
-    </imgdir>
-    <imgdir name="9420110">
-        <string name="name" value="Energy Core"/>
-    </imgdir>
-    <imgdir name="9420111">
-        <string name="name" value="Energy Core"/>
-    </imgdir>
-    <imgdir name="9420112">
-        <string name="name" value="Unseen Visitor"/>
-    </imgdir>
-    <imgdir name="9420113">
-        <string name="name" value="Unseen Visitor"/>
-    </imgdir>
-    <imgdir name="9420114">
-        <string name="name" value="Sniper Visitor"/>
-    </imgdir>
-    <imgdir name="9420115">
-        <string name="name" value="Sniper Visitor"/>
-    </imgdir>
-    <imgdir name="9420116">
-        <string name="name" value="Sniper Visitor"/>
-    </imgdir>
-    <imgdir name="9420117">
-        <string name="name" value="Assassin Visitor"/>
-    </imgdir>
-    <imgdir name="9420118">
-        <string name="name" value="Assassin Visitor"/>
-    </imgdir>
-    <imgdir name="9420119">
-        <string name="name" value="Assassin Visitor"/>
-    </imgdir>
-    <imgdir name="9420120">
-        <string name="name" value="Cleric Visitor"/>
-    </imgdir>
-    <imgdir name="9420121">
-        <string name="name" value="Cleric Visitor"/>
-    </imgdir>
-    <imgdir name="9420122">
-        <string name="name" value="Cleric Visitor"/>
-    </imgdir>
-    <imgdir name="9420123">
-        <string name="name" value="Unidentified Dexterous Alien"/>
-    </imgdir>
-    <imgdir name="9420124">
-        <string name="name" value="Unidentified Wise Alien"/>
-    </imgdir>
-    <imgdir name="9420125">
-        <string name="name" value="Unidentified Lucky Alien"/>
-    </imgdir>
-    <imgdir name="9420126">
-        <string name="name" value="Wise Alien Summoning Cube"/>
-    </imgdir>
-    <imgdir name="9420127">
-        <string name="name" value="Lucky Alien Summoning Cube"/>
-    </imgdir>
-    <imgdir name="9420128">
-        <string name="name" value="Wise Alien Soldier"/>
-    </imgdir>
-    <imgdir name="9420129">
-        <string name="name" value="Lucky Alien Soldier"/>
-    </imgdir>
-    <imgdir name="9420130">
-        <string name="name" value="Wise Alien Scientist Abductor"/>
-    </imgdir>
-    <imgdir name="9420131">
-        <string name="name" value="Lucky Alien Scientist Abductor"/>
-    </imgdir>
-    <imgdir name="9420132">
-        <string name="name" value="Skill for Restraining Visitor Representative"/>
-    </imgdir>
-    <imgdir name="9420133">
-        <string name="name" value="OSD Diver"/>
-    </imgdir>
-    <imgdir name="9420134">
-        <string name="name" value="Another Diver Agent"/>
-    </imgdir>
-    <imgdir name="9420135">
-        <string name="name" value="Another Miner Agent"/>
-    </imgdir>
-    <imgdir name="9400400">
-        <string name="name" value="Genin"/>
-    </imgdir>
-    <imgdir name="9400401">
-        <string name="name" value="Chunin"/>
-    </imgdir>
-    <imgdir name="9400402">
-        <string name="name" value="Jonin"/>
-    </imgdir>
-    <imgdir name="9400403">
-        <string name="name" value="Ninto"/>
-    </imgdir>
-    <imgdir name="9400404">
-        <string name="name" value="Ashigaru"/>
-    </imgdir>
-    <imgdir name="9400405">
-        <string name="name" value="Kacchuu Musha"/>
-    </imgdir>
-    <imgdir name="9400406">
-        <string name="name" value="Kunoichi"/>
-    </imgdir>
-    <imgdir name="9400407">
-        <string name="name" value="Toad"/>
-    </imgdir>
-    <imgdir name="9400408">
-        <string name="name" value="Castellan"/>
-    </imgdir>
-    <imgdir name="9400409">
-        <string name="name" value="Castellan Toad"/>
-    </imgdir>
-    <imgdir name="9400410">
-        <string name="name" value="Rock"/>
-    </imgdir>
-    <imgdir name="9420514">
-        <string name="name" value="Berserkie"/>
-    </imgdir>
-    <imgdir name="9420515">
-        <string name="name" value="Veetron"/>
-    </imgdir>
-    <imgdir name="9420516">
-        <string name="name" value="Slygie"/>
-    </imgdir>
-    <imgdir name="9420517">
-        <string name="name" value="Petrifighter"/>
-    </imgdir>
-    <imgdir name="9420518">
-        <string name="name" value="Montrecer"/>
-    </imgdir>
-    <imgdir name="9420519">
-        <string name="name" value="Duku"/>
-    </imgdir>
-    <imgdir name="9420520">
-        <string name="name" value="Krexel"/>
-    </imgdir>
-    <imgdir name="9420521">
-        <string name="name" value="Krexel"/>
-    </imgdir>
-    <imgdir name="9420522">
-        <string name="name" value="Krexel"/>
-    </imgdir>
-    <imgdir name="9420523">
-        <string name="name" value="Bacal"/>
-    </imgdir>
-    <imgdir name="9420524">
-        <string name="name" value="Bacal"/>
-    </imgdir>
-    <imgdir name="9420525">
-        <string name="name" value="Gas Tank"/>
-    </imgdir>
-    <imgdir name="9420526">
-        <string name="name" value="Broken Wires"/>
     </imgdir>
 </imgdir>

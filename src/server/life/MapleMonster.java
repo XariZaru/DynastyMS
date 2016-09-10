@@ -97,7 +97,6 @@ public class MapleMonster extends AbstractLoadedMapleLife {
     private Point point = null;
     private SpawnPQ spawnpq;
     private int damageTaken = 0;
-    private MapleCharacter belongsToChar = null;
     private List<MapleParty> party_listeners = new ArrayList<MapleParty>();
     
     // Custom Dynasty Stuff
@@ -491,9 +490,7 @@ public class MapleMonster extends AbstractLoadedMapleLife {
     }
 
     public MapleCharacter killBy(MapleCharacter killer) {
-    	
-    	updateMobDeadListeners(killer);
-    	
+
     	if (killer.isQuesting()) {
     		killer.mobKilled();
     	}
@@ -545,7 +542,8 @@ public class MapleMonster extends AbstractLoadedMapleLife {
                         
                         if (givesBossPoints()) {
 	                        mob.givesBossPoints(true);
-	                        mob.setPartyListeners(getPartyListeners());
+	                        mob.setMobDeadListeners(mobDeadListeners);
+	                        mob.setPartyListeners(MapleMonster.this.party_listeners);
                         }
                         reviveMap.spawnMonster(mob);
                     }
@@ -561,42 +559,18 @@ public class MapleMonster extends AbstractLoadedMapleLife {
         for (MonsterListener listener : listeners.toArray(new MonsterListener[listeners.size()])) {
             listener.monsterKilled(getAnimationTime("die1"));
         }
-
+        updateMobDeadListeners(killer);
         MapleCharacter looter = map.getCharacterById(getHighestDamagerId());
-
+        
         return looter != null ? looter : killer;
+    }
+    
+    public void setMobDeadListeners(List<MobDeadListener> listeners) {
+    	mobDeadListeners = listeners;
     }
     
     public void updateMobDeadListeners(MapleCharacter from) {
     	
-        // Boss Points .. calculation and checks if player is in map as killer. Distributes to all party listeners 
-        if (this.isBoss() && this.givesBossPoints()) {
-	    	for (MapleParty party : this.party_listeners) {
-	    		for (MaplePartyCharacter chr : party.getMembers()) {
-	    			MapleCharacter player = Server.getInstance().getWorld(0).getPlayerStorage().getCharacterByName(chr.getName());
-	    			if (player.getMap() == from.getMap()) {
-		    			double rand = (Math.random() * .3) + .9;
-		    			player.gainBossPoints((int) (.0000625 * rand *  this.getMaxHp()));
-		    			player.titleMessage((int) (.0000625 * rand * this.getMaxHp()) + " boss points");
-		    			player.dropMessage(5, "You gained " + (int) (.0000625 * rand * this.getMaxHp()) + " boss points");
-		    			try {
-		    				PreparedStatement ps = DatabaseConnection.getConnection().prepareStatement("INSERT INTO boss_kills (characterid, mobid, amount) VALUES (?, ?, 1) ON DUPLICATE KEY UPDATE amount = amount + 1");
-		    				ps.setInt(1, player.getId());
-		    				ps.setInt(2, this.getId());
-		    				ps.executeUpdate();
-		    				
-		    				ps = DatabaseConnection.getConnection().prepareStatement("INSERT INTO boss_kills (characterid, mobid, amount) VALUES (?, 0, 1) ON DUPLICATE KEY UPDATE amount = amount + 1");
-		    				ps.setInt(1, player.getId());
-		    				ps.executeUpdate();
-		    				ps.close();
-		    			} catch (Exception e) {
-		    				e.printStackTrace();
-		    			}
-	    			}
-	    		}
-	    	}
-        }
-        
         // Update listeners
     	for (MobDeadListener listener : getMobDeadListeners())
     		listener.mobKilled(new MobDeadEvent(this, this, from));

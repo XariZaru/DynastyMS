@@ -1,6 +1,7 @@
 importPackage(Packages.server.life);
 importPackage(Packages.server.maps);
 importPackage(Packages.java.awt);
+importPackage(Packages.custom.dynasty);
 
 var status = -1;
 
@@ -136,12 +137,12 @@ function action(m,t,s) {
 				if (s == 0) { 
 					var zak_body = MapleLifeFactory.getMonster(8800000);
 					zak_body.givesBossPoints(true);
-					zak_body.addPartyListener(cm.getParty());
+					zak_body.addMobDeadListener(new BossPQ(cm.getParty()));
 					cm.getPlayer().getMap().spawnFakeMonsterOnGroudBelow(zak_body, new Point(-25, -230));
 					for (var x = 8800003; x < 8800011; x++) {
 						var body_part = MapleLifeFactory.getMonster(x);
 						body_part.givesBossPoints(true);
-						body_part.addPartyListener(cm.getParty());
+						body_part.addMobDeadListener(new BossPQ(cm.getParty()));
 						cm.getPlayer().getMap().spawnMonsterOnGroundBelow(body_part, -25, -230);
 					}
 					cm.changeMusic("Bgm06/FinalFight");
@@ -149,7 +150,7 @@ function action(m,t,s) {
 				} else {
 					var mob = MapleLifeFactory.getMonster(mobs[s]);
 					mob.givesBossPoints(true);
-					mob.addPartyListener(cm.getParty());
+					mob.addMobDeadListener(new BossPQ(cm.getParty()));
 					cm.getPlayer().getMap().spawnMonsterOnGroundBelow(mob, 862, 260);
 				}
 			// Map is full
