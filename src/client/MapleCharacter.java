@@ -104,7 +104,6 @@ import server.partyquest.MonsterCarnival;
 import server.partyquest.MonsterCarnivalParty;
 import server.partyquest.PartyQuest;
 import server.partyquest.SpawnPQ;
-import server.partyquest.dynasty.CustomCPQParty;
 import server.partyquest.dynasty.DynastyPQ;
 import server.partyquest.dynastyPQ.IPartyQuest;
 import server.quest.MapleQuest;
@@ -274,7 +273,6 @@ public class MapleCharacter extends AbstractAnimatedMapleMapObject {
     private CashShop cashshop;
     private long portaldelay = 0, lastcombo = 0;
     private short combocounter = 0;
-    private MapleMonster dummy = null;
     private List<String> blockedPortals = new ArrayList<>();
     private Map<Short, String> area_info = new LinkedHashMap<>();
     private AutobanManager autoban;
@@ -290,9 +288,7 @@ public class MapleCharacter extends AbstractAnimatedMapleMapObject {
     private MapleDragon dragon = null;
     private ClearMap clearmap;
 	private int bosspoints;
-	private IPartyQuest partylistener;
 	private boolean petTaskStarted;
-	private Channel lastchannel = null;
 	private List<DamageListener> damage_listeners;
 	private List<DropListener> drop_listeners;
 
@@ -747,10 +743,6 @@ public class MapleCharacter extends AbstractAnimatedMapleMapObject {
         List<MapleBuffStat> buffStatList = Arrays.asList(stat);
         deregisterBuffStats(buffStatList);
         cancelPlayerBuffs(buffStatList);
-    }
-    
-    public void registerPQ(IPartyQuest pq) {
-    	this.partylistener = pq;
     }
 
     public void setCombo(short count) {
@@ -6236,17 +6228,6 @@ public class MapleCharacter extends AbstractAnimatedMapleMapObject {
             ps.close();
         } catch (Exception Ex) {
         }
-    }
-    
-    // CustomCPQ
-    
-    private CustomCPQParty cpqparty;
-    public void setCPQParty(CustomCPQParty cpqparty) {
-    	this.cpqparty = cpqparty;
-    }
-    
-    public CustomCPQParty getCPQParty() {
-    	return cpqparty;
     }
 
     // Storyline Quest

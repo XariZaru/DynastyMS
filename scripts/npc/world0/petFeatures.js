@@ -38,13 +38,8 @@ function start() {
 		var text = "You currently have #e"+ Math.ceil(time_left/86400000) +"#n days remaining in your donor subscription:\r\n";
 		
 		for (var x = 0; x < pets.length; x++)
-			if (pets[x] != null) {
-				var feature = pets[x].getDonorFeature();
-				text += "#L"+x+"##z"+pets[x].getItemId()+"# "+
-				"("+ (pets[x].getDonorType().getType() == BOSSHP ? "boss hp" : 
-					  pets[x].getDonorType().getType() == DROP ? feature != null && (((client.pets.DropReporter) feature).getWatchedItem()) != 0 ? "#z"+ (((client.pets.DropReporter) 		feature).getWatchedItem())+"#" : "a drop" : 
-					  pets[x].getDonorType().getType() == DPS ? "DPS" : "idle") +")\r\n";
-			}
+			if (pets[x] != null)
+				text += "#L"+x+"##z"+pets[x].getItemId()+"# ("+ (pets[x].getDonorType().getType() == BOSSHP ? "boss hp" : pets[x].getDonorType().getType() == DROP ? (pets[x].getDonorFeature() != null && pets[x].getDonorFeature().getWatchedItem() != 0 ? "#z"+pets[x].getDonorFeature().getWatchedItem()+"#" : "a drop") : pets[x].getDonorType().getType() == DPS ? "DPS" : "idle") +")\r\n";
 		cm.sendSimple(text + "#L999#Toggle pet features "+(!cm.getPlayer().getPetTasks() ? "on" : "off")+"");
 	}
 }
@@ -72,6 +67,7 @@ function action(m,t,s) {
 					if (pets[x] != null)
 						pets[x].setDonorFeature(new DonorPetFeature(pets[x].getDonorType(), pets[x].getUniqueId()));
 			}
+		
 		} else if (s != 999) {
 			selected_pet = cm.getPlayer().getPet(s);
 			petid = selected_pet.getUniqueId();

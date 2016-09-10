@@ -36,7 +36,6 @@ public class WZIMGFile {
     private WZFileEntry file;
     private WZIMGEntry root;
     private boolean provideImages;
-    @SuppressWarnings ("unused")
     private boolean modernImg;
 
     public WZIMGFile(File wzfile, WZFileEntry file, boolean provideImages, boolean modernImg) throws IOException {
