@@ -52,12 +52,11 @@ public final class PetFoodHandler extends AbstractMaplePacketHandler {
         }
         int previousFullness = 100;
         byte slot = 0;
-        MaplePet[] pets = chr.getPets();
-        for (byte i = 0; i < 3; i++) {
-            if (pets[i] != null) {
-                if (pets[i].getFullness() < previousFullness) {
-                    slot = i;
-                    previousFullness = pets[i].getFullness();
+        for (MaplePet pet : chr.getPets()) {
+            if (pet != null) {
+                if (pet.getFullness() < previousFullness) {
+                    slot = chr.getPetIndex(pet);
+                    previousFullness = pet.getFullness();
                 }
             }
         }

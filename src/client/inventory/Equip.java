@@ -30,9 +30,11 @@ import java.util.List;
 
 import server.MapleItemInformationProvider;
 import tools.DatabaseConnection;
+import tools.LogHelper;
 import tools.MaplePacketCreator;
 import tools.Pair;
 import client.MapleClient;
+import client.MapleStat;
 
 public class Equip extends Item {
 
@@ -75,6 +77,31 @@ public class Equip extends Item {
     	if (create_date == null)
     		create_date = new Timestamp(System.currentTimeMillis());
     	return create_date;
+    }
+    
+    public void setStat(MapleStat stat, short amount) {
+        switch (stat) {
+            case INT:
+                setInt(amount);
+                break;
+            case STR:
+                setStr(amount);
+                break;
+            case LUK:
+                setLuk(amount);
+                break;
+            case DEX:
+                setDex(amount);
+                break;
+            case HP:
+                setHp(amount);
+                break;
+            case MP:
+                setMp(amount);
+                break;
+            default:
+                //LogHelper.CONSOLE.get().info("invalid stat to set. use its setter instead.");
+        }
     }
     
     public void setCreateDate(Timestamp p_create) {

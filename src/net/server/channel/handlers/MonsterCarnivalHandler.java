@@ -26,9 +26,8 @@ import java.awt.Point;
 
 import net.AbstractMaplePacketHandler;
 import server.life.MapleLifeFactory;
-import server.maps.MapleReactor;
 import server.maps.MapleReactorFactory;
-import server.partyquest.MonsterCarnival;
+import server.reactors.MapleReactor;
 import tools.MaplePacketCreator;
 import tools.data.input.SeekableLittleEndianAccessor;
 import client.MapleCharacter;
@@ -41,9 +40,10 @@ import client.MapleClient;
 public final class MonsterCarnivalHandler extends AbstractMaplePacketHandler{
     public void handlePacket(SeekableLittleEndianAccessor slea, MapleClient c) {
         MapleCharacter chr = c.getPlayer();
-        MonsterCarnival carnival = chr.getCarnival();
         int tab = slea.readByte();
         int number = slea.readShort();
+        
+        /*
         if (carnival != null) {
             if (chr.getCarnivalParty() != carnival.getPartyRed() || chr.getCarnivalParty() != carnival.getPartyBlue()) {
                 chr.getMap().broadcastMessage(MaplePacketCreator.leaveCPQ(chr));
@@ -61,8 +61,8 @@ public final class MonsterCarnivalHandler extends AbstractMaplePacketHandler{
 
                 } else if (tab == 2) {
                     int rid = 9980000 + chr.getTeam();
-                        MapleReactor reactor = new MapleReactor(MapleReactorFactory.getReactor(rid), rid);
-                        /*switch (number) {
+                        //MapleReactor reactor = new MapleReactor(MapleReactorFactory.getReactor(rid), rid);
+                        switch (number) {
                             case 0:
                                 reactor.setMonsterStatus(tab, MonsterStatus.WEAPON_ATTACK_UP, MobSkillFactory.getMobSkill(150, 1));
                                 break;
@@ -90,8 +90,8 @@ public final class MonsterCarnivalHandler extends AbstractMaplePacketHandler{
                             case 8:
                                 reactor.setMonsterStatus(tab, MonsterStatus.MAGIC_IMMUNITY, MobSkillFactory.getMobSkill(141, 1));
                                 break;
-                        } */
-                        chr.getMap().spawnReactor(reactor);
+                        } 
+                        //chr.getMap().spawnReactor(reactor);
                 }
             } else {
                 chr.getMap().broadcastMessage(MaplePacketCreator.CPQMessage((byte) 1));
@@ -99,7 +99,9 @@ public final class MonsterCarnivalHandler extends AbstractMaplePacketHandler{
         } else {
             chr.announce(MaplePacketCreator.CPQMessage((byte) 5));
         }
+        
         chr.announce(MaplePacketCreator.enableActions());
+        */
     }
 
     public int getMonster(int num) {

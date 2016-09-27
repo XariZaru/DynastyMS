@@ -24,6 +24,9 @@ package scripting;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import javax.script.Invocable;
 import javax.script.ScriptEngine;
@@ -51,10 +54,10 @@ public abstract class AbstractScriptManager {
         path = "scripts/" + path;
         engine = null;
         if (c != null) {
-            engine = c.getScriptEngine(path);
+        	engine = c.getScriptEngine(path);
         }
         if (engine == null) {
-            File scriptFile = new File(path);
+        	File scriptFile = new File(path);
             if (!scriptFile.exists()) {
                 return null;
             }
@@ -63,9 +66,7 @@ public abstract class AbstractScriptManager {
                 c.setScriptEngine(path, engine);
             }
             try (FileReader fr = new FileReader(scriptFile)) {
-            	if (ServerConstants.JAVA_8){
-            		engine.eval("load('nashorn:mozilla_compat.js');");
-            	}
+                engine.eval("load('nashorn:mozilla_compat.js');");
                 engine.eval(fr);
             } catch (final ScriptException | IOException t) {
                 FilePrinter.printError(FilePrinter.INVOCABLE + path.substring(12, path.length()), t, path);

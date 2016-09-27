@@ -80,7 +80,7 @@ public final class SpawnPetHandler extends AbstractMaplePacketHandler {
             }
         }
         if (chr.getPetIndex(pet) != -1) {
-            chr.unequipPet(pet, true);
+            chr.unequipPet(pet, false);
         } else {
             if (chr.getSkillLevel(SkillFactory.getSkill(8)) == 0 && chr.getPet(0) != null) {
                 chr.unequipPet(chr.getPet(0), false);
@@ -95,11 +95,11 @@ public final class SpawnPetHandler extends AbstractMaplePacketHandler {
             pet.setStance(0);
             pet.setSummoned(true);
             pet.saveToDb();
+            pet.startFullnessSchedule(chr);
             chr.addPet(pet);
             chr.getMap().broadcastMessage(c.getPlayer(), MaplePacketCreator.showPet(c.getPlayer(), pet, false, false), true);
             c.announce(MaplePacketCreator.petStatUpdate(c.getPlayer()));
             c.announce(MaplePacketCreator.enableActions());
-            chr.startFullnessSchedule(PetDataFactory.getHunger(pet.getItemId()), pet, chr.getPetIndex(pet));
         }
     }
 }

@@ -1,14 +1,13 @@
 package server.partyquest;
 
+import client.MapleCharacter;
 import java.util.LinkedList;
 import java.util.List;
-
 import server.maps.MapleMap;
 import tools.MaplePacketCreator;
-import client.MapleCharacter;
 
 /**
- * @author Rob //Thanks :3  - LOST MOTIVATION >=(
+ * @author Rob
  */
 public class MonsterCarnivalParty {
 
@@ -16,7 +15,7 @@ public class MonsterCarnivalParty {
     private MapleCharacter leader;
     private byte team;
     private short availableCP = 0, totalCP = 0;
-    private int summons = 7;
+    private int summons = 10;
     private boolean winner = false;
 
     public MonsterCarnivalParty(final MapleCharacter owner, final List<MapleCharacter> members1, final byte team1) {
@@ -35,11 +34,16 @@ public class MonsterCarnivalParty {
     }
 
     public void addCP(MapleCharacter player, int ammount) {
-        totalCP += ammount;
+        if (ammount > 0) totalCP += ammount;
         availableCP += ammount;
         player.addCP(ammount);
     }
 
+    public void resetCP() {
+        totalCP = 0;
+        availableCP = 0;
+    }
+    
     public int getTotalCP() {
         return totalCP;
     }
@@ -61,43 +65,33 @@ public class MonsterCarnivalParty {
         return team;
     }
 
+    public int getOppositeTeam() {
+        return (team == 0 ? 1 : 0);
+    }
+    
     public void warpOut(final int map) {
         for (MapleCharacter chr : members) {
             chr.changeMap(map, 0);
-            chr.setCarnivalParty(null);
-            chr.setCarnival(null);
         }
         members.clear();
     }
 
-    public void warp(final MapleMap map, final int portalid) {
+    public void warp(final MapleMap map, final String portalName) {
         for (MapleCharacter chr : members) {
-            chr.changeMap(map, map.getPortal(portalid));
+            chr.changeMap(map, map.getPortal(portalName));
         }
-    }
-
-    public void warpOut() {
-        if (winner == true)
-            warpOut(980000003 + (leader.getCarnival().getRoom() * 100));
-        else
-            warpOut(980000004 + (leader.getCarnival().getRoom() * 100));
-    }
-
-    public boolean allInMap(MapleMap map) {
-        boolean status = true;
-        for (MapleCharacter chr : members) {
-            if (chr.getMap() != map) {
-                status = false;
-            }
+        if(map.getId() % 10 == 1) { //fieldMap
+            map.broadcastMessage(MaplePacketCreator.openUI((byte) 18));
         }
-        return status;
     }
 
     public void removeMember(MapleCharacter chr) {
         members.remove(chr);
-        chr.changeMap(980000010);
+        if(!chr.getMap().isMCPQVictoryOrDefeatMap() && chr.getMapId() != 980000000 && chr.getMapId() != 980000010) {
+            chr.changeMap(980000010);
+        }
+        // If you are, Spiegelmann will warp you himself.
         chr.setCarnivalParty(null);
-        chr.setCarnival(null);
     }
 
     public boolean isWinner() {
@@ -122,5 +116,11 @@ public class MonsterCarnivalParty {
 
     public boolean canSummon() {
         return this.summons > 0;
+    }
+    
+    public void sendClock(int time) {
+        for (MapleCharacter chr : members) {
+            chr.getClient().announce(MaplePacketCreator.getClock(time));
+        }
     }
 }

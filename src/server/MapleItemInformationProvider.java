@@ -41,6 +41,7 @@ import provider.MapleDataFileEntry;
 import provider.MapleDataProvider;
 import provider.MapleDataProviderFactory;
 import provider.MapleDataTool;
+import server.life.MonsterDropEntry.DropCategory;
 import tools.DatabaseConnection;
 import tools.FilePrinter;
 import tools.MaplePacketCreator;
@@ -104,6 +105,7 @@ public class MapleItemInformationProvider {
     protected Map<Integer, Boolean> consumeOnPickupCache = new HashMap<>();
     protected Map<Integer, Boolean> isQuestItemCache = new HashMap<>();
     protected Map<Integer, String> equipmentSlotCache = new HashMap<>();
+    protected LinkedHashMap<Integer, String> itemIdAndName = new LinkedHashMap<>();
 
     private MapleItemInformationProvider() {
         loadCardIdData();
@@ -703,13 +705,39 @@ public class MapleItemInformationProvider {
         }
         return nEquip.copy();
     }
+    
+    public static short randomizeItemQty(int itemId, short qty,
+            double deviationPercentage, boolean includeLowerBound) {
 
-    private static short getRandStat(short defaultValue, int maxRange) {
+        MapleInventoryType type = MapleItemInformationProvider.getInstance()
+                .getInventoryType(itemId);
+
+        //we dont allow scrolls to be more than 1
+        if (type.equals(MapleInventoryType.USE)
+                && DropCategory.getDefaultCategory(itemId).equals(DropCategory.SCROLL)) {
+            return 1;
+        }
+
+        short lowerBound = includeLowerBound
+                ? (short) Math.floor(qty * (1 - deviationPercentage))
+                : qty;
+
+        short upperBound = (short) Math.ceil(qty * (1 + deviationPercentage));
+
+        return (short) Randomizer.rand(lowerBound, upperBound);
+    }
+
+    public static short getRandStat(short defaultValue, int maxRange) {
         if (defaultValue == 0) {
             return 0;
         }
         int lMaxRange = (int) Math.min(Math.ceil(defaultValue * 0.1), maxRange);
         return (short) ((defaultValue - lMaxRange) + Math.floor(Randomizer.nextDouble() * (lMaxRange * 2 + 1)));
+    }
+    
+    public boolean isItemValid(int itemId) {
+        getAllItems();
+        return itemIdAndName.containsKey(itemId);
     }
     
     public Equip addGodlyStats(Equip equip) {
@@ -1186,15 +1214,16 @@ public class MapleItemInformationProvider {
         return true;
     }
     
-    public ArrayList<Pair<Integer, String>> getItemDataByName(String name)
-    {
-        ArrayList<Pair<Integer, String>> ret = new ArrayList<Pair<Integer, String>>();
-         for (Pair<Integer, String> itemPair : MapleItemInformationProvider.getInstance().getAllItems()) {
-                    if (itemPair.getRight().toLowerCase().contains(name.toLowerCase())) {
-                            ret.add(itemPair);
-                        }
-                    }
-         return ret;
+    public ArrayList<Pair<Integer, String>> getItemDataByName(String queryString) { //for the new getAllItems
+        ArrayList<Pair<Integer, String>> ret = new ArrayList<>();
+        queryString = queryString.toLowerCase();
+
+        for (Entry<Integer, String> itemEntry : itemIdAndName.entrySet()) {
+            if (itemEntry.getValue().toLowerCase().contains(queryString)) {
+                ret.add(new Pair(itemEntry.getKey(), itemEntry.getValue()));
+            }
+        }
+        return ret;
     }
 
     public List<Pair<String, Integer>> getItemLevelupStats(int itemId, int level, boolean timeless) {

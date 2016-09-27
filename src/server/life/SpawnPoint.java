@@ -22,7 +22,15 @@
 package server.life;
 
 import java.awt.Point;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
+
+import client.listeners.MobDeadEvent;
+import client.listeners.MobDeadListener;
+import server.TimerManager;
+import server.maps.MapleMap;
+import tools.MaplePacketCreator;
+import tools.Pair;
 
 public class SpawnPoint {
 
@@ -61,6 +69,10 @@ public class SpawnPoint {
         return true;
     }
     
+    public void setMonster(int mobid) {
+    	this.monster = mobid;
+    }
+    
     public MapleMonster getMonster() {
         MapleMonster mob = new MapleMonster(MapleLifeFactory.getMonster(monster));
         mob.setPosition(new Point(pos));
@@ -68,18 +80,73 @@ public class SpawnPoint {
         mob.setFh(fh);
         mob.setF(f);
         spawnedMonsters.incrementAndGet();
-        mob.addListener(new MonsterListener() {
-            @Override
-            public void monsterKilled(int aniTime) {
-                nextPossibleSpawn = System.currentTimeMillis();
+        mob.addMobDeadListener(new MobDeadListener() {
+			@Override
+			public void mobKilled(MobDeadEvent event) {
+				nextPossibleSpawn = System.currentTimeMillis();
                 if (mobTime > 0) {
                     nextPossibleSpawn += mobTime * 1000;
                 } else {
-                    nextPossibleSpawn += aniTime;
+                    nextPossibleSpawn += event.getMonster().getAnimationTime("die1");
                 }
                 spawnedMonsters.decrementAndGet();
-            }
+			}
         });
+        
+        final List<Integer> toSpawn = mob.getRevives();
+        
+        if (toSpawn != null) 
+	        mob.addMobDeadListener(new MobDeadListener() {
+	
+				@Override
+				public void mobKilled(MobDeadEvent event) {
+					MapleMonster mob = event.getMonster();
+					if (toSpawn != null) {
+			            final MapleMap reviveMap = event.getMonster().getMap();
+			            if (toSpawn.contains(9300216) && reviveMap.getId() > 925000000 && reviveMap.getId() < 926000000) {
+			                reviveMap.broadcastMessage(MaplePacketCreator.playSound("Dojang/clear"));
+			                reviveMap.broadcastMessage(MaplePacketCreator.showEffect("dojang/end/clear"));
+			            }
+			            Pair<Integer, String> timeMob = reviveMap.getTimeMob();
+			            if (timeMob != null) {
+			                if (toSpawn.contains(timeMob.getLeft())) {
+			                    reviveMap.broadcastMessage(MaplePacketCreator.serverNotice(6, timeMob.getRight()));
+			                }
+	
+			                if (timeMob.getLeft() == 9300338 && (reviveMap.getId() >= 922240100 && reviveMap.getId() <= 922240119)) {
+			                    if (!reviveMap.containsNPC(9001108)) {
+			                        MapleNPC npc = MapleLifeFactory.getNPC(9001108);
+			                        npc.setPosition(new Point(172, 9));
+			                        npc.setCy(9);
+			                        npc.setRx0(172 + 50);
+			                        npc.setRx1(172 - 50);
+			                        npc.setFh(27);
+			                        reviveMap.addMapObject(npc);
+			                        reviveMap.broadcastMessage(MaplePacketCreator.spawnNPC(npc));
+			                    } else {
+			                        reviveMap.toggleHiddenNPC(9001108);
+			                    }
+			                }
+			            }
+			            TimerManager.getInstance().schedule(new Runnable() {
+			                @Override
+			                public void run() {
+			                    for (Integer mid : toSpawn) {
+			                        final MapleMonster mob = MapleLifeFactory.getMonster(mid);
+			                        mob.setPosition(getPosition());
+			                        if (mob.dropsDisabled()) {
+			                            mob.disableDrops();
+			                        }
+			                        mob.setMobDeadListeners(mob.getMobDeadListeners());
+			                        mob.setPartyListeners(mob.getPartyListeners());
+			                        reviveMap.spawnMonster(mob);
+			                    }
+			                }
+			            }, mob.getAnimationTime("die1"));
+			        }
+				}
+	        	
+	        });
         if (mobTime == 0) {
             nextPossibleSpawn = System.currentTimeMillis() + mobInterval;
         }

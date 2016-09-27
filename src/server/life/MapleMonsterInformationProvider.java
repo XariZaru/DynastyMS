@@ -114,12 +114,12 @@ public class MapleMonsterInformationProvider {
 
 			while (rs.next()) {
 				ret.add(
-						new MonsterDropEntry(
-								rs.getInt("itemid"),
-								rs.getInt("chance"),
-								rs.getInt("minimum_quantity"),
-								rs.getInt("maximum_quantity"),
-								rs.getShort("questid")));
+					new MonsterDropEntry(
+							rs.getInt("itemid"),
+							rs.getInt("chance"),
+							rs.getInt("minimum_quantity"),
+							rs.getInt("maximum_quantity"),
+							rs.getShort("questid")));
 			}
 		} catch (SQLException e) {
 			return ret;

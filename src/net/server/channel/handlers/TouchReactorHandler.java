@@ -23,7 +23,7 @@ package net.server.channel.handlers;
 
 import net.AbstractMaplePacketHandler;
 import scripting.reactor.ReactorScriptManager;
-import server.maps.MapleReactor;
+import server.reactors.MapleReactor;
 import tools.data.input.SeekableLittleEndianAccessor;
 import client.MapleClient;
 

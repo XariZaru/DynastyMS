@@ -26,14 +26,23 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.concurrent.ScheduledFuture;
 
+import server.MapleInventoryManipulator;
 import server.MapleItemInformationProvider;
+import server.TimerManager;
 import server.movement.AbsoluteLifeMovement;
 import server.movement.LifeMovement;
 import server.movement.LifeMovementFragment;
 import tools.DatabaseConnection;
+import tools.MaplePacketCreator;
+import tools.Randomizer;
+import client.MapleCharacter;
 import client.pets.DonorPetFeature;
 import client.pets.DonorPetFeatureType;
+import constants.ExpTable;
+import net.server.Server;
+import net.server.world.World;
 
 import com.mysql.jdbc.Statement;
 
@@ -46,11 +55,12 @@ public class MaplePet extends Item {
     private int uniqueid;
     private int closeness = 0;
     private byte level = 1;
-    private int fullness = 100;
+    private int fullness = 100; 
     private int Fh;
     private Point pos;
     private int stance;
     private boolean summoned;
+    private ScheduledFuture<?> fullnessSchedule;
     private DonorPetFeature petfeature;
 	public DonorPetFeatureType donortype = DonorPetFeatureType.DROP;
 
@@ -66,7 +76,7 @@ public class MaplePet extends Item {
             ps.setInt(1, petid);
             ResultSet rs = ps.executeQuery();
             rs.next();
-            ret.setName(rs.getString("name"));
+            ret.setName(rs.getString("name")); 
             ret.setCloseness(Math.min(rs.getInt("closeness"), 30000));
             ret.setLevel((byte) Math.min(rs.getByte("level"), 30));
             ret.setFullness(Math.min(rs.getInt("fullness"), 100));
@@ -175,8 +185,17 @@ public class MaplePet extends Item {
         this.closeness = closeness;
     }
 
-    public void gainCloseness(int x) {
-        this.closeness += x;
+    public void gainCloseness(int x, MapleCharacter owner) {
+    	byte index = owner.getPetIndex(this);
+        if (closeness < 30000) {
+        	closeness += x;
+            if (closeness >= ExpTable.getClosenessNeededForLevel(getLevel())) {
+                level++;
+                owner.getClient().announce(MaplePacketCreator.showOwnPetLevelUp(index));
+                owner.getMap().broadcastMessage(MaplePacketCreator.showPetLevelUp(owner, index));
+            }
+        }
+        
     }
 
     public byte getLevel() {
@@ -225,6 +244,52 @@ public class MaplePet extends Item {
 
     public void setSummoned(boolean yes) {
         this.summoned = yes;
+    }
+    
+    public void fedPet() {
+    	
+    }
+    
+    public void cancelFullnessSchedule() {
+    	if (fullnessSchedule != null)
+    		fullnessSchedule.cancel(true);
+    }
+    
+    public void startFullnessSchedule(MapleCharacter owner) {
+    	
+        if (fullnessSchedule != null)
+        	fullnessSchedule.cancel(true);
+        
+        fullnessSchedule = TimerManager.getInstance().register(() -> {
+			byte index = owner.getPetIndex(this);
+	        int newFullness = fullness - PetDataFactory.getHunger(getItemId());
+	        
+	        
+	        // Auto feed for donors
+	    	if (owner.hasDonorFeatures() && owner.haveItem(2120000) && newFullness <= 70) {
+	            newFullness += 30;
+	            if (Randomizer.nextInt(101) > 50) {
+	            	gainCloseness(1, owner);
+	            }
+	            
+	            MapleInventoryManipulator.removeById(owner.getClient(), MapleInventoryType.USE, 2120000, 1, false, true);
+	            owner.getMap().broadcastMessage(MaplePacketCreator.commandResponse(owner.getId(), index, 0, true));
+	    	}
+	    	
+	    	// If starved
+	        if (newFullness <= 5) {
+	            setFullness(15);
+	            owner.unequipPet(this, true);
+	            return;
+	        }
+	        
+	        // Update pet otherwise
+	        setFullness(newFullness);
+	        Item ipet = owner.getInventory(MapleInventoryType.CASH).getItem(getPosition());
+	        if (ipet != null)
+	        	owner.forceUpdateItem(ipet);
+	        
+        }, 180000, 180000); 
     }
 
     public boolean canConsume(int itemId) {

@@ -714,6 +714,8 @@ public class MapleClient {
 			if (!player.haveItem(4031267))
 				player.cancelAllBuffs(true);
 			player.cancelAllDebuffs();
+			player.stopPetTasks();
+			player.unequipAllPets();
 			final MaplePlayerShop mps = player.getPlayerShop();
 			if (mps != null) {
 				mps.removeVisitors();
@@ -767,7 +769,6 @@ public class MapleClient {
 		disconnecting = true;
 		if (player != null && player.isLoggedin() && player.getClient() != null) {
 			//player.getClient().getChannelServer().getPlayerStorage().removePlayer(player.getId());
-			player.stopPetTasks();
 			MapleMap map = player.getMap();
 			final MapleParty party = player.getParty();
 			final int idz = player.getId();

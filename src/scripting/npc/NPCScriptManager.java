@@ -21,6 +21,7 @@
  */
 package scripting.npc;
 
+import java.io.File;
 import java.lang.reflect.UndeclaredThrowableException;
 import java.util.HashMap;
 import java.util.Map;
@@ -31,6 +32,7 @@ import javax.script.ScriptException;
 import scripting.AbstractScriptManager;
 import server.life.MapleLifeFactory;
 import tools.FilePrinter;
+import tools.LogHelper;
 import tools.MaplePacketCreator;
 import client.MapleCharacter;
 import client.MapleClient;
@@ -51,6 +53,62 @@ public class NPCScriptManager extends AbstractScriptManager {
 
     public void start(MapleClient c, int npc, MapleCharacter chr) {
         start(c, npc, null, chr);
+    }
+    
+    public boolean scriptExist(int npc, MapleClient c) {
+        return this.scriptExist("scripts/npc/world" + c.getWorld() + "/" + npc + ".js");
+    }
+    
+    protected boolean scriptExist(String path) {
+		File scriptFile = new File(path);
+		return scriptFile.exists();
+	}
+    
+    public void start(MapleClient c, int npc, String fileName, MapleCharacter chr, String string) {
+        try {
+            if (cms.containsKey(c)) {
+                dispose(c);
+            }
+            if (c.canClickNPC()) {
+                NPCConversationManager cm = new NPCConversationManager(c, npc, fileName);
+                cms.put(c, cm);
+                Invocable iv = null;
+                if (fileName != null) {
+                    iv = getInvocable("npc/world" + c.getWorld() + "/" + fileName + ".js", c);
+                }
+                if (iv == null) {
+                    iv = getInvocable("npc/world" + c.getWorld() + "/" + npc + ".js", c);
+                }
+                if (iv == null) {
+                }
+                if (iv == null || NPCScriptManager.getInstance() == null) {
+                    dispose(c);
+                    return;
+                }
+                engine.put("cm", cm);
+                scripts.put(c, iv);
+                c.setClickedNPC();
+                try {
+                    if (string == null) {
+                        iv.invokeFunction("start");
+                    } else {
+                        iv.invokeFunction("start", string);
+                    }
+                } catch (final NoSuchMethodException nsme) {
+                    try {
+                        iv.invokeFunction("start", chr);
+                    } catch (final NoSuchMethodException nsma) {
+                    }
+                }
+                c.setClickedNPC(); //let's try...
+            } else {
+                c.announce(MaplePacketCreator.enableActions());
+            }
+        } catch (final UndeclaredThrowableException | ScriptException ute) {
+            dispose(c);
+        } catch (final Exception e) {
+            dispose(c);
+        }
     }
 
     public void start(MapleClient c, int npc, String fileName, MapleCharacter chr) {

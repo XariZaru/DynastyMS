@@ -76,7 +76,6 @@ public class MapleMonster extends AbstractLoadedMapleLife {
     private WeakReference<MapleCharacter> controller = new WeakReference<>(null);
     private boolean controllerHasAggro, controllerKnowsAboutAggro;
     private EventInstanceManager eventInstance = null;
-    private Collection<MonsterListener> listeners = new LinkedList<>();
     private EnumMap<MonsterStatus, MonsterStatusEffect> stati = new EnumMap<>(MonsterStatus.class);
     private ArrayList<MonsterStatus> alreadyBuffed = new ArrayList<MonsterStatus>();
     private MapleMap map;
@@ -234,7 +233,7 @@ public class MapleMonster extends AbstractLoadedMapleLife {
         return stats.getAnimationTime(name);
     }
 
-    private List<Integer> getRevives() {
+    public final List<Integer> getRevives() {
         return stats.getRevives();
     }
 
@@ -426,11 +425,7 @@ public class MapleMonster extends AbstractLoadedMapleLife {
     }
 
     public void giveExpToCharacter(MapleCharacter attacker, int exp, boolean isKiller, int numExpSharers) {
-        if (isKiller) {
-            if (eventInstance != null) {
-                eventInstance.monsterKilled(attacker, this);
-            }
-        }
+    	
         final int partyModifier = numExpSharers > 1 ? (110 + (5 * (numExpSharers - 2))) : 0;
 
         int partyExp = 0;
@@ -521,15 +516,7 @@ public class MapleMonster extends AbstractLoadedMapleLife {
                 }
             }, getAnimationTime("die1"));
         }
-        if (eventInstance != null) {
-            if (!this.getStats().isFriendly()) {
-                eventInstance.monsterKilled(this);
-            }
-        }
-        // idk V just a troll
-        for (MonsterListener listener : listeners.toArray(new MonsterListener[listeners.size()])) {
-            listener.monsterKilled(getAnimationTime("die1"));
-        }
+        
         updateMobDeadListeners(killer);
         MapleCharacter looter = map.getCharacterById(getHighestDamagerId());
         
@@ -599,10 +586,6 @@ public class MapleMonster extends AbstractLoadedMapleLife {
     
     public void addMobDeadListener(MobDeadListener listener) {
     	this.mobDeadListeners.add(listener);
-    }
-
-    public void addListener(MonsterListener listener) {
-        listeners.add(listener);
     }
 
     public boolean isControllerHasAggro() {

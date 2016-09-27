@@ -72,10 +72,9 @@ public class DonorPetFeature implements DamageListener, DropListener {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		MaplePet[] pets = player.getPets();
-		for (byte x = 0; x < 3; x++) {
-			if (pets[x] != null && pets[x].getUniqueId() == this.getUniquePetId())
-				player.getMap().broadcastMessage(player, MaplePacketCreator.petChat(player.getId(), x, (byte) 0, str.toString()), true);
+		for (MaplePet pet : player.getPets()) {
+			if (pet != null && pet.getUniqueId() == this.getUniquePetId())
+				player.getMap().broadcastMessage(player, MaplePacketCreator.petChat(player.getId(), player.getPetIndex(pet), (byte) 0, str.toString()), true);
 		}
 	}
 	

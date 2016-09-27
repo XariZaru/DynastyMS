@@ -69,11 +69,11 @@ import server.maps.MapleDragon;
 import server.maps.MapleMap;
 import server.maps.MapleMapItem;
 import server.maps.MapleMist;
-import server.maps.MapleReactor;
 import server.maps.MapleSummon;
 import server.maps.PlayerNPCs;
 import server.movement.LifeMovementFragment;
 import server.partyquest.MonsterCarnivalParty;
+import server.reactors.MapleReactor;
 import tools.data.output.LittleEndianWriter;
 import tools.data.output.MaplePacketLittleEndianWriter;
 import client.BuddylistEntry;
@@ -1853,10 +1853,9 @@ public class MaplePacketCreator {
 		mplew.write(chr.getStance());
 		mplew.writeShort(0);//chr.getFh()
 		mplew.write(0);
-		MaplePet[] pet = chr.getPets();
-		for (int i = 0; i < 3; i++) {
-			if (pet[i] != null) {
-				addPetInfo(mplew, pet[i], false);
+		for (MaplePet pet : chr.getPets()) {
+			if (pet != null) {
+				addPetInfo(mplew, pet, false);
 			}
 		}
 		mplew.write(0); //end of pets
@@ -2368,16 +2367,15 @@ public class MaplePacketCreator {
 		 mplew.writeMapleAsciiString(guildName);
 		 mplew.writeMapleAsciiString(allianceName);
 		 mplew.write(0);
-		 MaplePet[] pets = chr.getPets();
 		 Item inv = chr.getInventory(MapleInventoryType.EQUIPPED).getItem((short) -114);
-		 for (int i = 0; i < 3; i++) {
-			 if (pets[i] != null) {
-				 mplew.write(pets[i].getUniqueId());
-				 mplew.writeInt(pets[i].getItemId()); // petid
-				 mplew.writeMapleAsciiString(pets[i].getName());
-				 mplew.write(pets[i].getLevel()); // pet level
-				 mplew.writeShort(pets[i].getCloseness()); // pet closeness
-				 mplew.write(pets[i].getFullness()); // pet fullness
+		 for (MaplePet pet : chr.getPets()) {
+			 if (pet != null) {
+				 mplew.write(pet.getUniqueId());
+				 mplew.writeInt(pet.getItemId()); // petid
+				 mplew.writeMapleAsciiString(pet.getName());
+				 mplew.write(pet.getLevel()); // pet level
+				 mplew.writeShort(pet.getCloseness()); // pet closeness
+				 mplew.write(pet.getFullness()); // pet fullness
 				 mplew.writeShort(0);
 				 mplew.writeInt(inv != null ? inv.getItemId() : 0);
 			 }
@@ -3167,6 +3165,14 @@ public class MaplePacketCreator {
 		   mplew.write(remhppercentage);
 		   return mplew.getPacket();
 	   }
+	   
+	   public static byte[] contiMoveShip(boolean show) {
+	        final MaplePacketLittleEndianWriter mplew = new MaplePacketLittleEndianWriter();
+	        mplew.writeShort(SendOpcode.CONTI_MOVE.getValue());
+	        mplew.write(0x0A);
+	        mplew.write(show ? 4 : 5);
+	        return mplew.getPacket();
+	    }
 
 	   public static byte[] showBossHP(int oid, int currHP, int maxHP, byte tagColor, byte tagBgColor) {
 		   final MaplePacketLittleEndianWriter mplew = new MaplePacketLittleEndianWriter();
@@ -3641,42 +3647,42 @@ public class MaplePacketCreator {
 		   return mplew.getPacket();
 	   }
 
-	   // is there a way to spawn reactors non-animated?
-			   public static byte[] spawnReactor(MapleReactor reactor) {
-				   final MaplePacketLittleEndianWriter mplew = new MaplePacketLittleEndianWriter();
-				   Point pos = reactor.getPosition();
-				   mplew.writeShort(SendOpcode.REACTOR_SPAWN.getValue());
-				   mplew.writeInt(reactor.getObjectId());
-				   mplew.writeInt(reactor.getId());
-				   mplew.write(reactor.getState());
-				   mplew.writePos(pos);
-				   mplew.writeShort(0);
-				   mplew.write(0);
-				   return mplew.getPacket();
-			   }
+	// is there a way to spawn reactors non-animated?
+	    public static byte[] spawnReactor(MapleReactor reactor) {
+	        final MaplePacketLittleEndianWriter mplew = new MaplePacketLittleEndianWriter();
+	        Point pos = reactor.getPosition();
+	        mplew.writeShort(SendOpcode.REACTOR_SPAWN.getValue());
+	        mplew.writeInt(reactor.getObjectId());
+	        mplew.writeInt(reactor.getId());
+	        mplew.write(reactor.getCurrStateAsByte());
+	        mplew.writePos(pos);
+	        mplew.writeShort(0);
+	        mplew.write(0);
+	        return mplew.getPacket();
+	    }
 
-			   public static byte[] triggerReactor(MapleReactor reactor, int stance) {
-				   final MaplePacketLittleEndianWriter mplew = new MaplePacketLittleEndianWriter();
-				   Point pos = reactor.getPosition();
-				   mplew.writeShort(SendOpcode.REACTOR_HIT.getValue());
-				   mplew.writeInt(reactor.getObjectId());
-				   mplew.write(reactor.getState());
-				   mplew.writePos(pos);
-				   mplew.writeShort(stance);
-				   mplew.write(0);
-				   mplew.write(5); // frame delay, set to 5 since there doesn't appear to be a fixed formula for it
-				   return mplew.getPacket();
-			   }
+	    public static byte[] triggerReactor(MapleReactor reactor, int stance) {
+	        final MaplePacketLittleEndianWriter mplew = new MaplePacketLittleEndianWriter();
+	        Point pos = reactor.getPosition();
+	        mplew.writeShort(SendOpcode.REACTOR_HIT.getValue());
+	        mplew.writeInt(reactor.getObjectId());
+	        mplew.write(reactor.getCurrStateAsByte());
+	        mplew.writePos(pos);
+	        mplew.writeShort(stance);
+	        mplew.write(0);
+	        mplew.write(3); // frame delay, set to 5 since there doesn't appear to be a fixed formula for it
+	        return mplew.getPacket();
+	    }
 
-			   public static byte[] destroyReactor(MapleReactor reactor) {
-				   final MaplePacketLittleEndianWriter mplew = new MaplePacketLittleEndianWriter();
-				   Point pos = reactor.getPosition();
-				   mplew.writeShort(SendOpcode.REACTOR_DESTROY.getValue());
-				   mplew.writeInt(reactor.getObjectId());
-				   mplew.write(reactor.getState());
-				   mplew.writePos(pos);
-				   return mplew.getPacket();
-			   }
+	    public static byte[] destroyReactor(MapleReactor reactor) {
+	        final MaplePacketLittleEndianWriter mplew = new MaplePacketLittleEndianWriter();
+	        Point pos = reactor.getPosition();
+	        mplew.writeShort(SendOpcode.REACTOR_DESTROY.getValue());
+	        mplew.writeInt(reactor.getObjectId());
+	        mplew.write(reactor.getCurrStateAsByte());
+	        mplew.writePos(pos);
+	        return mplew.getPacket();
+	    }
 
 			   public static byte[] musicChange(String song) {
 				   return environmentChange(song, 6);
@@ -4284,10 +4290,9 @@ public class MaplePacketCreator {
 				   mask |= MapleStat.PET.getValue();
 				   mplew.write(0);
 				   mplew.writeInt(mask);
-				   MaplePet[] pets = chr.getPets();
-				   for (int i = 0; i < 3; i++) {
-					   if (pets[i] != null) {
-						   mplew.writeInt(pets[i].getUniqueId());
+				   for (MaplePet pet : chr.getPets()) {
+					   if (pet != null) {
+						   mplew.writeInt(pet.getUniqueId());
 						   mplew.writeInt(0);
 					   } else {
 						   mplew.writeLong(0);

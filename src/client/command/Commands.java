@@ -42,9 +42,10 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 import java.util.TimeZone;
-
+import java.util.Map.Entry;
 import net.MaplePacketHandler;
 import net.PacketProcessor;
 import net.server.Server;
@@ -79,6 +80,8 @@ import server.maps.MapleMapItem;
 import server.maps.MapleMapObject;
 import server.maps.MapleMapObjectType;
 import server.quest.MapleQuest;
+import server.reactors.MapleReactor;
+import server.reactors.MapleReactorFactory;
 import tools.DatabaseConnection;
 import tools.FilePrinter;
 import tools.HexTool;
@@ -86,6 +89,7 @@ import tools.MapleLogger;
 import tools.MaplePacketCreator;
 import tools.Pair;
 import tools.Randomizer;
+import tools.StringUtil;
 import tools.data.input.ByteArrayByteStream;
 import tools.data.input.GenericSeekableLittleEndianAccessor;
 import tools.data.input.SeekableLittleEndianAccessor;
@@ -382,9 +386,6 @@ public class Commands {
 			}
 			break;
 		case "info":
-			c.removeClickedNPC();
-			NPCScriptManager.getInstance().dispose(c);
-			c.announce(MaplePacketCreator.enableActions());
 			player.saveToDB();
 			player.dropMessage(String.format("Vote points: %d, Donor points: %d, Boss points: %d, NX: %d", player.getVP(), player.getDP(), player.getBossPoints(), player.getCashShop().getCash(1)));
 			break;
@@ -393,8 +394,6 @@ public class Commands {
 			player.saveToDB();
 			break;
 		case "helper":
-			c.removeClickedNPC();
-			NPCScriptManager.getInstance().dispose(c);
 			NPCScriptManager.getInstance().start(c, 9300003, null, null);
 			break;
 		case "quest":
@@ -411,7 +410,7 @@ public class Commands {
             player.spawnGuide(player.getGuide() ? false : true);
             break;
 		case "roll":
-			int roll = (int) (Math.random() * 101);
+			int roll = (int) (Math.random() * 100) + 1;
 			if (player.getParty() != null) {
 				for (MaplePartyCharacter chr : player.getParty().getMembers())
 					chr.getPlayer().dropMessage(5, player.getName() + " rolled a " + roll);
@@ -781,18 +780,18 @@ public class Commands {
 			}
 			if (sub.length > 2) {
 				for (int i = 0; i < Integer.parseInt(sub[2]); i++) {
-					player.getMap().spawnMonsterOnGroudBelow(MapleLifeFactory.getMonster(Integer.parseInt(sub[1])), player.getPosition());
+					player.getMap().spawnMonsterOnGroundBelow(MapleLifeFactory.getMonster(Integer.parseInt(sub[1])), player.getPosition());
 				}
 			} else {
-				player.getMap().spawnMonsterOnGroudBelow(MapleLifeFactory.getMonster(Integer.parseInt(sub[1])), player.getPosition());
+				player.getMap().spawnMonsterOnGroundBelow(MapleLifeFactory.getMonster(Integer.parseInt(sub[1])), player.getPosition());
 			}
 		} else if (sub[0].equals("bomb")) {
 			if (sub.length > 1){
 				MapleCharacter victim = c.getWorldServer().getPlayerStorage().getCharacterByName(sub[1]);
-				victim.getMap().spawnMonsterOnGroudBelow(MapleLifeFactory.getMonster(9300166), victim.getPosition());
+				victim.getMap().spawnMonsterOnGroundBelow(MapleLifeFactory.getMonster(9300166), victim.getPosition());
 				Server.getInstance().broadcastGMMessage(MaplePacketCreator.serverNotice(5, player.getName() + " used !bomb on " + victim.getName()));
 			} else {
-				player.getMap().spawnMonsterOnGroudBelow(MapleLifeFactory.getMonster(9300166), player.getPosition());
+				player.getMap().spawnMonsterOnGroundBelow(MapleLifeFactory.getMonster(9300166), player.getPosition());
 			}
 		} else if (sub[0].equals("mutemap")) {
 			if(player.getMap().isMuted()) {
@@ -838,7 +837,7 @@ public class Commands {
 			for (Channel ch : Server.getInstance().getAllChannels()) {
 				ch.reloadEventScriptManager();
 			}
-			player.dropMessage(5, "Reloaded Events");
+			player.dropMessage(5, "Reloaded Events!");
 		} else if (sub[0].equals("reloadquestscripts")) {
 			QuestScriptManager.getInstance().getScripts().clear();
 		} else if (sub[0].equals("reloadshops")) {
@@ -851,28 +850,64 @@ public class Commands {
 			PortalScriptManager.getInstance().reloadPortalScripts();
 			player.dropMessage(5, "Reloaded Portals");
 		} else if (sub[0].equals("whereami")) { //This is so not going to work on the first commit
-			player.yellowMessage("Map ID: " + player.getMap().getId());
-			player.yellowMessage("Players on this map:");
-			for (MapleMapObject mmo : player.getMap().getAllPlayer()) {
-				MapleCharacter chr = (MapleCharacter) mmo;
-				player.dropMessage(5, ">> " + chr.getName());
-			}
-			player.yellowMessage("NPCs on this map:");
-			for (MapleMapObject npcs : player.getMap().getMapObjects()) {
-				if (npcs instanceof MapleNPC) {
-					MapleNPC npc = (MapleNPC) npcs;
-					player.dropMessage(5, ">> " + npc.getName() + " - " + npc.getId());
-				}
-			}
-			player.yellowMessage("Monsters on this map:");
-			for (MapleMapObject mobs : player.getMap().getMapObjects()) {
-				if (mobs instanceof MapleMonster) {
-					MapleMonster mob = (MapleMonster) mobs;
-					if(mob.isAlive()){
-						player.dropMessage(5, ">> " + mob.getName() + " - " + mob.getId());
-					}
-				}
-			}
+          MapleMap map = player.getMap();
+          player.yellowMessage("Map ID: " + map.getId());
+
+          player.yellowMessage("Players on this map:");
+          for (MapleMapObject mmo : map.getAllPlayer()) {
+              player.dropMessage(5, ">> " + ((MapleCharacter) mmo).getName());
+          }
+
+          player.yellowMessage("NPCs on this map:");
+          for (MapleMapObject npcs : map.getMapObjects()) {
+              if (npcs instanceof MapleNPC) {
+                  MapleNPC npc = (MapleNPC) npcs;
+                  player.dropMessage(5, ">> " + npc.getName() + " - " + npc.getId());
+              }
+          } 
+
+          //instead of showing all the repeated mob ids in the map, it groups mobs by id and shows qty for each id 
+          HashMap<Integer, MapleMonster> mobIds = new HashMap<>();
+          HashMap<Integer, Byte> mobCounts = new HashMap<>();
+          player.yellowMessage("Monsters on this map:");
+          for (MapleMapObject mobs : map.getMapObjects()) {
+              if (mobs instanceof MapleMonster) {
+                  MapleMonster mob = (MapleMonster) mobs;
+                  int mobId = mob.getId();
+
+                  if (mob.isAlive()) {
+                      if (!mobIds.containsKey(mobId)) {
+                          mobIds.put(mobId, mob);
+                          mobCounts.put(mobId, (byte) 1);
+                      } else {
+                          mobCounts.put(mobId, (byte) (mobCounts.get(mobId) + 1));
+                      }
+                  }
+              }
+          }
+
+          Iterator<Entry<Integer, MapleMonster>> mobIdIterator = mobIds.entrySet().iterator();
+
+          while (mobIdIterator.hasNext()) {
+              Entry<Integer, MapleMonster> next = mobIdIterator.next();
+              MapleMonster m = next.getValue();
+              player.dropMessage(5, ">> " + m.getName() + " - " + m.getId()
+                      + " total: " + mobCounts.get(next.getKey()));
+          }
+
+          player.yellowMessage("Reactors on this map:");
+          for (MapleMapObject reactors : map.getAllReactor()) {
+              if (reactors instanceof MapleReactor) {
+                  MapleReactor reactor = (MapleReactor) reactors;
+                  player.dropMessage(5, ">> " + reactor.getName() + " - " + reactor.getId());
+              }
+          }
+
+          player.yellowMessage("Portals on this map:");
+          for (MaplePortal portal : map.getPortals()) {
+              player.dropMessage(5, ">> " + portal.getName() + " - "
+                      + portal.getId() + " - " + portal.getScriptName());
+          }
 		} else if (sub[0].equals("warp")) {
 			try {
 				MapleMap target = c.getChannelServer().getMapFactory().getMap(Integer.parseInt(sub[1]));
@@ -1373,58 +1408,75 @@ public class Commands {
 			}
 			player.dropMessage("There are a total of " + total + " players online.");
 		} else if (sub[0].equals("pap")) {
-			player.getMap().spawnMonsterOnGroudBelow(MapleLifeFactory.getMonster(8500001), player.getPosition());
+			player.getMap().spawnMonsterOnGroundBelow(MapleLifeFactory.getMonster(8500001), player.getPosition());
 		} else if (sub[0].equals("pianus")) {
-			player.getMap().spawnMonsterOnGroudBelow(MapleLifeFactory.getMonster(8510000), player.getPosition());
+			player.getMap().spawnMonsterOnGroundBelow(MapleLifeFactory.getMonster(8510000), player.getPosition());
 		} else if (sub[0].equalsIgnoreCase("search")) {
-			StringBuilder sb = new StringBuilder();
-			if (sub.length > 2) {
-				String search = joinStringFrom(sub, 2);
-				long start = System.currentTimeMillis();//for the lulz
-				MapleData data = null;
-				MapleDataProvider dataProvider = MapleDataProviderFactory.getDataProvider(new File("wz/String.wz"));
-				if (!sub[1].equalsIgnoreCase("ITEM")) {
-					if (sub[1].equalsIgnoreCase("NPC")) {
-						data = dataProvider.getData("Npc.img");
-					} else if (sub[1].equalsIgnoreCase("MOB") || sub[1].equalsIgnoreCase("MONSTER")) {
-						data = dataProvider.getData("Mob.img");
-					} else if (sub[1].equalsIgnoreCase("SKILL")) {
-						data = dataProvider.getData("Skill.img");
-					} else if (sub[1].equalsIgnoreCase("MAP")) {
-						sb.append("#bUse the '/m' command to find a map. If it finds a map with the same name, it will warp you to it.");
-					} else {
-						sb.append("#bInvalid search.\r\nSyntax: '/search [type] [name]', where [type] is NPC, ITEM, MOB, or SKILL.");
-					}
-					if (data != null) {
-						String name;
-						for (MapleData searchData : data.getChildren()) {
-							name = MapleDataTool.getString(searchData.getChildByPath("name"), "NO-NAME");
-							if (name.toLowerCase().contains(search.toLowerCase())) {
-								sb.append("#b").append(Integer.parseInt(searchData.getName())).append("#k - #r").append(name).append("\r\n");
-							}
-						}
-					}
-				} else {
-					for (Pair<Integer, String> itemPair : MapleItemInformationProvider.getInstance().getAllItems()) {
-						if (sb.length() < 32654) {//ohlol
-							if (itemPair.getRight().toLowerCase().contains(search.toLowerCase())) {
-								//#v").append(id).append("# #k- 
-								sb.append("#b").append(itemPair.getLeft()).append("#k - #r").append(itemPair.getRight()).append("\r\n");
-							}
-						} else {
-							sb.append("#bCouldn't load all items, there are too many results.\r\n");
-							break;
-						}
-					}
-				}
-				if (sb.length() == 0) {
-					sb.append("#bNo ").append(sub[1].toLowerCase()).append("s found.\r\n");
-				}
-				sb.append("\r\n#kLoaded within ").append((double) (System.currentTimeMillis() - start) / 1000).append(" seconds.");//because I can, and it's free
-			} else {
-				sb.append("#bInvalid search.\r\nSyntax: '/search [type] [name]', where [type] is NPC, ITEM, MOB, or SKILL.");
-			}
-			c.announce(MaplePacketCreator.getNPCTalk(9010000, (byte) 0, sb.toString(), "00 00", (byte) 0));
+			StringBuilder output = new StringBuilder();
+		    String type = sub[1].toUpperCase(); //cuz the compare strings were already all in upper case
+		    String search = joinStringFrom(sub, 2).toLowerCase();
+		    long start = System.currentTimeMillis();//for the lulz
+		    MapleData data = null;
+		    MapleDataProvider dataProvider = MapleDataProviderFactory.getDataProvider(new File("wz/String.wz"));
+		    String msg = null;
+
+          if (!type.equals("ITEM")) {
+              switch (type) {
+                  case "NPC":
+                      data = dataProvider.getData("Npc.img");
+                      break;
+                  case "MOB":
+                  case "MONSTER":
+                      data = dataProvider.getData("Mob.img");
+                      break;
+                  case "SKILL":
+                      data = dataProvider.getData("Skill.img");
+                      break;
+                  case "MAP":
+                      msg = "#bUse the '/m' command to find a map. If it finds a map with the same name, it will warp you to it.";
+                      break;
+                  default:
+                      msg = "#bInvalid search.\r\nSyntax: '/search [type] [name]', where [type] is NPC, ITEM, MOB, or SKILL.";
+                      break;
+              }
+              if (data != null) {
+                  String name;
+                  for (MapleData searchData : data.getChildren()) {
+                      name = MapleDataTool.getString(searchData.getChildByPath("name"), "NO-NAME");
+                      if (name.toLowerCase().contains(search)) {
+                          output.append("#b")
+                                  .append(searchData.getName())
+                                  .append("#k - #r").append(name)
+                                  .append( "#>>");
+                      }
+                  }
+              }
+          } else {
+              for (Pair<Integer, String> itemEntry : MapleItemInformationProvider.getInstance().getAllItems()) {
+                  if (output.length() < 32654) {//ohlol, to not spam shiet and encourage more precise query xD
+                      if (itemEntry.getRight().toLowerCase().contains(search)) {
+                          int id = itemEntry.getLeft();
+                          output.append("#b" + id + "#k - #r#z"
+                                  + id + ("#>>"));
+                      }
+                  } else {
+                      msg = "#bCouldn't load all items, there are too many results.\r\n";
+                      break;
+                  }
+              }
+          }
+
+          if (output.length() == 0) {
+              if (msg == null) {
+                  msg = "#bNo " + type.toLowerCase() + " is found.\r\n";
+              }
+              player.getClient().announce(MaplePacketCreator.serverNotice(7, msg, 9010000));
+          } else {
+              String timeTakenStr = "Results loaded within "
+                      + ((double) (System.currentTimeMillis() - start) / 1000) + " seconds.";
+              	  NPCScriptManager.getInstance().start(c, 9010000, "searchNpc", null, output.toString());
+                  player.dropMessage(5, timeTakenStr);
+          }
 		} else if (sub[0].equals("servermessage")) {
 			c.getWorldServer().setServerMessage(joinStringFrom(sub, 1));
 		} else if (sub[0].equals("warpsnowball")) {
@@ -1655,7 +1707,7 @@ public class Commands {
 			}
 			break;
 		case "horntail":
-			player.getMap().spawnMonsterOnGroudBelow(MapleLifeFactory.getMonster(8810026), player.getPosition());
+			player.getMap().spawnMonsterOnGroundBelow(MapleLifeFactory.getMonster(8810026), player.getPosition());
 			break;
 		case "packet":
 			player.getMap().broadcastMessage(MaplePacketCreator.customPacket(joinStringFrom(sub, 1)));
@@ -1801,9 +1853,9 @@ public class Commands {
 			}
 			break;
 		case "zakum":
-			player.getMap().spawnFakeMonsterOnGroudBelow(MapleLifeFactory.getMonster(8800000), player.getPosition());
+			player.getMap().spawnFakeMonsterOnGroundBelow(MapleLifeFactory.getMonster(8800000), player.getPosition());
 			for (int x = 8800003; x < 8800011; x++) {
-				player.getMap().spawnMonsterOnGroudBelow(MapleLifeFactory.getMonster(x), player.getPosition());
+				player.getMap().spawnMonsterOnGroundBelow(MapleLifeFactory.getMonster(x), player.getPosition());
 			}
 			break;
 		case "resetmob":
@@ -1817,14 +1869,8 @@ public class Commands {
 			}
 			break;
 		case "resetreactor":
-			if (sub.length < 2)
-				player.dropMessage("Need to specify a mobid.");
-			else {
-				if (ReactorScriptManager.getInstance().getDrops().containsKey(Integer.parseInt(sub[1]))) {
-					ReactorScriptManager.getInstance().getDrops().remove(Integer.parseInt(sub[1]));
-					player.dropMessage("Reactor " + sub[1] + " drops reset.");
-				}
-			}
+            MapleReactorFactory.clearAllreactors();
+            player.dropMessage(5, "Cleared the cache for all reactors.");
 			break;
 		case "clearquestcache":
 			MapleQuest.clearCache();

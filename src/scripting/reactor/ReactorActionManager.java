@@ -18,31 +18,31 @@
 
     You should have received a copy of the GNU Affero General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
+ */
 package scripting.reactor;
 
+import client.MapleClient;
+import client.inventory.Equip;
+import client.inventory.Item;
+import client.inventory.MapleInventoryType;
 import java.awt.Point;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-
 import scripting.AbstractPlayerInteraction;
 import server.MapleItemInformationProvider;
 import server.life.MapleLifeFactory;
 import server.life.MapleNPC;
 import server.maps.MapMonitor;
-import server.maps.MapleReactor;
+import server.reactors.MapleReactor;
 import server.maps.ReactorDropEntry;
 import tools.MaplePacketCreator;
-import client.MapleClient;
-import client.inventory.Equip;
-import client.inventory.Item;
-import client.inventory.MapleInventoryType;
 
 /**
  * @author Lerk
  */
 public class ReactorActionManager extends AbstractPlayerInteraction {
+
     private MapleReactor reactor;
     private MapleClient client;
 
@@ -68,12 +68,18 @@ public class ReactorActionManager extends AbstractPlayerInteraction {
             items.add(new ReactorDropEntry(0, mesoChance, -1));
         }
         Iterator<ReactorDropEntry> iter = chances.iterator();
+//        System.out.println("rid: " + reactor.getId());
         while (iter.hasNext()) {
             ReactorDropEntry d = iter.next();
+//            String name = MapleItemInformationProvider.getInstance().getName(d.itemId);
             if (Math.random() < (1 / (double) d.chance)) {
                 numItems++;
                 items.add(d);
-            }
+//                System.out.println(name == null ? d.itemId : name + " dropped.");
+            } 
+//            else {
+//                System.out.println(name == null ? d.itemId : name);
+//            }
         }
         while (items.size() < minItems) {
             items.add(new ReactorDropEntry(0, mesoChance, -1));
@@ -96,6 +102,7 @@ public class ReactorActionManager extends AbstractPlayerInteraction {
                 } else {
                     drop = ii.randomizeStats((Equip) ii.getEquipById(d.itemId));
                 }
+                //getPlayer().dropMessage(5, "Reactor: " + reactor.getId() + "spawned drop " + drop.getItemId());
                 reactor.getMap().spawnItemDrop(reactor, getPlayer(), drop, dropPos, false, false);
             }
             dropPos.x += 25;
@@ -125,7 +132,7 @@ public class ReactorActionManager extends AbstractPlayerInteraction {
 
     private void spawnMonster(int id, int qty, Point pos) {
         for (int i = 0; i < qty; i++) {
-            reactor.getMap().spawnMonsterOnGroudBelow(MapleLifeFactory.getMonster(id), pos);
+            reactor.getMap().spawnMonsterOnGroundBelow(MapleLifeFactory.getMonster(id), pos);
         }
     }
 
@@ -157,6 +164,15 @@ public class ReactorActionManager extends AbstractPlayerInteraction {
     }
 
     public void spawnFakeMonster(int id) {
-        reactor.getMap().spawnFakeMonsterOnGroudBelow(MapleLifeFactory.getMonster(id), getPosition());
+        reactor.getMap().spawnFakeMonsterOnGroundBelow(MapleLifeFactory.getMonster(id), getPosition());
     }
+
+    /*public void dispelAllMonsters(int number) { //dispels all mobs, cpq
+        MobSkill skillId = MobSkillFactory.getMobSkill(number, 1);
+        reactor.getMap().getMobBuffs().remove(skillId);
+        for (MapleMonster mons : reactor.getMap().getMonsters()) {
+            if (mons.hasSkill(skillId.getSkillId(), 1))
+                mons.dispelSkill(skillId);
+        }
+    }*/
 }

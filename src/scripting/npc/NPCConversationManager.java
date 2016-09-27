@@ -151,23 +151,14 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
     		text += "Exp: " + mob.getExp() + "\r\n";
     		text += "Health/Exp Ratio: " + (Math.round((mob.getMaxHp() / mob.getExp() * 10)))/10 + "\r\n";
     		text += "\r\n";
-    		text += "#eDrops List#n";
+    		text += "#eDrops List#n\r\n";
     	
     	// Retrieve and list monster's drops
     	for (MonsterDropEntry drop : MapleMonsterInformationProvider.getInstance().retrieveDrop(mobid))
     		if (show_item_image)
-    			text += "\r\n#i" + drop.itemId + "# #z"+drop.itemId+"# ("+drop.itemId+") - " + (100 * drop.chance/player_drop_rate) + "%";
+    			text += "\r\n#i" + drop.itemId + "# #z"+drop.itemId+"# ("+drop.itemId+") - " + (100 * drop.chance/player_drop_rate) + "%\r\n";
     		else
-    			text += "#t"+drop.itemId+"# ("+drop.itemId+") - " + (100 * drop.chance/player_drop_rate) + "%";
-    	
-    	// Retrieve and list global drops
-    	text += "\r\n\r\b#eGlobal Drops List#n";
-    	for (MonsterGlobalDropEntry drop : MapleMonsterInformationProvider.getInstance().getGlobalDrop())
-    		if (show_item_image)
-    			text += "\r\n#i" + drop.itemId + "# #z"+drop.itemId+"# ("+drop.itemId+") - " + (100 * drop.chance/player_drop_rate) + "%";
-    		else
-    			text += "\r\n#t"+drop.itemId+"# ("+drop.itemId+") - " + (100 * drop.chance/player_drop_rate) + "%";
-    	
+    			text += "#t"+drop.itemId+"# ("+drop.itemId+") - " + (100 * drop.chance/player_drop_rate) + "%\r\n";
     	return text;
     }
     
@@ -639,13 +630,6 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
 		}
 	}
 
-	public void startQuest(int id) {
-		try {
-			MapleQuest.getInstance(id).forceStart(getPlayer(), npc);
-		} catch (NullPointerException ex) {
-		}
-	}
-
 	public void completeQuest(int id) {
 		try {
 			MapleQuest.getInstance(id).forceComplete(getPlayer(), npc);
@@ -718,7 +702,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
 				pet.setCloseness(30000);
 				return;
 			}
-			pet.gainCloseness(closeness);
+			pet.gainCloseness(closeness, getPlayer());
 			while (pet.getCloseness() > ExpTable.getClosenessNeededForLevel(pet.getLevel())) {
 				pet.setLevel((byte) (pet.getLevel() + 1));
 				byte index = getPlayer().getPetIndex(pet);

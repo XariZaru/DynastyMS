@@ -442,7 +442,7 @@ public final class UseCashItemHandler extends AbstractMaplePacketHandler {
                         if (pet.getCloseness() + 100 > 30000) {
                             pet.setCloseness(30000);
                         } else {
-                            pet.gainCloseness(100);
+                            pet.gainCloseness(100, player);
                         }
 
                         while (pet.getCloseness() >= ExpTable.getClosenessNeededForLevel(pet.getLevel())) {

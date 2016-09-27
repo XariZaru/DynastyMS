@@ -35,10 +35,13 @@ import java.util.Map;
 import provider.MapleData;
 import provider.MapleDataProvider;
 import provider.MapleDataTool;
+import scripting.event.EventInstanceManager;
 import server.PortalFactory;
 import server.life.AbstractLoadedMapleLife;
 import server.life.MapleLifeFactory;
 import server.life.MapleMonster;
+import server.reactors.MapleReactor;
+import server.reactors.MapleReactorFactory;
 import tools.DatabaseConnection;
 import tools.StringUtil;
 
@@ -58,7 +61,11 @@ public class MapleMapFactory {
     }
 
     public MapleMap getMap(int mapid) {
-        Integer omapid = Integer.valueOf(mapid);
+        return getMap(mapid, null);
+    }
+    
+    public MapleMap getMap(int mapid, EventInstanceManager eim) {
+    	Integer omapid = Integer.valueOf(mapid);
         MapleMap map = maps.get(omapid);
         if (map == null) {
             synchronized (this) {
@@ -79,7 +86,7 @@ public class MapleMapFactory {
                     monsterRate = ((Float) mobRate.getData()).floatValue();
                 }
                 map = new MapleMap(mapid, world, channel, MapleDataTool.getInt("info/returnMap", mapData), monsterRate);
-                
+                map.setEventInstance(eim);
                 String onFirstEnter = MapleDataTool.getString(mapData.getChildByPath("info/onFirstUserEnter"), String.valueOf(mapid));
                 map.setOnFirstUserEnter(onFirstEnter.equals("") ? String.valueOf(mapid) : onFirstEnter);
                 
@@ -148,27 +155,16 @@ public class MapleMapFactory {
                     ps.setInt(1, omapid);
                     ResultSet rs = ps.executeQuery();
                     while (rs.next()) {
-                        int id = rs.getInt("idd");
-                        int f = rs.getInt("f");
-                        boolean hide = false;
-                        String type = rs.getString("type");
-                        int fh = rs.getInt("fh");
-                        int cy = rs.getInt("cy");
-                        int rx0 = rs.getInt("rx0");
-                        int rx1 = rs.getInt("rx1");
-                        int x = rs.getInt("x");
-                        int y = rs.getInt("y");
-                        int mobTime = rs.getInt("mobtime");
-
-                        AbstractLoadedMapleLife myLife = giveLife(id, f, hide, fh, cy, rx0, rx1, x, y, type);
-            
+                    	String type = rs.getString("type");
+                        AbstractLoadedMapleLife myLife = giveLife(rs);
                         if (type.equals("n")) {
                             map.addMapObject(myLife);
                         } else if (type.equals("m")) {
                             MapleMonster monster = (MapleMonster) myLife;
-                            map.addMonsterSpawn(monster, mobTime, 1);
+                            map.addMonsterSpawn(monster, rs.getInt("mobtime"), 1);
                         }
                     }
+                    rs.close();
                 } catch (SQLException e) {
 
                 }
@@ -254,16 +250,22 @@ public class MapleMapFactory {
         return map;
     }
 
-    private AbstractLoadedMapleLife giveLife(int id, int f, boolean hide, int fh, int cy, int rx0, int rx1, int x, int y, String type) {
-        AbstractLoadedMapleLife myLife = MapleLifeFactory.getLife(id, type);
-        myLife.setCy(cy);
-        myLife.setF(f);
-        myLife.setFh(fh);
-        myLife.setRx0(rx0);
-        myLife.setRx1(rx1);
-        myLife.setPosition(new Point(x, y));
-        myLife.setHide(hide);
-        return myLife;
+    private AbstractLoadedMapleLife giveLife(ResultSet rs) {
+    	try {
+    		AbstractLoadedMapleLife myLife = MapleLifeFactory.getLife(rs.getInt("idd"), rs.getString("type"));
+	        String type = rs.getString("type");
+	        myLife.setCy(rs.getInt("cy"));
+	        myLife.setF(rs.getInt("f"));
+	        myLife.setFh(rs.getInt("fh"));
+	        myLife.setRx0(rs.getInt("rx0"));
+	        myLife.setRx1(rs.getInt("rx1"));
+	        myLife.setPosition(new Point(rs.getInt("x"), rs.getInt("y")));
+	        myLife.setHide(false);
+	        return myLife;
+    	} catch (Exception e) {
+    		
+    	}
+        return null;
     }
 
 	public boolean isMapLoaded(int mapId) {
@@ -291,15 +293,16 @@ public class MapleMapFactory {
     }
 
     private MapleReactor loadReactor(MapleData reactor, String id) {
-        MapleReactor myReactor = new MapleReactor(MapleReactorFactory.getReactor(Integer.parseInt(id)), Integer.parseInt(id));
-        int x = MapleDataTool.getInt(reactor.getChildByPath("x"));
-        int y = MapleDataTool.getInt(reactor.getChildByPath("y"));
-        myReactor.setPosition(new Point(x, y));
-        myReactor.setDelay(MapleDataTool.getInt(reactor.getChildByPath("reactorTime")) * 1000);
-        myReactor.setState((byte) 0);
-        myReactor.setName(MapleDataTool.getString(reactor.getChildByPath("name"), ""));
-        return myReactor;
-    }
+    	//      System.out.println("Loading reactor: " + id);
+      MapleReactor myReactor = new MapleReactor(MapleReactorFactory.getReactor(Integer.parseInt(id)));
+      int x = MapleDataTool.getInt(reactor.getChildByPath("x"));
+      int y = MapleDataTool.getInt(reactor.getChildByPath("y"));
+      myReactor.setPosition(new Point(x, y));
+      myReactor.setDelay(MapleDataTool.getInt(reactor.getChildByPath("reactorTime")) * 1000);
+      myReactor.setState(0);
+      myReactor.setName(MapleDataTool.getString(reactor.getChildByPath("name"), ""));
+      return myReactor;
+  }
 
     private String getMapName(int mapid) {
         String mapName = StringUtil.getLeftPaddedStr(Integer.toString(mapid), '0', 9);

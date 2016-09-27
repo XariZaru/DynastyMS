@@ -41,7 +41,7 @@ public class MobSpawner {
 	
 	public void spawnMobs() {
 		for (int x = 0; x < mobs.size(); x++) {
-			map.spawnMonsterOnGroudBelow(mobs.get(x), points.get(x));
+			map.spawnMonsterOnGroundBelow(mobs.get(x), points.get(x));
 		}
 	}
 	

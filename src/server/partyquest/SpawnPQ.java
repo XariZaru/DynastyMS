@@ -65,7 +65,7 @@ public class SpawnPQ {
 	
 	public void spawnMob(int mob, Point point) {
 		MapleMonster monster = MapleLifeFactory.getMonster(mob);
-		map.spawnMonsterOnGroudBelow(monster,  point);
+		map.spawnMonsterOnGroundBelow(monster,  point);
 		monster.setSpawnPQ(getThis());
 		monster.setSpawnPoint(point);
 		monster.disableDrops();

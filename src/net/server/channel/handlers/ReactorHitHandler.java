@@ -22,7 +22,8 @@
 package net.server.channel.handlers;
 
 import net.AbstractMaplePacketHandler;
-import server.maps.MapleReactor;
+import server.reactors.MapleReactor;
+import server.reactors.ReactorHitType;
 import tools.data.input.SeekableLittleEndianAccessor;
 import client.MapleClient;
 
@@ -31,17 +32,15 @@ import client.MapleClient;
  */
 public final class ReactorHitHandler extends AbstractMaplePacketHandler {
     public final void handlePacket(SeekableLittleEndianAccessor slea, MapleClient c) {
-    	//System.out.println(slea); //To see if there are any differences with packets
-        //CD 00 6B 00 00 00 01 00 00 00 03 00 00 00 20 03 F7 03 00 00
-    	//[CD 00] [66 00 00 00] [00 00 00 00] [02 00] [00 00 19 01] [00 00 00 00]
-        int oid = slea.readInt();
-        int charPos = slea.readInt();
-        short stance = slea.readShort();
-        slea.skip(4);
-        int skillid = slea.readInt();
-        MapleReactor reactor = c.getPlayer().getMap().getReactorByOid(oid);
-        if (reactor != null && reactor.isAlive()) {
-            reactor.hitReactor(charPos, stance, skillid,c);
-        }
+    	int oid = slea.readInt();
+//      int charPos = slea.readInt();
+//      short delay = slea.readShort();
+//      int crc = slea.readInt();
+      int skillid = slea.readInt();
+      MapleReactor reactor = c.getPlayer().getMap().getReactorByOid(oid);
+      if (reactor != null && reactor.isAlive()) {
+//          System.out.println("oid: " + oid + " rid: " + reactor.getId() + " r name: " + reactor.getName());
+          reactor.hitReactor(ReactorHitType.HIT, skillid, c);
+      }
     }
 }

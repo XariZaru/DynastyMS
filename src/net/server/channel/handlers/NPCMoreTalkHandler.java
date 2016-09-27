@@ -18,57 +18,75 @@
 
     You should have received a copy of the GNU Affero General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
+ */
 package net.server.channel.handlers;
 
+import client.MapleClient;
 import net.AbstractMaplePacketHandler;
 import scripting.npc.NPCScriptManager;
 import scripting.quest.QuestScriptManager;
 import tools.data.input.SeekableLittleEndianAccessor;
-import client.MapleClient;
 
 /**
  *
  * @author Matze
  */
 public final class NPCMoreTalkHandler extends AbstractMaplePacketHandler {
+
+    @Override
     public final void handlePacket(SeekableLittleEndianAccessor slea, MapleClient c) {
         byte lastMsg = slea.readByte(); // 00 (last msg type I think)
-        byte action = slea.readByte(); // 00 = end chat, 01 == follow
-        if (lastMsg == 2) {
-            if (action != 0) {
-                String returnText = slea.readMapleAsciiString();
-                if (c.getQM() != null) {
-                    c.getQM().setGetText(returnText);
-                    if (c.getQM().isStart()) {
-                        QuestScriptManager.getInstance().start(c, action, lastMsg, -1);
+        //lastMsg
+        //4: selection
+        //
+        switch (lastMsg) {
+            case 6:
+                String text = slea.readMapleAsciiString();
+                if (c.getCM() != null) {
+                    c.getCM().setGetText(text);
+                    NPCScriptManager.getInstance().action(c, (byte) 1, lastMsg, -1);
+                }
+                break;
+            case 2: {
+                byte action = slea.readByte(); // 00 = end chat, 01 == follow
+                if (action != 0) {
+                    String returnText = slea.readMapleAsciiString();
+                    if (c.getQM() != null) {
+                        c.getQM().setGetText(returnText);
+                        if (c.getQM().isStart()) {
+                            QuestScriptManager.getInstance().start(c, action, lastMsg, -1);
+                        } else {
+                            QuestScriptManager.getInstance().end(c, action, lastMsg, -1);
+                        }
                     } else {
-                        QuestScriptManager.getInstance().end(c, action, lastMsg, -1);
+                        c.getCM().setGetText(returnText);
+                        NPCScriptManager.getInstance().action(c, action, lastMsg, -1);
                     }
+                } else if (c.getQM() != null) {
+                    c.getQM().dispose();
                 } else {
-                    c.getCM().setGetText(returnText);
-                    NPCScriptManager.getInstance().action(c, action, lastMsg, -1);
+                    c.getCM().dispose();
                 }
-            } else if (c.getQM() != null) {
-                c.getQM().dispose();
-            } else {
-                c.getCM().dispose();
+                break;
             }
-        } else {
-            int selection = -1;
-            if (slea.available() >= 4) {
-                selection = slea.readInt();
-            } else if (slea.available() > 0) {
-                selection = slea.readByte();
-            }
-            if (c.getQM() != null) {
-                if (c.getQM().isStart()) {
-                    QuestScriptManager.getInstance().start(c, action, lastMsg, selection);
-                } else {
-                    QuestScriptManager.getInstance().end(c, action, lastMsg, selection);
+            default: {
+                byte action = slea.readByte(); // 00 = end chat, 01 == follow
+                int selection = -1;
+                if (slea.available() >= 4) {
+                    selection = slea.readInt();
+                } else if (slea.available() > 0) {
+                    selection = slea.readByte();
                 }
-            } else if (c.getCM() != null) {
-                NPCScriptManager.getInstance().action(c, action, lastMsg, selection);
+                if (c.getQM() != null) {
+                    if (c.getQM().isStart()) {
+                        QuestScriptManager.getInstance().start(c, action, lastMsg, selection);
+                    } else {
+                        QuestScriptManager.getInstance().end(c, action, lastMsg, selection);
+                    }
+                } else if (c.getCM() != null) {
+                    NPCScriptManager.getInstance().action(c, action, lastMsg, selection);
+                }
+                break;
             }
         }
     }

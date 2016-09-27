@@ -81,7 +81,7 @@ public final class ChangeMapHandler extends AbstractMaplePacketHandler {
 				if (targetid != -1 && !chr.isAlive()) {
 					boolean executeStandardPath = true;
 					if (chr.getEventInstance() != null) {
-						executeStandardPath = chr.getEventInstance().revivePlayer(chr);
+						executeStandardPath = chr.getEventInstance().revivePlayer(chr, wheel);
 					}
 					if (executeStandardPath) {
 						MapleMap to = chr.getMap();

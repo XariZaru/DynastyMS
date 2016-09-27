@@ -18,9 +18,10 @@
 
     You should have received a copy of the GNU Affero General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
+ */
 package net.server.channel.handlers;
 
+import client.MapleClient;
 import net.AbstractMaplePacketHandler;
 import scripting.npc.NPCScriptManager;
 import server.life.MapleNPC;
@@ -28,49 +29,46 @@ import server.maps.MapleMapObject;
 import server.maps.PlayerNPCs;
 import tools.MaplePacketCreator;
 import tools.data.input.SeekableLittleEndianAccessor;
-import client.MapleClient;
 
 public final class NPCTalkHandler extends AbstractMaplePacketHandler {
+
+    @Override
     public final void handlePacket(SeekableLittleEndianAccessor slea, MapleClient c) {
         if (!c.getPlayer().isAlive()) {
             c.announce(MaplePacketCreator.enableActions());
             return;
         }
-        
         int oid = slea.readInt();
-        if(NPCScriptManager.getInstance().getCM(c) != null){
-            dispose(c);
-            }  
+        if (NPCScriptManager.getInstance().getCM(c) != null) {
+        	c.announce(MaplePacketCreator.enableActions());
+            NPCScriptManager.getInstance().getCM(c).dispose();
+        }
         MapleMapObject obj = c.getPlayer().getMap().getMapObject(oid);
         if (obj instanceof MapleNPC) {
             MapleNPC npc = (MapleNPC) obj;
             if (npc.getId() == 9010009) {
-                c.announce(MaplePacketCreator.sendDuey((byte) 8, DueyHandler.loadItems(c.getPlayer())));
-            } else if (npc.hasShop()) {
-                if (c.getPlayer().getShop() != null) {
-                    return;
-                }
-                npc.sendShop(c);
-            } else {
+                //c.announce(MaplePacketCreator.sendDuey((byte) 8, DueyHandler.loadItems(c.getPlayer())));
+                c.announce(MaplePacketCreator.enableActions());
+            } else if ((npc.getId() >= 9100100 && npc.getId() <= 9100200) 
+                    || NPCScriptManager.getInstance().scriptExist(npc.getId(), c)) {
                 if (c.getCM() != null || c.getQM() != null) {
                     c.announce(MaplePacketCreator.enableActions());
                     return;
                 }
-                if(npc.getId() >= 9100100 && npc.getId() <= 9100200) {
+                if (npc.getId() >= 9100100 && npc.getId() <= 9100200) {
                     // Custom handling for gachapon scripts to reduce the amount of scripts needed.
                     NPCScriptManager.getInstance().start(c, npc.getId(), "gachapon", null);
                 } else {
                     NPCScriptManager.getInstance().start(c, npc.getId(), null);
                 }
+            } else if (npc.hasShop()) {
+                if (c.getPlayer().getShop() != null) {
+                    return;
+                }
+                npc.sendShop(c);
             }
         } else if (obj instanceof PlayerNPCs) {
             NPCScriptManager.getInstance().start(c, ((PlayerNPCs) obj).getId(), null);
         }
     }
-    
-    public void dispose(MapleClient c){
-        c.announce(MaplePacketCreator.enableActions());
-        NPCScriptManager.getInstance().getCM(c).dispose();
-    }  
-    
 }
