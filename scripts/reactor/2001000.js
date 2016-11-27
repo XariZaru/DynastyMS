@@ -19,10 +19,20 @@
     You should have received a copy of the GNU Affero General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-/*@author Jvlaple
- *Nependath Pot - Spawns Nependath or Dark Nependath
+/**
+ *	@author Jvlaple
+ *	@modified iPoopMagic (David)
+ *	@description Nependeath Pot - Spawns Nependeath or Dark Nependeath
  */
  
 function act() {
-    rm.spawnMonster(Math.random() > .6 ? 9300049 : 9300048);
+	var em = rm.getEventManager("OrbisPQ");
+	if (Math.random() > .6 && em.getProperty("finished").equals("0")) {
+		rm.spawnMonster(9300049);
+		rm.spawnMonster(9300039, new java.awt.Point(-842, 563));
+		em.setProperty("finished", "1");
+		rm.mapMessage(6, "A Dark Nependeath has been spawned!");
+	}
+	else
+		rm.spawnMonster(9300048);
 }

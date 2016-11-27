@@ -43,6 +43,7 @@ import tools.data.input.SeekableLittleEndianAccessor;
 import client.BuddylistEntry;
 import client.CharacterNameAndId;
 import client.MapleCharacter;
+import client.MapleCharacterFactory;
 import client.MapleClient;
 import client.MapleFamily;
 import client.SkillFactory;

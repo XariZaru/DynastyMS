@@ -29,6 +29,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.locks.ReentrantLock;
 
+import server.MapleItemInformationProvider;
 import tools.DatabaseConnection;
 import tools.Pair;
 
@@ -72,7 +73,6 @@ public enum ItemFactory {
                 query.append(" AND `inventorytype` = ").append(MapleInventoryType.EQUIPPED.getType());
             }
 
-
             ps = DatabaseConnection.getConnection().prepareStatement(query.toString());
             ps.setInt(1, value);
             ps.setInt(2, id);
@@ -80,48 +80,49 @@ public enum ItemFactory {
 
             while (rs.next()) {
                 MapleInventoryType mit = MapleInventoryType.getByType(rs.getByte("inventorytype"));
-
-                if (mit.equals(MapleInventoryType.EQUIP) || mit.equals(MapleInventoryType.EQUIPPED)) {
-                    Equip equip = new Equip(rs.getInt("itemid"), (byte) rs.getInt("position"));
-                    equip.setOwner(rs.getString("owner"));
-                    equip.setQuantity((short) rs.getInt("quantity"));
-                    equip.setAcc((short) rs.getInt("acc"));
-                    equip.setAvoid((short) rs.getInt("avoid"));
-                    equip.setDex((short) rs.getInt("dex"));
-                    equip.setHands((short) rs.getInt("hands"));
-                    equip.setHp((short) rs.getInt("hp"));
-                    equip.setInt((short) rs.getInt("int"));
-                    equip.setJump((short) rs.getInt("jump"));
-                    equip.setVicious((short) rs.getInt("vicious"));
-                    equip.setFlag((byte) rs.getInt("flag"));
-                    equip.setLuk((short) rs.getInt("luk"));
-                    equip.setMatk((short) rs.getInt("matk"));
-                    equip.setMdef((short) rs.getInt("mdef"));
-                    equip.setMp((short) rs.getInt("mp"));
-                    equip.setSpeed((short) rs.getInt("speed"));
-                    equip.setStr((short) rs.getInt("str"));
-                    equip.setWatk((short) rs.getInt("watk"));
-                    equip.setWdef((short) rs.getInt("wdef"));
-                    equip.setUpgradeSlots((byte) rs.getInt("upgradeslots"));
-                    equip.setLevel((byte) rs.getByte("level"));
-                    equip.setItemExp(rs.getInt("itemexp"));
-                    equip.setItemLevel(rs.getByte("itemlevel"));
-                    equip.setExpiration(rs.getLong("expiration"));
-                    equip.setGiftFrom(rs.getString("giftFrom"));
-                    equip.setCreateDate(rs.getTimestamp("createDate"));
-                    equip.setRingId(rs.getInt("ringid"));
-                    equip.setInvId(rs.getInt("inventoryitemid"));
-                    equip.setOriginality(equip.loadOriginal() == null ? true : false);
-                    equip.setOriginalId(rs.getInt("originalid"));
-                    items.add(new Pair<Item, MapleInventoryType>(equip, mit));
-                } else {
-                    Item item = new Item(rs.getInt("itemid"), (byte) rs.getInt("position"), (short) rs.getInt("quantity"), rs.getInt("petid"));
-                    item.setOwner(rs.getString("owner"));
-                    item.setExpiration(rs.getLong("expiration"));
-                    item.setGiftFrom(rs.getString("giftFrom"));
-                    item.setFlag((byte) rs.getInt("flag"));
-                    item.setOriginalId(rs.getInt("originalid"));
-                    items.add(new Pair<>(item, mit));
+                if (MapleItemInformationProvider.getInstance().isItemValid(rs.getInt("itemid"))) {
+	                if (mit.equals(MapleInventoryType.EQUIP) || mit.equals(MapleInventoryType.EQUIPPED)) {
+	                    Equip equip = new Equip(rs.getInt("itemid"), (byte) rs.getInt("position"));
+	                    equip.setOwner(rs.getString("owner"));
+	                    equip.setQuantity((short) rs.getInt("quantity"));
+	                    equip.setAcc((short) rs.getInt("acc"));
+	                    equip.setAvoid((short) rs.getInt("avoid"));
+	                    equip.setDex((short) rs.getInt("dex"));
+	                    equip.setHands((short) rs.getInt("hands"));
+	                    equip.setHp((short) rs.getInt("hp"));
+	                    equip.setInt((short) rs.getInt("int"));
+	                    equip.setJump((short) rs.getInt("jump"));
+	                    equip.setVicious((short) rs.getInt("vicious"));
+	                    equip.setFlag((byte) rs.getInt("flag"));
+	                    equip.setLuk((short) rs.getInt("luk"));
+	                    equip.setMatk((short) rs.getInt("matk"));
+	                    equip.setMdef((short) rs.getInt("mdef"));
+	                    equip.setMp((short) rs.getInt("mp"));
+	                    equip.setSpeed((short) rs.getInt("speed"));
+	                    equip.setStr((short) rs.getInt("str"));
+	                    equip.setWatk((short) rs.getInt("watk"));
+	                    equip.setWdef((short) rs.getInt("wdef"));
+	                    equip.setUpgradeSlots((byte) rs.getInt("upgradeslots"));
+	                    equip.setLevel((byte) rs.getByte("level"));
+	                    equip.setItemExp(rs.getInt("itemexp"));
+	                    equip.setItemLevel(rs.getByte("itemlevel"));
+	                    equip.setExpiration(rs.getLong("expiration"));
+	                    equip.setGiftFrom(rs.getString("giftFrom"));
+	                    equip.setCreateDate(rs.getTimestamp("createDate"));
+	                    equip.setRingId(rs.getInt("ringid"));
+	                    equip.setInvId(rs.getInt("inventoryitemid"));
+	                    equip.setOriginality(equip.loadOriginal() == null ? true : false);
+	                    equip.setOriginalId(rs.getInt("originalid"));
+	                    items.add(new Pair<Item, MapleInventoryType>(equip, mit));
+	                } else {
+	                    Item item = new Item(rs.getInt("itemid"), (byte) rs.getInt("position"), (short) rs.getInt("quantity"), rs.getInt("petid"));
+	                    item.setOwner(rs.getString("owner"));
+	                    item.setExpiration(rs.getLong("expiration"));
+	                    item.setGiftFrom(rs.getString("giftFrom"));
+	                    item.setFlag((byte) rs.getInt("flag"));
+	                    item.setOriginalId(rs.getInt("originalid"));
+	                    items.add(new Pair<>(item, mit));
+	                }
                 }
             }
 

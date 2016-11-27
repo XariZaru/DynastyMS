@@ -24,5 +24,5 @@
  * NOT part of HPQ
  */
 function act() {
-
+    rm.dropItems();
 }

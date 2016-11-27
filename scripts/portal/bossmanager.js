@@ -21,4 +21,5 @@
 */
 function enter(pi) {
 	pi.openNpc(2042000);
+	return true;
 }

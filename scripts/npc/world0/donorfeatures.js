@@ -30,7 +30,6 @@ function action(m,t,s) {
 			cm.sendGetNumber("How many #emonths#n of donor subscription would you like to give to this player?\r\n", 1, 1, 24);
 		}
 	} else if (status == 1) {
-		
 		ps = DatabaseConnection.getConnection().prepareStatement("INSERT INTO donor_subscriptions VALUES (DEFAULT, '"+player.getAccountID()+"', DATE_ADD(now(), INTERVAL '"+s+"' MONTH)) ON DUPLICATE KEY UPDATE subscription = DATE_ADD(subscription, INTERVAL '"+s+"' MONTH)");
 		ps.executeUpdate();
 		ps.close();

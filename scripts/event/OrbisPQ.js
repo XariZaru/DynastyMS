@@ -21,94 +21,160 @@
 	THIS  FILE WAS MADE BY JVLAPLE. REMOVING THIS NOTICE MEANS YOU CAN'T USE THIS SCRIPT OR ANY OTHER SCRIPT PROVIDED BY JVLAPLE.
  */
 
-/*
+/**
  * @Author Jvlaple
- * 
+ * @Modified iPoopMagic (David)
  * Orbis Party Quest
  */
 
 importPackage(java.lang);
-importPackage(Packages.world);
-importPackage(Packages.client);
-importPackage(Packages.server.maps);
-importPackage(Packages.server.life);
 importPackage(Packages.scripting.npc);
+importPackage(Packages.tools);
 
+// Define Maps
 var exitMap;
-var instanceId;
-var minPlayers = 1;
+var centerMap;
+var walkwayMap;
+var storageMap;
+var lobbyMap;
+var sealedRoomMap;
+var loungeMap;
+var onTheWayUpMap;
+var bossMap;
+var jailMap;
+var roomOfDarknessMap;
+var bonusMap;
+var endMap;
+var stg6_combo = Array("00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16");
+var cx = Array(200, -300, -300, -300, 200, 200, 200, -300, -300, 200, 200, -300, -300, 200); //even = 200 odd = -300
+var cy = Array(-2321, -2114, -2910, -2510, -1526, -2716, -717, -1310, -3357, -1912, -1122, -1736, -915, -3116);
+
+var minPlayers = 6;
 
 function init() {
-    instanceId = 1;
+	em.setProperty("state", "0");
 }
 
-
-
 function monsterValue(eim, mobId) {
+    if (mobId == 9300040) {
+	var st = parseInt(em.getProperty("stage2"));
+		if (st < 14) {
+			 eim.broadcastPlayerMsg(6, "Cellion has been spawned somewhere in the map.");
+			 var mob = em.getMonster(9300040);
+			 em.setProperty("stage2", st + 1);
+			 eim.registerMonster(mob);
+			 eim.getMapInstance(3).spawnMonsterOnGroundBelow(mob, new java.awt.Point(cx[st], cy[st]));
+		}
+    }
     return 1;
 }
 
 function setup() {
-    instanceId = em.getChannelServer().getInstanceId();
-    exitMap = em.getChannelServer().getMapFactory().getMap(920011200); //Teh exit map :) <---------t
-    var instanceName = "OrbisPQ" + instanceId;
-    var eim = em.newInstance(instanceName);
-    var mf = eim.getMapFactory();
-    em.getChannelServer().addInstanceId();
-    var map = mf.getMap(920010000);//wutt
-    //map.shuffleReactors();
-    // eim.addMapInstance(920010000,map);
-    //var firstPortal = eim.getMapInstance(920010000).getPortal("in00");
-    //firstPortal.setScriptName("hontale_BtoB1");
-    //Fuck this timer
-    //eim.setProperty("bulbWay", 0);
+	em.setProperty("state", "1");
+    exitMap = em.getChannelServer().getMapFactory().getMap(920011200);
+	var eim = em.newInstance("OrbisPQ_" + em.getProperty("channel"));
+    entranceMap = eim.getMapInstance(920010000);
     //Define all Maps and PortalScripts
-    var centerMap = eim.getMapInstance(920010100);
-    centerMap.getPortal(13).setScriptName("orbisPQSealedRoom");
-    centerMap.getPortal(4).setScriptName("orbisPQWalkway");
-    centerMap.getPortal(12).setScriptName("orbisPQStorage");
-    centerMap.getPortal(5).setScriptName("orbisPQLobby");
-    centerMap.getPortal(14).setScriptName("orbisPQOnTheWayUp");
-    centerMap.getPortal(15).setScriptName("orbisPQLounge");
-    centerMap.getPortal(16).setScriptName("orbisPQRoomOfDarkness");
-    var walkwayMap = eim.getMapInstance(920010200);
-    var storageMap = eim.getMapInstance(920010300);
-    var lobbyMap = eim.getMapInstance(920010400);
-    var sealedRoomMap = eim.getMapInstance(920010500);
-    var loungeMap = eim.getMapInstance(920010600);
-    var onTheWayUpMap = eim.getMapInstance(920010700);
-    var bossMap = eim.getMapInstance(920010800);
-    var jailMap = eim.getMapInstance(920010900);
-    var roomOfDarknessMap = eim.getMapInstance(920011000);
-    var bonusMap = eim.getMapInstance(920011100);
-    var endMap = eim.getMapInstance(920011300);
-    walkwayMap.getPortal(13).setScriptName("orbisPQWalkwayExit");
-    storageMap.getPortal(1).setScriptName("orbisPQStorageExit");
-    lobbyMap.getPortal(8).setScriptName("orbisPQLobbyExit");
-    sealedRoomMap.getPortal(3).setScriptName("orbisPQSRExit");
-    loungeMap.getPortal(17).setScriptName("orbisPQLoungeExit");
-    onTheWayUpMap.getPortal(23).setScriptName("orbisPQOnTheWayUpExit");
-    bossMap.getPortal(1).setScriptName("orbisPQGardenExit");
-    roomOfDarknessMap.getPortal(1).setScriptName("orbisPQRoomOfDarknessExit");
-    //-->Fuck we are done with portals -.-
-    eim.setProperty("killedCellions", "0");
-    eim.setProperty("papaSpawned", "no");
-    em.schedule("timeOut", 60 * 60000);
-    em.schedule("broadcastClock", 1500);
-    eim.setProperty("entryTimestamp",System.currentTimeMillis() + (60 * 60000));
+    centerMap = eim.getMapInstance(920010100);
+    walkwayMap = eim.getMapInstance(920010200);
+    storageMap = eim.getMapInstance(920010300);
+    lobbyMap = eim.getMapInstance(920010400);
+    sealedRoomMap = eim.getMapInstance(920010500);
+    loungeMap = eim.getMapInstance(920010600);
+    onTheWayUpMap = eim.getMapInstance(920010700);
+    bossMap = eim.getMapInstance(920010800);
+    jailMap = eim.getMapInstance(920010900);
+    roomOfDarknessMap = eim.getMapInstance(920011000);
+    bonusMap = eim.getMapInstance(920011100);
+    endMap = eim.getMapInstance(920011300);
+    em.setProperty("killedCellions", "0");
+    em.setProperty("papaSpawned", "no");
+	em.setProperty("pre", "0");
+	em.setProperty("stage1", "0"); // Walkway - (1st Small Pieces)
+	em.setProperty("stage2", "0"); // Storage - (2nd Small Pieces)
+	em.setProperty("stage3", "0"); // Lobby - CDs (3rd Piece)
+	em.setProperty("stage4", "0"); // Sealed Room
+	em.setProperty("stage5", "0"); // Lounge (5th Small Pieces)
+	em.setProperty("stage6", "0"); // On The Way Up
+	for (var b = 0; b < stg6_combo.length; b++) { //stage6_001
+		for (var y = 0; y < 4; y++) { // Stage Number
+			em.setProperty("stage6_" + stg6_combo[b] + "" + (y + 1) + "", "0");
+		}
+	}
+	for (var b = 0; b < stg6_combo.length; b++) { //stage6_001	
+		var found = false;
+		while (!found) {
+			for (var x = 0; x < 4; x++) {
+				if (!found) {
+					var founded = false;
+					for (var z = 0; z < 4; z++) { //check if any other stages have this value set already.
+						if (em.getProperty("stage6_" + stg6_combo[b] + "" + (z + 1) + "") == null) {
+							em.setProperty("stage6_" + stg6_combo[b] + "" + (z + 1) + "", "0");
+						} else if (em.getProperty("stage6_" + stg6_combo[b] + "" + (z + 1) + "").equals("1")) {
+							founded = true;
+							break;
+						}
+					}
+					if (!founded && java.lang.Math.random() < 0.25) {
+						em.setProperty("stage6_" + stg6_combo[b] + "" + (x + 1) + "", "1");
+						found = true;
+						break;
+					}
+				}
+			}
+		}
+	}
+	//STILL not done yet! levers = 2 of them
+	for (var i = 0; i < 3; i++) {
+		em.setProperty("stage62_" + i + "", "0");
+	}
+	var found_1 = false;
+	while(!found_1) {
+		for (var i = 0; i < 3; i++) {
+			if (em.getProperty("stage62_" + i + "") == null) {
+				em.setProperty("stage62_" + i + "", "0");
+			} else if (!found_1 && java.lang.Math.random() < 0.2) {
+				em.setProperty("stage62_" + i + "", "1");
+				found_1 = true;
+			}
+		}
+	}
+	var found_2 = false;
+	while(!found_2) {
+		for (var i = 0; i < 3; i++) {
+			if (em.getProperty("stage62_" + i + "") == null) {
+				em.setProperty("stage62_" + i + "", "0");
+			} else if (!em.getProperty("stage62_" + i + "").equals("1") && !found_2 && java.lang.Math.random() < 0.2) {
+				em.setProperty("stage62_" + i + "", "1");
+				found_2 = true;
+			}
+		}
+	}
+//	em.setProperty("stage6levers", "0"); // On The Way Up (levers)
+	em.setProperty("stage", "0");
+	em.setProperty("stageS", "0"); // Statue
+	em.setProperty("finished", "0");
+	// Properties like there's no tomorrow
+	eim.schedule("respawn", 1500);
+    eim.schedule("timeOut", 60 * 60 * 1000); // 1 hour
+	eim.startEventTimer(60 * 60 * 1000); // 1 hour
+    eim.setProperty("entryTimestamp", System.currentTimeMillis() + (60 * 60000));
 	
     return eim;
 }
 
+function respawn(eim) {
+	var leader = eim.getPlayers().get(0);
+	if (leader.getMapId() == 920010200 || leader.getMapId() == 920010300)
+		leader.getMap().instanceMapRespawn();
+	
+	eim.schedule("respawn", 10 * 1000);
+}
+
 function playerEntry(eim, player) {
-    var map = eim.getMapInstance(920010000);
-    player.changeMap(map, map.getPortal(0));
-    player.getClient().getSession().write(net.sf.odinms.tools.MaplePacketCreator.getClock((Long.parseLong(eim.getProperty("entryTimestamp")) - System.currentTimeMillis()) / 1000));
-    var texttt = "Hi, my name is Eak, the Chamberlain of the Goddess. Don't be alarmed; you won't be able to see me right now. Back when the Goddess turned into a block of stone, I simultaneously lost my own power. If you gather up the power of the Magic Cloud of Orbis, however, then I'll be able to recover my body and re-transform back to my original self. Please collect #b20#k Magic Clouds and bring them back to me. Right now, you'll only see me as a tiny, flickering light."
-    player.getClient().getSession().write(net.sf.odinms.tools.MaplePacketCreator.getNPCTalk(2013001, /*(byte)*/ 0, texttt, "00 00"));
-//player.getClient().getSession().write(net.sf.odinms.scripting.npc.NPCScriptManager.dispose(eim.getClient()));
-//THE CLOCK IS SHIT
-//player.getClient().getSession().write(net.sf.odinms.tools.MaplePacketCreator.getClock(1800));
+    player.changeMap(entranceMap, entranceMap.getPortal(0));
+	NPCScriptManager.getInstance().dispose(player.getClient());
+	NPCScriptManager.getInstance().start(player.getClient(), 2013001, "2013001", null);
 }
 
 function playerDead(eim, player) {
@@ -151,7 +217,7 @@ function playerDisconnected(eim, player) {
         }
         eim.dispose();
     }
-    else { //KICK THE D/CED CUNT
+    else {
         // If only 5 players are left, uncompletable:
         var party = eim.getPlayers();
         if (party.size() < minPlayers) {
@@ -187,13 +253,21 @@ function disbandParty(eim) {
     eim.dispose();
 }
 
+function changedMap(eim, player, mapid) {
+    if (mapid < 920010000 || mapid > 920011300) {
+		playerExit(eim, player);
+	} else if (eim.getPlayerCount() < 1) {
+		eim.dispose();
+    }
+}
+
 function playerExit(eim, player) {
+	em.setProperty("state", "0");
     eim.unregisterPlayer(player);
-    player.cancelAllBuffs(); //We don't want people going out with wonky blessing >=(
+    player.cancelAllBuffs(false); //We don't want people going out with wonky blessing >=(
     player.changeMap(exitMap, exitMap.getPortal(0));
 }
 
-//Those offline cuntts
 function removePlayer(eim, player) {
     eim.unregisterPlayer(player);
     player.getMap().removePlayer(player);
@@ -203,23 +277,21 @@ function removePlayer(eim, player) {
 function clearPQ(eim) {
     // W00t! Bonus!!
     var iter = eim.getPlayers().iterator();
-    var bonusMap = eim.getMapInstance(920011100);
     while (iter.hasNext()) {
         var player = iter.next();
         player.changeMap(bonusMap, bonusMap.getPortal(0));
-        eim.setProperty("entryTimestamp",System.currentTimeMillis() + (1 * 60000));
-        player.getClient().getSession().write(net.sf.odinms.tools.MaplePacketCreator.getClock(60));
+        eim.setProperty("entryTimestamp", System.currentTimeMillis() + (1 * 60000));
+        player.getClient().getSession().write(MaplePacketCreator.getClock(60));
     }
     eim.schedule("finish", 60000)
 }
 
 function finish(eim) {
-    var dMap = eim.getMapInstance(920011300);
     var iter = eim.getPlayers().iterator();
     while (iter.hasNext()) {
         var player = iter.next();
         eim.unregisterPlayer(player);
-        player.changeMap(dMap, dMap.getPortal(0));
+        player.changeMap(endMap, endMap.getPortal(0));
     }
     eim.dispose();
 }
@@ -243,50 +315,6 @@ function timeOut() {
         }
         eim.dispose();
     }
-}
-
-function playerClocks(eim, player) {
-    if (player.getMap().hasTimer() == false){
-        player.getClient().getSession().write(net.sf.odinms.tools.MaplePacketCreator.getClock((Long.parseLong(eim.getProperty("entryTimestamp")) - System.currentTimeMillis()) / 1000));
-    //player.getMap().setTimer(true);
-    }
-}
-
-function playerTimer(eim, player) {
-    if (player.getMap().hasTimer() == false) {
-        player.getMap().setTimer(true);
-    }
-}
-
-function broadcastClock(eim, player) {
-    //var party = eim.getPlayers();
-    var iter = em.getInstances().iterator();
-    while (iter.hasNext()) {
-        var eim = iter.next();
-        if (eim.getPlayerCount() > 0) {
-            var pIter = eim.getPlayers().iterator();
-            while (pIter.hasNext()) {
-                playerClocks(eim, pIter.next());
-            }
-        }
-    //em.schedule("broadcastClock", 1600);
-    }
-    // for (var kkl = 0; kkl < party.size(); kkl++) {
-    // party.get(kkl).getMap().setTimer(true);
-    // }
-    var iterr = em.getInstances().iterator();
-    while (iterr.hasNext()) {
-        var eim = iterr.next();
-        if (eim.getPlayerCount() > 0) {
-            var pIterr = eim.getPlayers().iterator();
-            while (pIterr.hasNext()) {
-                //playerClocks(eim, pIter.next());
-                playerTimer(eim, pIterr.next());
-            }
-        }
-    //em.schedule("broadcastClock", 1600);
-    }
-    em.schedule("broadcastClock", 1600);
 }
 
 function dispose() {

@@ -4,36 +4,47 @@
 	Inside Test Room
 **/
 
+var item;
 var status;
 
 function start() {
-    status = -1;
+    status = -2;
     action(1,0,0);
 }
 
 function action(mode,type,selection) {
-    if (status == -1) {
-	if (cm.getMapId() == 108000502) {
-	    if (!(cm.haveItem(4031856,15))) {
-	    	cm.sendNext("Go, and get me 15 #bPotent Wind Crystals#k.");
-	    	cm.dispose();
-	    } else {
-	    	status = 2;
-	    	cm.sendNext("Wow, you have brought me 15 #bPotent Wind Crystals#k! Congratulations. Let me warp you out now.");
-	    }
-	} else if (cm.getMapId() == 108000501) {
-	    if (!(cm.haveItem(4031857,15))) {
-	    	cm.sendNext("Go, and get me 15 #bPotent Power Crystals#k.");
-	    	cm.dispose();
-	    } else {
-	    	status = 2;
-	    	cm.sendNext("Wow, you have brought me 15 #bPotent Power Crystals#k! Congratulations. Let me warp you out now.");
-	    }
-	} else {
-	    cm.sendNext("Error. Please report this.");
-	    cm.dispose();
+	if (mode == 1)
+		status++;
+	else {
+		cm.dispose();
+		return;
 	}
+    if (status == -1) {
+		item = cm.isQuestStarted(2191) ? 4031856 : 4031857;
+		if (cm.getMapId() == 108000502 || cm.getMapId() == 108000501) {
+			if (!(cm.haveItem(item,15))) {
+				cm.sendNext("Are you sure you want to leave already? If you leave now you'll have to recollect all 15 #b#z"+item+"##k!");
+			} else {
+				status = 1;
+				cm.sendNext("Wow, you have brought me 15 #b#z"+item+"##k! Congratulations. Let me warp you out now.");
+			}
+		}
+	} else if (status == 0) {
+		if (cm.getMapId() == 108000502 || cm.getMapId() == 108000501) {
+			if (!(cm.haveItem(item,15))) {
+				cm.removeAll(item);
+				cm.warp(120000101,0)
+				cm.dispose();
+			} else {
+				cm.sendNext("Wow, you have brought me 15 #b#z"+item+"##k! Congratulations. Let me warp you out now.");
+			}
+		}
     } else if (status == 2) {
+		if (cm.isQuestStarted(2191))
+			cm.completeQuest(2191);
+		else
+			cm.completeQuest(2192);
+		cm.removeAll(item);
     	cm.warp(120000101,0);
 		cm.dispose();
     }

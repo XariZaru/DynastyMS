@@ -13,8 +13,8 @@ var onRide;
 function init() {
 }
 
-function setup() {
-	var eim = em.newInstance("KerningTrain_" + em.getProperty("player"));
+function setup(chr) {
+	var eim = em.newInstance("KerningTrain_" + chr.getName());
 	return eim;
 }
 
@@ -25,20 +25,34 @@ function playerEntry(eim, player) {
 		myRide = 1;
 	}
 	docked = eim.getEm().getChannelServer().getMapFactory().getMap(rideTo[myRide]);
-    returnMap = eim.getMapFactory().getMap(returnTo[myRide]);
+    return0Map = eim.getMapFactory().getMap(returnTo[myRide]);
     onRide = eim.getMapFactory().getMap(trainRide[myRide]);
     player.changeMap(onRide, onRide.getPortal(0));
     player.getClient().getSession().write(MaplePacketCreator.getClock(timeOnRide));
     eim.schedule("timeOut", timeOnRide * 1000);
 }
 
-function timeOut() {
-	onRide.warpEveryone(docked.getId());
+function timeOut(eim) {
+    var party = eim.getPlayers();
+    for (var i = 0; i < party.size(); i++) {
+        var player = party.get(i);
+        eim.unregisterPlayer(player);
+        if(player.getMapId() == trainRide[0]) {
+            player.changeMap(rideTo[0]);
+        } else {
+            player.changeMap(rideTo[1]);
+        }
+    }
+    eim.dispose();
 }
 
 
 
 function playerDisconnected(eim, player) {
+	eim.unregisterPlayer(player);
+    player.getMap().removePlayer(player);
+    player.setMap(exitMap);
+    eim.dispose();
     return 0;
 }
 

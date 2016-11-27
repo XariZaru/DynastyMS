@@ -1,5 +1,5 @@
-var npcs = [1012000, 9310058, 1012004, 1052014, 9250052, 9200000, 1022101, 9201107, 9300008, 9300003];
-var scripts = ["travel", "buystuff", "petFeatures","utilities","","","","","others","donorfeatures"];
+var npcs = [/*1012000,*/ 9310058, 1012004, 1052014, /*9250052,*/ 9200000, /*1022101,*/ 9201107, /*9300008,*/];
+var scripts = [/*"travel",*/ "buystuff", "petFeatures","utilities",/*"",*/"",/*"",*/"",/*"others"*/];
 var cm = null;
 
 importPackage(Packages.tools);
@@ -13,8 +13,8 @@ function start() {
 		cm.sendOk("You may not use my services until you reach level 8.");
 		cm.dispose();
 	} else {
-	   cm.sendSimple("Hey, #r#h ##k, what would you like to do?#b\r\n", "I want to go somewhere", 
-			   "I want to buy something", "I want to access the pet features (donators only)", "I want to use server utilities (check mob drops, etc.)", "I want to see the patch notes\r\n", "Speak with Cody (PQ and Bosses)", "Speak with Rooney (Daily Prize)", "Master Warrior (Side Quests)", "#eSpeak with Others#n#k#l", (cm.getPlayer().isGM() ? "#bGive Donor Subscription#k#l" : "GM Stuff") + "\r\n\r\n\r\n" + canVote());
+	   cm.sendSimple("Hey, #r#h ##k, what would you like to do?#b\r\n", /*"I want to go somewhere",*/ 
+			   "I want to buy something", "I want to access the pet features (donators only)", "I want to use server utilities (check mob drops, etc.)", /*"I want to see the patch notes\r\n",*/ "Speak with Cody (PQ and Bosses)", /*"Speak with Rooney (Daily Prize)",*/ "Master Warrior (Side Quests)#l" /*"#eSpeak with Others#n#k#l",*/+ "#k\r\n\r\n\r\n" + canVote());
 	}
 }
 

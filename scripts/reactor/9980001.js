@@ -19,10 +19,10 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/*
-@Author kevintjuh93
+/**
+ *	@author David
 */
 
 function act() {
-        rm.getReactor().removeMonsterStatus();
+	rm.dispelAllMonsters(parseInt(rm.getReactor().getName().substring(0, 2)));
 }

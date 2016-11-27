@@ -1,14 +1,14 @@
 importPackage(Packages.server.life);
 importPackage(Packages.server.maps);
 importPackage(Packages.java.awt);
-importPackage(Packages.custom.dynasty);
+importPackage(Packages.client.listeners);
 
 var status = -1;
 
 // Maps that the bosses will spawn on and their respective names
-var maps = [280030000,910510000,910510000,910510000,910510000,910510000,910510000,910510000,910510000,910510000];
-var mobs = [8800000,8180000,8180001,9400575,9400549,9400121,9400300,8510000,8500001,8820001];
-var mob_names = ["Zakum", "Manon", "Griffey", "Bigfoot", "Headless Horseman", "Anego", "The Boss", "Pianus", "Papulatus Clock", "Pink Bean"];
+var maps = [280030000,610030600,910510000,910510000,910510000,910510000,910510000,910510000,910510000,910510000,910510000];
+var mobs = [[8800000,8800001,8800002,8800003,8800004,8800005,8800006,8800007,8800008,8800009,8800010],[9400592,9400590,9400591,9400593],8180000,8180001,9400575,9400549,9400121,9400300,8510000,8500001,8820001];
+var mob_names = ["Zakum","Crimsonwood Keep Bosses","Manon", "Griffey", "Bigfoot", "Headless Horseman", "Anego", "The Boss", "Pianus", "Papulatus Clock", "Pink Bean"];
 
 // Default map you warp back to after you're done and the default map for bosses if not specified otherwise
 // Min party limit to do a boss run
@@ -47,7 +47,7 @@ function start() {
 	*/
 	party = cm.getParty();
 	// If in the boss map
-	if (cm.getPlayer().getMapId() == default_boss_map || cm.getPlayer().getMapId() == 280030000) {
+	if (cm.getPlayer().getMapId() == default_boss_map || cm.getPlayer().getMapId() == 280030000 || cm.getPlayer().getMapId() == 610030600) {
 		cm.sendYesNo("Do you wish to be taken out of this map?");
 	} else if (canWarpBack() && cm.haveItem(event_ticket, 1)) {
 		cm.sendYesNo("It seems you were originally part of this fight. Would you like to go back in?");
@@ -56,8 +56,13 @@ function start() {
 		cm.gainItem(event_ticket, -cm.itemQuantity(event_ticket), true, true);
 		var txt = "Which boss do you wish to fight today? You'll need a party of at least 2 people in order to participate!\r\n\r\n";
 		for (var x = 0; x < mobs.length; x++) {
-			var mob = MapleLifeFactory.getMonster(mobs[x]);
-			txt += "#L" + x + "##e"+(x + 1)+". #n#b" + mob_names[x] + "#k #r("+ mob.getHp()/1000000 +"m hp)#k\r\n";
+			var hp = 0;
+			if (mobs[x] instanceof Array)
+				for (var count = 0; count < mobs[x].length; count++)
+					hp += MapleLifeFactory.getMonster(mobs[x][count]).getHp() / 1000000;
+			else
+				hp += MapleLifeFactory.getMonster(mobs[x]).getHp()/1000000;
+			txt += "#L" + x + "##e"+(x + 1)+". #n#b" + mob_names[x] + "#k #r("+ hp +"m hp)#k\r\n";
 		}
 		cm.sendSimple(txt);
 	}
@@ -72,14 +77,14 @@ function action(m,t,s) {
 	}
 	if (status == 0) {
 		// Warp out if in boss map
-		if (cm.getPlayer().getMapId() == default_boss_map || cm.getPlayer().getMapId() == 280030000) {
+		if (cm.getPlayer().getMapId() == default_boss_map || cm.getPlayer().getMapId() == 280030000 || cm.getPlayer().getMapId() == 610030600) {
 			cm.warp(109040000);
 			cm.gainItem(event_ticket, -cm.itemQuantity(event_ticket));
 			cm.dispose();
 		} else if (canWarpBack() && cm.haveItem(event_ticket, 1)) {
 			var members = cm.getParty().getMembers().toArray();
 			for (var x = 0; x < members.length; x++)
-				if ([280030000, 910510000].indexOf(members[x].getPlayer().getMap().getId()) > -1) {
+				if ([280030000, 910510000, 610030600].indexOf(members[x].getPlayer().getMap().getId()) > -1) {
 					cm.warp(members[x].getPlayer().getMap().getId());
 					break;
 				}
@@ -133,24 +138,37 @@ function action(m,t,s) {
 				cm.getPlayer().getClient().getChannelServer().getMapFactory().getMap(maps[s]).resetAll();
 				cm.getPlayer().getClient().getChannelServer().getMapFactory().getMap(maps[s]).warpEveryone(lobby_map);
 				cm.warpParty(maps[s]);
-				// Eye of Zak for those who want to fight Zak
+				// Zakum
 				if (s == 0) { 
 					var zak_body = MapleLifeFactory.getMonster(8800000);
-					zak_body.givesBossPoints(true);
-					zak_body.addMobDeadListener(new BossPQ(cm.getParty()));
+					zak_body.addMobDeadListener(new Packages.custom.dynasty.BossPQ(cm.getParty()));
 					cm.getPlayer().getMap().spawnFakeMonsterOnGroudBelow(zak_body, new Point(-25, -230));
 					for (var x = 8800003; x < 8800011; x++) {
 						var body_part = MapleLifeFactory.getMonster(x);
-						body_part.givesBossPoints(true);
-						body_part.addMobDeadListener(new BossPQ(cm.getParty()));
+						body_part.addMobDeadListener(new Packages.custom.dynasty.BossPQ(cm.getParty()));
 						cm.getPlayer().getMap().spawnMonsterOnGroundBelow(body_part, -25, -230);
 					}
 					cm.changeMusic("Bgm06/FinalFight");
+				// Crimsonwood Keep Bosses
+				} else if (s == 1) {
+					var margana = MapleLifeFactory.getMonster(9400590); // Margana
+					var nirg 	= MapleLifeFactory.getMonster(9400593); // Red Nirg
+					var hsalf 	= MapleLifeFactory.getMonster(9400591); // Hsalf
+					var rellik 	= MapleLifeFactory.getMonster(9400592); // Rellik
+					
+					margana.addMobDeadListener(new Packages.custom.dynasty.BossPQ(cm.getParty()));
+					nirg.addMobDeadListener(new Packages.custom.dynasty.BossPQ(cm.getParty()));
+					hsalf.addMobDeadListener(new Packages.custom.dynasty.BossPQ(cm.getParty()));
+					rellik.addMobDeadListener(new Packages.custom.dynasty.BossPQ(cm.getParty()));
+					
+					cm.getPlayer().getMap().spawnMonsterOnGroundBelow(margana, -20, 1);
+					cm.getPlayer().getMap().spawnMonsterOnGroundBelow(nirg, -347, 276);
+					cm.getPlayer().getMap().spawnMonsterOnGroundBelow(hsalf, -1, 276);
+					cm.getPlayer().getMap().spawnMonsterOnGroundBelow(rellik, 347, 276);
 				// Otherwise, the other bosses
 				} else {
 					var mob = MapleLifeFactory.getMonster(mobs[s]);
-					mob.givesBossPoints(true);
-					mob.addMobDeadListener(new BossPQ(cm.getParty()));
+					mob.addMobDeadListener(new Packages.custom.dynasty.BossPQ(cm.getParty()));
 					cm.getPlayer().getMap().spawnMonsterOnGroundBelow(mob, 862, 260);
 				}
 			// Map is full
@@ -170,13 +188,16 @@ importPackage(Packages.java.text);
 function getBossAttempt(player) {
 	var ps = DatabaseConnection.getConnection().prepareStatement("SELECT * FROM boss_attempts WHERE characterid = '"+player.getId()+"' AND boss = 'bossmanager'");
 	var rs = ps.executeQuery();
-	var return_result = rs.next() ? rs.getInt("attempt") : 0;
-	
-	if (Math.floor((new java.sql.Date(System.currentTimeMillis()).getTime() - rs.getDate("attempt_time").getTime())/(1000*60*60*24)) > 1) {
-		var update_time = DatabaseConnection.getConnection().prepareStatement("UPDATE boss_attempts SET attempt_time = CURRENT_TIMESTAMP, attempt = 0 WHERE characterid = '"+player.getId()+"' AND boss = 'bossmanager'");
-		update_time.executeUpdate();
-		update_time.close();
-		return_result = 0;
+	var return_result = 0;
+	if (rs.next()) {
+		var day_conversion = 1000 * 60 * 60 * 24;
+		if (Math.floor((new java.sql.Date(System.currentTimeMillis()).getTime()/day_conversion)) - Math.floor(rs.getDate("attempt_time").getTime()/day_conversion) > 0) {
+			var update_time = DatabaseConnection.getConnection().prepareStatement("UPDATE boss_attempts SET attempt_time = CURRENT_TIMESTAMP, attempt = 0 WHERE characterid = '"+player.getId()+"' AND boss = 'bossmanager'");
+			update_time.executeUpdate();
+			update_time.close();
+		} else {
+			return_result = rs.getInt("attempt");
+		}
 	}
 		
 	ps.close();
@@ -195,7 +216,7 @@ function cannotBoss(party, boss) {
 	var members = party.getMembers().toArray();
 	var cannot_boss = [];
 	for (var x = 0; x < members.length; x++)
-		if (getBossAttempt(members[x].getPlayer()) >= 2)
+		if (getBossAttempt(members[x].getPlayer()) >= 2 && !cm.getPlayer().isGM())
 			cannot_boss.push(members[x].getPlayer().getName());
 	return cannot_boss;
 }

@@ -1,28 +1,115 @@
-/*
-	This file is part of the OdinMS Maple Story Server
-    Copyright (C) 2008 Patrick Huy <patrick.huy@frz.cc>
-		       Matthias Butz <matze@odinms.de>
-		       Jan Christian Meyer <vimes@odinms.de>
+/**
+ *	@Author: iPoopMagic (David)
+ *	@Description: End of Pirate PQ
+ */
+var status = -1;
 
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU Affero General Public License as
-    published by the Free Software Foundation version 3 as published by
-    the Free Software Foundation. You may not use, modify or distribute
-    this program under any other version of the GNU Affero General Public
-    License.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU Affero General Public License for more details.
-
-    You should have received a copy of the GNU Affero General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
 function start() {
-	if (cm.isLeader())
-		cm.getParty().setPQ(null);
-    cm.gainExp(650000);
-	cm.warp(109040000);
-	cm.dispose();
+    status = -1;
+    action(1, 0, 0);
+}
+
+function action(mode, type, selection) {
+    if (mode > 0)
+		status++;
+    else
+		status--;
+	if (cm.getPlayer().getMapId() == 925100600) {
+		if (status == 0) {
+			cm.removeAll(4001117);
+			cm.removeAll(4001120);
+			cm.removeAll(4001121);
+			cm.removeAll(4001122); //anything else?
+			cm.sendSimple("Thank you for saving me from #rLord Pirate#k. How may I help you? \r\n#b#L0#Get me out of here.#l\r\n#L1#I want a Pirate Hat.#l#k");
+		} else if (status == 1) {
+			if (selection == 0) {
+				if (!cm.canHold(4031551)/* || !cm.canHold(2000000)*/) { // Lost Treasure; For some reason 4001455 - Hat Fragments don't exist in v.83
+					cm.getPlayer().dropMessage(1, "Your USE and/or ETC. inventory is full.");
+					return;
+				}
+				//giveRandomReward();
+				cm.gainItem(4031551, 1);
+				cm.warp(925100700, 0);
+			} else {
+				if (cm.haveItem(1002573, 1)) {
+					if (cm.haveItem(4031551, 350)) {
+						if (cm.canHold(1002574, 1)) {
+							cm.gainItem(1002573, -1);
+							cm.gainItem(4031551, -350);
+							cm.gainItem(1002574, 1);
+							cm.sendOk("I have given you the hat.");
+						} else {
+							cm.sendOk("Please make room in your inventory.");
+						}
+					} else {
+						cm.sendOk("You need 350 #z"+4031551+"# & the (Lv. 80) hat to obtain this (Lv. 90) hat.");
+					}
+				} else if (cm.haveItem(1002572, 1)) {
+					if (cm.haveItem(4031551, 200)) {	
+						if (cm.canHold(1002573, 1)) {
+							cm.gainItem(1002572, -1);
+							cm.gainItem(1002573, 1);
+							cm.sendOk("I have given you the hat.");
+						} else {
+							cm.sendOk("Please make room in your inventory.");
+						} 
+					} else {
+						cm.sendOk("You need 200 #z"+4031551+"# & the (Lv. 70) hat to obtain this (Lv. 80) hat.");
+					}
+				} else if (cm.haveItem(1002571, 1)) {
+					if (cm.haveItem(4031551, 80)) {	
+						if (cm.canHold(1002572, 1)) {
+							cm.gainItem(1002571, -1);
+							cm.gainItem(1002572, 1);
+							cm.sendOk("I have given you the hat.");
+						} else {
+							cm.sendOk("Please make room in your inventory.");
+						} 
+					} else {
+						cm.sendOk("You need 80 #z"+4031551+"# & the (Lv. 60) hat to obtain this (Lv. 70) hat.");
+					}
+				} else {
+					if (cm.haveItem(4031551, 30)) {	
+						if (cm.canHold(1002571, 1)) {
+							cm.gainItem(1002571, 1);
+							cm.sendOk("I have given you the hat.");
+						} else {
+							cm.sendOk("Please make room in your inventory.");
+						}
+					} else {
+						cm.sendOk("You need 30 #z"+4031551+"# to obtain this (Lv. 60) hat.");
+					}
+				}
+				cm.dispose();
+			}
+			cm.dispose();
+		}
+	} else if (cm.getPlayer().getMapId() == 925100500) {
+		if (status == 0) {
+			cm.sendNext("Thank you so much for saving me. Now let's get you out of here!");
+		} else if (status == 1) {
+			cm.warp(925100600);
+			cm.givePartyExp("PiratePQ");
+			cm.getPlayer().getEventInstance().finishPQ();
+			cm.dispose();
+		}
+	}
+}
+
+function giveRandomReward() {
+	var index = Math.floor(Math.random() * rewards.length);
+	var reward;
+	var quantity;
+	if (index % 2 == 0){ //The index was an item id
+		reward = rewards[index];
+		quantity = rewards[index + 1];
+	} else {
+		reward = rewards[index - 1];
+		quantity = rewards[index];
+	}
+	if(!cm.canHold(reward)){
+		cm.getPlayer().dropMessage(1, "Your inventory is full.");
+		return;
+	}
+	cm.gainItem(reward, quantity);
 }

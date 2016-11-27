@@ -2,6 +2,8 @@ importPackage(Packages.server.life);
 importPackage(Packages.java.lang);
 importPackage(Packages.server);
 importPackage(Packages.tools);
+importPackage(Packages.provider);
+importPackage(Packages.java.io);
 
 var status = -1;
 var selections = {ITEM: 0, MOB: 1, MAP: 2};
@@ -70,9 +72,11 @@ function searchItem(item) {
 function getMobsInMap() {
 	var text = "You are currently in #m "+ cm.getPlayer().getMapId() +"#. What mob would you" +
 			" like to inspect?\r\n";
-	var mobs = cm.getPlayer().getMap().getUniqueMonsters();
-	for (var x = 0; x < mobs.size(); x++)
-		text += "\r\n#b#L" + mobs.get(x) + "##o"+ mobs.get(x) +"# ("+mobs.get(x)+")";
+	var mobs = cm.getPlayer().getMap().getMonstersSet().iterator();
+	while(mobs.hasNext()) {
+		var mob = mobs.next();
+		text += "\r\n#b#L" + mob + "##o"+ mob +"# ("+mob+")";
+	}
 	text += "\r\n#L999##bExit#k\r\n#L1000##bBack#k";
 	return text;
 }
@@ -149,9 +153,9 @@ function searchMobs(mob_name) {
 		var name;
 		var data = data.getChildren().toArray();
 		for (var x = 0; x < data.length; x++) {
-			name = MapleDataTool.getString(searchData.getChildByPath("name"), "NO-NAME");
+			name = MapleDataTool.getString(data[x].getChildByPath("name"), "NO-NAME");
 			if (name.toLowerCase().contains(mob_name.toLowerCase())) {
-				sb.append("#L"+ searchData.getName() +"##b").append(Integer.parseInt(searchData.getName())).append("#k - #r").append(name).append("\r\n");
+				sb.append("#L"+ data[x].getName() +"##b").append(data[x].getName()).append("#k - #r").append(name).append("\r\n");
 			}
 		}
 	}

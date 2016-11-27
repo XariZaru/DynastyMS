@@ -32,6 +32,7 @@ import tools.DatabaseConnection;
 import tools.MaplePacketCreator;
 import tools.data.input.SeekableLittleEndianAccessor;
 import client.MapleCharacter;
+import client.MapleCharacterFactory;
 import client.MapleClient;
 
 public final class ViewCharHandler extends AbstractMaplePacketHandler {

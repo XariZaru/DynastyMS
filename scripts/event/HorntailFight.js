@@ -19,49 +19,47 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/*
- * @Author SharpAceX(Alan)
- * Horntail fight
+/**
+ * @Author SharpAceX (Alan)
+ * @Modified: iPoopMagic (David)
+ * @Description: Horntail Fight
  */
-
-importPackage(Packages.server.expeditions);
 
 var exitMap;
 var minPlayers = 1;
-var fightTime = 60;
+var fightTime = 12 * 60;
 
-var trial1; //Cave of Life - The Cave of Trial I
-var trial2; // Cave of Life - The Cave of Trial II
-var fightMap; // Cave of Life - Horntail's Cave
+var trial1; // Cave of Trial I
+var trial2; // Cave of Trial II
+var fightMap; // Horntail's Cave
 var exitMap;
 	
 function init() {
-    em.setProperty("shuffleReactors","false");
-	trial1 = em.getChannelServer().getMapFactory().getMap(240060000); //Cave of Life - The Cave of Trial I
-	trial2 = em.getChannelServer().getMapFactory().getMap(240060100); // Cave of Life - The Cave of Trial II
-	fightMap = em.getChannelServer().getMapFactory().getMap(240060200); // Cave of Life - Horntail's Cave
-	exitMap = em.getChannelServer().getMapFactory().getMap(211042300);
+    em.setProperty("shuffleReactors", "false");
+	trial1 = em.getChannelServer().getMapFactory().getMap(240060000);
+	trial2 = em.getChannelServer().getMapFactory().getMap(240060100);
+	fightMap = em.getChannelServer().getMapFactory().getMap(240060200);
+	exitMap = em.getChannelServer().getMapFactory().getMap(240040700);
 }
-
-
-
 
 function setup() {
     var eim = em.newInstance("HorntailFight_" + em.getProperty("channel"));
 	var timer = 1000 * 60 * fightTime;
+	em.setProperty("preheadCheck", "0");
+	em.setProperty("state", "1");
     em.schedule("timeOut", eim, timer);
     eim.startEventTimer(timer);
 	return eim;
 }
 
-function playerEntry(eim,player) {
+function playerEntry(eim, player) {
     var map = eim.getMapInstance(trial1.getId());
-    player.changeMap(map,map.getPortal(0));
+    player.changeMap(map, map.getPortal(0));
     if (exitMap == null)
         debug(eim,"The exit map was not properly linked.");
 }
 
-function playerRevive(eim,player) {
+function playerRevive(eim, player) {
     player.setHp(500);
     player.setStance(0);
     eim.unregisterPlayer(player);
@@ -72,10 +70,10 @@ function playerRevive(eim,player) {
     return false;
 }
 
-function playerDead(eim,player) {
+function playerDead(eim, player) {
 }
 
-function playerDisconnected(eim,player) {
+function playerDisconnected(eim, player) {
     var party = eim.getPlayers();
     if (player.getName().equals(eim.getProperty("leader"))) {
         // tell members
@@ -93,19 +91,19 @@ function monsterValue(eim, mobId) {
     return 1;
 }
 
-function leftParty(eim,player) {
+function leftParty(eim, player) {
 }
 function disbandParty(eim) {
 }
 
-function playerExit(eim,player) {
+function playerExit(eim, player) {
     eim.unregisterPlayer(player);
-    player.changeMap(exitMap,exitMap.getPortal(0));
+    player.changeMap(exitMap, exitMap.getPortal(0));
     if (eim.getPlayers().size() < minPlayers)//not enough after someone left
         end(eim,"There are no longer enough players to continue, and those remaining shall be warped out.");
 }
 
-function end(eim,msg) {
+function end(eim, msg) {
     var iter = eim.getPlayers().iterator();
     while (iter.hasNext()) {
         var player = iter.next();
@@ -114,6 +112,7 @@ function end(eim,msg) {
         if (player != null)
             player.changeMap(exitMap, exitMap.getPortal(0));
     }
+	em.setProperty("state", 0);
     eim.dispose();
 }
 
@@ -143,6 +142,9 @@ function cancelSchedule() {
 }
 
 function timeOut() {
+}
+
+function dispose(eim) {
 }
 
 function debug(eim,msg) {

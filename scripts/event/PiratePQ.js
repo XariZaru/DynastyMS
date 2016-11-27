@@ -1,127 +1,125 @@
-/*
- * This file is part of the OdinMS Maple Story Server
-    Copyright (C) 2008 Patrick Huy <patrick.huy@frz.cc>
-                       Matthias Butz <matze@odinms.de>
-                       Jan Christian Meyer <vimes@odinms.de>
-
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU Affero General Public License version 3
-    as published by the Free Software Foundation. You may not use, modify
-    or distribute this program under any other version of the
-    GNU Affero General Public License.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU Affero General Public License for more details.
-
-    You should have received a copy of the GNU Affero General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+/**
+ * @Author: iPoopMagic (David)
  */
+importPackage(Packages.server.life);
 
-/*
-INSERT monsterdrops (monsterid,itemid,chance) VALUES (9300001,4001007,5);
-INSERT monsterdrops (monsterid,itemid,chance) VALUES (9300000,4001008,1);
-INSERT monsterdrops (monsterid,itemid,chance) VALUES (9300002,4001008,1);
-INSERT monsterdrops (monsterid,itemid,chance) VALUES (9300003,4001008,1);
-*/
-
-importPackage(Packages.world);
+var minPlayers = 2;
 var exitMap;
-var minPlayers = 3;
+var firstMap; // On the Way to the Pirate Ship
+var secondMap; // Through the Head of the Ship
+var thirdMap; // Through the Deck I
+var fourthMap; // The Area of 100yrOld Bellflower I
+var fifthMap; // Lord Pirate's Servant I
+var thirdMap1; // Through the Deck II
+var fourthMap1; // The Area of 100yrOld Bellflower II
+var fifthMap1; // Lord Pirate's Servant II
+var sixthMap; // Eliminate Pirates!
+var seventhMap; // The Captain's Dignity
+var eighthMap; // Wu Yang Giving Thanks
+var spawnPoints = []; // Random spawn points where monsters spawn on second map
 
-function init() { // Initial loading.
-    exitMap = em.getChannelServer().getMapFactory().getMap(925100700);
-    //em.setProperty("KPQOpen", "true"); // allows entrance.
-    //em.setProperty("shuffleReactors", "true");
-    instanceId = 1;
+function init() {
+	em.setProperty("state", "0");
 }
 
-
-
-function monsterValue(eim, mobId) { // Killed monster.
-    return 1; // returns an amount to add onto kill count.
+function setup() {
+	em.setProperty("state", "1");
+	var eim = em.newInstance("PiratePQ_" + em.getProperty("channel"));
+	em.setProperty("stage2", "0");
+	em.setProperty("stage2a", "0");
+	em.setProperty("stage3a", "0");
+	em.setProperty("stage4", "0");
+	em.setProperty("stage5", "0");
+	em.setProperty("stage", "0");
+	em.setProperty("piratelord", "0");
+	exitMap = em.getChannelServer().getMapFactory().getMap(925100700);
+	firstMap = em.getChannelServer().getMapFactory().getMap(925100000);
+	firstMap.clearAndReset(true);
+	secondMap = em.getChannelServer().getMapFactory().getMap(925100100);
+	secondMap.clearAndReset(true);
+	thirdMap = em.getChannelServer().getMapFactory().getMap(925100200);
+	thirdMap.disableDrops();
+	thirdMap.clearAndReset(true);
+	thirdMap1 = em.getChannelServer().getMapFactory().getMap(925100300);
+	thirdMap1.disableDrops();
+	thirdMap1.clearAndReset(true);
+	sixthMap = em.getChannelServer().getMapFactory().getMap(925100400);
+	sixthMap.clearAndReset(true);
+	seventhMap = em.getChannelServer().getMapFactory().getMap(925100500);
+	seventhMap.clearAndReset(true);
+	finishMap = em.getChannelServer().getMapFactory().getMap(925100600);
+	eim.schedule("scheduledTimeout", 20 * 60 * 1000);
+	eim.schedule("respawn", 15 * 1000);
+    eim.startEventTimer(20 * 60 * 1000); //20 mins
+    return eim;
 }
 
-function setup() { // Invoked from "EventManager.startInstance()"
-    var eim = em.newInstance("PiratePQ"); // adds a new instance and returns EventInstanceManager.
-    var eventTime = 30 * (1000 * 60); // 30 mins.
-    //var firstPortal = eim.getMapInstance(925100000).getPortal("next00");
-	respawn(eim);
-    //firstPortal.setScriptName("kpq0");
-    em.schedule("timeOut", eim, eventTime); // invokes "timeOut" in how ever many seconds.
-    eim.startEventTimer(eventTime); // Sends a clock packet and tags a timer to the players.
-    return eim; // returns the new instance.
+function respawn(eim) {
+	eim.broadcastPlayerMsg(6, "Respawno");
+	var currentMapId = eim.getPlayers().get(0).getMapId();
+	if (currentMapId == secondMap.getId() || currentMapId == sixthMap.getId()) {
+		if (!em.getProperty("stage2").equals("6") || !em.getProperty("stage4").equals("4") && currentMapId === sixthMap.getId()) {
+			eim.getMapInstance(currentMapId).instanceMapRespawn();
+		}
+	}
+	eim.schedule("respawn", 10 * 1000);
 }
 
-function playerEntry(eim, player) { // this gets looped for every player in the party.
-    var map = eim.getMapInstance(925100000);
-    player.changeMap(map, map.getPortal(0)); // We're now in KPQ :D
+function playerEntry(eim, player) {
+    var map = eim.getMapInstance(firstMap.getId());
+    player.changeMap(map, map.getPortal(0));
 }
 
-function playerDead(eim, player) {
-}
-
-function playerRevive(eim, player) { // player presses ok on the death pop up.
-    if (eim.isLeader(player) || party.size() <= minPlayers) { // Check for party leader
-        var party = eim.getPlayers();
-        for (var i = 0; i < party.size(); i++)
-            playerExit(eim, party.get(i));
+function scheduledTimeout(eim) {
+    if (eim != null) {
+        if (eim.getPlayerCount() > 0) {
+            var pIter = eim.getPlayers().iterator();
+            while (pIter.hasNext())
+                playerExit(eim, pIter.next());
+        }
         eim.dispose();
-    } else
-        playerExit(eim, player);
+    }
 }
 
-
-function respawn(eim) {	
-	var map = eim.getMapInstance(925100000);
-	var map2 = eim.getMapInstance(925100100);
-	if (map.getSummonState()) {	//Map spawns are set to true by default
-		map.instanceMapRespawn();
-	}
-	if(map2.getSummonState()) {
-		map2.instanceMapRespawn();
-	}
-	eim.schedule("respawn", 10000);
+function changedMap(eim, player, mapid) {
+    if (mapid < 925100000 || mapid > 925100500) {
+		eim.unregisterPlayer(player);
+		player.changeMap(exitMap, exitMap.getPortal(0));
+	} else if (eim.getPlayerCount() < 1) {
+		end(eim);
+    }
 }
-
-
 
 function playerDisconnected(eim, player) {
-    var party = eim.getPlayers();
-    if (eim.isLeader(player) || party.size() < minPlayers) {
-        var party = eim.getPlayers();
-        for (var i = 0; i < party.size(); i++)
-            if (party.get(i).equals(player))
-                removePlayer(eim, player);
-            else
-                playerExit(eim, party.get(i));
-        eim.dispose();
-    } else
-        removePlayer(eim, player);
+	removePlayer(eim, player);
+	if (eim.getPlayerCount() < 1) {
+		end(eim);
+	}
 }
 
-function leftParty(eim, player) {
-    var party = eim.getPlayers();
-    if (party.size() < minPlayers) {
-        for (var i = 0; i < party.size(); i++)
-            playerExit(eim,party.get(i));
-        eim.dispose();
-    } else
-        playerExit(eim, player);
-}
 
-function disbandParty(eim) {
-    var party = eim.getPlayers();
-    for (var i = 0; i < party.size(); i++) {
-        playerExit(eim, party.get(i));
-    }
-    eim.dispose();
+function playerDead(eim, player) {
+	if (eim.isLeader(player)) {
+		var party = eim.getPlayers();
+		for (var i = 0; i < party.size(); i++)
+			playerExit(eim, party.get(i));
+		eim.dispose();
+	}
+	else
+		playerExit(eim, player);
 }
 
 function playerExit(eim, player) {
     eim.unregisterPlayer(player);
     player.changeMap(exitMap, exitMap.getPortal(0));
+    if (eim.getPlayerCount() < 1) {
+		end(eim);
+	}
+}
+
+function playerFinish(eim, player) {
+    eim.unregisterPlayer(player);
+    player.changeMap(finishMap, finishMap.getPortal(0));
 }
 
 function removePlayer(eim, player) {
@@ -132,33 +130,45 @@ function removePlayer(eim, player) {
 
 function clearPQ(eim) {
     var party = eim.getPlayers();
+    for (var i = 0; i < party.size(); i++) {
+        playerFinish(eim, party.get(i));
+    }
+    end(eim);
+}
+
+function leftParty(eim, player) {
+	playerExit(eim, player);
+}
+
+function disbandParty(eim) {
+	var party = eim.getPlayers();
     for (var i = 0; i < party.size(); i++)
         playerExit(eim, party.get(i));
-    eim.dispose();
+    end(eim);
 }
 
+function end(eim) {
+	em.setProperty("state", "0");
+	eim.dispose();
+}
+
+function monsterValue(eim, mobId) {
+    return 1;
+}
 function allMonstersDead(eim) {
+	var map = eim.getPlayers().get(0).getMap().getId();
+	if (em.getProperty("stage") === "0") {
+		eim.getMapInstance(925100000).getPortal("next00").setPortalState(true);
+		eim.broadcastPlayerMsg(5, "The way to the ship has opened up!");
+		em.setProperty("stage", "1");
+	} else if (map === 925100200) {
+		eim.getMapInstance(925100200).getPortal("next00").setPortalState(true);
+		eim.broadcastPlayerMsg(5, "The guards have been eliminated! Let's push further into the ship!");
+	} else if (map === 925100300) {
+		eim.getMapInstance(925100300).getPortal("next00").setPortalState(true);
+		eim.broadcastPlayerMsg(5, "The guards have been eliminated! Hurry up and push forward!");
+	}
 }
 
-function cancelSchedule() {
-}
-
-function dispose(eim) {
-	em.cancelSchedule();
-    //em.schedule("OpenKPQ", 10000); // 10 seconds ?
-}
-
-function OpenKPQ() {
-    //em.setProperty("KPQOpen", "true");
-}
-
-function timeOut(eim) {
-    if (eim != null) {
-        if (eim.getPlayerCount() > 0) {
-            var pIter = eim.getPlayers().iterator();
-            while (pIter.hasNext())
-                playerExit(eim, pIter.next());
-        }
-        eim.dispose();
-    }
-}
+function playerRevive(eim, player) {}
+function cancelSchedule() {}

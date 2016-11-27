@@ -151,6 +151,7 @@ public class MapleClient {
 				chars.add(MapleCharacter.loadCharFromDB(cni.id, this, false));
 			}
 		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		return chars;
 	}

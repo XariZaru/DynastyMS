@@ -1,0 +1,2 @@
+Xari used: /go gmmap 
+Xari used: !npc 22000 

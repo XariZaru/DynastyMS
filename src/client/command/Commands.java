@@ -1452,10 +1452,10 @@ public class Commands {
                   }
               }
           } else {
-              for (Pair<Integer, String> itemEntry : MapleItemInformationProvider.getInstance().getAllItems()) {
+              for (Entry<Integer, String> itemEntry : MapleItemInformationProvider.getInstance().getAllItems().entrySet()) {
                   if (output.length() < 32654) {//ohlol, to not spam shiet and encourage more precise query xD
-                      if (itemEntry.getRight().toLowerCase().contains(search)) {
-                          int id = itemEntry.getLeft();
+                      if (itemEntry.getValue().toLowerCase().contains(search)) {
+                          int id = itemEntry.getKey();
                           output.append("#b" + id + "#k - #r#z"
                                   + id + ("#>>"));
                       }

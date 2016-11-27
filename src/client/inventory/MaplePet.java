@@ -261,19 +261,17 @@ public class MaplePet extends Item {
         	fullnessSchedule.cancel(true);
         
         fullnessSchedule = TimerManager.getInstance().register(() -> {
-			byte index = owner.getPetIndex(this);
+        	
 	        int newFullness = fullness - PetDataFactory.getHunger(getItemId());
-	        
 	        
 	        // Auto feed for donors
 	    	if (owner.hasDonorFeatures() && owner.haveItem(2120000) && newFullness <= 70) {
 	            newFullness += 30;
-	            if (Randomizer.nextInt(101) > 50) {
+	            if (Randomizer.nextInt(101) > 50)
 	            	gainCloseness(1, owner);
-	            }
 	            
 	            MapleInventoryManipulator.removeById(owner.getClient(), MapleInventoryType.USE, 2120000, 1, false, true);
-	            owner.getMap().broadcastMessage(MaplePacketCreator.commandResponse(owner.getId(), index, 0, true));
+	            owner.getMap().broadcastMessage(MaplePacketCreator.commandResponse(owner.getId(), owner.getPetIndex(this), 0, true));
 	    	}
 	    	
 	    	// If starved

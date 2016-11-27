@@ -19,11 +19,13 @@
     You should have received a copy of the GNU Affero General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-/**
+/**ori
  * @author BubblesDev
  * @purpose Drops Blue Primrose Seeds (4001100)
  * @map Primrose Hill
  */
+
+//this script is wrong (well, at least the comments above), it's supposed to be a reactor for maple history book quest or something.
 function act() {
     rm.dropItems();
 }

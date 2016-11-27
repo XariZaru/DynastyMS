@@ -78,9 +78,11 @@ function action(mode, type, selection) {
         } else if (selection == 2) {
             cm.sendGetNumber("How many smegas will you buy? They are #b1,000,000#k mesos each.",1,1,100);
         } else {
-			cm.sendOk("Disabled for rework.");
+			
+			cm.sendOk("Disabled for rework again.");
 			cm.dispose();
 			return;
+			
             cm.sendSimple("Here are the percentages so far ...\r\n#eUnique - .5%\r\nSuper Rare - 2%\r\nRare - 10%\r\nNX - 12%\r\nCommon - 75.5%"+
                 "#n\r\n#b#L6#Claim daily gift\r\n#L0#Common/Equips\r\n#L2#NX\r\n#L3#Rare\r\n#L4#Super Rare\r\n#L5#Unique");
 //            cm.sendOk("You have received your free daily gift! Please come back tomorrow to claim another.");

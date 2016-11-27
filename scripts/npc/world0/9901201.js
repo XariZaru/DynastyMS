@@ -4,7 +4,8 @@ importPackage(Packages.tools);
 importPackage(Packages.java.sql);
 
 function start() {
-	cm.sendGetText("What player would you like to fix being stuck?");
+	cm.sendOk(cm.getPlayer().getPets());
+	//cm.sendGetText("What player would you like to fix being stuck?");
 }
 
 function action(m,t,s) {

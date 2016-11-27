@@ -462,8 +462,10 @@ public final class PlayerInteractionHandler extends AbstractMaplePacketHandler {
                     c.announce(MaplePacketCreator.getPlayerShopItemUpdate(shop));
                 }
             } else if (merchant != null && merchant.isOwner(c.getPlayer())) {
-                merchant.addItem(item);
-                c.announce(MaplePacketCreator.updateHiredMerchant(merchant, c.getPlayer()));
+            	if (ivItem != null && ivItem.getQuantity() >= bundles * perBundle) {
+	                merchant.addItem(item);
+	                c.announce(MaplePacketCreator.updateHiredMerchant(merchant, c.getPlayer()));
+            	}
             }
             if (ItemConstants.isRechargable(ivItem.getItemId())) {
                 MapleInventoryManipulator.removeFromSlot(c, type, slot, ivItem.getQuantity(), true);

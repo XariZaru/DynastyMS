@@ -54,15 +54,17 @@ function playerEntry(eim,player) {
         debug(eim, "The battle map was not properly linked.");
 }
 
-function playerRevive(eim,player) {
-    player.setHp(500);
-    player.setStance(0);
-    eim.unregisterPlayer(player);
-    player.changeMap(exitMap, exitMap.getPortal(0));
-    var exped = eim.getPlayers();
-    if (exped.size() < minPlayers)
-        end(eim,"There are not enough players remaining, the battle is over.");
-    return false;
+function playerRevive(eim,player,wheel) {
+    if(wheel) {
+        // Using a wheel of destiny.
+        return true;
+    } else {
+        eim.unregisterPlayer(player);
+        var exped = eim.getPlayers();
+        if (exped.size() < minPlayers)
+            end(eim,"There are not enough players remaining, the battle is over.");
+        return true;
+    }
 }
 
 function playerDead(eim,player) {

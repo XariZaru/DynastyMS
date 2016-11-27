@@ -25,7 +25,8 @@ public class BossPQ implements MobDeadListener {
 	public void mobKilled(MobDeadEvent event) {
 		try {
     		for (MaplePartyCharacter chr : Server.getInstance().getWorld(world).getParty(partyid).getMembers()) 
-    			giveBossPoints(chr.getPlayer(), event.getMonster());
+    			if (chr.getPlayer().getMap() == event.getMonster().getMap())
+    				giveBossPoints(chr.getPlayer(), event.getMonster());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

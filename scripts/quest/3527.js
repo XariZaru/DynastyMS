@@ -24,9 +24,10 @@
 */
 
 function start(mode, type, selection) {
-	qm.startQuest();
+    qm.startQuest();
 	qm.forceCompleteQuest(3507);
     qm.completeQuest();
-    qm.sendOk("You have regained your memories and are now allowed to go to #m270020000#.");
+    qm.sendOk("You have regained your memories, and are now allowed to go to #m270020000#.");
+	qm.gainExp(359900 * qm.getPlayer().getExpRate());
     qm.dispose();
 }

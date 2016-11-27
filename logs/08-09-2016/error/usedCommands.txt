@@ -1,4 +1,0 @@
-Xari used: !spawn 100100 10 
-Xari used: !killall 
-Xari used: !spawn 9400549 
-Xari used: !spawn 9400549 

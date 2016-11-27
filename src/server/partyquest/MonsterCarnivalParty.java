@@ -87,9 +87,9 @@ public class MonsterCarnivalParty {
 
     public void removeMember(MapleCharacter chr) {
         members.remove(chr);
-        if(!chr.getMap().isMCPQVictoryOrDefeatMap() && chr.getMapId() != 980000000 && chr.getMapId() != 980000010) {
-            chr.changeMap(980000010);
-        }
+        //if(!chr.getMap().isMCPQVictoryOrDefeatMap() && chr.getMapId() != 980000000 && chr.getMapId() != 980000010) {
+         //   chr.changeMap(980000010);
+        //}
         // If you are, Spiegelmann will warp you himself.
         chr.setCarnivalParty(null);
     }

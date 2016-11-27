@@ -56,14 +56,7 @@ function start() {
 	// 3 is smega, 6 is blue, 5 is reddish, 2 is blue smega thing, 1 is pop up
 	var skills = [1121000,1221000,1321000,2121000,2221000,2321000,3121000,3221000,4121000,4221000,5121000,5221000,2321003,2321008,2321006,3211003,2221003,2221005,2121007,2121003,2121005,5121003,5121004,5121005,5121010,5221006,5221008,5221009,1120005,1220006,1121006,1221007,1321003,1121002,1221002,1321002,1121010,1320006,1320008,1320009,1221003,1221004,1221011,3121003,3221003,3121008,3121004,3221005,3221001,3221007,4121004,4121008,4221004,4121003,4221003,4221001,4221006];
 	//cm.sendSimple(searchItem("scroll"));
-	//Server.getInstance().getWorld(cm.getClient().getWorld()).getChannel(cm.getClient().getChannel()).addPlayer(cm.getPlayer())
-	var txt = "";
-	var players = cm.getPlayer().getMap().getCharacters().toArray();
-	for (var x = 0; x < players.length; x++)
-		txt += players[x].getName() + "\r\n";
-	cm.sendOk(txt);
-	cm.dispose();
-	//cm.sendSimple(cm.getEquips());
+	cm.sendSimple(cm.getEquips());
 	//cm.getPlayer().getMap().broadcastMessage(MaplePacketCreator.getScrollEffect(cm.getPlayer().getId(), Equip.ScrollResult.FAIL, false));  
 	//cm.getPlayer().getMap().broadcastMessage(MaplePacketCreator.serverNotice(6, "Hi"));
 	//cm.sendOk(canVoteGTOP());

@@ -20,7 +20,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 /**
- * @author BubblesDev
+ * @author BubblesDev, peter
  * @purpose Drops Pink Primrose Seeds (4001097)
  * @map Primrose Hill
  */

@@ -1,17 +1,17 @@
-
 function act() {
-	var em = rm.getEventManager("HenesysPQ").getInstance("HenesysPQ_" + rm.getParty().getLeader().getName());
-	if (em != null) {
-		var react = rm.getReactor().getMap().getReactorByName("fullmoon");
-		var stage = parseInt(em.getProperty("stage")) + 1;
-		var newStage = stage.toString();
-		em.setProperty("stage", newStage);
-		react.forceHitReactor(react.getState() + 1);
-		if (em.getProperty("stage").equals("6")) {
-			rm.mapMessage(6, "Protect the Moon Bunny!!!");
-			var map = em.getMapInstance(rm.getReactor().getMap().getId());
-			map.allowSummonState(true);
-			map.spawnMonsterOnGroudBelow(9300061, -183, -433);
-		}
-	}
+//    if (rm.getReactor().getCurrState() === 1) { //do nothing when it has already sprouted a flower
+//        return;
+//    }
+    var eim = rm.getEventManager("HenesysPQ").getInstance("HenesysPQ");
+    if (eim !== null) {
+//        var rid = rm.getReactor().getId();
+
+//        if (eim.getProperty(rid) !== null/*eim.getProperty(rid).equals("1")*/) { //do nothing when it has already sprouted a flower
+//            return;
+//        }
+//        eim.setProperty(rid, 1);
+        var HPQ = Java.type("server.partyquest.HPQ");
+        rm.mapMessage(6, "The green seed has sprouted a flower.");
+        HPQ.incrementMoonState(eim);
+    }
 }

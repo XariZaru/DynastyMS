@@ -23,7 +23,7 @@
 -- Odin JavaScript --------------------------------------------------------------------------------
 	2x EXP Event Script
 -- Author --------------------------------------------------------------------------------------
-	Twdtwd
+	Twdtwd, Jesus Christ, maplefreak26, Willi, Jebus, 420masterrace, Gabe Newell, David 2
 **/
 
 var timer1;
@@ -34,17 +34,35 @@ var timer4;
 importPackage(Packages.client);
 
 function init() {
-
+	if(em.getChannelServer().getId() == 1) { // Only run on channel 1.
+		////CEST
+		//timer1 = em.scheduleAtTimestamp("start", 1440856800000);
+		//timer2 = em.scheduleAtTimestamp("stop", 1440864000000);
+		// PDT
+		//timer1 = em.scheduleAtTimestamp("start", 1442584800000);
+		//timer2 = em.scheduleAtTimestamp("stop", 1442685307000);
+	}
 }
 
 function cancelSchedule() {
-
+    if (timer1 != null)
+        timer1.cancel(false);
+	if (timer2 != null)
+        timer2.cancel(false);
+	if (timer3 != null)
+        timer3.cancel(false);
+	if (timer4 != null)
+        timer4.cancel(false);
 }
 
 function start() {
-
+   var world = Packages.net.server.Server.getInstance().getWorld(em.getChannelServer().getWorld());
+   world.setExpRate(7);
+   world.broadcastPacket(Packages.tools.MaplePacketCreator.serverNotice(6, "The 12 Hour EXP Event has started! Enjoy 7x EXP for the next twelve hours!"));
 }
 
 function stop() {
-
+   var world = Packages.net.server.Server.getInstance().getWorld(em.getChannelServer().getWorld());
+   world.setExpRate(5);
+   world.broadcastPacket(Packages.tools.MaplePacketCreator.serverNotice(6, "The 12 Hour EXP Event has ended!"));
 }

@@ -1,9 +1,9 @@
 importPackage(Packages.tools);
 
 //Time Setting is in millisecond
-var closeTime = 24 * 1000; //The time to close the gate
-var beginTime = 30 * 1000; //The time to begin the ride
-var rideTime = 6 * 1000; //The time that require move to destination
+var closeTime = 4 * 60 * 1000; //The time to close the gate
+var beginTime = 5 * 60 * 1000; //The time to begin the ride
+var rideTime = 5 * 60 * 1000; //The time that require move to destination
 var KC_bfd;
 var Plane_to_CBD;
 var CBD_docked;
@@ -18,7 +18,17 @@ function init() {
     Plane_to_KC = em.getChannelServer().getMapFactory().getMap(540010002);
     CBD_docked = em.getChannelServer().getMapFactory().getMap(540010000);
     KC_docked = em.getChannelServer().getMapFactory().getMap(103000000);
-    scheduleNew();
+    
+    var cal = Packages.java.util.Calendar.getInstance();
+    cal.setTime(new Packages.java.util.Date());
+    var unroundedMins = cal.get(Packages.java.util.Calendar.MINUTE);
+    var mod = unroundedMins % 10;
+    cal.add(Packages.java.util.Calendar.MINUTE, 10 - mod);
+    cal.set(Packages.java.util.Calendar.SECOND, 0);
+    cal.set(Packages.java.util.Calendar.MILLISECOND, 0);
+    
+    em.scheduleAtTimestamp("stopEntry", cal.getTimeInMillis() - 60000);
+    em.scheduleAtTimestamp("takeoff", cal.getTimeInMillis());
 }
 
 function scheduleNew() {

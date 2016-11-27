@@ -1,0 +1,24 @@
+Xari used: !cleardrops 
+Xari used: !search npc hi 
+Xari used: !search npc hi 
+Xari used: !search NPC hi 
+Xari used: !search npc hi 
+Xari used: !search npc hi 
+Xari used: !search npc hi 
+Xari used: !search npc what 
+Xari used: !search npc hi 
+Xari used: !search npc wu 
+Xari used: !search npc cody 
+Xari used: !search npc cody 
+Xari used: !reloadevents 
+Xari used: !spawn 100100 
+Xari used: !spawn 100100 
+Xari used: !spawn 100100 
+Xari used: !spawn 100100 
+Xari used: !spawn 100100 
+Xari used: !spawn 100100 
+Xari used: !spawn 100100 
+Xari used: !killall 
+Xari used: !spawn 100100 
+Xari used: !spawn 100100 
+Xari used: !killall 

@@ -28,6 +28,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Map.Entry;
 
 import net.AbstractMaplePacketHandler;
 import net.server.Server;
@@ -753,9 +754,9 @@ public final class MTSHandler extends AbstractMaplePacketHandler {
         String listaitems = "";
         if (cOi != 0) {
             List<String> retItems = new ArrayList<>();
-            for (Pair<Integer, String> itemPair : ii.getAllItems()) {
-                if (itemPair.getRight().toLowerCase().contains(search.toLowerCase())) {
-                    retItems.add(" itemid=" + itemPair.getLeft() + " OR ");
+            for (Entry<Integer, String> itemPair : ii.getAllItems().entrySet()) {
+                if (itemPair.getValue().toLowerCase().contains(search.toLowerCase())) {
+                    retItems.add(" itemid=" + itemPair.getKey() + " OR ");
                 }
             }
             listaitems += " AND (";

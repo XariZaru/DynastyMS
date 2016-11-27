@@ -19,49 +19,79 @@ GNU Affero General Public License for more details.
 You should have received a copy of the GNU Affero General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
+
+var elevator_top;
+var elevator_bottom;
+var elevator_up;
+var elevator_up_progress;
+var elevator_down;
+var elevator_down_progress;
+
+var reactor_top;
+var reactor_bottom;
+
+
 function init() {
-    scheduleNew();
+    elevator_top = em.getChannelServer().getMapFactory().getMap(222020200);
+    elevator_bottom = em.getChannelServer().getMapFactory().getMap(222020100);
+    reactor_top = elevator_top.getReactorByName("elevator");
+    reactor_bottom = elevator_bottom.getReactorByName("elevator");
+    
+    elevator_up = em.getChannelServer().getMapFactory().getMap(222020110);
+    elevator_up_progress = em.getChannelServer().getMapFactory().getMap(222020111);
+    
+    elevator_down = em.getChannelServer().getMapFactory().getMap(222020210);
+    elevator_down_progress = em.getChannelServer().getMapFactory().getMap(222020211);
+    
+    var cal = Packages.java.util.Calendar.getInstance();
+    cal.setTime(new Packages.java.util.Date());
+    var unroundedMins = cal.get(Packages.java.util.Calendar.MINUTE);
+    var mod = unroundedMins % 5;
+    cal.add(Packages.java.util.Calendar.MINUTE, 5 - mod);
+    cal.set(Packages.java.util.Calendar.SECOND, 0);
+    cal.set(Packages.java.util.Calendar.MILLISECOND, 0);
+    
+    em.setProperty("topOpen", "true");
+    em.setProperty("bottomOpen", "false");
+    reactor_bottom.setState(1);
+    
+    em.scheduleAtTimestamp("goDown", cal.getTimeInMillis());
 }
 
 function scheduleNew() {
-    em.setProperty("goingUp", "false");
-    em.setProperty("goingDown", "false");
+    em.setProperty("topOpen", "true");
+    em.setProperty("bottomOpen", "false");
 }
 
 function goUp() {
-    em.schedule("goingUpNow", 50000); // might be 60
+    reactor_bottom.setState(1);
+    em.setProperty("bottomOpen", "false");
+    elevator_up.warpEveryone(elevator_up_progress.getId());
+    em.schedule("arriveAtTop", 90000); // might be 60
 }
 
 function goDown() {
-    em.schedule("goingDownNow", 50000); // might be 60
+    reactor_top.setState(1);
+    em.setProperty("topOpen", "false");
+    elevator_down.warpEveryone(elevator_down_progress.getId());
+    em.schedule("arriveAtBottom", 90000);
 }
 
-function goingUpNow() {
-	em.getChannelServer().getMapFactory().getMap(222020200).warpEveryone(222020111);
-    em.setProperty("goingUp", "true");
-    em.schedule("isUpNow", 55000);
-    em.getChannelServer().getMapFactory().getMap(222020100).setReactorState();
+function arriveAtTop() {
+	elevator_up_progress.warpEveryone(elevator_top.getId());
+    
+    reactor_top.setState(0);
+    em.setProperty("topOpen", "true");
+    em.schedule("goDown", 60000);
 }
 
+function arriveAtBottom() {
+    elevator_down_progress.warpEveryone(elevator_bottom.getId());
 
+	reactor_bottom.setState(0);
+    em.setProperty("bottomOpen", "true");
+    em.schedule("goUp", 60000);
 
-function goingDownNow() {
-	em.getChannelServer().getMapFactory().getMap(222020210).warpEveryone(222020211);
-    em.setProperty("goingDown", "true");
-    em.schedule("isDownNow", 55000);
-    em.getChannelServer().getMapFactory().getMap(222020200).setReactorState();
-}
-
-function isUpNow() {
-    em.getChannelServer().getMapFactory().getMap(222020100).resetReactors();
-    em.getChannelServer().getMapFactory().getMap(222020111).warpEveryone(222020200);
-    em.setProperty("goingUp", "false"); // clear
-}
-
-function isDownNow() {
-    em.getChannelServer().getMapFactory().getMap(222020200).resetReactors();
-    em.getChannelServer().getMapFactory().getMap(222020211).warpEveryone(222020100);
-    em.setProperty("goingDown", "false"); // clear
 }
 
 function cancelSchedule() {

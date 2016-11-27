@@ -167,39 +167,33 @@ public class MapleItemInformationProvider {
 //        return ret;
     }
 
-    public List<Pair<Integer, String>> getAllItems() {
-        if (!itemNameCache.isEmpty()) {
-            return itemNameCache;
+    public LinkedHashMap<Integer, String> getAllItems() {
+        if (!itemIdAndName.isEmpty()) {
+            return itemIdAndName;
         }
-        List<Pair<Integer, String>> itemPairs = new ArrayList<>();
-        MapleData itemsData;
-        itemsData = stringData.getData("Cash.img");
-        for (MapleData itemFolder : itemsData.getChildren()) {
-            itemPairs.add(new Pair<>(Integer.parseInt(itemFolder.getName()), MapleDataTool.getString("name", itemFolder, "NO-NAME")));
-        }
-        itemsData = stringData.getData("Consume.img");
-        for (MapleData itemFolder : itemsData.getChildren()) {
-            itemPairs.add(new Pair<>(Integer.parseInt(itemFolder.getName()), MapleDataTool.getString("name", itemFolder, "NO-NAME")));
-        }
-        itemsData = stringData.getData("Eqp.img").getChildByPath("Eqp");
-        for (MapleData eqpType : itemsData.getChildren()) {
-            for (MapleData itemFolder : eqpType.getChildren()) {
-                itemPairs.add(new Pair<>(Integer.parseInt(itemFolder.getName()), MapleDataTool.getString("name", itemFolder, "NO-NAME")));
+
+        MapleData[] itemsData = {
+            stringData.getData("Eqp.img").getChildByPath("Eqp"),
+            stringData.getData("Cash.img"),
+            stringData.getData("Consume.img"),
+            stringData.getData("Etc.img").getChildByPath("Etc"),
+            stringData.getData("Ins.img"), stringData.getData("Pet.img")
+        };
+
+        for (int i = 0; i < itemsData.length; i++) { //get and map all item ids and names via their child paths
+            for (MapleData itemFolder : itemsData[i].getChildren()) {
+                if (i == 0) { //eqp, needs to traverse its child paths
+                    for (MapleData equipItemFolder : itemFolder.getChildren()) {
+                        itemIdAndName.put(Integer.parseInt(equipItemFolder.getName()),
+                                MapleDataTool.getString("name", equipItemFolder, "NO-NAME"));
+                    }
+                } else {
+                    itemIdAndName.put(Integer.parseInt(itemFolder.getName()),
+                            MapleDataTool.getString("name", itemFolder, "NO-NAME"));
+                }
             }
         }
-        itemsData = stringData.getData("Etc.img").getChildByPath("Etc");
-        for (MapleData itemFolder : itemsData.getChildren()) {
-            itemPairs.add(new Pair<>(Integer.parseInt(itemFolder.getName()), MapleDataTool.getString("name", itemFolder, "NO-NAME")));
-        }
-        itemsData = stringData.getData("Ins.img");
-        for (MapleData itemFolder : itemsData.getChildren()) {
-            itemPairs.add(new Pair<>(Integer.parseInt(itemFolder.getName()), MapleDataTool.getString("name", itemFolder, "NO-NAME")));
-        }
-        itemsData = stringData.getData("Pet.img");
-        for (MapleData itemFolder : itemsData.getChildren()) {
-            itemPairs.add(new Pair<>(Integer.parseInt(itemFolder.getName()), MapleDataTool.getString("name", itemFolder, "NO-NAME")));
-        }
-        return itemPairs;
+        return itemIdAndName;
     }
 
     public List<Pair<Integer, String>> getAllEtcItems() {

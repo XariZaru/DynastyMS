@@ -1,0 +1,93 @@
+Xari used: !npc 22000 
+Xari used: !search mob lord pirate's 
+Xari used: /reloadevents 
+Xari used: /killalll 
+Xari used: /killall 
+Xari used: /killall 
+Xari used: !search item mark of the 
+Xari used: !item 4001120 20 
+Xari used: !item 4001121 20 
+Xari used: !item 4001122 20 
+Xari used: !whereami 
+Xari used: /killall 
+Xari used: /killall 
+Xari used: /killall 
+Xari used: /killall 
+Xari used: /cleardrops 
+Xari used: /killall 
+Xari used: /killall 
+Xari used: !heal 
+Xari used: /reloadmap 
+Xari used: /killall 
+Xari used: /killall 
+Xari used: /cleardrops 
+Xari used: /killall 
+Xari used: !item 4001120 20 
+Xari used: !item 4001121 20 
+Xari used: !item 4001122 20 
+Xari used: /reloadportals 
+Xari used: /killall 
+Xari used: /killall 
+Xari used: /killall 
+Xari used: /killall 
+Xari used: !item 4001120 20 
+Xari used: !item 4001121 20 
+Xari used: !item 4001122 20 
+Xari used: /killall 
+Xari used: !whereami 
+Xari used: /killall 
+Xari used: /killall 
+Xari used: /killall 
+Xari used: /killall 
+Xari used: !whereami 
+Xari used: !reloadevents 
+Xari used: !reloadevents 
+Xari used: !reloadevents 
+Xari used: !reloadevents 
+Xari used: !reloadevents 
+Xari used: !reloadevents 
+Xari used: !reloadevents 
+Xari used: !reloadevents 
+Xari used: /npc 22000 
+Xari used: !reloadevents 
+Xari used: !reloadevents 
+Xari used: !reloadevents 
+Xari used: !reloadevents 
+Xari used: !reloadevents 
+Xari used: !reloadevents 
+Xari used: !reloadevents 
+Xari used: !reloadevents 
+Xari used: !reloadevents 
+Xari used: !reloadevents 
+Xari used: !reloadevents 
+Xari used: !reloadevents 
+Xari used: !reloadevents 
+Xari used: !reloadevents 
+Xari used: !reloadevents 
+Xari used: !reloadevents 
+Xari used: !reloadevents 
+Xari used: !reloadevents 
+Xari used: !reloadevents 
+Xari used: !reloadevents 
+Xari used: !reloadevents 
+Xari used: !reloadevents 
+Xari used: !reloadevents 
+Xari used: !reloadevents 
+Xari used: !reloadevents 
+Xari used: !reloadevents 
+Xari used: !reloadevents 
+Xari used: !reloadevents 
+Xari used: !reloadevents 
+Xari used: !reloadevents 
+Xari used: !killall 
+Xari used: !reloadevents 
+Xari used: !killall 
+Xari used: !reloadevents 
+Xari used: !reloadevents 
+Xari used: !reloadevents 
+Xari used: !reloadevents 
+Xari used: !npc 22000 
+Xari used: /reloadevents 
+Xari used: /reloadevents 
+Xari used: /reloadevents 
+Xari used: !reloadevents 

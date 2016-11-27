@@ -1,7 +1,7 @@
 //Time Setting is in millisecond
-var closeTime = 30 * 1000; //[30 seconds] The time to close the gate
-var beginTime = 30 * 1000; //[30 seconds] The time to begin the ride
-var rideTime = 30 * 1000; //[30 seconds] The time that require move to destination
+var closeTime = 1 * 60 * 1000; //[60 seconds] The time to close the gate
+var beginTime = 2 * 60 * 1000; //[120 seconds] The time to begin the ride
+var rideTime = 3 * 60 * 1000; //[120 seconds] The time that require move to destination
 var KC_Waiting;
 var Subway_to_KC;
 var KC_docked;
@@ -16,7 +16,17 @@ function init() {
     Subway_to_NLC = em.getChannelServer().getMapFactory().getMap(600010005);
     KC_docked = em.getChannelServer().getMapFactory().getMap(103000100);
     NLC_docked = em.getChannelServer().getMapFactory().getMap(600010001);
-    scheduleNew();
+    
+    var cal = Packages.java.util.Calendar.getInstance();
+    cal.setTime(new Packages.java.util.Date());
+    var unroundedMins = cal.get(Packages.java.util.Calendar.MINUTE);
+    var mod = unroundedMins % 5;
+    cal.add(Packages.java.util.Calendar.MINUTE, 5 - mod);
+    cal.set(Packages.java.util.Calendar.SECOND, 0);
+    cal.set(Packages.java.util.Calendar.MILLISECOND, 0);
+    
+    em.scheduleAtTimestamp("stopEntry", cal.getTimeInMillis() - 60000);
+    em.scheduleAtTimestamp("takeoff", cal.getTimeInMillis());
 }
 
 function scheduleNew() {
@@ -36,9 +46,6 @@ function takeoff() {
 	NLC_Waiting.warpEveryone(Subway_to_KC.getId());
     em.schedule("arrived", rideTime);
 }
-
-
-
 
 function arrived() {
 	Subway_to_KC.warpEveryone(KC_docked.getId());

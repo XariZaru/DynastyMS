@@ -1,63 +1,148 @@
-var status = -1;
-var index;
-var rookie_mark = 4001120;
-var rising_mark = 4001121;
-var veteran_mark = 4001122;
-var key = 4001117;
+/**
+ * @NPC: Guon
+ * @Description: Pirate PQ Exit
+ * @Author: iPoopMagic (David)
+ */
+importPackage(Packages.server.life);
 
 function start() {
-	var pq_maps = [925100000,925100100,925100200,925100300,925100400, 925100500];
-	index = pq_maps.indexOf(cm.getPlayer().getMap().getId());
-	if (index == -1)
-		cm.sendNext("Let me get you on out of here.");
-	else {
-		if (index == 1 && cm.haveItem(rookie_mark, 20), cm.haveItem(rising_mark, 20), cm.haveItem(veteran_mark, 20) && !cm.getPlayer().getMap().getPortal("next00").getPortalState()) {
-			cm.getParty().getPQ().nextStage();
-			cm.sendOk("The way has been opened for you! Move on!");
-			cm.gainItem(rookie_mark, -20);
-			cm.gainItem(rising_mark, -20);
-			cm.gainItem(veteran_mark, -20);
-			cm.dispose();
-		} else if (index == 4 && cm.haveItem(key, 4) && !cm.getPlayer().getMap().getPortal("next00").getPortalState()) {
-			cm.getParty().getPQ().nextStage();
-			cm.sendOk("The way has been opened for you! Move on!");
-			cm.gainItem(key, -4);
-			cm.dispose();
-		} else {	
-			if (cm.getMapId() != 925100500 && cm.getPlayer().getMap().getPortal("next00").getPortalState()) {
-				cm.sendOk("Move on to the next area! Quick!");
-				cm.dispose();
-			} else if (cm.getParty().getPQ().getStage() > 5) {
-				var participants = cm.getParty().getMembers().toArray();
-				for (var x = 0; x < participants.length; x++)
-					if (participants[x].getPlayer().getPQ() != null)
-						participants[x].getPlayer().changeMap(925100600);
-				cm.dispose();
-			} else {
-				cm.sendSimple("Hey there, what do you want?\r\n\r\n#L0#Task\r\n#L1#Leave");
-			}
-		}
-	}
-}
-
-function action(m,t,s) {
-	if (m != 1) {
+    //(mode > 0 ? status++ : status--);
+    if (cm.getPlayer().getMapId() == 925100700) {
+		cm.removeAll(4001117);
+		cm.removeAll(4001120);
+		cm.removeAll(4001121);
+		cm.removeAll(4001122);
+		cm.warp(251010404, 0);
 		cm.dispose();
 		return;
-	}
-	status++;
-	if (status == 0) {
-		if (s == 1 || index == -1) {
-			if (cm.getMapId() != 925100700) {
-				cm.warp(925100700);
-				cm.getPlayer().setPQ(null);
-			} else {
-				cm.warp(109040000);
-			}
-		} else {
-			var text = index == 0 || index == 2 || index == 3 ? "You just have to kill all the monsters for me here!" : index == 1 ? "Collect 20 of each mark of the pirate for me!" : index == 4 ? "Collect 4 pirate keys for me so I can lock these guys back up!" : "Kill #bLord Pirate#k and free us from him!";
-			cm.sendOk(text);
-		}
+    }
+    var em = cm.getEventManager("PiratePQ");
+    if (em == null) {
+		cm.sendNext("The event hasn't started, please contact a GM immediately.");
 		cm.dispose();
-	}
+		return;
+    }
+    if (!cm.isLeader()) {
+		cm.sendNext("Only your party leader may talk to me.");
+		cm.dispose();
+		return;
+    }
+    switch(cm.getPlayer().getMapId()) {
+		case 925100000:
+		   cm.sendNext("We are heading into the Pirate Ship now! First, we must kill all the monsters guarding it.");
+		   cm.dispose();
+		   break;
+		case 925100100:
+			var eim = cm.getPlayer().getEventInstance();
+			var secondMap = cm.getPlayer().getMap();
+			var emp = em.getProperty("stage2");
+			if (emp == null) {
+				em.setProperty("stage2", "0");
+				emp = "0";
+			}
+			if (emp.equals("0") || emp.equals("1")) {
+				if (cm.haveItem(4001120, 20)) {
+					cm.gainItem(4001120, -20);
+					newMonsterSpawns(9300115);
+					cm.sendNext("Well done!");
+					cm.getPlayer().getMap().killAllMonsters();
+					em.setProperty("stage2", "2");
+				} else {
+					cm.sendNext("We are heading into the Pirate Ship now! To get in, we must qualify ourselves as noble pirates. Hunt me 20 #rMark of the Rookie Pirate#k.");
+					if (emp.equals("0")) {
+						// LOL, non-GMS-like :D
+						eim.getMapInstance(cm.getPlayer().getMapId()).instanceMapRespawn();
+						em.setProperty("stage2", "1");
+					}
+				}
+			} else if (emp.equals("2") || emp.equals("3")) {
+				if (cm.haveItem(4001121, 20)) {
+					cm.sendNext("Well done!");
+					cm.getPlayer().getMap().killAllMonsters();
+					cm.gainItem(4001121, -20);
+					em.setProperty("stage2", "4");
+				} else {
+					cm.sendNext("Hunt me 20 #rMark of the Rising Pirate#k.");
+					if (emp.equals("2")) {
+						newMonsterSpawns(9300116);
+						eim.getMapInstance(cm.getPlayer().getMapId()).instanceMapRespawn();
+						em.setProperty("stage2", "3");
+					}
+				}
+			} else if (emp.equals("4") || emp.equals("5")) {
+				if (cm.haveItem(4001122, 20)) {
+					cm.sendNext("Well done! Now let us go.");
+					cm.getPlayer().getMap().killAllMonsters();
+					cm.gainItem(4001122, -20);
+					em.setProperty("stage2", "6");
+					cm.getPlayer().getMap().getPortal("next00").setPortalState(true);
+				} else {
+					cm.sendNext("Hunt me 20 #rMark of the Veteran Pirate#k.");
+					if (emp.equals("4")) {
+						eim.getMapInstance(cm.getPlayer().getMapId()).instanceMapRespawn();
+						em.setProperty("stage2", "5");
+					}
+				}
+			} else {
+				cm.sendNext("The next stage has opened. GO!");
+			}
+			cm.dispose();
+			break;
+		case 925100200:
+			cm.sendNext("To fully take back this the pirate ship, we must destroy the guards first.");
+			cm.dispose();
+			break;
+		case 925100201:
+			if (cm.getPlayer().getEventInstance().getMapInstance(cm.getPlayer().getMapId()).getMonstersEvent(cm.getPlayer()).size() < 1) {
+				cm.sendNext("Well done.");
+				if (em.getProperty("stage2a").equals("0")) {
+					cm.getMap().setReactorState();
+					em.setProperty("stage2a", "1");
+				}
+			} else {
+				cm.sendNext("These bellflowers are in hiding. We must liberate them.");
+			}
+			cm.dispose();
+			break;
+		case 925100301:
+			if (cm.getPlayer().getEventInstance().getMapInstance(cm.getPlayer().getMapId()).getMonstersEvent(cm.getPlayer()).size() < 1) {
+				cm.sendNext("Well done.");
+				if (em.getProperty("stage3a").equals("0")) {
+					cm.getPlayer().getMap().setReactorState();
+					em.setProperty("stage3a", "1");
+				}
+			} else {
+				cm.sendNext("These bellflowers are in hiding. We must liberate them.");
+			}
+			cm.dispose();
+			break;
+		case 925100202:
+		case 925100302:
+			cm.sendNext("These are the Captains and Krus which devote their whole life to Lord Pirate. Kill them as you see fit.");
+			cm.dispose();
+			break;
+		case 925100400:
+			cm.sendNext("These are the sources of the ship's power. We must seal it by using the Old Metal Keys on the doors!");
+			cm.dispose();
+			break;
+		case 925100500:
+			if (cm.getPlayer().getEventInstance().getMapInstance(cm.getPlayer().getMapId()).getMonsters().size() < 1) {
+				cm.warpParty(925100600);
+				cm.givePartyExp(30000, cm.getParty());
+				cm.getPlayer().getEventInstance().finishPQ();
+			} else {
+				cm.sendNext("Defeat all monsters! Even Lord Pirate's minions!");
+			}
+			cm.dispose();
+			break;
+    }
+}
+
+function newMonsterSpawns(mobid) {
+	var spawns = cm.getPlayer().getMap().getMonsterSpawns().iterator();
+	while (spawns.hasNext())
+		spawns.next().setMonster(mobid);
+}
+
+function action(m, t, s) {
 }

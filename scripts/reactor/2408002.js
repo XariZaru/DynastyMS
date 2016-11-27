@@ -31,7 +31,7 @@ function act() {
     var womanfred = eim.getMapFactory().getMap(240050100);
     var vvpMap = rm.getPlayer().getMapId();
     var vvpKey;
-    var vvpOrig = 4001087;
+    var vvpOrig = 4001088;
     var vvpStage = -1;
     rm.mapMessage(6, "The key is teleported somewhere...");
     switch (vvpMap) {
@@ -60,11 +60,11 @@ function act() {
             break;
         }
     }
-    var tehWomanfred = new client.Item(vvpKey, 0, 1);
+    var tehWomanfred = new Packages.client.inventory.Item(vvpKey, 0, 1);
     var theWomanfred = womanfred.getReactorByName("keyDrop1");
     var dropper = eim.getPlayers().get(0);
     womanfred.spawnItemDrop(theWomanfred, dropper, tehWomanfred, theWomanfred.getPosition(), true, true);
-    womanfred.dropMessage(5, "A bright flash of light, then a key suddenly appears somewhere in the map.");
+    womanfred.broadcastMessage(Packages.tools.MaplePacketCreator.serverNotice(6, "A bright flash of light, then a key suddenly appears somewhere in the map."));
 }
 	
 	

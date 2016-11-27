@@ -8,6 +8,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedList;
+import java.util.Map.Entry;
 
 import provider.MapleData;
 import provider.MapleDataDirectoryEntry;
@@ -74,8 +75,8 @@ public class DataTool {
     public static ArrayList<Integer> itemIdsFromName(String name) {
 
         ArrayList<Integer> ret = new ArrayList<>();
-        for (Pair<Integer, String> itemPair : MapleItemInformationProvider.getInstance().getAllItems()) {
-            String item_name = itemPair.getRight().toLowerCase().replaceAll("\\&quot;", "");
+        for (Entry<Integer, String> itemPair : MapleItemInformationProvider.getInstance().getAllItems().entrySet()) {
+            String item_name = itemPair.getValue().toLowerCase().replaceAll("\\&quot;", "");
             item_name = item_name.replaceAll("'", "");
             item_name = item_name.replaceAll("\\'", "");
 
@@ -84,7 +85,7 @@ public class DataTool {
             name = name.replaceAll("\\'", "");
 
             if (item_name.equals(name)) {
-                ret.add(itemPair.getLeft());
+                ret.add(itemPair.getKey());
                 return ret;
             }
         }

@@ -19,33 +19,36 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/*
+/**
  * @Author Stereo
  * @Modified By XkelvinchiaX(Kelvin)
  * @Modified By Moogra
  * @Modified By SharpAceX(Alan)
+ * @Modified By iPoopMagic (David)
  * Zakum Battle
  */
 
 var exitMap;
 var altarMap;
 var minPlayers = 1;
-var fightTime = 75;
+var fightTime = 120;
 var altarTime = 15;
 var gate;
 
 function init() {
-    em.setProperty("shuffleReactors","false");
+	em.setProperty("state", "0");
+    em.setProperty("shuffleReactors", "false");
 	exitMap = em.getChannelServer().getMapFactory().getMap(211042300);
-	altarMap = em.getChannelServer().getMapFactory().getMap(280030000);// Last Mission: Zakum's Altar
+	altarMap = em.getChannelServer().getMapFactory().getMap(280030000); // Last Mission: Zakum's Altar
 	gate = exitMap.getReactorByName("gate");
-	gate.setState(0);//Open gate
+	gate.setState(0); //Open gate
 }
 
 function setup() {
     var eim = em.newInstance("ZakumBattle_" + em.getProperty("channel"));
 	var timer = 1000 * 60 * fightTime;
 	eim.setProperty("summoned", "false");
+	em.setProperty("state", "1");
     em.schedule("timeOut", eim, timer);
 	em.schedule("altarTimeOut", eim, 1000 * 60 * altarTime);
     eim.startEventTimer(timer);
@@ -55,30 +58,31 @@ function setup() {
 
 
 
-function playerEntry(eim,player) {
+function playerEntry(eim, player) {
 	var altar = eim.getMapInstance(altarMap.getId());
     player.changeMap(altar, altar.getPortal(0));
-
 	player.dropMessage(5, "The Zakum Shrine will close if you do not summon Zakum in " + altarTime + " minutes.");
     if (altarMap == null)
         debug(eim, "The altar map was not properly linked.");
 }
 
-function playerRevive(eim,player) {
-    player.setHp(500);
-    player.setStance(0);
-    eim.unregisterPlayer(player);
-    player.changeMap(exitMap, exitMap.getPortal(0));
-    var exped = eim.getPlayers();
-    if (exped.size() < minPlayers)
-        end(eim,"There are not enough players remaining, the Zakum battle is over.");
-    return false;
+function playerRevive(eim, player, wheel) {
+    if(wheel) {
+        // Using a wheel of destiny.
+        return true;
+    } else {
+        eim.unregisterPlayer(player);
+        var exped = eim.getPlayers();
+        if (exped.size() < minPlayers)
+            end(eim,"There are not enough players remaining, the battle is over.");
+        return true;
+    }
 }
 
-function playerDead(eim,player) {
+function playerDead(eim, player) {
 }
 
-function playerDisconnected(eim,player) {
+function playerDisconnected(eim, player) {
     var exped = eim.getPlayers();
     if (player.getName().equals(eim.getProperty("leader"))) {
         var iter = exped.iterator();
@@ -88,11 +92,11 @@ function playerDisconnected(eim,player) {
     }
     //If the expedition is too small.
     if (exped.size() < minPlayers) {
-        end(eim,"There are not enough players remaining. The Battle is over.");
+        end(eim, "There are not enough players remaining. The battle is over.");
     }
 }
 
-function monsterValue(eim,mobId) { // potentially display time of death? does not seem to work
+function monsterValue(eim, mobId) { // potentially display time of death? does not seem to work
     if (mobId == 8800002) { // 3rd body
         var iter = eim.getPlayers().iterator();
         while (iter.hasNext()) {
@@ -102,13 +106,13 @@ function monsterValue(eim,mobId) { // potentially display time of death? does no
     return -1;
 }
 
-function leftParty(eim,player) { // do nothing in Zakum
+function leftParty(eim, player) { // do nothing in Zakum
 }
 
 function disbandParty(eim) { // do nothing in Zakum
 }
 
-function playerExit(eim,player) {
+function playerExit(eim, player) {
     eim.unregisterPlayer(player);
     player.changeMap(exitMap, exitMap.getPortal(0));
     if (eim.getPlayers().size() < minPlayers) {//not enough after someone left
@@ -126,11 +130,14 @@ function end(eim,msg) {
             player.changeMap(exitMap, exitMap.getPortal(0));
 		}
     }
+    eim.endExpedition();
+    
 	gate.setState(0);//Open gate
+	em.setProperty("state", "0");
     eim.dispose();
 }
 
-function removePlayer(eim,player) {
+function removePlayer(eim, player) {
     eim.unregisterPlayer(player);
     player.getMap().removePlayer(player);
     player.setMap(exitMap);
@@ -138,7 +145,6 @@ function removePlayer(eim,player) {
 
 function clearPQ(eim) { //When the hell does this get executed?
     end(eim,"As the sound of battle fades away, you feel strangely unsatisfied.");
-
 }
 
 function finish(eim) {
@@ -148,6 +154,7 @@ function finish(eim) {
         eim.unregisterPlayer(player);
         player.changeMap(exitMap, exitMap.getPortal(0));
     }
+	em.setProperty("state", "0");
     eim.dispose();
 }
 
@@ -167,6 +174,7 @@ function altarTimeOut(eim) {
                 playerExit(eim, player);
 			}
         }
+		em.setProperty("state", "0");
         eim.dispose();
     }
 }
@@ -181,6 +189,7 @@ function timeOut(eim) {
                 playerExit(eim, player);
 			}
         }
+		em.setProperty("state", "0");
         eim.dispose();
     }
 }
@@ -188,6 +197,6 @@ function timeOut(eim) {
 function debug(eim,msg) {
     var iter = eim.getPlayers().iterator();
     while (iter.hasNext()) {
-        iter.next().getClient().getSession().write(Packages.tools.MaplePacketCreator.serverNotice(6,msg));
+        iter.next().getClient().getSession().write(Packages.tools.MaplePacketCreator.serverNotice(6, msg));
     }
 }

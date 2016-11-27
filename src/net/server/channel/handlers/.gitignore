@@ -129,3 +129,5 @@
 /UseSummonBag.class
 /WeddingHandler.class
 /WhisperHandler.class
+/MakerSkillHandler$MakerItemFactory$MakerItemCreateEntry.class
+/MakerSkillHandler$MakerItemFactory.class

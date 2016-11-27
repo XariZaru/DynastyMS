@@ -20,8 +20,8 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 /**
- * @author BubblesDev
- * @purpose Drops Brown, Purple Primrose Seeds (4001096, 4001098)
+ * @author BubblesDev, peter
+ * @purpose Drops Green Primrose Seeds (4001095)
  * @map Primrose Hill
  */
 function act() {

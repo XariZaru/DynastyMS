@@ -1,8 +1,3 @@
-function start() {
-	cm.sendOk("Long live the #bDynasty#k!");
-	cm.dispose();
-}
-
 /*
 	This file is part of the OdinMS Maple Story Server
     Copyright (C) 2008 Patrick Huy <patrick.huy@frz.cc>
@@ -24,8 +19,10 @@ function start() {
     You should have received a copy of the GNU Affero General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-
-/*
+/**
+ *	@Name:  (Pirate 3rd Job Instructor)
+ *	@Modified: iPoopMagic (David) - GMS-like text
+ */
 status = -1;
 var job;
 var sel;
@@ -33,7 +30,7 @@ actionx = {"Mental" : false, "Physical" : false};
 
 function start() {
     if (!(cm.getPlayer().getLevel() >= 70 && parseInt(cm.getJobId() / 100) == 5)){
-        cm.sendNext("Hi there.");
+        cm.sendOk("Long live the #bDynasty#k!");
         cm.dispose();
         return;
     }
@@ -71,10 +68,13 @@ function action(mode, type, selection){
                 cm.changeJobById(cm.getJobId() + 1);
                 cm.getPlayer().removePartyQuestItem("JBQ");
             }
-            //Need others job's text.
-            cm.sendNext("You're #bDragon Knight#k from here on out. You'll be introduced to a range of new attacking skills for spears and pole arms, and whatever weapon was chosen as the Spearman should be continued as the Dragon Knigth. Skills such as #bCrusher#k (maximum damage to one monster) and #bDragon Fury#k (damage to multiple monsters) are recommended as main attacking skills of choice, while a skill called #bDragon Roar#k will damage everything on screen with devasting force. The downside is the fact that the skill uses up over half of the available HP.");
+			if (cm.getJobId() % 100 / 10 == 1) {
+				cm.sendNext("Great! You are now a #bMarauder#k. As a Marauder, you will learn some of the most sophisticated skills related to melee-based attacks. #bEnergy Charge#k is a skill that allows you to store your power and the damage you receive into a special form of energy. Once this ball of energy is charged, you may use #bEnergy Blast#k to apply maximum damage against your enemies, and also use #bEnergy Drain#k to steal your enemy's HP to recover your own. #bTransformation will allow you to transform into a superhuman being with devastating melle attacks, and while transformed, you can use #bShockwave#k to cause a mini-earthquake and inflict massive damage to your enemies.");
+			} else {
+				cm.sendNext("Great! You are now a #bOutlaw#k. As a Outlaw, you will become a true pistolero, a master of every known Gun attack, as well as a few other skills to help you vanquish evil. #bBurst Fire#k is a more powerful-version of Double Shot, shooting more bullets and causing more damage at the same time. You also now have the ability to summon a loyal #bOctopus#k and the swooping #bGaviota#k as your trusty allies, while attacking your enemies using #bBullseye#k. You can also use element-based attacks by using #bFlamethrower#k and #bIce Spliiter#k.");
+			}
         } else if (status == 3) {
-            cm.sendNextPrev("I've also given you some SP and AP, which will help you get started. You have now become a powerful, powerful pirate, indeed. Remember, though, that the real world will be awaiting your arrival with even tougher obstavles to overcome. Once you feel like you cannot train yourself to reach a higher place, then, and only then, come see me. I'll be here waiting.");
+            cm.sendNextPrev("I have also given you additional Skill Points and Ability Points, so please apply them when you get a chance. With your job advancement, you are now a formidable Pirate. Remember, though, that this will open up a whole new world of difficult journeys. Come see me when you feel like you have reached the pinnacle of your current Pirate skills, and have nothing else to train for. Then, and only then, will I help you obtain ultimate power.");
         }
     }else if (actionx["Physical"]){
         if (status == 0)
@@ -116,4 +116,3 @@ function action(mode, type, selection){
         }
     }
 }
-*/

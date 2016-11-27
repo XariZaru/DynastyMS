@@ -20,14 +20,20 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 function act() {
-    if(rm.getPlayer().getEventInstance() != null){
+	// Set variables to true/false as it is required 
+    if (rm.getPlayer().getEventInstance() != null) {
 		rm.getPlayer().getEventInstance().setProperty("summoned", "true");
 		rm.getPlayer().getEventInstance().setProperty("canEnter", "false");
 	}
+	
+	// Change music 
     rm.changeMusic("Bgm06/FinalFight");
-    for (i=8800003; i<8800011; i++)
-        rm.spawnMonster(i);
+	
+    //rm.spawnZakum(-10, -215);
 	rm.spawnFakeMonster(8800000);
-    rm.createMapMonitor(280030000,"ps00");
+	for (i = 8800003; i < 8800011; i++)
+        rm.spawnMonster(i);
+	// Message and map handling 
+    rm.createMapMonitor(280030000, "ps00");
     rm.mapMessage(5, "Zakum is summoned by the force of Eye of Fire.");
 }
