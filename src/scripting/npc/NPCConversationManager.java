@@ -215,13 +215,13 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
      */
     public String searchItem(String item_name) {
     	StringBuilder text = new StringBuilder("These are items that come up under your search description:\r\n");
-    	for (Pair<Integer, String> entry : MapleItemInformationProvider.getInstance().getAllItems()) {
+    	for (Entry<Integer, String> entry : MapleItemInformationProvider.getInstance().getAllItems().entrySet()) {
     		if (text.length() > 999) {
     			text.append("#L999##eTOO MANY ITEMS TO BE LISTED#n#l");
     			break;
     		}
-    		if (entry.getRight().toLowerCase().contains(item_name.toLowerCase())) {
-    			text.append("#L"+entry.getLeft()+"##b" + entry.getLeft() + "#k - #r#z" + entry.getLeft() + "##l\r\n");
+    		if (entry.getValue().toLowerCase().contains(item_name.toLowerCase())) {
+    			text.append("#L"+entry.getKey()+"##b" + entry.getKey() + "#k - #r#z" + entry.getKey() + "##l\r\n");
     		}
     	}
     	return text.append("\r\n#L999##bExit#k" + "\r\n#L1000##bBack#k").toString();
